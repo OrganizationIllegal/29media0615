@@ -1,0 +1,15 @@
+@charset "utf-8";
+*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;text-decoration:none;}
+body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
+/* topnewsbox */
+.topnewsbox{width:555px;position:relative;height:262px;}
+.topnews{border-right:#b7b7b7 1px solid;border-top:#b7b7b7 1px solid;z-index:90;background:#f0f0f0;left:0px;border-left:#b7b7b7 1px solid;width:551px;border-bottom:#b7b7b7 1px solid;position:absolute;top:0px;height:258px}
+.topnewspic{float:left;margin:7px 14px 0px 6px;overflow:hidden;width:264px;height:243px}
+.topnewspic img{width:264px;height:243px}
+.topnewslist{margin-top:7px;float:left;overflow:hidden;width:256px;height:243px;text-align:left}
+.topnewslist ul{margin:0px auto;overflow:hidden;width:250px;height:216px}
+.topnewslist ul li{font-size:14px;overflow:hidden;width:250px;line-height:30px;border-bottom:#dbdbdb 1px solid;height:30px}
+.topnewslist ul li a{padding-right:0px;padding-left:12px;background:url(../images/dian.gif) no-repeat 4px;padding-bottom:5px;padding-top:5px}
+.topnewslist ul li a.up{font-weight:bold;background:url(../images/jiantou.gif) no-repeat;color:#f25500}
+.topnewsbg{z-index:80;background:#dedede;left:4px;width:701px;position:absolute;top:4px;height:258px}
