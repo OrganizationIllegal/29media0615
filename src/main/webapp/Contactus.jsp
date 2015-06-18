@@ -85,7 +85,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   margin-left: 765px;"><a href="#"><U style="color:rgb(170, 237, 241)">确认邮件寄出</U></a></div>
  <!--  <div style="text-align:center;"><img src="images/12.png"></div> -->
 </div >
-<jsp:include page="foot2.jsp" />
+<jsp:include page="foot.jsp" />
   </div>
 
 

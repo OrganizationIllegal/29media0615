@@ -80,7 +80,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		</div>
 		</div>
-		<jsp:include page="foot2.jsp" />
+		<jsp:include page="foot.jsp" />
 </div>
 </body>
 </html>
