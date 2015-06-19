@@ -26,8 +26,13 @@ public class ArtistController {
 	public String getTrain(HttpServletRequest req,HttpServletResponse resp){
 		List<StarInfo> list=new ArrayList<StarInfo>();
 		list=starInfoDAO.findAll();
-		StarInfo star1=list.get(0);
+		String starNum = req.getParameter("starNum");
+		if(starNum == null || "".equals(starNum)){
+			starNum = "1";
+		}
+		StarInfo star1=starInfoDAO.findByStarNum(starNum);
 		req.setAttribute("star1", star1);
+		req.setAttribute("list", list);
 		//return "artistdetail.jsp";
 		return "artist.jsp";
 	}

@@ -10,12 +10,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <style type="text/css">
    body{
    /* background-color:rgba(233, 243, 248, 1); */
-    background: -moz-linear-gradient(top, #666666 0%, #ffffff 40%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#666666), color-stop(40%,#ffffff));
-    background: -webkit-linear-gradient(top, #666666 0%,#ffffff 40%);
-    background: -o-linear-gradient(top, #666666 0%,#ffffff 40%);
-    background: -ms-linear-gradient(top, #666666 0%,#ffffff 40%);
-    background: linear-gradient(to bottom, #666666 0%,#ffffff 40%);
+    background: -moz-linear-gradient(top, #666666 0%, #ffffff 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#666666), color-stop(100%,#ffffff));
+    background: -webkit-linear-gradient(top, #666666 0%,#ffffff 100%);
+    background: -o-linear-gradient(top, #666666 0%,#ffffff 100%);
+    background: -ms-linear-gradient(top, #666666 0%,#ffffff 100%);
+    background: linear-gradient(to bottom, #666666 0%,#ffffff 100%);
  
    }
    </style>

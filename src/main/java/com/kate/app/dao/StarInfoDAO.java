@@ -1,5 +1,6 @@
 package com.kate.app.dao;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -55,5 +56,49 @@ public class StarInfoDAO extends BaseDao {
     }
 		return list;
 	}
+	
+	public  StarInfo findByStarNum(String starNum){
+		StarInfo data = new StarInfo();
+		try{
+			
+			String sql = " select * from star_info where star_num=?";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, starNum);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()){					
+				data.setId(rs.getInt("id"));
+				data.setAchivements(rs.getString("achivements"));
+				data.setAnimal(rs.getString("animal"));
+				data.setBieming(rs.getString("bieming"));
+				data.setBirthday(rs.getString("birthday"));
+				data.setBloodtype(rs.getString("bloodtype"));
+				data.setBrokerfirm(rs.getString("brokerfirm"));
+				data.setChinese_name(rs.getString("chinese_name"));
+				data.setConstellation(rs.getString("constellation"));
+				data.setEnglish_name(rs.getString("english_name"));
+				data.setGratuateunivercity(rs.getString("gratuateunivercity"));
+				data.setHeight(rs.getString("height"));
+				data.setId(rs.getInt("id"));
+				data.setMusicalstyle(rs.getString("musicalstyle"));
+				data.setNation(rs.getString("nation"));
+				data.setBirthplace(rs.getString("birthplace"));
+				data.setNationality(rs.getString("nationality"));
+				data.setOccupation(rs.getString("occupation"));
+				data.setRepresentativeworks(rs.getString("representativeworks"));
+				data.setResidence(rs.getString("residence"));
+				data.setSex(rs.getString("sex"));
+				data.setSpecialty(rs.getString("specialty"));
+				data.setStar_detail(rs.getString("star_detail"));
+				data.setStar_img(rs.getString("star_img"));
+				data.setStar_num(rs.getInt("star_num"));
+				data.setWeight(rs.getString("weight"));
+				
+			}
+			
+		}catch (Exception e) {
+	        
+	    }
+			return data;
+		}
 	
 }

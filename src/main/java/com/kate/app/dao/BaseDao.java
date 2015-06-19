@@ -18,9 +18,9 @@ public class BaseDao {
 	{
 		if(con == null){
 			try {
-				url = "jdbc:mysql://54.187.200.118:3306/media?autoReconnect=true";
+				url = "jdbc:mysql://101.200.234.113:3306/media?autoReconnect=true";
 	            username = "root";
-	            password = "admin";
+	            password = "29media";
 	            con = DriverManager.getConnection(url, username, password);
 	        } catch (Exception e) {
 	           System.out.print("DriverManager.getConnection faild");
@@ -41,14 +41,15 @@ public class BaseDao {
 		    e.printStackTrace() ;   
 		}   
 		try {
-			url = "jdbc:mysql://54.187.200.118:3306/media?autoReconnect=true";
+			url = "jdbc:mysql://101.200.234.113:3306/media?autoReconnect=true";
             username = "root";
-            password = "admin";
+            password = "29media";
             con = DriverManager.getConnection(url, username, password);
         } catch (Exception e) {
            System.out.print("DriverManager.getConnection faild");
            System.out.println(e.toString());
         }
+		
 	}
 	
 	

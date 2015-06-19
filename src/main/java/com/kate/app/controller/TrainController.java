@@ -16,6 +16,7 @@ import com.kate.app.dao.NewsTrendsDAO;
 import com.kate.app.dao.StarVedioDAO;
 import com.kate.app.dao.TrainDAO;
 import com.kate.app.dao.TrainDetailDAO;
+import com.kate.app.model.LianXi;
 import com.kate.app.model.Train;
 import com.kate.app.model.TrainDetail;
 
@@ -63,5 +64,31 @@ public class TrainController {
 		
 		return "/train.jsp";
 	}
+	
+	
+	
+	@RequestMapping({ "/TrainDetail" })
+	public String TrainDetail(HttpServletRequest req,HttpServletResponse resp){
+		String id = req.getParameter("id");
+		if(id == null || "".equals(id)){
+			id = "1";
+		}
+		int newId = Integer.parseInt(id); 
+		List<LianXi> lianXiList=new ArrayList<LianXi>();
+		List<String> typeNameList = new ArrayList<String>();
+		lianXiList=trainDao.findAllLianXi();
+		for(LianXi item : lianXiList){
+			String data = item.getTypename();
+			typeNameList.add(data);
+		}
+		LianXi data = trainDao.findLianXiById(newId);
+		req.setAttribute("data", data);
+		req.setAttribute("lianXiList", lianXiList);
+		req.setAttribute("typeNameList", typeNameList);
+		return "/traindetail.jsp";
+	}
+	
+	
+	
 
 }

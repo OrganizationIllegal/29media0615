@@ -239,13 +239,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div> -->
 		</div>	
 		</div>
-		<div class="col-md-3" style="text-align:left;padding-left:0px;margin-left:-45px;">	
-		<div id="id1" style="margin-bottom:10px;"><img alt="" src="/images/artist/cy1.png" style="width:240px;height:170px;cursor:pointer;"></div>
-		<div id="id2" style="margin-bottom:10px;"><img alt="" src="/images/artist/dyn1.png" style="width:240px;height:170px;cursor:pointer;"></div>
-		<div id="id3" style="margin-bottom:10px;"><img alt="" src="/images/artist/ssy1.png" style="width:240px;height:170px;cursor:pointer;"></div>
-		<div id="id4" style="margin-bottom:10px;"><img alt="" src="/images/artist/pbj1.png" style="width:240px;height:170px;cursor:pointer;"></div>
-		<div id="id5" style="margin-bottom:10px;"><img alt="" src="/images/artist/zjy1.png" style="width:240px;height:170px;cursor:pointer;"></div>	
+		
+		<c:if test="${!empty list}">
+		<div class="col-md-3" style="text-align:left;padding-left:0px;margin-left:-45px;">
+		<c:forEach var="item" items="${list}" varStatus="stat">
+		
+		<div id="${stat.index }" style="margin-bottom:10px;">
+			<a href="/Artist?starNum=${stat.index+1}"><img alt="" src="${item.star_img}" style="width:240px;height:170px;cursor:pointer;">
+			</a>
 		</div>
+		<!-- <div id="id2" style="margin-bottom:10px;"><a href="/Artist?starNum=2"><img alt="" src="/images/artist/dyn1.png" style="width:240px;height:170px;cursor:pointer;"></a></div>
+		<div id="id3" style="margin-bottom:10px;"><a href="/Artist?starNum=3"><img alt="" src="/images/artist/ssy1.png" style="width:240px;height:170px;cursor:pointer;"></a></div>
+		<div id="id4" style="margin-bottom:10px;"><a href="/Artist?starNum=4"><img alt="" src="/images/artist/pbj1.png" style="width:240px;height:170px;cursor:pointer;"></a></div>
+		<div id="id5" style="margin-bottom:10px;"><a href="/Artist?starNum=5"><img alt="" src="/images/artist/zjy1.png" style="width:240px;height:170px;cursor:pointer;"></a></div>	 -->
+		</c:forEach>
+		</div>
+		</c:if>
 		</div>
 		<jsp:include page="foot.jsp" />
 </div>
