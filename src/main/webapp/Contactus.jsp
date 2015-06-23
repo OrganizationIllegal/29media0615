@@ -36,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <I style="font-family:微软雅黑;font-size:29px;">Join Us</I> </div>
 	  <div style="margin-left: 196px;float:left;">
 	  	<!-- <img src="images/1.png" height="300px;"> -->
-	  	<div style="text-align:right;width:300px;/* background-color:red; */height:300px;font-size:21px;font-weight:bold;padding-right:15px;border:5px solid white;color:white;">
+	  	<div style="text-align:right;width:300px;/* background-color:red; */height:300px;font-size:21px;font-weight:bold;padding-right:15px;border:5px solid rgb(170, 237, 241);color:black;">
 	  	<div style="padding-top:20px;"><span class="glyphicon glyphicon-earphone"></span>&nbsp;咨询电话：</div>
 	  	<div >021-60727090(10:00-18:00)</div>
 	  	<div style="font-size:20px;">(周一-周五)</div>
