@@ -48,7 +48,7 @@ body{
             <th data-field="id" data-sortable="true" data-editable="true">ID</th>
             <th data-field="news_id" data-sortable="true" data-editable="true">新闻编号</th>
             <th data-field="title" data-sortable="true" data-editable="true">新闻标题</th>
-             <th data-field="time" data-sortable="true" data-editable="true">发布时间</th>
+            <th data-field="time" data-sortable="true" data-editable="true">发布时间</th>
             <th data-field="operate"
                 data-formatter="operateFormatter"
                 data-events="operateEvents">Item Operate</th>
@@ -132,7 +132,10 @@ body{
 
     function operateFormatter(value, row, index) {
         return [
-            '<a class="like" href="javascript:void(0)" title="Like">',
+            '<a class="add" href="newsInput.jsp" title="add">',
+            '<i class="glyphicon glyphicon-heart"></i>',
+            '</a>  ',
+            '<a class="edit" href="javascript:void(0)" title="edit">',
             '<i class="glyphicon glyphicon-heart"></i>',
             '</a>  ',
             '<a class="remove" href="javascript:void(0)" title="Remove">',
@@ -142,88 +145,40 @@ body{
     }
     
     window.operateEvents = {
-            'click .like': function (e, value, row, index) {
-                var id=row.id;
-                window.open ('/Area/editNewsInfo?id='+id)
-                
-            }},
-
-    window.operateEvents = {
-        'click .like': function (e, value, row, index) {
-            alert('You click like action, row: ' + JSON.stringify(row));
-            var id=row.id;
-            if(isNaN(id)){
-           
-            	$.ajax({
-	 	    type: "POST",
-	 		data: {project_num: row.project_num,recommend_project_num1: row.recommend_project_num1, recommend_project_num2: row.recommend_project_num2,recommend_project_num3: row.recommend_project_num3},
-	 		dateType: "json",
-	 		url: "/addRecoProject",
-	 		
-	 		success:function(data){
-	 			data=$.parseJSON(data);
-	 			if(data.result==0){
-	 				alert("项目编号不能为空！")
-	 			}
-	 			else if(data.result==-1){
-	 				alert("项目编号不存在！")
-	 			}else if(data.result==-2){
-	 				alert("增加失败")
-	 			}
-	 			else{
-	 				alert("增加成功")
-	 			}
-	 		},
-	 		error:function(){
-	 			alert("error")
-	 		}
-	 	});
-          }
-          else{
-        
-	           $.ajax({
-		 	    type: "POST",
-		 		data: {id:row.id,project_num: row.project_num,recommend_project_num1: row.recommend_project_num1, recommend_project_num2: row.recommend_project_num2,recommend_project_num3: row.recommend_project_num3},
-		 		dateType: "json",
-		 		url: "/editRecoProject",
-		 		
-		 		success:function(data){
-	 			data=$.parseJSON(data);
-	 			if(data.result==0){
-	 				alert("项目编号不能为空！")
-	 			}
-	 			else if(data.result==-1){
-	 				alert("项目编号不存在！")
-	 			}else if(data.result==-2){
-	 				alert("修改失败")
-	 			}
-	 			else{
-	 				alert("修改成功")
-	 			}
-	 		},
-		 		error:function(){
-		 			alert("error")
-		 		}
-	 		});
-          }
-          
-            
-            
-        },
+    	 'click .edit': function (e, value, row, index) {
+                alert(row.id);
+                var id = row.id;               
+                 $.ajax({
+    		 	    type: "POST",
+    		 		data: {id: row.id},
+    		 		dateType: "json",
+    		 		url: "/findNewsTrends",		 		
+    		 		success:function(data){
+    		 			//alert("跳转成功！")
+    		 		},
+    		 		error:function(){
+    		 			alert("error")
+    		 		}
+    	 	});
+    	 },  
+         	 	
         'click .remove': function (e, value, row, index) {
-            alert(row.id);
+            //alert(row.id);
             var id = row.id;
             
              $.ajax({
 		 	    type: "POST",
 		 		data: {id: id},
 		 		dateType: "json",
-		 		url: "/deleteRecomProject",
-		 		
+		 		url: "/deleteNewsTrends",		 		
 		 		success:function(data){
-		 			alert("删除成功")
+		 			if(data.flag == 1){
+		 				alert("删除成功！");
+		 			}else if(data.flag ==0){
+		 				alert("删除失败！");
+		 			}
 		 		},
-		 		error:function(){s
+		 		error:function(){
 		 			alert("error")
 		 		}
 	 	});

@@ -1,7 +1,6 @@
 package com.kate.app.controller;
 
 import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.kate.app.dao.NewsInputDAO;
+import com.kate.app.model.NewsTrends;
 
 @Controller
 public class NewsInputController {
@@ -36,21 +36,32 @@ public class NewsInputController {
 			e.printStackTrace();
 		}
 	}
-	
-	//新闻博客录入
-	/*@RequestMapping({ "/inputNewsBoke" })
-	public void inputNewsBoke(HttpServletRequest req, HttpServletResponse resp) throws Exception{
-		String news_num = req.getParameter("news_num");
-		String news_title  = req.getParameter("news_title");
-		String news_people  = req.getParameter("news_people");
-		String news_time = req.getParameter("news_time");
-		String news_fenlei = req.getParameter("news_fenlei");
-		String news_detail  = req.getParameter("news_detail");
-		String news_image  = req.getParameter("news_image");
-		String news_abstract  = req.getParameter("news_abstract");
+	//新闻查找
+	@RequestMapping({ "/findNewsTrends" })
+	public String getTrain(HttpServletRequest req,HttpServletResponse resp){
+		int id = Integer.parseInt(req.getParameter("id"));
+		NewsTrends newstrends = newsInputDao.findById(id);		
+		req.setAttribute("newstrends", newstrends);
+		System.out.println("haha");
+		return "newsEdit.jsp";
+	}
+	//新闻录入
+	@RequestMapping({ "/inputNewsTrends" })
+	public void inputNewsTrends(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+		String news_id = req.getParameter("news_id");
+		String title  = req.getParameter("title");
+		String time  = req.getParameter("time");
+		String detail = req.getParameter("detail");
+		int newsid=0; 
+		if(news_id!=null && !"".equals(news_id)){
+			newsid=Integer.parseInt(news_id);
+		}
+		if(time==null||"".equals(time)){
+			time = "2015-05-09";
+		}
 		int flag = 0;
 		JSONObject json = new JSONObject();
-		flag =newsBokeDao.InsertNewsBoke(news_num, news_title, news_people, news_time, news_fenlei, news_abstract, news_detail, news_image);
+		flag =newsInputDao.InsertNewsTrends(newsid, title, time, detail);
 		json.put("flag", flag);
 		try{
 			writeJson(json.toJSONString(),resp);
@@ -58,7 +69,47 @@ public class NewsInputController {
 			e.printStackTrace();
 		}
 		
-	}*/
+	}
+	//删除新闻
+	@RequestMapping({ "/deleteNewsTrends" })
+	public void deleteArea(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+		int id = Integer.parseInt(req.getParameter("id"));
+		int flag = newsInputDao.deleteNewsTrends(id);
+		JSONObject json = new JSONObject();
+		json.put("data", flag);
+		try{
+			writeJson(json.toJSONString(),resp);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	//新闻录入
+		@RequestMapping({ "/editNewsTrends" })
+		public void editNewsTrends(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+			int id = Integer.parseInt(req.getParameter("id"));
+			String news_id = req.getParameter("news_id");
+			String title  = req.getParameter("title");
+			String time  = req.getParameter("time");
+			String detail = req.getParameter("detail");
+			int newsid=0; 
+			if(news_id!=null && !"".equals(news_id)){
+				newsid=Integer.parseInt(news_id);
+			}
+			if(time==null||"".equals(time)){
+				time = "2015-05-09";
+			}
+			int flag = 0;
+			JSONObject json = new JSONObject();
+			flag =newsInputDao.editNewsTrends(id, newsid, title, time, detail);
+			json.put("flag", flag);
+			try{
+				writeJson(json.toJSONString(),resp);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			
+		}
 				
 	public void writeJson(String json, HttpServletResponse response)throws Exception{
 	    response.setContentType("text/html");

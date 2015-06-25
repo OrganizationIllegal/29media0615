@@ -25,7 +25,7 @@ body{
 <div class="area_bkg1">当前位置:新闻录入</div>
 <div class="area_bkg2" id="newsinfo">新闻信息</div>
 <div class="area_left">
-<span class="area_span">新闻编号</span><span><input type="text" id="news_id" name="news_id" class="area_input"></span>
+<span class="area_span">新闻编号</span><span><input type="text" id="news_id" name="news_id" class="area_input" placeholder=${newstrends.news_id}></span>
 </div>
 <div class="area_right">
 <span class="area_span">新闻标题</span><span><input type="text" id="title" name="title" class="area_input"></span>

@@ -1,14 +1,17 @@
 package com.kate.app.dao;
 
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.kate.app.model.NewsTrends;
 
 @Repository 
 public class NewsInputDAO extends BaseDao {
@@ -35,21 +38,76 @@ public class NewsInputDAO extends BaseDao {
 		}
 		return jsonArray;
 	} 
-	//添加经纪人服务区域
-	/*public int InsertServiceArea(String  broker_num,String area_code,int view_shunxu){
+	
+	//新闻录入
+	public int InsertNewsTrends(int news_id, String  title,String time,String detail){
 		int exeResult=0;
 		try {
-			String sql = "insert into broker_service_area(broker_num,area_code,view_shunxu) values(?,?,?)";
+			String sql = "insert into news_trends(news_id,title,time,detail) values(?,?,?,?)";
 			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, broker_num);
-			pstmt.setString(2, area_code);
-			pstmt.setInt(3, view_shunxu);
+			pstmt.setInt(1, news_id);
+			pstmt.setString(2, title);
+			pstmt.setString(3, time);
+			pstmt.setString(4, detail);
 			exeResult = pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return exeResult;
-	}  */
+	} 
+	
+	//删除新闻
+	public int deleteNewsTrends(int id){
+		int exeResult=0;
+		try{
+				String sql = " delete from news_trends where id= ?";
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, id);
+				exeResult = pstmt.executeUpdate();
+			}catch (Exception e) {
+	            e.printStackTrace();
+	        }
+		    return exeResult;
+	}
+	//编辑新闻
+	public int editNewsTrends(int id, int news_id, String  title,String time,String detail){
+		int exeResult=0;
+		try{
+			String sql = " update news_trends set news_id=?, title=?, time=?, detail=? where id=?";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, news_id);
+			pstmt.setString(2, title);
+			pstmt.setString(3, time);
+			pstmt.setString(4, detail);
+			pstmt.setInt(5, id);			
+			exeResult = pstmt.executeUpdate();
+		}catch (Exception e) {
+            e.printStackTrace();
+        }
+		return exeResult;
+        
+	}
+	
+	public NewsTrends findById(int id){
+		NewsTrends data = new NewsTrends();
+		try{
+			
+			String sql = " select * from news_trends where id=?";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, id);
+			ResultSet rs = pstmt.executeQuery();					
+			data.setId(rs.getInt("id"));
+			data.setDetail(rs.getString("detail"));
+			data.setImage(rs.getString("image"));
+			data.setTime(rs.getDate("time"));
+			data.setTitle(rs.getString("title"));			
+		}catch (Exception e) {
+	        
+	    }
+			return data;
+		}
+	
+	
 				
 }
