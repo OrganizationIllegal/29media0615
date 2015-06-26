@@ -23,7 +23,8 @@ body{
 <body>
 <div style="width:900px;margin:25px auto;">
 <div class="area_bkg1">当前位置:新闻录入</div>
-<div class="area_bkg2" id="newsinfo">新闻信息</div>
+<div class="area_bkg2" >新闻信息</div>
+<form id="newsinfo">
 <div class="area_left">
 <span class="area_span">新闻编号</span><span><input type="text" id="news_id" name="news_id" class="area_input"></span>
 </div>
@@ -37,6 +38,7 @@ body{
 <span class="area_span">新闻详情</span>
 </div>
 <div class="c-fix" style="margin-bottom:15px;margin-left:35px;"><textarea id="detail" name="detail" rows="3" cols="112" style="background-color:rgb(237,238,243);border:0px;"></textarea></div>
+</form>
 <div class="area_bkg2 c-fix" id="newsimg">新闻图片</div>
 <form id="newsimg">
 <div class="c-fix" style="padding-left:35px;margin-top:20px;">
@@ -50,13 +52,15 @@ body{
 </div>
 <script type="text/javascript">
 function add(){
-	  var news_id=$("#news_id").val();
+	  /* var news_id=$("#news_id").val();
 	  var title=$("#title").val();
 	  var time=$("#time").val();
-	  var detail=$("#detail").val();
+	  var detail=$("#detail").val(); */
+	  var newsinfo=DataDeal.formToJson(data= decodeURIComponent($("#newsinfo").serialize(),true)); 
+	  newsinfo=eval("("+newsinfo+")"); 
 	  $.ajax({
 	 	    type: "POST",
-	 		data: { news_id : news_id,title : title,time : time,detail : detail}, 
+	 		data: {"newsinfo":JSON.stringify(newsinfo),"newsimglist":JSON.stringify(newsimglist)},/* { news_id : news_id,title : title,time : time,detail : detail} */
 	 		dataType: "json",
 	 		url: "/inputNewsTrends",
 	 		success:function(data){
@@ -94,6 +98,9 @@ $(function(){
 			/* newsimg=eval("("+newsimg+")"); */
 			newsimg.news_image=filename;
 			newsimglist.push(newsimg);
+			/* for(var i=0;i<newsimglist.length;i++){
+				alert(newsimglist[i].news_image)
+				} */
 			$("#newsimglist").append("<div style='float:left;padding-left:35px;width:817px;padding-top:10px;'><span style='padding-right:50px;'>"+(++newsimgecount)+"</span><span style='padding-right:10px;'>"+newsimglist[newsimgecount-1].news_image+"</span><span style='padding-left: 30px;padding-right: 40px;'></span><span><a href='#' class='deletenewsimg'>删除</a></span></div>");			
 			UploadFile("news_image");
 			$("#newsimg input").each(function(){
@@ -125,6 +132,8 @@ $(function(){
 
 	
 });
+
+
 
 var DataDeal = {  
 		//将从form中通过$('#form').serialize()获取的值转成json  
