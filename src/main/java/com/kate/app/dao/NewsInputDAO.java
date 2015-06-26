@@ -4,9 +4,6 @@ package com.kate.app.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.stereotype.Repository;
 
 import com.alibaba.fastjson.JSONArray;
@@ -96,12 +93,15 @@ public class NewsInputDAO extends BaseDao {
 			String sql = " select * from news_trends where id=?";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, id);
-			ResultSet rs = pstmt.executeQuery();					
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()){
 			data.setId(rs.getInt("id"));
+			data.setNews_id(rs.getInt("news_id"));
 			data.setDetail(rs.getString("detail"));
 			data.setImage(rs.getString("image"));
 			data.setTime(rs.getDate("time"));
-			data.setTitle(rs.getString("title"));			
+			data.setTitle(rs.getString("title"));
+			}
 		}catch (Exception e) {
 	        
 	    }

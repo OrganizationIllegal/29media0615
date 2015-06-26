@@ -1,6 +1,5 @@
 package com.kate.app.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,9 +17,6 @@ import com.kate.app.dao.TrainDAO;
 import com.kate.app.model.News;
 import com.kate.app.model.NewsImage;
 import com.kate.app.model.NewsTrends;
-import com.kate.app.model.StarImage;
-import com.kate.app.model.StarVedio;
-import com.kate.app.model.Train;
 import com.kate.app.service.IndexService;
 
 

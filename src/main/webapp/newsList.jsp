@@ -60,75 +60,13 @@ body{
 
 <script>
     var $table = $('#table'),
-        $remove = $('#remove'),
-        $add = $('#add'),
-        selections = [];
+    selections = [];
 	var i=0;
-    $(function () {
-        $('#add').click(function () {
-            $table.bootstrapTable('insertRow', {index: 0, row:{id:'x'+(i++)} });
-        });
+    $(function () {       
         $table.bootstrapTable({
             height: getHeight()
-        });
-        $table.on('check.bs.table uncheck.bs.table ' +
-                'check-all.bs.table uncheck-all.bs.table', function () {
-            $remove.prop('disabled', !$table.bootstrapTable('getSelections').length);
-
-            // save your data, here just save the current page
-            selections = getIdSelections();
-            // push or splice the selections if you want to save all data selections
-        });
-        $table.on('all.bs.table', function (e, name, args) {
-            // console.log(name, args);
-        });
-  
-        $remove.click(function () {
-        	var ids = getIdSelections();
-            ids = '"'+ids+'"';
-            alert(ids);
-            $.ajax({
-	 	    type: "POST",
-	 		data: { ids : ids},
-	 		dateType: "json",
-	 		url: "/touzi/deleteAllData",
-	 		
-	 		success:function(data){
-	 			alert("删除成功")
-	 			window.location.reload();
-	 		},
-	 		error:function(){
-	 			alert("error")
-	 		}
-	 	});
-	 	
-            
-            $table.bootstrapTable('remove', {
-                field: 'id',
-                values: ids
-            });
-     
-            $remove.prop('disabled', true);
-        });
-        $(window).resize(function () {
-            $table.bootstrapTable('resetView', {
-                height: getHeight()
-            });
-        });
+        });       
     });
-
-    function getIdSelections() {
-        return $.map($table.bootstrapTable('getSelections'), function (row) {
-            return row.id
-        });
-    }
-
-    function responseHandler(res) {
-        $.each(res.rows, function (i, row) {
-            row.state = $.inArray(row.id, selections) !== -1;
-        });
-        return res;
-    }
 
     function operateFormatter(value, row, index) {
         return [
@@ -147,19 +85,8 @@ body{
     window.operateEvents = {
     	 'click .edit': function (e, value, row, index) {
                 alert(row.id);
-                var id = row.id;               
-                 $.ajax({
-    		 	    type: "POST",
-    		 		data: {id: row.id},
-    		 		dateType: "json",
-    		 		url: "/findNewsTrends",		 		
-    		 		success:function(data){
-    		 			//alert("跳转成功！")
-    		 		},
-    		 		error:function(){
-    		 			alert("error")
-    		 		}
-    	 	});
+                var id = row.id;
+                window.open ('findNewsTrends?id='+id);               
     	 },  
          	 	
         'click .remove': function (e, value, row, index) {
@@ -182,8 +109,7 @@ body{
 		 			alert("error")
 		 		}
 	 	});
-           
-           
+                     
             
             $table.bootstrapTable('remove', {
                 field: 'id',
@@ -191,9 +117,6 @@ body{
             });
         }
     };
-
-    
-
     function getHeight() {
         return $(window).height() - $('h1').outerHeight(true);
     }

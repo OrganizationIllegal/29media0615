@@ -42,9 +42,10 @@ public class NewsInputController {
 		int id = Integer.parseInt(req.getParameter("id"));
 		NewsTrends newstrends = newsInputDao.findById(id);		
 		req.setAttribute("newstrends", newstrends);
-		System.out.println("haha");
-		return "newsEdit.jsp";
+		return "/newsEdit.jsp";
 	}
+	
+	
 	//新闻录入
 	@RequestMapping({ "/inputNewsTrends" })
 	public void inputNewsTrends(HttpServletRequest req, HttpServletResponse resp) throws Exception{

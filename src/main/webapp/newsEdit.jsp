@@ -22,21 +22,24 @@ body{
 </head>
 <body>
 <div style="width:900px;margin:25px auto;">
-<div class="area_bkg1">当前位置:新闻录入</div>
+<div class="area_bkg1">当前位置:新闻编辑</div>
 <div class="area_bkg2" id="newsinfo">新闻信息</div>
 <div class="area_left">
-<span class="area_span">新闻编号</span><span><input type="text" id="news_id" name="news_id" class="area_input" placeholder=${newstrends.news_id}></span>
+<span class="area_span">新闻编号</span><span><input type="text" id="news_id" name="news_id" class="area_input" value=${newstrends.news_id}></span>
 </div>
 <div class="area_right">
-<span class="area_span">新闻标题</span><span><input type="text" id="title" name="title" class="area_input"></span>
+<span class="area_span">新闻标题</span><span><input type="text" id="title" name="title" class="area_input" value=${newstrends.title}></span>
 </div>
 <div class="area_left">
-<span class="area_span">发布时间</span><span><input type="text" id="time" name="time" class="area_input"></span>
+<span class="area_span">发布时间</span><span><input type="text" id="time" name="time" class="area_input" value=${newstrends.time}></span>
+</div>
+<div class="area_right" style="display:none;">
+<span class="area_span">id</span><span><input type="text" id="id" name="id" class="area_input" value=${newstrends.id}></span>
 </div>
 <div class="area_left c-fix">
 <span class="area_span">新闻详情</span>
 </div>
-<div class="c-fix" style="margin-bottom:15px;margin-left:35px;"><textarea id="detail" name="detail" rows="3" cols="112" style="background-color:rgb(237,238,243);border:0px;"></textarea></div>
+<div class="c-fix" style="margin-bottom:15px;margin-left:35px;"><textarea id="detail" name="detail" rows="3" cols="112" style="background-color:rgb(237,238,243);border:0px;" >${newstrends.detail}</textarea></div>
 <div class="area_bkg2 c-fix" id="newsimg">新闻图片</div>
 <div class="c-fix" style="padding-left:35px;margin-top:20px;">
 <span class="area_span" style="float:left;">培训图片</span>
@@ -61,20 +64,21 @@ body{
 </div>
 <script type="text/javascript">
 function add(){
+	  var id=$("#id").val();
 	  var news_id=$("#news_id").val();
 	  var title=$("#title").val();
 	  var time=$("#time").val();
 	  var detail=$("#detail").val();
 	  $.ajax({
 	 	    type: "POST",
-	 		data: { news_id : news_id,title : title,time : time,detail : detail}, 
+	 		data: { id : id,news_id : news_id,title : title,time : time,detail : detail}, 
 	 		dataType: "json",
-	 		url: "/inputNewsTrends",
+	 		url: "/editNewsTrends",
 	 		success:function(data){
 	 			if(data.flag == 1){
-	 				alert("添加成功！");
+	 				alert("修改成功！");
 	 			}else if(data.flag ==0){
-	 				alert("添加失败！");
+	 				alert("修改失败！");
 	 			}
 	 		},
 	 		error:function(){
