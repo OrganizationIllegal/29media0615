@@ -1,6 +1,7 @@
 package com.kate.app.controller;
 
 import java.io.PrintWriter;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -57,27 +58,23 @@ public class NewsInputController {
 	//新闻录入
 	@RequestMapping({ "/inputNewsTrends" })
 	public void inputNewsTrends(HttpServletRequest req, HttpServletResponse resp) throws Exception{
-		String newsinfo=req.getParameter("newsinfo");
-		JSONArray newsinfoArray = JSONArray.parseArray(newsinfo);
-		List<NewsTrends> newsinfolist=new ArrayList<NewsTrends>();
-		for (int i=0;i<newsinfoArray.size();i++){
-			 JSONObject object = (JSONObject)newsinfoArray.get(i); //对于每个json对象
-			 NewsTrends e = (NewsTrends) JSONToObj(object.toString(), NewsTrends.class);
-			 newsinfolist.add(e);
-		}
-		System.out.println("newsinfolist.length():"+newsinfolist.size());
-		NewsTrends newstrends=new NewsTrends();
-		newstrends=newsinfolist.get(0);
+		String newsinfo=req.getParameter("newsinfo");		
+		NewsTrends newstrends = (NewsTrends) JSONToObj(newsinfo, NewsTrends.class);
+		String time;
 		int news_id = newstrends.getNews_id();
 		String title  = newstrends.getTitle();
-		String time  = newstrends.getTime().toString();
 		String detail = newstrends.getDetail();
-		if(time==null||"".equals(time)){
+		if(newstrends.getTime()==null||"".equals(newstrends.getTime())){
 			time = "2015-05-09";
+		}else{
+			Date date=newstrends.getTime();
+			DateFormat df= DateFormat.getDateInstance();//日期格式，精确到日
+			time=df.format(date);
+			System.out.println(time);			
 		}
-		
-		
+				
 		String newsimglist=req.getParameter("newsimglist");
+		System.out.println(newsimglist);
 		JSONArray newsimgArray = JSONArray.parseArray(newsimglist);
 		List<NewsImage> imagelist=new ArrayList<NewsImage>();
 		for (int i=0;i<newsimgArray.size();i++){
@@ -99,29 +96,6 @@ public class NewsInputController {
 		
 	}
 	
-	/*public void inputNewsTrends(HttpServletRequest req, HttpServletResponse resp) throws Exception{
-		String news_id = req.getParameter("news_id");
-		String title  = req.getParameter("title");
-		String time  = req.getParameter("time");
-		String detail = req.getParameter("detail");
-		int newsid=0; 
-		if(news_id!=null && !"".equals(news_id)){
-			newsid=Integer.parseInt(news_id);
-		}
-		if(time==null||"".equals(time)){
-			time = "2015-05-09";
-		}
-		int flag = 0;
-		JSONObject json = new JSONObject();
-		flag =newsInputDao.InsertNewsTrends(newsid, title, time, detail);
-		json.put("flag", flag);
-		try{
-			writeJson(json.toJSONString(),resp);
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		
-	}*/
 	//删除新闻
 	@RequestMapping({ "/deleteNewsTrends" })
 	public void deleteArea(HttpServletRequest req, HttpServletResponse resp) throws Exception{

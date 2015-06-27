@@ -54,6 +54,22 @@ public class NewsInputDAO extends BaseDao {
 		return exeResult;
 	} 
 	
+	//新闻图片录入
+		public int InsertNewsImage(int news_id, String  news_image){
+			int exeResult=0;
+			try {
+				String sql = "insert into news_image(news_id,news_image) values(?,?)";
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, news_id);
+				pstmt.setString(2, news_image);
+				exeResult = pstmt.executeUpdate();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return exeResult;
+		} 
+		
 	//删除新闻
 	public int deleteNewsTrends(int id){
 		int exeResult=0;

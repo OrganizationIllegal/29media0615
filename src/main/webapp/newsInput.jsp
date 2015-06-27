@@ -26,13 +26,13 @@ body{
 <div class="area_bkg2" >新闻信息</div>
 <form id="newsinfo">
 <div class="area_left">
-<span class="area_span">新闻编号</span><span><input type="text" id="news_id" name="news_id" class="area_input"></span>
+<span class="area_span">新闻编号</span><span><input type="text" id="news_id" name="news_id" class="area_input"  placeholder="请输入数字编号"></span>
 </div>
 <div class="area_right">
 <span class="area_span">新闻标题</span><span><input type="text" id="title" name="title" class="area_input"></span>
 </div>
 <div class="area_left">
-<span class="area_span">发布时间</span><span><input type="text" id="time" name="time" class="area_input"></span>
+<span class="area_span">发布时间</span><span><input type="text" id="time" name="time" class="area_input" placeholder="请输入日期：yyyy-mm-dd"></span>
 </div>
 <div class="area_left c-fix">
 <span class="area_span">新闻详情</span>
