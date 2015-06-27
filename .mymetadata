@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-module
   type="WEB"
-  name="HouseSale"
+  name="21Media"
   id="myeclipse.1433214891345"
   context-root="/HouseSale"
   j2ee-spec="5.0"
-  archive="HouseSale.war">
+  archive="21Media.war">
   <attributes>
     <attribute name="webrootdir" value="src/main/webapp" />
   </attributes>

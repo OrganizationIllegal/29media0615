@@ -1,6 +1,8 @@
+#Sat Jun 27 12:05:17 CST 2015
 =\=\=\=\=\=\=
 <<<<<<<=HEAD
 >>>>>>>=efc214e9d4f42cfa1327d82d0863d102e41cb198
 eclipse.preferences.version=1
+encoding//src/main/java/com/kate/app/controller/UserInfoController.java=UTF-8
 encoding//src/main/java/com/kate/app/dao/BaseDao.java=UTF-8
 encoding//src/main/resources=GBK
