@@ -48,23 +48,31 @@ body{
 </form>
 <div id="newsimglist" style="margin-top:20px;"></div>
 <div class="area_left4 c-fix"><button type="button" class="btn" onclick="add()">提交</button></div>
-<div class="area_right4"><button type="reset" class="btn">重置</button></div>
+<div class="area_right4"><button type="button" class="btn">重置</button></div>
 </div>
 <script type="text/javascript">
 function add(){
-	  /* var news_id=$("#news_id").val();
-	  var title=$("#title").val();
-	  var time=$("#time").val();
-	  var detail=$("#detail").val(); */
 	  var newsinfo=DataDeal.formToJson(data= decodeURIComponent($("#newsinfo").serialize(),true)); 
-	  newsinfo=eval("("+newsinfo+")"); 
+	  newsinfo=eval("("+newsinfo+")");
+	  var newsid=newsinfo.news_id;
+	  var newstime=newsinfo.time;
+	  if(isNaN(newsid)){
+		  alert("请输入有效数字！");
+		  $("#news_id").focus();
+		  return false;
+		  }
+	  if(!RQcheck(newstime)){
+		  alert("请输入正确的日期！(yyyy-mm-dd)");
+		  $("#time").focus();
+		  return false;
+		  }
 	  $.ajax({
 	 	    type: "POST",
-	 		data: {"newsinfo":JSON.stringify(newsinfo),"newsimglist":JSON.stringify(newsimglist)},/* { news_id : news_id,title : title,time : time,detail : detail} */
+	 		data: {"newsinfo":JSON.stringify(newsinfo),"newsimglist":JSON.stringify(newsimglist)},
 	 		dataType: "json",
 	 		url: "/inputNewsTrends",
 	 		success:function(data){
-	 			if(data.flag == 1){
+	 			if(data.flag ==2){
 	 				alert("添加成功！");
 	 			}else if(data.flag ==0){
 	 				alert("添加失败！");
@@ -75,6 +83,16 @@ function add(){
 	 		}
 	 	});
 	  }
+
+function RQcheck(RQ) {
+    var date = RQ;
+    var result = date.match(/^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2})$/);
+    if (result == null)
+        return false;
+    var d = new Date(result[1], result[3] - 1, result[4]);
+    return (d.getFullYear() == result[1] && (d.getMonth() + 1) == result[3] && d.getDate() == result[4]);
+
+}
 </script>
 <script type="text/javascript">
 var newsimglist=[];

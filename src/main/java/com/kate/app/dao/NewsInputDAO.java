@@ -101,7 +101,7 @@ public class NewsInputDAO extends BaseDao {
 		return exeResult;
         
 	}
-	
+	//查找新闻
 	public NewsTrends findById(int id){
 		NewsTrends data = new NewsTrends();
 		try{
@@ -124,6 +124,38 @@ public class NewsInputDAO extends BaseDao {
 			return data;
 		}
 	
+	//新闻图片列表
+		public JSONArray selectNewsimgList(){
+			JSONArray jsonArray=new JSONArray();
+			try {
+				String sql = " select * from news_image";
+				Statement stmt = con.createStatement();
+				ResultSet rs = stmt.executeQuery(sql);
+				while(rs.next()){
+					JSONObject obj = new JSONObject();
+					obj.put("id", rs.getInt("id"));
+					obj.put("news_id", rs.getInt("news_id"));
+					obj.put("news_image", rs.getString("news_image"));
+					jsonArray.add(obj);
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return jsonArray;
+		} 
 	
-				
+		//删除新闻图片
+		public int deleteNewsImg(int id){
+			int exeResult=0;
+			try{
+					String sql = " delete from news_image where id= ?";
+					PreparedStatement pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, id);
+					exeResult = pstmt.executeUpdate();
+				}catch (Exception e) {
+		            e.printStackTrace();
+		        }
+			    return exeResult;
+		}		
 }
