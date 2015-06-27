@@ -109,6 +109,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					            href:'#title'       
 					          },
 					          {
+						            text: '新闻图片列表',	
+						            color: '#ffffff', 
+						            backColor:'rgb(59,94,132)', 
+						            href:'#title'       
+						          },
+					          {
 						            text: '艺人列表',	
 						            color: '#ffffff', 
 						            backColor:'rgb(59,94,132)', 
@@ -142,6 +148,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	           }
 	           if(node.text=="新闻列表"){
 	           		$("#showlist").load("newsList.jsp");
+	           }
+	           if(node.text=="新闻图片列表"){
+	           		$("#showlist").load("newsimgList.jsp");
 	           }
 	           if(node.text=="艺人列表"){
 	           		$("#showlist").load("artistList.jsp");
