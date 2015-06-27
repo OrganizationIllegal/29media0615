@@ -1,8 +1,11 @@
 package com.kate.app.dao;
 
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+
+
 
 
 import org.springframework.stereotype.Repository;
@@ -34,21 +37,71 @@ public class TrainInputDAO extends BaseDao {
 		}
 		return jsonArray;
 	} 
-	//添加经纪人服务区域
-	/*public int InsertServiceArea(String  broker_num,String area_code,int view_shunxu){
+	
+	//培训录入
+	public int InsertTrain(int train_id, String  train_name, String train_desc){
 		int exeResult=0;
 		try {
-			String sql = "insert into broker_service_area(broker_num,area_code,view_shunxu) values(?,?,?)";
+			String sql = "insert into train(train_id,train_name,train_desc) values(?,?,?)";
 			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, broker_num);
-			pstmt.setString(2, area_code);
-			pstmt.setInt(3, view_shunxu);
+			pstmt.setInt(1, train_id);
+			pstmt.setString(2, train_name);
+			pstmt.setString(3, train_desc);
 			exeResult = pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return exeResult;
-	}  */
-				
+	} 	
+	
+	//培训详情录入
+		public int InsertTrainDetail(int train_id, String  title, String time,String detail, String train_img){
+			int exeResult=0;
+			try {
+				String sql = "insert into train_detail(train_id,title,time,detail,train_img) values(?,?,?,?,?)";
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, train_id);
+				pstmt.setString(2, title);
+				pstmt.setString(3, time);
+				pstmt.setString(4, detail);
+				pstmt.setString(5, train_img);
+				exeResult = pstmt.executeUpdate();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return exeResult;
+		} 	
+		
+		//艺能培训录入
+				public int InsertLianxi(int train_id, String  typename, String detail,String img){
+					int exeResult=0;
+					try {
+						String sql = "insert into lianxi(train_id,typename,detail,img) values(?,?,?,?)";
+						PreparedStatement pstmt = con.prepareStatement(sql);
+						pstmt.setInt(1, train_id);
+						pstmt.setString(2, typename);
+						pstmt.setString(3, detail);
+						pstmt.setString(4, img);
+						exeResult = pstmt.executeUpdate();
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return exeResult;
+				} 
+				//删除培训
+				public int deleteTrain(int id){
+					int exeResult=0;
+					try{
+							String sql = " delete from train where id= ?";
+							PreparedStatement pstmt = con.prepareStatement(sql);
+							pstmt.setInt(1, id);
+							exeResult = pstmt.executeUpdate();
+						}catch (Exception e) {
+				            e.printStackTrace();
+				        }
+					    return exeResult;
+				}
 }

@@ -26,76 +26,81 @@ body{
 <div class="area_bkg2">艺人信息</div>
 <form id="artistinfo">
 <div class="area_left">
-<span class="area_span">艺人编号</span><span><input type="text" id="star_num" name="star_num" class="area_input"></span>
+<span class="area_span">艺人编号</span><span><input type="text" id="star_num" name="star_num" class="area_input" value=${starinfo.star_num}></span>
 </div>
 <div class="area_right">
-<span class="area_span">中文名</span><span><input type="text" id="chinese_name" name="chinese_name" class="area_input"></span>
+<span class="area_span">中文名</span><span><input type="text" id="chinese_name" name="chinese_name" class="area_input" value=${starinfo.chinese_name}></span>
 </div>
 <div class="area_left">
-<span class="area_span">英文名</span><span><input type="text" id="english_name" name="english_name" class="area_input"></span>
+<span class="area_span">英文名</span><span><input type="text" id="english_name" name="english_name" class="area_input" value=${starinfo.english_name}></span>
 </div>
 <div class="area_right">
-<span class="area_span">别名</span><span><input type="text" id="bieming" name="bieming" class="area_input"></span>
+<span class="area_span">别名</span><span><input type="text" id="bieming" name="bieming" class="area_input" value=${starinfo.bieming}></span>
 </div>
 <div class="area_left">
-<span class="area_span">性别</span><span><input type="text" id="sex" name="sex" class="area_input"></span>
+<span class="area_span">性别</span><span><input type="text" id="sex" name="sex" class="area_input" value=${starinfo.sex}></span>
 </div>
 <div class="area_right">
-<span class="area_span">国籍</span><span><input type="text" id="nationality" name="nationality" class="area_input"></span>
+<span class="area_span">国籍</span><span><input type="text" id="nationality" name="nationality" class="area_input" value=${starinfo.nationality}></span>
 </div>
 <div class="area_left">
-<span class="area_span">民族</span><span><input type="text" id="nation" name="nation" class="area_input"></span>
+<span class="area_span">民族</span><span><input type="text" id="nation" name="nation" class="area_input" value=${starinfo.nation}></span>
 </div>
 <div class="area_right">
-<span class="area_span">星座</span><span><input type="text" id="constellation" name="constellation" class="area_input"></span>
+<span class="area_span">星座</span><span><input type="text" id="constellation" name="constellation" class="area_input" value=${starinfo.constellation}></span>
 </div>
 <div class="area_left">
-<span class="area_span">血型</span><span><input type="text" id="bloodtype" name="bloodtype" class="area_input"></span>
+<span class="area_span">血型</span><span><input type="text" id="bloodtype" name="bloodtype" class="area_input" value=${starinfo.bloodtype}></span>
 </div>
 <div class="area_right">
-<span class="area_span">属相</span><span><input type="text" id="animal" name="animal" class="area_input"></span>
+<span class="area_span">属相</span><span><input type="text" id="animal" name="animal" class="area_input" value=${starinfo.animal}></span>
 </div>
 <div class="area_left">
-<span class="area_span">身高</span><span><input type="text" id="height" name="height" class="area_input"></span>
+<span class="area_span">身高</span><span><input type="text" id="height" name="height" class="area_input" value=${starinfo.height}></span>
 </div>
 <div class="area_right">
-<span class="area_span">体重</span><span><input type="text" id="weight" name="weight" class="area_input"></span>
+<span class="area_span">体重</span><span><input type="text" id="weight" name="weight" class="area_input" value=${starinfo.weight}></span>
 </div>
 <div class="area_left">
-<span class="area_span">出生地</span><span><input type="text" id="birthplace" name="birthplace" class="area_input"></span>
+<span class="area_span">出生地</span><span><input type="text" id="birthplace" name="birthplace" class="area_input" value=${starinfo.birthplace}></span>
 </div>
 <div class="area_right">
-<span class="area_span">生日</span><span><input type="text" id="birthday" name="birthday" class="area_input"></span>
+<span class="area_span">生日</span><span><input type="text" id="birthday" name="birthday" class="area_input" value=${starinfo.birthday}></span>
 </div>
 <div class="area_left">
-<span class="area_span">职业</span><span><input type="text" id="occupation" name="occupation" class="area_input"></span>
+<span class="area_span">职业</span><span><input type="text" id="occupation" name="occupation" class="area_input" value=${starinfo.occupation}></span>
 </div>
 <div class="area_right">
-<span class="area_span">经纪公司</span><span><input type="text" id="brokerfirm" name="brokerfirm" class="area_input"></span>
+<span class="area_span">经纪公司</span><span><input type="text" id="brokerfirm" name="brokerfirm" class="area_input" value=${starinfo.brokerfirm}></span>
 </div>
 <div class="area_left">
-<span class="area_span">现居地</span><span><input type="text" id="residence" name="residence" class="area_input"></span>
+<span class="area_span">现居地</span><span><input type="text" id="residence" name="residence" class="area_input" value=${starinfo.residence}></span>
 </div>
 <div class="area_right">
-<span class="area_span">毕业院校</span><span><input type="text" id="gratuateunivercity" name="gratuateunivercity" class="area_input"></span>
+<span class="area_span">毕业院校</span><span><input type="text" id="gratuateunivercity" name="gratuateunivercity" class="area_input" value=${starinfo.gratuateunivercity}></span>
 </div>
 <div class="area_left">
-<span class="area_span">特长</span><span><input type="text" id="specialty" name="specialty" class="area_input"></span>
+<span class="area_span">特长</span><span><input type="text" id="specialty" name="specialty" class="area_input" value=${starinfo.specialty}></span>
 </div>
 <div class="area_right">
-<span class="area_span">音乐风格</span><span><input type="text" id="musicalstyle" name="musicalstyle" class="area_input"></span>
+<span class="area_span">音乐风格</span><span><input type="text" id="musicalstyle" name="musicalstyle" class="area_input" value=${starinfo.musicalstyle}></span>
 </div>
 <div class="area_left">
-<span class="area_span">代表作品</span><span><input type="text" id="representativeworks" name="representativeworks" class="area_input"></span>
+<span class="area_span">代表作品</span><span><input type="text" id="representativeworks" name="representativeworks" class="area_input" value=${starinfo.representativeworks}></span>
 </div>
 <div class="area_right">
-<span class="area_span">成就</span><span><input type="text" id="achivements" name="achivements" class="area_input"></span>
+<span class="area_span">成就</span><span><input type="text" id="achivements" name="achivements" class="area_input" value=${starinfo.achivements}></span>
 </div>
+<div class="area_left" style="display:none;">
+<span class="area_span">id</span><span><input type="text" id="id" name="id" class="area_input" value=${starinfo.id}></span>
+</div>
+</form>
 <div class="area_left c-fix">
 <span class="area_span">艺人详情</span>
 </div>
-<div class="c-fix" style="margin-bottom:15px;"><textarea id="star_detail" placeholder="艺人详情" name="star_detail"></textarea></div>
-</form>
+<div class="c-fix" style="margin-bottom:15px;"><textarea id="star_detail" placeholder="艺人详情" name="star_detail">${starinfo.star_detail}</textarea></div>
+
+
 <div class="area_bkg2 c-fix" id="brokerinfo">艺人图片</div>
 <form id="artistimg">
 <div class="c-fix" style="padding-left:35px;margin-top:20px;">
@@ -129,16 +134,18 @@ CKEDITOR.replace( 'star_detail' );
 function add(){
 	  var artistinfo=DataDeal.formToJson(data= decodeURIComponent($("#artistinfo").serialize(),true)); 
 	  artistinfo=eval("("+artistinfo+")");
+	  var detail=$("#star_detail").val(); 
+	  //alert(detail);
 	  $.ajax({
 	 	    type: "POST",
-	 		data: {"artistinfo":JSON.stringify(artistinfo),"artistimglist":JSON.stringify(artistimglist),"videoimglist":JSON.stringify(videoimglist)},
+	 		data: {"artistinfo":JSON.stringify(artistinfo),"artistimglist":JSON.stringify(artistimglist),"videoimglist":JSON.stringify(videoimglist),detail:detail},
 	 		dataType: "json",
-	 		url: "/inputArtist",
+	 		url: "/editArtist",
 	 		success:function(data){
 	 			if(data.flag == 3){
-	 				alert("添加成功！");
+	 				alert("修改成功！");
 	 			}else if(data.flag ==0){
-	 				alert("添加失败！");
+	 				alert("修改失败！");
 	 			}
 	 		},
 	 		error:function(){

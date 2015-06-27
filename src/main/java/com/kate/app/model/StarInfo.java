@@ -36,7 +36,7 @@ public class StarInfo{
 	private String sex;
 	private String specialty;
 	private String musicalstyle;
-	private int star_num;
+	private String star_num;
 	public int getId() {
 		return id;
 	}
@@ -175,10 +175,10 @@ public class StarInfo{
 	public void setMusicalstyle(String musicalstyle) {
 		this.musicalstyle = musicalstyle;
 	}
-	public int getStar_num() {
+	public String getStar_num() {
 		return star_num;
 	}
-	public void setStar_num(int star_num) {
+	public void setStar_num(String star_num) {
 		this.star_num = star_num;
 	}
 }

@@ -1,14 +1,15 @@
 package com.kate.app.dao;
 
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-
 
 import org.springframework.stereotype.Repository;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.kate.app.model.StarInfo;
 
 @Repository 
 public class ArtistInputDAO extends BaseDao {
@@ -35,21 +36,168 @@ public class ArtistInputDAO extends BaseDao {
 		}
 		return jsonArray;
 	} 
-	//添加经纪人服务区域
-	/*public int InsertServiceArea(String  broker_num,String area_code,int view_shunxu){
-		int exeResult=0;
-		try {
-			String sql = "insert into broker_service_area(broker_num,area_code,view_shunxu) values(?,?,?)";
-			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, broker_num);
-			pstmt.setString(2, area_code);
-			pstmt.setInt(3, view_shunxu);
-			exeResult = pstmt.executeUpdate();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return exeResult;
-	}  */
+	
+	//艺人录入
+		public int InsertArtistInfo(String star_num, String  chinese_name,String english_name,String bieming,String nation, String  constellation,String bloodtype,String height,String weight, String  birthplace,String birthday,String occupation,String brokerfirm,String animal, String  representativeworks,String residence,String gratuateunivercity,String achivements,String nationality, String  sex,String specialty,String musicalstyle,String star_detail){
+			int exeResult=0;
+			try {
+				String sql = "insert into star_info(star_num,chinese_name,english_name,bieming,nation,constellation,bloodtype,height,weight,birthplace,birthday,occupation,brokerfirm,animal,representativeworks,residence,gratuateunivercity,achivements,nationality,sex,specialty,musicalstyle,star_detail) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, star_num);
+				pstmt.setString(2, chinese_name);
+				pstmt.setString(3, english_name);
+				pstmt.setString(4, bieming);
+				pstmt.setString(5, nation);
+				pstmt.setString(6, constellation);
+				pstmt.setString(7, bloodtype);
+				pstmt.setString(8, height);
+				pstmt.setString(9, weight);
+				pstmt.setString(10, birthplace);
+				pstmt.setString(11, birthday);
+				pstmt.setString(12, occupation);
+				pstmt.setString(13, brokerfirm);
+				pstmt.setString(14, animal);
+				pstmt.setString(15, representativeworks);
+				pstmt.setString(16, residence);
+				pstmt.setString(17, gratuateunivercity);
+				pstmt.setString(18, achivements);
+				pstmt.setString(19, nationality);
+				pstmt.setString(20, sex);
+				pstmt.setString(21, specialty);
+				pstmt.setString(22, musicalstyle);
+				pstmt.setString(23, star_detail);
+				exeResult = pstmt.executeUpdate();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return exeResult;
+		} 
+		
+		//艺人图片录入
+				public int InsertArtistImage(String star_num, String  img){
+					int exeResult=0;
+					try {
+						String sql = "insert into star_image(star_num,img) values(?,?)";
+						PreparedStatement pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, star_num);
+						pstmt.setString(2, img);
+						exeResult = pstmt.executeUpdate();
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return exeResult;
+				} 
+				//艺人影视录入
+				public int InsertArtistVideo(String star_num, String  video_id, String video_pic, String  video_link){
+					int exeResult=0;
+					try {
+						String sql = "insert into star_vedio(star_num,video_id,video_pic,video_link) values(?,?,?,?)";
+						PreparedStatement pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, star_num);
+						pstmt.setString(2, video_id);
+						pstmt.setString(3, video_pic);
+						pstmt.setString(4, video_link);
+						exeResult = pstmt.executeUpdate();
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return exeResult;
+				} 		
+
+				//删除艺人
+				public int deleteArtist(int id){
+					int exeResult=0;
+					try{
+							String sql = " delete from star_info where id= ?";
+							PreparedStatement pstmt = con.prepareStatement(sql);
+							pstmt.setInt(1, id);
+							exeResult = pstmt.executeUpdate();
+						}catch (Exception e) {
+				            e.printStackTrace();
+				        }
+					    return exeResult;
+				}
+				
+				//艺人编辑
+				public int EditArtistInfo(int id, String star_num, String  chinese_name,String english_name,String bieming,String nation, String  constellation,String bloodtype,String height,String weight, String  birthplace,String birthday,String occupation,String brokerfirm,String animal, String  representativeworks,String residence,String gratuateunivercity,String achivements,String nationality, String  sex,String specialty,String musicalstyle,String star_detail){
+					int exeResult=0;
+					try {
+						String sql = "update star_info set star_num=?,chinese_name=?,english_name=?,bieming=?,nation=?,constellation=?,bloodtype=?,height=?,weight=?,birthplace=?,birthday=?,occupation=?,brokerfirm=?,animal=?,representativeworks=?,residence=?,gratuateunivercity=?,achivements=?,nationality=?,sex=?,specialty=?,musicalstyle=?,star_detail=? where id=?";
+						PreparedStatement pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, star_num);
+						pstmt.setString(2, chinese_name);
+						pstmt.setString(3, english_name);
+						pstmt.setString(4, bieming);
+						pstmt.setString(5, nation);
+						pstmt.setString(6, constellation);
+						pstmt.setString(7, bloodtype);
+						pstmt.setString(8, height);
+						pstmt.setString(9, weight);
+						pstmt.setString(10, birthplace);
+						pstmt.setString(11, birthday);
+						pstmt.setString(12, occupation);
+						pstmt.setString(13, brokerfirm);
+						pstmt.setString(14, animal);
+						pstmt.setString(15, representativeworks);
+						pstmt.setString(16, residence);
+						pstmt.setString(17, gratuateunivercity);
+						pstmt.setString(18, achivements);
+						pstmt.setString(19, nationality);
+						pstmt.setString(20, sex);
+						pstmt.setString(21, specialty);
+						pstmt.setString(22, musicalstyle);
+						pstmt.setString(23, star_detail);
+						pstmt.setInt(24, id);
+						exeResult = pstmt.executeUpdate();
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return exeResult;
+				} 
+				
+				//查找艺人
+				public StarInfo findById(int id){
+					StarInfo data = new StarInfo();
+					try{
+						
+						String sql = " select * from star_info where id=?";
+						PreparedStatement pstmt = con.prepareStatement(sql);
+						pstmt.setInt(1, id);
+						ResultSet rs = pstmt.executeQuery();
+						while(rs.next()){
+						data.setId(rs.getInt("id"));
+						data.setStar_num(rs.getString("star_num"));
+						data.setChinese_name(rs.getString("chinese_name"));
+						data.setEnglish_name(rs.getString("english_name"));
+						data.setBieming(rs.getString("bieming"));
+						data.setNation(rs.getString("nation"));
+						data.setConstellation(rs.getString("constellation"));
+						data.setBloodtype(rs.getString("bloodtype"));
+						data.setHeight(rs.getString("height"));
+						data.setWeight(rs.getString("weight"));
+						data.setBirthplace(rs.getString("birthplace"));
+						data.setBirthday(rs.getString("birthday"));
+						data.setOccupation(rs.getString("occupation"));
+						data.setBrokerfirm(rs.getString("brokerfirm"));
+						data.setAnimal(rs.getString("animal"));
+						data.setRepresentativeworks(rs.getString("representativeworks"));
+						data.setResidence(rs.getString("residence"));
+						data.setGratuateunivercity(rs.getString("gratuateunivercity"));
+						data.setAchivements(rs.getString("achivements"));
+						data.setNationality(rs.getString("nationality"));
+						data.setSex(rs.getString("sex"));
+						data.setSpecialty(rs.getString("specialty"));
+						data.setMusicalstyle(rs.getString("musicalstyle"));
+						data.setStar_detail(rs.getString("star_detail"));
+						}
+					}catch (Exception e) {
+				        
+				    }
+						return data;
+					}
 				
 }

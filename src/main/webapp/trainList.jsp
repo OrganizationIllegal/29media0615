@@ -55,83 +55,22 @@ body{
         </thead>
     </table>
 </div>
-
-
 <script>
     var $table = $('#table'),
-        $remove = $('#remove'),
-        $add = $('#add'),
-        selections = [];
+    selections = [];
 	var i=0;
-    $(function () {
-        $('#add').click(function () {
-            $table.bootstrapTable('insertRow', {index: 0, row:{id:'x'+(i++)} });
-        });
+    $(function () {       
         $table.bootstrapTable({
             height: getHeight()
-        });
-        $table.on('check.bs.table uncheck.bs.table ' +
-                'check-all.bs.table uncheck-all.bs.table', function () {
-            $remove.prop('disabled', !$table.bootstrapTable('getSelections').length);
-
-            // save your data, here just save the current page
-            selections = getIdSelections();
-            // push or splice the selections if you want to save all data selections
-        });
-        $table.on('all.bs.table', function (e, name, args) {
-            // console.log(name, args);
-        });
-  
-        $remove.click(function () {
-        	var ids = getIdSelections();
-            ids = '"'+ids+'"';
-            alert(ids);
-            $.ajax({
-	 	    type: "POST",
-	 		data: { ids : ids},
-	 		dateType: "json",
-	 		url: "/touzi/deleteAllData",
-	 		
-	 		success:function(data){
-	 			alert("删除成功")
-	 			window.location.reload();
-	 		},
-	 		error:function(){
-	 			alert("error")
-	 		}
-	 	});
-	 	
-            
-            $table.bootstrapTable('remove', {
-                field: 'id',
-                values: ids
-            });
-     
-            $remove.prop('disabled', true);
-        });
-        $(window).resize(function () {
-            $table.bootstrapTable('resetView', {
-                height: getHeight()
-            });
-        });
+        });       
     });
-
-    function getIdSelections() {
-        return $.map($table.bootstrapTable('getSelections'), function (row) {
-            return row.id
-        });
-    }
-
-    function responseHandler(res) {
-        $.each(res.rows, function (i, row) {
-            row.state = $.inArray(row.id, selections) !== -1;
-        });
-        return res;
-    }
 
     function operateFormatter(value, row, index) {
         return [
-            '<a class="like" href="javascript:void(0)" title="Like">',
+            '<a class="add" href="trainInput.jsp" title="add">',
+            '<i class="glyphicon glyphicon-heart"></i>',
+            '</a>  ',
+            '<a class="edit" href="javascript:void(0)" title="edit">',
             '<i class="glyphicon glyphicon-heart"></i>',
             '</a>  ',
             '<a class="remove" href="javascript:void(0)" title="Remove">',
@@ -141,93 +80,33 @@ body{
     }
     
     window.operateEvents = {
-            'click .like': function (e, value, row, index) {
-                var id=row.id;
-                window.open ('/Area/editNewsInfo?id='+id)
-                
-            }},
-
-    window.operateEvents = {
-        'click .like': function (e, value, row, index) {
-            alert('You click like action, row: ' + JSON.stringify(row));
-            var id=row.id;
-            if(isNaN(id)){
-           
-            	$.ajax({
-	 	    type: "POST",
-	 		data: {project_num: row.project_num,recommend_project_num1: row.recommend_project_num1, recommend_project_num2: row.recommend_project_num2,recommend_project_num3: row.recommend_project_num3},
-	 		dateType: "json",
-	 		url: "/addRecoProject",
-	 		
-	 		success:function(data){
-	 			data=$.parseJSON(data);
-	 			if(data.result==0){
-	 				alert("项目编号不能为空！")
-	 			}
-	 			else if(data.result==-1){
-	 				alert("项目编号不存在！")
-	 			}else if(data.result==-2){
-	 				alert("增加失败")
-	 			}
-	 			else{
-	 				alert("增加成功")
-	 			}
-	 		},
-	 		error:function(){
-	 			alert("error")
-	 		}
-	 	});
-          }
-          else{
-        
-	           $.ajax({
-		 	    type: "POST",
-		 		data: {id:row.id,project_num: row.project_num,recommend_project_num1: row.recommend_project_num1, recommend_project_num2: row.recommend_project_num2,recommend_project_num3: row.recommend_project_num3},
-		 		dateType: "json",
-		 		url: "/editRecoProject",
-		 		
-		 		success:function(data){
-	 			data=$.parseJSON(data);
-	 			if(data.result==0){
-	 				alert("项目编号不能为空！")
-	 			}
-	 			else if(data.result==-1){
-	 				alert("项目编号不存在！")
-	 			}else if(data.result==-2){
-	 				alert("修改失败")
-	 			}
-	 			else{
-	 				alert("修改成功")
-	 			}
-	 		},
-		 		error:function(){
-		 			alert("error")
-		 		}
-	 		});
-          }
-          
-            
-            
-        },
+    	 'click .edit': function (e, value, row, index) {
+                alert(row.id);
+                var id = row.id;
+                window.open ('findArtist?id='+id);               
+    	 },  
+         	 	
         'click .remove': function (e, value, row, index) {
-            alert(row.id);
+            //alert(row.id);
             var id = row.id;
             
              $.ajax({
 		 	    type: "POST",
 		 		data: {id: id},
 		 		dateType: "json",
-		 		url: "/deleteRecomProject",
-		 		
+		 		url: "/deleteTrain",		 		
 		 		success:function(data){
-		 			alert("删除成功")
+		 			if(data.flag == 1){
+		 				alert("删除成功！");
+		 			}else if(data.flag ==0){
+		 				alert("删除失败！");
+		 			}
 		 		},
-		 		error:function(){s
+		 		error:function(){
 		 			alert("error")
 		 		}
 	 	});
-           
-           
+                     
             
             $table.bootstrapTable('remove', {
                 field: 'id',
@@ -235,9 +114,6 @@ body{
             });
         }
     };
-
-    
-
     function getHeight() {
         return $(window).height() - $('h1').outerHeight(true);
     }

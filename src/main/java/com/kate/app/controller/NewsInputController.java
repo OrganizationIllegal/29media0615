@@ -47,7 +47,7 @@ public class NewsInputController {
 	}
 	//新闻查找
 	@RequestMapping({ "/findNewsTrends" })
-	public String getTrain(HttpServletRequest req,HttpServletResponse resp){
+	public String findNewsTrends(HttpServletRequest req,HttpServletResponse resp){
 		int id = Integer.parseInt(req.getParameter("id"));
 		NewsTrends newstrends = newsInputDao.findById(id);		
 		req.setAttribute("newstrends", newstrends);
@@ -154,28 +154,6 @@ public class NewsInputController {
 			}catch(Exception e){
 				e.printStackTrace();
 			}
-			
-			/*int id = Integer.parseInt(req.getParameter("id"));
-			String news_id = req.getParameter("news_id");
-			String title  = req.getParameter("title");
-			String time  = req.getParameter("time");
-			String detail = req.getParameter("detail");
-			int newsid=0; 
-			if(news_id!=null && !"".equals(news_id)){
-				newsid=Integer.parseInt(news_id);
-			}
-			if(time==null||"".equals(time)){
-				time = "2015-05-09";
-			}
-			int flag = 0;
-			JSONObject json = new JSONObject();
-			flag =newsInputDao.editNewsTrends(id, newsid, title, time, detail);
-			json.put("flag", flag);
-			try{
-				writeJson(json.toJSONString(),resp);
-			}catch(Exception e){
-				e.printStackTrace();
-			}*/
 			
 		}
 		
