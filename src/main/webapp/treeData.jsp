@@ -101,6 +101,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									              }
 							            ]         
 					          },
+					          {
+						            text: '首页列表',	
+						            color: '#ffffff', 
+						            backColor:'rgb(59,94,132)', 
+						            href:'#title'       
+						          },
 			          
 				          {
 					            text: '新闻列表',	
@@ -108,12 +114,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					            backColor:'rgb(59,94,132)', 
 					            href:'#title'       
 					          },
-					          {
-						            text: '新闻图片列表',	
-						            color: '#ffffff', 
-						            backColor:'rgb(59,94,132)', 
-						            href:'#title'       
-						          },
 					          {
 						            text: '艺人列表',	
 						            color: '#ffffff', 
@@ -146,11 +146,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	           if(node.text=="培训录入"){
 	           		$("#showlist").load("trainInput.jsp");
 	           }
+	           if(node.text=="首页列表"){
+	           		$("#showlist").load("indexList.jsp");
+	           }
 	           if(node.text=="新闻列表"){
 	           		$("#showlist").load("newsList.jsp");
-	           }
-	           if(node.text=="新闻图片列表"){
-	           		$("#showlist").load("newsimgList.jsp");
 	           }
 	           if(node.text=="艺人列表"){
 	           		$("#showlist").load("artistList.jsp");

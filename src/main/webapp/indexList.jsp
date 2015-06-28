@@ -7,7 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>新闻图片列表</title>
+<title>培训列表</title>
 <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/input.css" />
 
@@ -35,19 +35,19 @@ body{
 </head>
 <body>
 <div style="width:900px;margin:25px auto;">
-<div class="area_bkg1">当前位置:新闻图片列表</div>
+<div class="area_bkg1">当前位置:培训列表</div>
  <table id="table"          
            data-pagination="true"
            data-side-pagination="server"
-           data-url="/NewsImgList"
+           data-url="/LunboList"
            data-response-handler="responseHandler"
            >
         <thead>
         <tr>
             <th data-field="state" data-checkbox="true"></th>
             <th data-field="id" data-sortable="true" data-editable="true">ID</th>
-            <th data-field="news_id" data-sortable="true" data-editable="true">新闻编号</th>
-            <th data-field="news_image" data-sortable="true" data-editable="true">新闻图片</th>
+            <th data-field="type" data-sortable="true" data-editable="true">类型</th>
+            <th data-field="img" data-sortable="true" data-editable="true">图片</th>
             <th data-field="operate"
                 data-formatter="operateFormatter"
                 data-events="operateEvents">Item Operate</th>
@@ -55,8 +55,6 @@ body{
         </thead>
     </table>
 </div>
-
-
 <script>
     var $table = $('#table'),
     selections = [];
@@ -75,7 +73,7 @@ body{
         ].join('');
     }
     
-    window.operateEvents = {        	 	
+    window.operateEvents = {         	 	
         'click .remove': function (e, value, row, index) {
             //alert(row.id);
             var id = row.id;
@@ -84,7 +82,7 @@ body{
 		 	    type: "POST",
 		 		data: {id: id},
 		 		dateType: "json",
-		 		url: "/deleteNewsImg",		 		
+		 		url: "/deleteLunbo",		 		
 		 		success:function(data){
 		 			if(data.flag == 1){
 		 				alert("删除成功！");

@@ -114,12 +114,12 @@ body{
 </div>
 <div class="c-fix" style="padding-left:35px;margin-top:20px;">
 <span class="area_span">影视图片</span>
-<span style="float:right;"> <input type="file" name="video_pic" id="video_pic" style="width:677px;border:1px solid rgb(239,235,242);float:left;margin-right:20px;"/><a href="#" class="addvideoimg">上传</a></span>
+<span style="float:right;"> <input type="file" name="video_pic" id="video_pic" style="width:677px;border:1px solid rgb(239,235,242);float:left;margin-right:20px;"/><a href="#" class="addvideoimg">添加</a></span>
 </div>
 </form>
 <div id="videoimglist" style="margin-top:20px;"></div>
 <div class="area_left4"><button type="button" class="btn" onclick="add()">提交</button></div>
-<div class="area_right4"><button type="reset" class="btn">重置</button></div>
+<div class="area_right4"><button type="button" class="btn" onclick="chongzhi()">重置</button></div>
 </div>
 
 <script type="text/javascript">
@@ -146,6 +146,33 @@ function add(){
 	 		}
 	 	});
 	  }
+function chongzhi(){
+	$("#star_num").val("").focus();
+	$("#chinese_name").val("");
+	$("#star_detail").val("");
+	$("#english_name").val("");
+	$("#bieming").val("");
+	$("#nation").val("");
+	$("#constellation").val("");
+	$("#bloodtype").val("");
+	$("#height").val("");
+	$("#weight").val("");
+	$("#birthplace").val("");
+	$("#birthday").val("");
+	$("#occupation").val("");
+	$("#brokerfirm").val("");
+	$("#animal").val("");
+	$("#representativeworks").val("");
+	$("#residence").val("");
+	$("#gratuateunivercity").val("");
+	$("#achivements").val("");
+	$("#nationality").val("");
+	$("#sex").val("");
+	$("#specialty").val("");
+	$("#musicalstyle").val("");
+	$("#video_id").val("");
+	$("#video_link").val("");
+}
 </script>
 <script type="text/javascript">
 var artistimglist=[];
@@ -178,24 +205,7 @@ $(function(){
 		artistimglist.splice($(this).parent().parent().children().eq(0).text()-1,1);
 		$(this).parent().parent().empty(); 		
 		artistimgecount--;
-		});
-
-	function UploadFile(imageid) {
-        var fileObj = document.getElementById(imageid).files[0]; // 获取文件对象
-        var FileController = "/artistimgInput";                    // 接收上传文件的后台地址 
-        // FormData 对象
-        var form = new FormData();
-        form.append("file", fileObj);                           // 文件对象
-        // XMLHttpRequest 对象
-        var xhr = new XMLHttpRequest();
-        xhr.open("post", FileController, true);
-        xhr.onload = function () {
-            alert("上传完成!");
-        };
-        xhr.send(form);
-    }
-
-	
+		});	
 });
 
 var videoimglist=[];
@@ -218,36 +228,49 @@ $(function(){
 			videoimg=eval("("+videoimg+")"); 
 			videoimg.video_pic=filename;
 			videoimglist.push(videoimg);
-			$("#videoimglist").append("<div style='float:left;padding-left:35px;width:817px;padding-top:10px;'><span style='padding-right:50px;'>"+(++videoimgecount)+"</span><span style='padding-right:10px;'>"+videoimglist[videoimgecount-1].video_pic+"</span><span style='padding-right:10px;'>"+videoimglist[videoimgecount-1].video_id+"</span><span style='padding-right:10px;'>"+videoimglist[videoimgecount-1].video_link+"</span><span style='padding-left: 30px;padding-right: 40px;'></span><span><a href='#' class='deletevideoimg'>删除</a></span></div>");			
+			$("#videoimglist").append("<div style='float:left;padding-left:35px;width:900px;margin-top:5px;margin-bottom:5px;'><span style='padding-right:50px;'>"+(++videoimgecount)+"</span><span style='padding-right:100px;'>"+videoimglist[videoimgecount-1].video_id+"</span><span style='padding-right:100px;'>"+videoimglist[videoimgecount-1].video_link+"</span><span style='padding-right:100px;'>"+videoimglist[videoimgecount-1].video_pic+"</span><span><a href='#' style='padding-right:10px;' class='editvideoimg'>编辑</a><a href='#' class='deletevideoimg'>删除</a></span></div>");			
 			UploadFile("video_pic");
 			$("#videoimg input").each(function(){
 				$(this).val("");
 				});
-			}
+			}else{
+				if($('#video_pic').val()==""){
+					alert("请选择文件！");
+					return false;}
+				//alert("edit");
+				var filenames=$('#video_pic').val().split("\\");
+				var filename=filenames[filenames.length-1];
+				videoimgedititem=DataDeal.formToJson(data= decodeURIComponent($("#videoimg").serialize(),true));
+				videoimgedititem=eval("("+videoimgedititem+")");
+				videoimgedititem["video_pic"]=filename;
+				UploadFile("video_pic");
+				$("#videoimg input").each(function(){
+					$(this).val("");
+					});
+				videoimglist[isvideoimgedit]=videoimgedititem;
+				//alert($("#videoimglist").children().eq(isvideoimgedit));
+				$("#videoimglist").children().eq(isvideoimgedit).html("<div style='float:left;width:900px;margin-top:5px;margin-bottom:5px;'><span style='padding-right:100px;'>"+(isvideoimgedit+1)+"</span><span style='padding-right:100px;'>"+videoimglist[videoimgecount-1].video_id+"</span><span style='padding-right:100px;'>"+videoimglist[videoimgecount-1].video_link+"</span><span style='padding-right:100px;'>"+videoimglist[videoimgecount-1].video_pic+"</span><span><a href='#' style='padding-right:10px;' class='editvideoimg'>编辑</a><a href='#' class='deletevideoimg'>删除</a></span></div>").show();
+				isvideoimgedit=100;				
+				}
 		});
 	
 	    $("#videoimglist").on("click",".deletevideoimg",function(){
 		videoimglist.splice($(this).parent().parent().children().eq(0).text()-1,1);
 		$(this).parent().parent().empty(); 		
 		videoimgecount--;
-		});
+		});	
 
-	function UploadFile(imageid) {
-        var fileObj = document.getElementById(imageid).files[0]; // 获取文件对象
-        var FileController = "/videoimgInput";                    // 接收上传文件的后台地址 
-        // FormData 对象
-        var form = new FormData();
-        form.append("file", fileObj);                           // 文件对象
-        // XMLHttpRequest 对象
-        var xhr = new XMLHttpRequest();
-        xhr.open("post", FileController, true);
-        xhr.onload = function () {
-            alert("上传完成!");
-        };
-        xhr.send(form);
-    }
-
-	
+	    $("#videoimglist").on("click",".editvideoimg",function(){			
+			var index=$(this).parent().parent().children().eq(0).text()-1;
+			//alert(index);
+			alert("edit");
+			videoimgedititem=videoimglist[index];
+			$(this).parent().parent().hide();
+			//alert(index+"index");
+			isvideoimgedit=index;
+			$("#video_id").val(videoimgedititem.video_id);
+			$("#video_link").val(videoimgedititem.video_link);
+			});
 });
 
 var DataDeal = {  
@@ -258,7 +281,22 @@ var DataDeal = {
 		               data="{\""+data+"\"}";  
 		               return data;  
 		            },  
-		};  
+		}; 
+
+function UploadFile(imageid) {
+    var fileObj = document.getElementById(imageid).files[0]; // 获取文件对象
+    var FileController = "/imageupload";                    // 接收上传文件的后台地址 
+    // FormData 对象
+    var form = new FormData();
+    form.append("file", fileObj);                           // 文件对象
+    // XMLHttpRequest 对象
+    var xhr = new XMLHttpRequest();
+    xhr.open("post", FileController, true);
+    xhr.onload = function () {
+        alert("上传完成!");
+    };
+    xhr.send(form);
+} 
 
 </script>
 </body>

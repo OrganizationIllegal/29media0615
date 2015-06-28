@@ -26,6 +26,8 @@ import com.kate.app.model.NewsTrends;
 import com.kate.app.model.StarImage;
 import com.kate.app.model.StarInfo;
 import com.kate.app.model.StarVedio;
+import com.kate.app.model.TrainDetail;
+import com.kate.app.service.ConvertJson;
 
 @Controller
 public class ArtistInputController {
@@ -53,7 +55,6 @@ public class ArtistInputController {
 		@RequestMapping({ "/inputArtist" })
 		public void inputArtist(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 			String artistinfo=req.getParameter("artistinfo");
-			System.out.println(artistinfo);
 			StarInfo starinfo = (StarInfo) JSONToObj(artistinfo, StarInfo.class);
 			String star_num=starinfo.getStar_num();
 			String chinese_name=starinfo.getChinese_name();
@@ -138,8 +139,12 @@ public class ArtistInputController {
 		@RequestMapping({ "/findArtist" })
 		public String findArtist(HttpServletRequest req,HttpServletResponse resp){
 			int id = Integer.parseInt(req.getParameter("id"));
-			StarInfo starinfo = artistInputDao.findById(id);		
+			StarInfo starinfo = artistInputDao.findById(id);
+			List<StarVedio> videoList = new ArrayList<StarVedio>();
+			videoList=artistInputDao.findByStarNum(starinfo.getStar_num());
 			req.setAttribute("starinfo", starinfo);
+			req.setAttribute("videoList", videoList);
+			req.setAttribute("videoListJson", ConvertJson.list2json(videoList));
 			return "/artistEdit.jsp";
 		}
 		
@@ -196,12 +201,20 @@ public class ArtistInputController {
 						 JSONObject object = (JSONObject)videoimgArray.get(i); //对于每个json对象
 						 StarVedio e = (StarVedio) JSONToObj(object.toString(), StarVedio.class);
 						 videolist.add(e);
+						 int id3=0;
 						 String video_id=e.getVideo_id();
 						 String video_link=e.getVideo_link();
 						 String video_pic=e.getVideo_link();
-						 flag3=artistInputDao.InsertArtistVideo(star_num, video_id, video_pic, video_link);		 
+						 if(e.getId()==0){
+								flag3=artistInputDao.InsertArtistVideo(star_num, video_id, video_pic, video_link);
+								System.out.println("add"+flag3);
+							}else{
+								id3=e.getId();
+								flag3=artistInputDao.editStarVideo(id3, star_num, video_id, video_pic, video_link);
+								System.out.println("edit"+flag3);
+							}		 
 					}
-					System.out.println(flag3);
+					
 					
 					int flag1 = 0;
 					JSONObject json = new JSONObject();
@@ -215,42 +228,7 @@ public class ArtistInputController {
 					}
 					
 				}
-		@RequestMapping(value = "/artistimgInput")
-	    public void handleFormUpload( @RequestParam("file") MultipartFile file, HttpServletResponse resp) {
-			JSONObject json = new JSONObject();		
-	        if (!file.isEmpty()) {
-	        	try{	        		
-	        			ImageDao.CopyImage(file,new String(file.getOriginalFilename().getBytes("ISO8859_1"),"utf-8"));
-	        	}
-	        	catch(Exception e){
-	        		e.printStackTrace();
-	        	}
-	        	try{
-	    			writeJson(json.toJSONString(),resp);
-	    		}catch(Exception e){
-	    			e.printStackTrace();
-	    		}
-	        }
-	    }
-		@RequestMapping(value = "/videoimgInput")
-	    public void handleFormUpload2( @RequestParam("file") MultipartFile file, HttpServletResponse resp) {
-			JSONObject json = new JSONObject();		
-	        if (!file.isEmpty()) {
-	        	try{	        		
-	        			ImageDao.CopyImage(file,new String(file.getOriginalFilename().getBytes("ISO8859_1"),"utf-8"));
-	        	}
-	        	catch(Exception e){
-	        		e.printStackTrace();
-	        	}
-	        	try{
-	    			writeJson(json.toJSONString(),resp);
-	    		}catch(Exception e){
-	    			e.printStackTrace();
-	    		}
-	        }
-	    }
-		
-				
+					
 	public void writeJson(String json, HttpServletResponse response)throws Exception{
 	    response.setContentType("text/html");
 	    response.setCharacterEncoding("UTF-8");

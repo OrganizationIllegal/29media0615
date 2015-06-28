@@ -51,13 +51,12 @@ body{
 </form>
 <div id="newsimglist" style="margin-top:20px;"></div>
 <div class="area_left4"><button type="button" class="btn" onclick="add()">提交</button></div>
-<div class="area_right4"><button type="reset" class="btn">重置</button></div>
+<div class="area_right4"><button type="reset" class="btn" onclick="fanhui()">返回</button></div>
 </div>
 <script type="text/javascript">
 function add(){
 	  var newsinfo=DataDeal.formToJson(data= decodeURIComponent($("#newsinfo").serialize(),true)); 
 	  newsinfo=eval("("+newsinfo+")");
-	  alert("heihei");
 	  $.ajax({
 	 	    type: "POST",
 	 		data: {"newsinfo":JSON.stringify(newsinfo),"newsimglist":JSON.stringify(newsimglist)},
@@ -75,6 +74,9 @@ function add(){
 	 		}
 	 	});
 	  }
+function fanhui(){
+	window.location.href="/treeData.jsp";
+}
 </script>
 <script type="text/javascript">
 var newsimglist=[];
@@ -115,21 +117,6 @@ $(function(){
 		newsimgecount--;
 		});
 
-	function UploadFile(imageid) {
-        var fileObj = document.getElementById(imageid).files[0]; // 获取文件对象
-        var FileController = "/newsimgInput";                    // 接收上传文件的后台地址 
-        // FormData 对象
-        var form = new FormData();
-        form.append("file", fileObj);                           // 文件对象
-        // XMLHttpRequest 对象
-        var xhr = new XMLHttpRequest();
-        xhr.open("post", FileController, true);
-        xhr.onload = function () {
-            alert("上传完成!");
-        };
-        xhr.send(form);
-    }
-
 	
 });
 
@@ -143,7 +130,22 @@ var DataDeal = {
 		               data="{\""+data+"\"}";  
 		               return data;  
 		            },  
-		};  
+		}; 
+function UploadFile(imageid) {
+    var fileObj = document.getElementById(imageid).files[0]; // 获取文件对象
+    var FileController = "/imageupload";                    // 接收上传文件的后台地址 
+    // FormData 对象
+    var form = new FormData();
+    form.append("file", fileObj);                           // 文件对象
+    // XMLHttpRequest 对象
+    var xhr = new XMLHttpRequest();
+    xhr.open("post", FileController, true);
+    xhr.onload = function () {
+        alert("上传完成!");
+    };
+    xhr.send(form);
+} 
+ 
 
 </script>
 </body>

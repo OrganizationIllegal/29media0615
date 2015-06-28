@@ -27,8 +27,8 @@ public class StarVedioDAO extends BaseDao {
 		while(rs.next()){					
 			StarVedio data = new StarVedio();
 			data.setId(rs.getInt("id"));
-			data.setStar_num(rs.getInt("star_num"));
-			data.setVideo_id(rs.getInt("video_id"));
+			data.setStar_num(rs.getString("star_num"));
+			data.setVideo_id(rs.getString("video_id"));
 			data.setVideo_pic(rs.getString("video_pic"));
 			list.add(data);
 		}

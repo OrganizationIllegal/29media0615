@@ -6,6 +6,7 @@ package com.kate.app.model;
 public class LunboImage{
 	private int id;
 	private String img;
+	private String type;
 	public int getId() {
 		return id;
 	}
@@ -17,6 +18,12 @@ public class LunboImage{
 	}
 	public void setImg(String img) {
 		this.img = img;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 }

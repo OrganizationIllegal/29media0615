@@ -4,14 +4,16 @@ package com.kate.app.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-
-
-
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.kate.app.model.LianXi;
+import com.kate.app.model.Train;
+import com.kate.app.model.TrainDetail;
 
 @Repository 
 public class TrainInputDAO extends BaseDao {
@@ -104,4 +106,108 @@ public class TrainInputDAO extends BaseDao {
 				        }
 					    return exeResult;
 				}
+								
+				//编辑培训
+				public int editTrain(int id, int train_id, String  train_name, String train_desc){
+					int exeResult=0;
+					try{
+						String sql = " update train set train_id=?, train_name=?, train_desc=?  where id=?";
+						PreparedStatement pstmt = con.prepareStatement(sql);
+						pstmt.setInt(1, train_id);
+						pstmt.setString(2, train_name);
+						pstmt.setString(3, train_desc);
+						pstmt.setInt(4, id);			
+						exeResult = pstmt.executeUpdate();
+					}catch (Exception e) {
+			            e.printStackTrace();
+			        }
+					return exeResult;
+			        
+				}
+				
+				//编辑培训详情
+				public int editTrainDetail(int id, int train_id, String  title, String time,String detail, String train_img){
+					int exeResult=0;
+					try{
+						String sql = " update train_detail set train_id=?, title=?, time=?,detail=?,train_img=?  where id=?";
+						PreparedStatement pstmt = con.prepareStatement(sql);
+						pstmt.setInt(1, train_id);
+						pstmt.setString(2, title);
+						pstmt.setString(3, time);
+						pstmt.setString(4, detail);
+						pstmt.setString(5, train_img);
+						pstmt.setInt(6, id);			
+						exeResult = pstmt.executeUpdate();
+					}catch (Exception e) {
+			            e.printStackTrace();
+			        }
+					return exeResult;
+			        
+				}
+				
+				//编辑艺能培训
+				public int editLianxi(int id, int train_id, String  typename, String detail,String img){
+					int exeResult=0;
+					try{
+						String sql = " update lianxi set train_id=?, typename=?, detail=?,img=?  where id=?";
+						PreparedStatement pstmt = con.prepareStatement(sql);
+						pstmt.setInt(1, train_id);
+						pstmt.setString(2, typename);
+						pstmt.setString(3, detail);
+						pstmt.setString(4, img);
+						pstmt.setInt(5, id);			
+						exeResult = pstmt.executeUpdate();
+					}catch (Exception e) {
+			            e.printStackTrace();
+			        }
+					return exeResult;
+			        
+				}
+				
+				//查找培训
+				public Train findById(int id){
+					Train data = new Train();
+					try{
+						
+						String sql = " select * from train where id=?";
+						PreparedStatement pstmt = con.prepareStatement(sql);
+						pstmt.setInt(1, id);
+						ResultSet rs = pstmt.executeQuery();
+						while(rs.next()){
+						data.setId(rs.getInt("id"));
+						data.setTrain_id(rs.getInt("train_id"));
+						data.setTrain_name(rs.getString("train_name"));
+						data.setTrain_desc(rs.getString("train_desc"));
+						}
+					}catch (Exception e) {
+				        
+				    }
+						return data;
+					}
+				
+				//查找艺能培训
+				public List<LianXi> findByTrainId(int trainId){
+					List<LianXi> list = new ArrayList<LianXi>();
+					try{
+						
+						String sql = " select * from lianxi where train_id=?";
+						PreparedStatement pstmt = con.prepareStatement(sql);
+						pstmt.setInt(1, trainId);
+						ResultSet rs = pstmt.executeQuery();
+						
+						while(rs.next()){					
+							LianXi data = new LianXi();
+							data.setId(rs.getInt("id"));
+							data.setTypename(rs.getString("typename"));
+							data.setDetail(rs.getString("detail"));
+							data.setImg(rs.getString("img"));							
+							list.add(data);
+						}
+						
+					}catch (Exception e) {
+				        
+				    }
+						return list;
+					}
+				
 }

@@ -67,9 +67,6 @@ body{
 
     function operateFormatter(value, row, index) {
         return [
-            '<a class="add" href="trainInput.jsp" title="add">',
-            '<i class="glyphicon glyphicon-heart"></i>',
-            '</a>  ',
             '<a class="edit" href="javascript:void(0)" title="edit">',
             '<i class="glyphicon glyphicon-heart"></i>',
             '</a>  ',
@@ -81,9 +78,9 @@ body{
     
     window.operateEvents = {
     	 'click .edit': function (e, value, row, index) {
-                alert(row.id);
+                //alert(row.id);
                 var id = row.id;
-                window.open ('findArtist?id='+id);               
+                window.open ('findTrain?id='+id);               
     	 },  
          	 	
         'click .remove': function (e, value, row, index) {

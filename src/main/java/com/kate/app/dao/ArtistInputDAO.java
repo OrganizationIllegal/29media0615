@@ -4,12 +4,16 @@ package com.kate.app.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.kate.app.model.LianXi;
 import com.kate.app.model.StarInfo;
+import com.kate.app.model.StarVedio;
 
 @Repository 
 public class ArtistInputDAO extends BaseDao {
@@ -199,5 +203,48 @@ public class ArtistInputDAO extends BaseDao {
 				    }
 						return data;
 					}
+
+				//查找艺人影视
+				public List<StarVedio> findByStarNum(String starnum){
+					List<StarVedio> list = new ArrayList<StarVedio>();
+					try{
+						
+						String sql = " select * from star_vedio where star_num=?";
+						PreparedStatement pstmt = con.prepareStatement(sql);
+						pstmt.setString(1,starnum);
+						ResultSet rs = pstmt.executeQuery();
+						
+						while(rs.next()){					
+							StarVedio data = new StarVedio();
+							data.setId(rs.getInt("id"));
+							data.setVideo_link(rs.getString("video_id"));
+							data.setVideo_link(rs.getString("video_link"));
+							data.setVideo_pic(rs.getString("video_pic"));							
+							list.add(data);
+						}
+						
+					}catch (Exception e) {
+				        
+				    }
+						return list;
+					}
+				//编辑艺人影视
+				public int editStarVideo(int id, String star_num, String  video_id, String video_pic, String  video_link){
+					int exeResult=0;
+					try{
+						String sql = " update star_vedio set star_num=?, video_id=?, video_pic=?,video_link=?  where id=?";
+						PreparedStatement pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, star_num);
+						pstmt.setString(2, video_id);
+						pstmt.setString(3, video_pic);
+						pstmt.setString(4, video_link);
+						pstmt.setInt(5, id);			
+						exeResult = pstmt.executeUpdate();
+					}catch (Exception e) {
+			            e.printStackTrace();
+			        }
+					return exeResult;
+			        
+				}
 				
 }

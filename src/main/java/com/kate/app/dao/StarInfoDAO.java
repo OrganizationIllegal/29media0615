@@ -46,7 +46,7 @@ public class StarInfoDAO extends BaseDao {
 			data.setSpecialty(rs.getString("specialty"));
 			data.setStar_detail(rs.getString("star_detail"));
 			data.setStar_img(rs.getString("star_img"));
-			data.setStar_num(rs.getInt("star_num"));
+			data.setStar_num(rs.getString("star_num"));
 			data.setWeight(rs.getString("weight"));
 			list.add(data);
 		}
@@ -90,7 +90,7 @@ public class StarInfoDAO extends BaseDao {
 				data.setSpecialty(rs.getString("specialty"));
 				data.setStar_detail(rs.getString("star_detail"));
 				data.setStar_img(rs.getString("star_img"));
-				data.setStar_num(rs.getInt("star_num"));
+				data.setStar_num(rs.getString("star_num"));
 				data.setWeight(rs.getString("weight"));
 				
 			}

@@ -186,27 +186,7 @@ public class NewsInputController {
 				e.printStackTrace();
 			}
 		}
-		@RequestMapping(value = "/newsimgInput")
-	    public void handleFormUpload( @RequestParam("file") MultipartFile file, HttpServletResponse resp) {
-			JSONObject json = new JSONObject();		
-	        if (!file.isEmpty()) {
-	        	try{	        		
-	        			ImageDao.CopyImage(file,new String(file.getOriginalFilename().getBytes("ISO8859_1"),"utf-8"));
-	        	}
-	        	catch(Exception e){
-	        		e.printStackTrace();
-	        	}
-	        	try{
-	    			writeJson(json.toJSONString(),resp);
-	    		}catch(Exception e){
-	    			e.printStackTrace();
-	    		}
-	        }
-	    }
-		
-		
-		
-				
+						
 	public void writeJson(String json, HttpServletResponse response)throws Exception{
 	    response.setContentType("text/html");
 	    response.setCharacterEncoding("UTF-8");
