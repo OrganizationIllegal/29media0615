@@ -15,6 +15,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <script src="//cdn.ckeditor.com/4.4.7/full/ckeditor.js"></script>
 </head>
 <body>
+<%
+            String username = null;
+			String role = null;
+       		if(request.getSession().getAttribute("username")==null){
+       			out.print("<script>alert('用户请登录。');window.location.href='/Index'</script>");
+}else{
+	
+	if(request.getSession().getAttribute("role")!=null){
+		role = request.getSession().getAttribute("role").toString();
+	}
+	if("1".equals(role)){
+		out.print("<script>alert('您没有权限。');window.location.href='/Index'</script>");
+	}
+}
+       		
+%>
+
 <input type="hidden" id="top"/>
 <%-- <jsp:include page="head.jsp" /> --%>
  <div class="container">

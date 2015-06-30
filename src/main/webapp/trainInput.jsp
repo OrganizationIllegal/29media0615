@@ -21,6 +21,23 @@ body{
 </style>
 </head>
 <body>
+<%
+            String username = null;
+			String role = null;
+       		if(request.getSession().getAttribute("username")==null){
+       			out.print("<script>alert('用户请登录。');window.location.href='/Index'</script>");
+}else{
+	
+	if(request.getSession().getAttribute("role")!=null){
+		role = request.getSession().getAttribute("role").toString();
+	}
+	if("1".equals(role)){
+		out.print("<script>alert('您没有权限。');window.location.href='/Index'</script>");
+	}
+}
+       		
+%>
+
 <div style="width:900px;margin:25px auto;">
 <div class="area_bkg1">当前位置:培训录入</div>
 <div class="area_bkg2">培训信息</div>
