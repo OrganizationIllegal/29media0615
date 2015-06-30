@@ -100,7 +100,12 @@ public String login(HttpServletRequest req, HttpServletResponse resp) throws Exc
 	}
 	
 	session.setAttribute("role", role);
-	return "/Index";
+	if(role == 0){
+		return "/treeData.jsp";
+	}
+	else{
+		return "/Index";
+	}
 }
 	
 	
@@ -143,7 +148,7 @@ public String login(HttpServletRequest req, HttpServletResponse resp) throws Exc
 		session.setAttribute("username", str_username);
 		session.setAttribute("role", role);
 		
-		return "/index01";
+		return "/Index";
 	}
 	
 	
