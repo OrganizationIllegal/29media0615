@@ -89,14 +89,15 @@ body{
         'click .remove': function (e, value, row, index) {
             //alert(row.id);
             var id = row.id;
-            
+            var news_id=row.news_id;
              $.ajax({
 		 	    type: "POST",
-		 		data: {id: id},
+		 		data: {id: id,news_id: news_id},
 		 		dateType: "json",
 		 		url: "/deleteNewsTrends",		 		
 		 		success:function(data){
-		 			if(data.flag == 1){
+		 			data=eval("("+data+")");
+		 			if(data.flag==2){
 		 				alert("删除成功！");
 		 			}else if(data.flag ==0){
 		 				alert("删除失败！");

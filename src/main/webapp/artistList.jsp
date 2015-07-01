@@ -89,14 +89,15 @@ body{
         'click .remove': function (e, value, row, index) {
             //alert(row.id);
             var id = row.id;
-            
+            var star_num=row.star_num;
              $.ajax({
 		 	    type: "POST",
-		 		data: {id: id},
+		 		data: {id: id,star_num: star_num},
 		 		dateType: "json",
 		 		url: "/deleteArtist",		 		
 		 		success:function(data){
-		 			if(data.flag == 1){
+		 			data=eval("("+data+")");
+		 			if(data.flag == 3){
 		 				alert("删除成功！");
 		 			}else if(data.flag ==0){
 		 				alert("删除失败！");

@@ -84,6 +84,7 @@ body{
 		 		dateType: "json",
 		 		url: "/deleteLunbo",		 		
 		 		success:function(data){
+			 		data=eval("("+data+")");
 		 			if(data.flag == 1){
 		 				alert("删除成功！");
 		 			}else if(data.flag ==0){

@@ -44,7 +44,8 @@ public class NewsController {
 		if(newsId!=null && !"".equals(newsId)){
 			news_id = Integer.parseInt(newsId);
 		}
-		News newsInfo = newsDAO.findByNewId(news_id);
+		//News newsInfo = newsDAO.findByNewId(news_id);
+		NewsTrends newsInfo = newsTrendsDAO.findByNewsTrendId(news_id).get(0);
 		List<NewsTrends> trendList = newsTrendsDAO.findAll();
 		List<NewsImage> imageList = newsImageDAO.findByNewsImgId(news_id);
 		

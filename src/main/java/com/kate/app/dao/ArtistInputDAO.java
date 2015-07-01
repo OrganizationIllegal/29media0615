@@ -42,10 +42,10 @@ public class ArtistInputDAO extends BaseDao {
 	} 
 	
 	//艺人录入
-		public int InsertArtistInfo(String star_num, String  chinese_name,String english_name,String bieming,String nation, String  constellation,String bloodtype,String height,String weight, String  birthplace,String birthday,String occupation,String brokerfirm,String animal, String  representativeworks,String residence,String gratuateunivercity,String achivements,String nationality, String  sex,String specialty,String musicalstyle,String star_detail){
+		public int InsertArtistInfo(String star_num, String  chinese_name,String english_name,String bieming,String nation, String  constellation,String bloodtype,String height,String weight, String  birthplace,String birthday,String occupation,String brokerfirm,String animal, String  representativeworks,String residence,String gratuateunivercity,String achivements,String nationality, String  sex,String specialty,String musicalstyle,String star_detail,String star_img){
 			int exeResult=0;
 			try {
-				String sql = "insert into star_info(star_num,chinese_name,english_name,bieming,nation,constellation,bloodtype,height,weight,birthplace,birthday,occupation,brokerfirm,animal,representativeworks,residence,gratuateunivercity,achivements,nationality,sex,specialty,musicalstyle,star_detail) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				String sql = "insert into star_info(star_num,chinese_name,english_name,bieming,nation,constellation,bloodtype,height,weight,birthplace,birthday,occupation,brokerfirm,animal,representativeworks,residence,gratuateunivercity,achivements,nationality,sex,specialty,musicalstyle,star_detail,star_img) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, star_num);
 				pstmt.setString(2, chinese_name);
@@ -70,6 +70,7 @@ public class ArtistInputDAO extends BaseDao {
 				pstmt.setString(21, specialty);
 				pstmt.setString(22, musicalstyle);
 				pstmt.setString(23, star_detail);
+				pstmt.setString(24, star_img);
 				exeResult = pstmt.executeUpdate();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -125,11 +126,39 @@ public class ArtistInputDAO extends BaseDao {
 					    return exeResult;
 				}
 				
+				//删除艺人图片
+				public int deleteArtistImg(String star_num){
+					int exeResult=0;
+					try{
+							String sql = " delete from star_image where star_num= ?";
+							PreparedStatement pstmt = con.prepareStatement(sql);
+							pstmt.setString(1, star_num);
+							exeResult = pstmt.executeUpdate();
+						}catch (Exception e) {
+				            e.printStackTrace();
+				        }
+					    return exeResult;
+				}
+				
+				//删除艺人影视
+				public int deleteArtistVideo(String star_num){
+					int exeResult=0;
+					try{
+							String sql = " delete from star_vedio where star_num= ?";
+							PreparedStatement pstmt = con.prepareStatement(sql);
+							pstmt.setString(1, star_num);
+							exeResult = pstmt.executeUpdate();
+						}catch (Exception e) {
+				            e.printStackTrace();
+				        }
+					    return exeResult;
+				}
+				
 				//艺人编辑
-				public int EditArtistInfo(int id, String star_num, String  chinese_name,String english_name,String bieming,String nation, String  constellation,String bloodtype,String height,String weight, String  birthplace,String birthday,String occupation,String brokerfirm,String animal, String  representativeworks,String residence,String gratuateunivercity,String achivements,String nationality, String  sex,String specialty,String musicalstyle,String star_detail){
+				public int EditArtistInfo(int id, String star_num, String  chinese_name,String english_name,String bieming,String nation, String  constellation,String bloodtype,String height,String weight, String  birthplace,String birthday,String occupation,String brokerfirm,String animal, String  representativeworks,String residence,String gratuateunivercity,String achivements,String nationality, String  sex,String specialty,String musicalstyle,String star_detail,String star_img){
 					int exeResult=0;
 					try {
-						String sql = "update star_info set star_num=?,chinese_name=?,english_name=?,bieming=?,nation=?,constellation=?,bloodtype=?,height=?,weight=?,birthplace=?,birthday=?,occupation=?,brokerfirm=?,animal=?,representativeworks=?,residence=?,gratuateunivercity=?,achivements=?,nationality=?,sex=?,specialty=?,musicalstyle=?,star_detail=? where id=?";
+						String sql = "update star_info set star_num=?,chinese_name=?,english_name=?,bieming=?,nation=?,constellation=?,bloodtype=?,height=?,weight=?,birthplace=?,birthday=?,occupation=?,brokerfirm=?,animal=?,representativeworks=?,residence=?,gratuateunivercity=?,achivements=?,nationality=?,sex=?,specialty=?,musicalstyle=?,star_detail=?,star_img=? where id=?";
 						PreparedStatement pstmt = con.prepareStatement(sql);
 						pstmt.setString(1, star_num);
 						pstmt.setString(2, chinese_name);
@@ -154,7 +183,8 @@ public class ArtistInputDAO extends BaseDao {
 						pstmt.setString(21, specialty);
 						pstmt.setString(22, musicalstyle);
 						pstmt.setString(23, star_detail);
-						pstmt.setInt(24, id);
+						pstmt.setString(24, star_img);
+						pstmt.setInt(25, id);
 						exeResult = pstmt.executeUpdate();
 					} catch (Exception e) {
 						// TODO Auto-generated catch block

@@ -37,15 +37,16 @@ public class NewsInputDAO extends BaseDao {
 	} 
 	
 	//新闻录入
-	public int InsertNewsTrends(int news_id, String  title,String time,String detail){
+	public int InsertNewsTrends(int news_id, String  title,String time,String detail,String image){
 		int exeResult=0;
 		try {
-			String sql = "insert into news_trends(news_id,title,time,detail) values(?,?,?,?)";
+			String sql = "insert into news_trends(news_id,title,time,detail,image) values(?,?,?,?,?)";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, news_id);
 			pstmt.setString(2, title);
 			pstmt.setString(3, time);
 			pstmt.setString(4, detail);
+			pstmt.setString(5, image);
 			exeResult = pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -84,16 +85,17 @@ public class NewsInputDAO extends BaseDao {
 		    return exeResult;
 	}
 	//编辑新闻
-	public int editNewsTrends(int id, int news_id, String  title,String time,String detail){
+	public int editNewsTrends(int id, int news_id, String  title,String time,String detail,String image){
 		int exeResult=0;
 		try{
-			String sql = " update news_trends set news_id=?, title=?, time=?, detail=? where id=?";
+			String sql = " update news_trends set news_id=?, title=?, time=?, detail=?,image=? where id=?";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, news_id);
 			pstmt.setString(2, title);
 			pstmt.setString(3, time);
 			pstmt.setString(4, detail);
-			pstmt.setInt(5, id);			
+			pstmt.setString(5, image);
+			pstmt.setInt(6, id);			
 			exeResult = pstmt.executeUpdate();
 		}catch (Exception e) {
             e.printStackTrace();
@@ -146,12 +148,12 @@ public class NewsInputDAO extends BaseDao {
 		} 
 	
 		//删除新闻图片
-		public int deleteNewsImg(int id){
+		public int deleteNewsImg(int news_id){
 			int exeResult=0;
 			try{
-					String sql = " delete from news_image where id= ?";
+					String sql = " delete from news_image where news_id= ?";
 					PreparedStatement pstmt = con.prepareStatement(sql);
-					pstmt.setInt(1, id);
+					pstmt.setInt(1, news_id);
 					exeResult = pstmt.executeUpdate();
 				}catch (Exception e) {
 		            e.printStackTrace();

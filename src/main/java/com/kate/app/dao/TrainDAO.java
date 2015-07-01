@@ -66,13 +66,13 @@ public class TrainDAO extends BaseDao{
         
 	}
 	
-	public LianXi findLianXiById(int id){
+	public LianXi findLianXiById(int train_id){
 		LianXi data = new LianXi();
 		try{
 			
-			String sql = " select * from lianxi where id=?";
+			String sql = " select * from lianxi where train_id=?";
 			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, id);
+			pstmt.setInt(1, train_id);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()){					
 				data.setId(rs.getInt("id"));

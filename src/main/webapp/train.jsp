@@ -94,7 +94,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 		</div>
 		<div class="row" style="margin-top:40px;">
-		  <c:forEach items="${trainList}"  var="item">
+		  <c:forEach items="${trainList}"  var="item" varStatus="status">
+		  <c:if test="${status.index<3 }">
 			<div class="col-md-4"><img src="${item.train_image}" width="350px" height="280px">
 			<div style="z-index:1;width:350px;height:100px;opacity:0.5;background:#1c4587;top:90px;position:absolute;filter:alpha(opacity=50);">
 					<div style="height:100%;line-height:100%;overflow:hidden;align:center;">
@@ -103,6 +104,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div>${item.train_desc}</div>
 		   </div>
+		   </c:if>
 		   </c:forEach>
 		</div>
 		<div class="row" style="margin-top:20px;padding-bottom:50px;">

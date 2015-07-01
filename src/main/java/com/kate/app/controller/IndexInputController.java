@@ -49,7 +49,7 @@ public class IndexInputController {
 					int id = Integer.parseInt(req.getParameter("id"));
 					int flag =lunboImageDAO.deleteLunbo(id);
 					JSONObject json = new JSONObject();
-					json.put("data", flag);
+					json.put("flag", flag);
 					try{
 						writeJson(json.toJSONString(),resp);
 					}catch(Exception e){

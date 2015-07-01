@@ -42,7 +42,7 @@ body{
 <div class="area_bkg2 c-fix" id="newsimg">新闻图片</div>
 <form id="newsimg">
 <div class="c-fix" style="padding-left:35px;margin-top:20px;">
-<span class="area_span" style="float:left;">培训图片</span>
+<span class="area_span" style="float:left;">新闻图片</span>
 <span> <input type="file" name="news_image" id="news_image" style="width:600px;border:1px solid rgb(239,235,242);float:left;margin-right:40px;"/><a href="#" class="addnewsimg">上传</a></span>
 </div>
 </form>

@@ -86,14 +86,15 @@ body{
         'click .remove': function (e, value, row, index) {
             //alert(row.id);
             var id = row.id;
-            
+            var train_id=row.train_id;
              $.ajax({
 		 	    type: "POST",
-		 		data: {id: id},
+		 		data: {id: id,train_id: train_id},
 		 		dateType: "json",
 		 		url: "/deleteTrain",		 		
 		 		success:function(data){
-		 			if(data.flag == 1){
+		 			data=eval("("+data+")");
+		 			if(data.flag == 3){
 		 				alert("删除成功！");
 		 			}else if(data.flag ==0){
 		 				alert("删除失败！");

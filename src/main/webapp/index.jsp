@@ -25,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 ctx.drawImage(img, 0, 0, 150, 150);
             }
 
-            img.src = "/images/img01.jpg";
+            img.src = "${videoimg1}";
      
     ctx.beginPath(); 
     //ctx1.fillStyle="#CDC9C9";  
@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 ctx.drawImage(img, 0, 0, 80, 80);
             }
 
-            img.src = "/images/img02.jpg";
+            img.src = "${videoimg2}";
      
     ctx.beginPath(); 
     //ctx1.fillStyle="#CDC9C9";  
@@ -59,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 ctx.drawImage(img, 0, 0, 80, 80);
             }
 
-            img.src = "/images/img04.jpg";
+            img.src ="${videoimg3}";
      
     ctx.beginPath(); 
     //ctx1.fillStyle="#CDC9C9";  
@@ -76,7 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 ctx.drawImage(img, 0, 0, 150, 150);
             }
 
-            img.src = "/images/img05.jpg";
+            img.src = "${videoimg4}";
      
     ctx.beginPath(); 
     //ctx1.fillStyle="#CDC9C9";  
@@ -113,19 +113,19 @@ function pop4(){
    <!-- 轮播（Carousel）项目 -->
    <div class="carousel-inner">
       <div class="item active">
-         <img src="/images/lunbo1.jpg" alt="First slide" width="1200px">
+         <img src="${toplunbo1}" alt="First slide" width="1200px">
          <div class="carousel-caption"></div>
       </div>
       <div class="item">
-         <img src="/images/lunbo2.jpg" alt="Second slide" width="1200px">
+         <img src="${toplunbo2}" alt="Second slide" width="1200px">
          <div class="carousel-caption"></div>
       </div>
       <div class="item">
-         <img src="/images/lunbo3.jpg" alt="Third slide" width="1200px">
+         <img src="${toplunbo3}" alt="Third slide" width="1200px">
          <div class="carousel-caption"></div>
       </div>
        <div class="item">
-         <img src="/images/lunbo4.jpg" alt="Forth slide" width="1200px">
+         <img src="${toplunbo4}" alt="Forth slide" width="1200px">
          <div class="carousel-caption"></div>
       </div>
       <!-- 轮播（Carousel）导航 -->
@@ -187,15 +187,15 @@ function pop4(){
     <!-- 轮播（Carousel）项目 -->
    <div class="carousel-inner">
       <div class="item active">
-         <img src="/images/lunbo3.jpg" alt="First slide" style="width:570px;height:260px;">
+         <img src="${trainlunbo1}" alt="First slide" style="width:570px;height:260px;">
          <div class="carousel-caption"></div>
       </div>
       <div class="item">
-         <img src="/images/star.jpg" alt="Second slide" style="width:570px;height:260px;">
+         <img src="${trainlunbo2}" alt="Second slide" style="width:570px;height:260px;">
          <div class="carousel-caption"></div>
       </div>
       <div class="item">
-         <img src="/images/lunbo2.jpg" alt="Third slide" style="width:570px;height:260px;">
+         <img src="${trainlunbo3}" alt="Third slide" style="width:570px;height:260px;">
          <div class="carousel-caption"></div>
       </div> 
      </div>
@@ -213,10 +213,10 @@ function pop4(){
 			<div class="col-md-6">
 				<div class="row">
 					<!-- <div class="col-md-1" style="width:30px;"></div> -->
-					<div class="col-md-2" ><img src="/images/img01.jpg" style="width:110px;" title="新星新星"><img src="/images/img02.jpg" style="width:110px;" title="新星新星"></div>
-					<div class="col-md-5" style="width:263px;"><img src="/images/img03.jpg" style="width:250px;height:220px;" title="新星新星"></div>
-					<div class="col-md-2" style="padding-left:0px;"><img src="/images/img01.jpg" style="width:110px;" title="新星新星"><img src="/images/img02.jpg" style="width:110px;" title="新星新星"></div>
-					<div class="col-md-2"><img src="/images/img04.jpg" style="width:110px;" title="新星新星"><img src="/images/img05.jpg" style="width:110px;" title="新星新星"></div>
+					<div class="col-md-2" ><img src="${starimg1}" style="width:110px;height:110px;" title="新星新星"><img src="${starimg2}" style="width:110px;height:110px;" title="新星新星"></div>
+					<div class="col-md-5" style="width:263px;"><img src="${starimg3}" style="width:250px;height:220px;" title="新星新星"></div>
+					<div class="col-md-2" style="padding-left:0px;"><img src="${starimg4}" style="width:110px;height:110px;" title="新星新星"><img src="${starimg5}" style="width:110px;height:110px;" title="新星新星"></div>
+					<div class="col-md-2"><img src="${starimg6}" style="width:110px;height:110px;" title="新星新星"><img src="${starimg7}" style="width:110px;height:110px;" title="新星新星"></div>
 					<div class="col-md-1"></div>
 				</div>
 			</div>
@@ -277,7 +277,7 @@ function pop4(){
             </div>
          </div>
          <div class="modal-body">
-            <img src="/images/img01.jpg" width="500" height="300" id="image"/>
+            <img src="${videoimg1}" width="500" height="300" id="image"/>
          </div>
    
       </div>      
@@ -297,7 +297,7 @@ function pop4(){
             </div>
          </div>
          <div class="modal-body">
-            <img src="/images/img02.jpg" width="500" height="300" id="image"/>
+            <img src="${videoimg2}" width="500" height="300" id="image"/>
          </div>
    
       </div>      
@@ -317,7 +317,7 @@ function pop4(){
             </div>
          </div>
          <div class="modal-body">
-            <img src="/images/img04.jpg" width="500" height="300" id="image"/>
+            <img src="${videoimg3}" width="500" height="300" id="image"/>
          </div>
    
       </div>      
@@ -337,7 +337,7 @@ function pop4(){
             </div>
          </div>
          <div class="modal-body">
-            <img src="/images/img05.jpg" width="500" height="300" id="image"/>
+            <img src="${videoimg4}" width="500" height="300" id="image"/>
          </div>
    
       </div>      

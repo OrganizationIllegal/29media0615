@@ -23,7 +23,7 @@ body{
 <body>
 <div style="width:900px;margin:25px auto;">
 <div class="area_bkg1">当前位置:首页录入</div>
-<div class="area_bkg2" id="brokerinfo">图片录入</div>
+<div class="area_bkg2">图片录入</div>
 <form id="indeximg">
 <div class="area_left">
 <span class="area_span">类型</span>

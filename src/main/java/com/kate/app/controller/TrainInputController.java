@@ -20,6 +20,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.kate.app.dao.TrainDetailDAO;
 import com.kate.app.dao.TrainInputDAO;
 import com.kate.app.model.LianXi;
+import com.kate.app.model.NewsImage;
 import com.kate.app.model.Train;
 import com.kate.app.model.TrainDetail;
 import com.kate.app.service.ConvertJson;
@@ -78,6 +79,9 @@ public class TrainInputController {
 			String trainimglist=req.getParameter("trainimglist");
 			JSONArray trainimgArray = JSONArray.parseArray(trainimglist);
 			List<TrainDetail> imagelist=new ArrayList<TrainDetail>();
+			JSONObject obj = (JSONObject)trainimgArray.get(0);
+			TrainDetail trainimg=(TrainDetail) JSONToObj(obj.toString(), TrainDetail.class);
+			String image="/images/train/"+trainimg.getTrain_img();
 			int flag2=0;
 			for (int i=0;i<trainimgArray.size();i++){
 				 JSONObject object = (JSONObject)trainimgArray.get(i); //对于每个json对象
@@ -116,7 +120,7 @@ public class TrainInputController {
 					
 			int flag1 = 0;
 			JSONObject json = new JSONObject();
-			flag1 =trainInputDao.InsertTrain(train_id, train_name, train_desc);
+			flag1 =trainInputDao.InsertTrain(train_id, train_name, train_desc, image);
 			System.out.println(flag1);
 			json.put("flag", flag1+flag2+flag3);
 			try{
@@ -131,9 +135,13 @@ public class TrainInputController {
 		@RequestMapping({ "/deleteTrain" })
 		public void deleteNewsTrends(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 			int id = Integer.parseInt(req.getParameter("id"));
-			int flag =trainInputDao.deleteTrain(id);
+			int train_id = Integer.parseInt(req.getParameter("train_id"));
+			int flag =0;
+			flag+=trainInputDao.deleteTrain(id);
+			flag+=trainInputDao.deleteTrainDetail(train_id);
+			flag+=trainInputDao.deleteLianXi(train_id);
 			JSONObject json = new JSONObject();
-			json.put("data", flag);
+			json.put("flag", flag);
 			try{
 				writeJson(json.toJSONString(),resp);
 			}catch(Exception e){
@@ -155,6 +163,9 @@ public class TrainInputController {
 					String trainimglist=req.getParameter("trainimglist");
 					JSONArray trainimgArray = JSONArray.parseArray(trainimglist);
 					List<TrainDetail> imagelist=new ArrayList<TrainDetail>();
+					JSONObject obj = (JSONObject)trainimgArray.get(0);
+					TrainDetail trainimg=(TrainDetail) JSONToObj(obj.toString(), TrainDetail.class);
+					String image="/images/train/"+trainimg.getTrain_img();
 					int flag2=0;
 					for (int i=0;i<trainimgArray.size();i++){
 						 JSONObject object = (JSONObject)trainimgArray.get(i); //对于每个json对象
@@ -208,7 +219,7 @@ public class TrainInputController {
 							
 					int flag1 = 0;
 					JSONObject json = new JSONObject();
-					flag1 =trainInputDao.editTrain(id, train_id, train_name, train_desc);
+					flag1 =trainInputDao.editTrain(id, train_id, train_name, train_desc, image);
 					System.out.println(flag1);
 					json.put("flag", flag1+flag2+flag3);
 					try{

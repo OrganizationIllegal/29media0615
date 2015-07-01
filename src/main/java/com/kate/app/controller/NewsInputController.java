@@ -77,12 +77,15 @@ public class NewsInputController {
 		//System.out.println(newsimglist);
 		JSONArray newsimgArray = JSONArray.parseArray(newsimglist);
 		List<NewsImage> imagelist=new ArrayList<NewsImage>();
+		JSONObject obj = (JSONObject)newsimgArray.get(0);
+		NewsImage img=(NewsImage) JSONToObj(obj.toString(), NewsImage.class);
+		String image="/images/news/"+img.getNews_image();
 		int flag2=0;
 		for (int i=0;i<newsimgArray.size();i++){
 			 JSONObject object = (JSONObject)newsimgArray.get(i); //对于每个json对象
 			 NewsImage e = (NewsImage) JSONToObj(object.toString(), NewsImage.class);
 			 imagelist.add(e);
-			 String news_image=e.getNews_image();
+			 String news_image="/images/news/"+e.getNews_image();
 			 flag2=newsInputDao.InsertNewsImage(news_id, news_image);		 
 		}
 		//System.out.println("imagelist.length():"+imagelist.size());
@@ -90,7 +93,7 @@ public class NewsInputController {
 				
 		int flag1 = 0;
 		JSONObject json = new JSONObject();
-		flag1 =newsInputDao.InsertNewsTrends(news_id, title, time, detail);
+		flag1 =newsInputDao.InsertNewsTrends(news_id, title, time, detail, image);
 		json.put("flag", flag1+flag2);
 		try{
 			writeJson(json.toJSONString(),resp);
@@ -105,9 +108,16 @@ public class NewsInputController {
 	@RequestMapping({ "/deleteNewsTrends" })
 	public void deleteNewsTrends(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 		int id = Integer.parseInt(req.getParameter("id"));
-		int flag = newsInputDao.deleteNewsTrends(id);
+		int news_id=0;
+		String newsid=req.getParameter("news_id");		
+		if(newsid!=null||!"".equals(newsid)){
+			news_id=Integer.parseInt(newsid);
+		}
+		int flag = 0;
+		flag+=newsInputDao.deleteNewsTrends(id);
+		flag+=newsInputDao.deleteNewsImg(news_id);
 		JSONObject json = new JSONObject();
-		json.put("data", flag);
+		json.put("flag", flag);
 		try{
 			writeJson(json.toJSONString(),resp);
 		}catch(Exception e){
@@ -136,18 +146,21 @@ public class NewsInputController {
 			String newsimglist=req.getParameter("newsimglist");
 			JSONArray newsimgArray = JSONArray.parseArray(newsimglist);
 			List<NewsImage> imagelist=new ArrayList<NewsImage>();
+			JSONObject obj = (JSONObject)newsimgArray.get(0);
+			NewsImage img=(NewsImage) JSONToObj(obj.toString(), NewsImage.class);
+			String image="/images/news/"+img.getNews_image();
 			int flag2=0;
 			for (int i=0;i<newsimgArray.size();i++){
 				 JSONObject object = (JSONObject)newsimgArray.get(i); //对于每个json对象
 				 NewsImage e = (NewsImage) JSONToObj(object.toString(), NewsImage.class);
 				 imagelist.add(e);
-				 String news_image=e.getNews_image();
+				 String news_image="/images/news/"+e.getNews_image();
 				 flag2=newsInputDao.InsertNewsImage(news_id, news_image);		 
 			}
 					
 			int flag1 = 0;
 			JSONObject json = new JSONObject();
-			flag1 =newsInputDao.editNewsTrends(id, news_id, title, time, detail);
+			flag1 =newsInputDao.editNewsTrends(id, news_id, title, time, detail, image);
 			json.put("flag", flag1+flag2);
 			try{
 				writeJson(json.toJSONString(),resp);

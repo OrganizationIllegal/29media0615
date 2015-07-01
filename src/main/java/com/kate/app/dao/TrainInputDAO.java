@@ -41,14 +41,15 @@ public class TrainInputDAO extends BaseDao {
 	} 
 	
 	//培训录入
-	public int InsertTrain(int train_id, String  train_name, String train_desc){
+	public int InsertTrain(int train_id, String  train_name, String train_desc,String train_image){
 		int exeResult=0;
 		try {
-			String sql = "insert into train(train_id,train_name,train_desc) values(?,?,?)";
+			String sql = "insert into train(train_id,train_name,train_desc,train_image) values(?,?,?,?)";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, train_id);
 			pstmt.setString(2, train_name);
 			pstmt.setString(3, train_desc);
+			pstmt.setString(4, train_image);
 			exeResult = pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -106,17 +107,46 @@ public class TrainInputDAO extends BaseDao {
 				        }
 					    return exeResult;
 				}
-								
-				//编辑培训
-				public int editTrain(int id, int train_id, String  train_name, String train_desc){
+				
+				//删除培训详情
+				public int deleteTrainDetail(int train_id){
 					int exeResult=0;
 					try{
-						String sql = " update train set train_id=?, train_name=?, train_desc=?  where id=?";
+							String sql = " delete from train_detail where train_id= ?";
+							PreparedStatement pstmt = con.prepareStatement(sql);
+							pstmt.setInt(1, train_id);
+							exeResult = pstmt.executeUpdate();
+						}catch (Exception e) {
+				            e.printStackTrace();
+				        }
+					    return exeResult;
+				}
+				
+				//删除培训详情
+				public int deleteLianXi(int train_id){
+					int exeResult=0;
+					try{
+							String sql = " delete from lianxi where train_id= ?";
+							PreparedStatement pstmt = con.prepareStatement(sql);
+							pstmt.setInt(1, train_id);
+							exeResult = pstmt.executeUpdate();
+						}catch (Exception e) {
+				            e.printStackTrace();
+				        }
+					    return exeResult;
+				}
+								
+				//编辑培训
+				public int editTrain(int id, int train_id, String  train_name, String train_desc,String train_image){
+					int exeResult=0;
+					try{
+						String sql = " update train set train_id=?, train_name=?, train_desc=?,train_image=?  where id=?";
 						PreparedStatement pstmt = con.prepareStatement(sql);
 						pstmt.setInt(1, train_id);
 						pstmt.setString(2, train_name);
 						pstmt.setString(3, train_desc);
-						pstmt.setInt(4, id);			
+						pstmt.setString(4, train_image);
+						pstmt.setInt(5, id);			
 						exeResult = pstmt.executeUpdate();
 					}catch (Exception e) {
 			            e.printStackTrace();

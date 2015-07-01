@@ -83,6 +83,9 @@ public class ArtistInputController {
 			String artistimglist=req.getParameter("artistimglist");
 			JSONArray artistimgArray = JSONArray.parseArray(artistimglist);
 			List<StarImage> imagelist=new ArrayList<StarImage>();
+			JSONObject obj = (JSONObject)artistimgArray.get(0);
+			StarImage starimg=(StarImage) JSONToObj(obj.toString(), StarImage.class);
+			String image="/images/artist/"+starimg.getImg();
 			int flag2=0;
 			for (int i=0;i<artistimgArray.size();i++){
 				 JSONObject object = (JSONObject)artistimgArray.get(i); //对于每个json对象
@@ -111,7 +114,7 @@ public class ArtistInputController {
 			
 			int flag1 = 0;
 			JSONObject json = new JSONObject();
-			flag1 =artistInputDao.InsertArtistInfo(star_num, chinese_name, english_name, bieming, nation, constellation, bloodtype, height, weight, birthplace, birthday, occupation, brokerfirm, animal, representativeworks, residence, gratuateunivercity, achivements, nationality, sex, specialty, musicalstyle, star_detail);
+			flag1 =artistInputDao.InsertArtistInfo(star_num, chinese_name, english_name, bieming, nation, constellation, bloodtype, height, weight, birthplace, birthday, occupation, brokerfirm, animal, representativeworks, residence, gratuateunivercity, achivements, nationality, sex, specialty, musicalstyle, star_detail,image);
 			System.out.println(flag1);
 			json.put("flag", flag1+flag2+flag3);
 			try{
@@ -125,9 +128,13 @@ public class ArtistInputController {
 		@RequestMapping({ "/deleteArtist" })
 		public void deleteNewsTrends(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 			int id = Integer.parseInt(req.getParameter("id"));
-			int flag =artistInputDao.deleteArtist(id);
+			String star_num=req.getParameter("star_num");
+			int flag =0;
+			flag+=artistInputDao.deleteArtist(id);
+			flag+=artistInputDao.deleteArtistImg(star_num);
+			flag+=artistInputDao.deleteArtistVideo(star_num);
 			JSONObject json = new JSONObject();
-			json.put("data", flag);
+			json.put("flag", flag);
 			try{
 				writeJson(json.toJSONString(),resp);
 			}catch(Exception e){
@@ -182,6 +189,9 @@ public class ArtistInputController {
 					String artistimglist=req.getParameter("artistimglist");
 					JSONArray artistimgArray = JSONArray.parseArray(artistimglist);
 					List<StarImage> imagelist=new ArrayList<StarImage>();
+					JSONObject obj = (JSONObject)artistimgArray.get(0);
+					StarImage starimg=(StarImage) JSONToObj(obj.toString(), StarImage.class);
+					String image="/images/artist/"+starimg.getImg();
 					int flag2=0;
 					for (int i=0;i<artistimgArray.size();i++){
 						 JSONObject object = (JSONObject)artistimgArray.get(i); //对于每个json对象
@@ -218,7 +228,7 @@ public class ArtistInputController {
 					
 					int flag1 = 0;
 					JSONObject json = new JSONObject();
-					flag1 =artistInputDao.EditArtistInfo(id, star_num, chinese_name, english_name, bieming, nation, constellation, bloodtype, height, weight, birthplace, birthday, occupation, brokerfirm, animal, representativeworks, residence, gratuateunivercity, achivements, nationality, sex, specialty, musicalstyle, star_detail);
+					flag1 =artistInputDao.EditArtistInfo(id, star_num, chinese_name, english_name, bieming, nation, constellation, bloodtype, height, weight, birthplace, birthday, occupation, brokerfirm, animal, representativeworks, residence, gratuateunivercity, achivements, nationality, sex, specialty, musicalstyle, star_detail,image);
 					System.out.println(flag1);
 					json.put("flag", flag1+flag2+flag3);
 					try{

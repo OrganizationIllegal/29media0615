@@ -3,12 +3,15 @@ package com.kate.app.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.kate.app.model.LunboImage;
+import com.kate.app.model.NewsTrends;
 import com.kate.app.model.Train;
 @Repository 
 public class LunboImageDAO extends BaseDao{
@@ -64,4 +67,25 @@ public class LunboImageDAO extends BaseDao{
 		        }
 			    return exeResult;
 		}
+        //查找轮播图
+		public List<LunboImage> findAll(){
+			List<LunboImage> list = new ArrayList<LunboImage>();
+			try{
+				
+				String sql = " select * from lunbo_image";
+		        Statement stmt = con.createStatement();
+				ResultSet rs = stmt.executeQuery(sql);
+				while(rs.next()){					
+					LunboImage data = new LunboImage();
+					data.setId(rs.getInt("id"));
+					data.setImg(rs.getString("img"));
+					data.setType(rs.getString("type"));
+					list.add(data);
+				}
+				
+			}catch (Exception e) {
+		        
+		    }
+				return list;
+			}
 }
