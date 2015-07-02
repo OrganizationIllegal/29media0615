@@ -33,6 +33,7 @@ public class TrainDetailDAO extends BaseDao {
 			data.setDetail(rs.getString("detail"));
 			data.setTitle(rs.getString("title"));
 			data.setTime(rs.getDate("time"));
+			data.setTrain_id(rs.getInt("train_id"));
 			data.setTrain_img(rs.getString("train_img"));
 			
 			list.add(data);
@@ -43,4 +44,5 @@ public class TrainDetailDAO extends BaseDao {
     }
 		return list;
 	}
+	
 }

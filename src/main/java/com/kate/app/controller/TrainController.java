@@ -59,6 +59,8 @@ public class TrainController {
 		req.setAttribute("trainList", trainList);
 		req.setAttribute("xingqubanList", xingqubanList);
 		req.setAttribute("lianxishengList", lianxishengList);
+		req.setAttribute("trainid_lianxi", lianxishengList.get(0).getTrain_id());
+		
 		req.setAttribute("guojibanList", guojibanList);
 		
 		
@@ -69,11 +71,34 @@ public class TrainController {
 	
 	@RequestMapping({ "/TrainDetail" })
 	public String TrainDetail(HttpServletRequest req,HttpServletResponse resp){
-		String id = req.getParameter("id");
-		if(id == null || "".equals(id)){
+		String news_id_str = req.getParameter("id");
+		int news_id=Integer.parseInt(news_id_str);
+		//根据train_id从lianxi表中得到信息
+		List<LianXi> lianxiList=new ArrayList<LianXi>();
+		lianxiList=trainDao.findAllLianXi();
+		req.setAttribute("lianxiList", lianxiList);
+		//根据id在lianxi表中找相应记录
+		LianXi data = trainDao.findnewsById(news_id);
+		req.setAttribute("data", data);
+		return "/traindetail.jsp";
+	}
+	/*//lianxi表中根据id取记录
+	@RequestMapping({ "/Detail" })
+	public String Detail(HttpServletRequest req,HttpServletResponse resp){
+		String newsid_str = req.getParameter("id");
+		int newsid=Integer.parseInt(newsid_str);
+		List<LianXi> newsList=new ArrayList<LianXi>();
+		newsList=trainDao.findAllLianXiById(newsid);
+		req.setAttribute("newsList", newsList);
+		//根据id在lianxi表中找相应记录
+		//LianXi data = trainDao.findLianXiById(newId);
+		return "/traindetail.jsp";
+	}*/
+	
+	/*	if(id == null || "".equals(id)){
 			id = "1";
-		}
-		int newId = Integer.parseInt(id); 
+		}*/
+		/*int newId = Integer.parseInt(id); 
 		List<LianXi> lianXiList=new ArrayList<LianXi>();
 		List<String> typeNameList = new ArrayList<String>();
 		lianXiList=trainDao.findAllLianXi();
@@ -86,7 +111,7 @@ public class TrainController {
 		req.setAttribute("lianXiList", lianXiList);
 		req.setAttribute("typeNameList", typeNameList);
 		return "/traindetail.jsp";
-	}
+	}*/
 	
 	
 	

@@ -75,29 +75,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <!-- 绘制圆形 end -->
 </head>
 <body>
-		<jsp:include page="headnew.jsp" />
-		<div style="width:1140px;margin:0 auto;">
-		<div>
-			<div style="width:150px;float:left;margin-left:60px;">
-			<canvas id="can1" width="150" height="150" ></canvas>
-			<div style="position:relative;z-index:1;top:-115px;color:white;text-align:center;"><p style="margin-bottom:0px;font-size:16px;">ABOUTUS</p><p style="margin-top:0px;margin-bottom:0px;font-size:30px;font-weight:bold;">JOB</p><p style="margin-top:0px;margin-bottom:0px;font-size:30px;font-weight:bold;font-family:黑体;">培训</p></div>
-			</div>
-			<div style="width:300px;float:right;margin-right:100px;">
-					<div  style="width:30px;float:left;padding-top:75px;color:#3c78d8;font-size:25px;"><span class="glyphicon glyphicon-chevron-left"></span></div>
-					<div  style="width:70px;float:left;padding-top:60px;"><div><canvas id="can2" width="50" height="50" ></div><div>企业动态</div></div>
-					<div  style="width:70px;float:left;padding-top:60px;"><div><canvas id="can3" width="50" height="50" ></div><div>培训介绍</div></div>
-					<div  style="width:70px;float:left;padding-top:60px;"><div><canvas id="can4" width="50" height="50" ></div><div>培训案例</div></div>
-					<div  style="width:30px;float:left;padding-top:75px;color:#3c78d8;font-size:25px;"><span class="glyphicon glyphicon-chevron-right"></span></div>
+<div class="container">
+		<jsp:include page="head.jsp" />
+		<div class="row">
+			<div class="col-md-1" style="width:50px;"></div>
+			<div class="col-md-2"><div style="position:absolute;"><canvas id="can1" width="150" height="150" ></div><div style="position:absolute;z-index:1;left:50px;top:40px;color:white;text-align:center;"><p style="margin-bottom:0px;font-size:16px;">ABOUTUS</p><p style="margin-top:0px;margin-bottom:0px;font-size:30px;font-weight:bold;">JOB</p><p style="margin-top:0px;margin-bottom:0px;font-size:30px;font-weight:bold;font-family:黑体;">培训</p></div></div>
+			<div class="col-md-5"></div>
+			<div class="col-md-4">
+				<div class="row">
+					<div class="col-md-1" sytle="width:50px;"></div>
+					<div class="col-md-1" style="padding-top:75px;color:#3c78d8;font-size:25px;"><span class="glyphicon glyphicon-chevron-left"></span></div>
+					<div class="col-md-3" style="padding-top:60px;padding-right:0px;width:90px;"><div><canvas id="can2" width="50" height="50" ></div><div>企业动态</div></div>
+					<div class="col-md-3" style="padding-top:60px;padding-right:0px;padding-left: 0px;width:75px;"><div><canvas id="can3" width="50" height="50" ></div><div>培训介绍</div></div>
+					<div class="col-md-3" style="padding-top:60px;padding-right:0px;padding-left: 0px;width:60px;"><div><canvas id="can4" width="50" height="50" ></div><div>培训案例</div></div>
+					<div class="col-md-1" style="padding-top:75px;color:#3c78d8;font-size:25px;padding-left: 0px;"><span class="glyphicon glyphicon-chevron-right"></span></div>
+				</div>
 			</div>
 			
 		</div>
-		<div class="row" style="margin-top:10px;clear:both;">
+		<div class="row" style="margin-top:40px;">
 		  <c:forEach items="${trainList}"  var="item" varStatus="status">
 		  <c:if test="${status.index<3 }">
 			<div class="col-md-4"><img src="${item.train_image}" width="350px" height="280px">
 			<div style="z-index:1;width:350px;height:100px;opacity:0.5;background:#1c4587;top:90px;position:absolute;filter:alpha(opacity=50);">
 					<div style="height:100%;line-height:100%;overflow:hidden;align:center;">
 						<h1 style="text-align:center;color:white;">${item.train_name}</h1>
+						<input type="hidden" value="${item.id}">
 					</div>
 			</div>
 			<div>${item.train_desc}</div>
@@ -118,10 +121,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div style="font-size:120px;font-weight:bolder;color:#7f7979;position:absolute;z-index:1;left:32%;">1</div>
 			<div class="col-md-4" style="border-right:2px solid #7f7979;padding-right:30px;">
-				<div style="font-size:30px;font-weight:bolder;font-family:黑体;"><a href="/TrainDetail?id=1">练习生</a></div>
+				<div style="font-size:30px;font-weight:bolder;font-family:黑体;"><a href="/TrainDetail?id=${trainid_lianxi}">练习生</a></div>
+						<c:forEach items="${lianxishengList}"  var="item">
+				<input type="hidden" value="${item.train_id}"/>
 				<div style="font-size:25px;font-weight:bolder;color:#7f7979;">TRAINEE</div>
 				<hr style="height:1px;border:none;border-top:3px solid #555555;width: 40%;margin-left: 0px;margin-top: 0px;margin-bottom:10px;" />
-				<c:forEach items="${lianxishengList}"  var="item">
 				<div class="row" style="margin-top:20px;">
 					<div class="col-md-6" style="padding-right:0px;"><img src="${item.train_img}" width="140px;" height="100px;"></div>
 					<div class="col-md-6" style="padding-left:0px;"><div style="font-size:18px;font-weight:bolder;">${item.title}</div>
@@ -145,5 +149,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<jsp:include page="foot.jsp" />
 </div>
+
 </body>
 </html>
