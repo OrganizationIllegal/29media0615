@@ -49,12 +49,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</style>
 </head>
 <body>
-
- <div class="container">
- <jsp:include page="head.jsp" />
- 	<div class="row" style="padding-top:10px">
+ <jsp:include page="headnew.jsp" />
+ <div style="width:1140px;margin:0 auto;">
+ 	<div style="padding-top:10px">
  	     <!--左侧视频播放start-->
- 		<div class="col-md-8 col-lg-8" >
+ 		<div style="width:760px;float:left;">
  				<div id="youkuplayer" style="width:795px;height:761px">
  				</div>
  				<!--要播放视频列表start-->
@@ -70,7 +69,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  		</div>
  		<!--左侧视频播放end-->
  		<!--右侧图片列表start-->
- 		<div class="col-md-4 col-lg-4" align="right" style="margin-left: -18px;padding-right:80px;">
+ 		<div align="right" style="margin-left: -18px;padding-right:80px;width:380px;float:left;">
  			<!--  <img alt="" src="images/img01.jpg"  width="250px" height="190px" style="border:1px solid grey">
  			<img alt="" src="images/img02.jpg"  width="250px" height="190px" style="border:1px solid grey">
  			<img alt="" src="images/img03.jpg"  width="250px" height="190px" style="border:1px solid grey">

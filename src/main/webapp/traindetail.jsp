@@ -54,10 +54,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    </script>
 </head>
 <body>
-<div class="container">
-		<jsp:include page="head.jsp" />
-		<div class="row" style="color:white;">
-		<div class="col-md-2" style="padding-right:0px;padding-top:50px;">
+		<jsp:include page="headnew.jsp" />
+		 <div style="width:1140px;margin:0 auto;">
+		<div  style="color:white;">
+		<div  style="padding-top:50px;width:200px;float:left;">
 		<div style="font-size:30px;font-weight:bolder;border-bottom:1px solid;font-family:黑体;width:125px;">艺能培训</div>
 		<div style="margin-left:50px;border-left:1px solid /* rgba(121, 200, 225, 1) */;">
 		<%-- <c:forEach var="item" items="${typeNameList}" varStatus="stat">
@@ -74,7 +74,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div style="padding-top:80px;font-size:30px;font-weight:bolder;font-family:黑体;filter:alpha(opacity=60);opacity:0.6;"><a href="Contactus.jsp">加入我们</a></div>
 		</div>		
 		</div>
-		<div class="col-md-10" style="padding-left:0px;">
+		<div style="width:940px;float:left;">
 		<div style=" /*border-left:1px solid rgba(121, 200, 225, 1) */;padding-top:20px;">
 		<div id="train1">
 		<%-- <div style="text-align:center;"><img src="/images/${data.img}"   height=310px; width=621px></div>
@@ -94,7 +94,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		</div>
 		</div>
+		<div style="clear:both;">
 		<jsp:include page="foot.jsp" />
+		</div>
 </div>
 </body>
 </html>
