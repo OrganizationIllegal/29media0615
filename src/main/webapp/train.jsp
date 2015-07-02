@@ -78,7 +78,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<jsp:include page="headnew.jsp" />
 		<div style="width:1140px;margin:0 auto;">
 		<div>
-			<div style="width:150px;float:left;margin-left:60px;">
+			<div style="width:150px;height:170px;float:left;margin-left:60px;">
 			<canvas id="can1" width="150" height="150" ></canvas>
 			<div style="position:relative;z-index:1;top:-115px;color:white;text-align:center;"><p style="margin-bottom:0px;font-size:16px;">ABOUTUS</p><p style="margin-top:0px;margin-bottom:0px;font-size:30px;font-weight:bold;">JOB</p><p style="margin-top:0px;margin-bottom:0px;font-size:30px;font-weight:bold;font-family:黑体;">培训</p></div>
 			</div>
@@ -91,16 +91,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			
 		</div>
-		<div class="row" style="margin-top:10px;clear:both;">
+		<div style="clear:both;">
 		  <c:forEach items="${trainList}"  var="item" varStatus="status">
 		  <c:if test="${status.index<3 }">
-			<div class="col-md-4"><img src="${item.train_image}" width="350px" height="280px">
-			<div style="z-index:1;width:350px;height:100px;opacity:0.5;background:#1c4587;top:90px;position:absolute;filter:alpha(opacity=50);">
+			<div style="width:380px;float:left;text-align:center;"><img src="${item.train_image}" width="350px" height="280px">
+			<div style="z-index:1;width:350px;height:100px;opacity:0.5;background:#1c4587;top:-190px;left:15px;position:relative;filter:alpha(opacity=50);">
 					<div style="height:100%;line-height:100%;overflow:hidden;align:center;">
 						<h1 style="text-align:center;color:white;">${item.train_name}</h1>
 					</div>
 			</div>
-			<div>${item.train_desc}</div>
+			<div style="-margin-top:-100px;">${item.train_desc}</div>
 		   </div>
 		   </c:if>
 		   </c:forEach>
