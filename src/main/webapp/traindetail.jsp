@@ -80,7 +80,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<%-- <div style="text-align:center;"><img src="/images/${data.img}"   height=310px; width=621px></div>
 		<div style="overflow-y:auto; width:910px; height:380px;margin-top:32px;color: black;">
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${data.detail } --%>
-		<div style="text-align:center;"><img src="/images/${data.img}"   height=310px; width=621px></div>
+		<div style="text-align:center;"><img src="/29images/${data.img}"   height=310px; width=621px></div>
 		<div style="overflow-y:auto; width:910px; height:380px;margin-top:32px;color: black;">
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${data.detail }
 		</div>

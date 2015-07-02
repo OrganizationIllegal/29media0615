@@ -85,7 +85,7 @@ public class ArtistInputController {
 			List<StarImage> imagelist=new ArrayList<StarImage>();
 			JSONObject obj = (JSONObject)artistimgArray.get(0);
 			StarImage starimg=(StarImage) JSONToObj(obj.toString(), StarImage.class);
-			String image="/images/artist/"+starimg.getImg();
+			String image=starimg.getImg();
 			int flag2=0;
 			for (int i=0;i<artistimgArray.size();i++){
 				 JSONObject object = (JSONObject)artistimgArray.get(i); //对于每个json对象
@@ -107,7 +107,7 @@ public class ArtistInputController {
 				 videolist.add(e);
 				 String video_id=e.getVideo_id();
 				 String video_link=e.getVideo_link();
-				 String video_pic=e.getVideo_link();
+				 String video_pic=e.getVideo_pic();
 				 flag3=artistInputDao.InsertArtistVideo(star_num, video_id, video_pic, video_link);		 
 			}
 			System.out.println(flag3);
@@ -191,7 +191,7 @@ public class ArtistInputController {
 					List<StarImage> imagelist=new ArrayList<StarImage>();
 					JSONObject obj = (JSONObject)artistimgArray.get(0);
 					StarImage starimg=(StarImage) JSONToObj(obj.toString(), StarImage.class);
-					String image="/images/artist/"+starimg.getImg();
+					String image=starimg.getImg();
 					int flag2=0;
 					for (int i=0;i<artistimgArray.size();i++){
 						 JSONObject object = (JSONObject)artistimgArray.get(i); //对于每个json对象
@@ -214,7 +214,7 @@ public class ArtistInputController {
 						 int id3=0;
 						 String video_id=e.getVideo_id();
 						 String video_link=e.getVideo_link();
-						 String video_pic=e.getVideo_link();
+						 String video_pic=e.getVideo_pic();
 						 if(e.getId()==0){
 								flag3=artistInputDao.InsertArtistVideo(star_num, video_id, video_pic, video_link);
 								System.out.println("add"+flag3);

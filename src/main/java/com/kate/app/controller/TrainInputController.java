@@ -81,7 +81,7 @@ public class TrainInputController {
 			List<TrainDetail> imagelist=new ArrayList<TrainDetail>();
 			JSONObject obj = (JSONObject)trainimgArray.get(0);
 			TrainDetail trainimg=(TrainDetail) JSONToObj(obj.toString(), TrainDetail.class);
-			String image="/images/train/"+trainimg.getTrain_img();
+			String image=trainimg.getTrain_img();
 			int flag2=0;
 			for (int i=0;i<trainimgArray.size();i++){
 				 JSONObject object = (JSONObject)trainimgArray.get(i); //对于每个json对象
@@ -165,7 +165,7 @@ public class TrainInputController {
 					List<TrainDetail> imagelist=new ArrayList<TrainDetail>();
 					JSONObject obj = (JSONObject)trainimgArray.get(0);
 					TrainDetail trainimg=(TrainDetail) JSONToObj(obj.toString(), TrainDetail.class);
-					String image="/images/train/"+trainimg.getTrain_img();
+					String image=trainimg.getTrain_img();
 					int flag2=0;
 					for (int i=0;i<trainimgArray.size();i++){
 						 JSONObject object = (JSONObject)trainimgArray.get(i); //对于每个json对象

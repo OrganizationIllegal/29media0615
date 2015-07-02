@@ -79,13 +79,13 @@ public class NewsInputController {
 		List<NewsImage> imagelist=new ArrayList<NewsImage>();
 		JSONObject obj = (JSONObject)newsimgArray.get(0);
 		NewsImage img=(NewsImage) JSONToObj(obj.toString(), NewsImage.class);
-		String image="/images/news/"+img.getNews_image();
+		String image=img.getNews_image();
 		int flag2=0;
 		for (int i=0;i<newsimgArray.size();i++){
 			 JSONObject object = (JSONObject)newsimgArray.get(i); //对于每个json对象
 			 NewsImage e = (NewsImage) JSONToObj(object.toString(), NewsImage.class);
 			 imagelist.add(e);
-			 String news_image="/images/news/"+e.getNews_image();
+			 String news_image=e.getNews_image();
 			 flag2=newsInputDao.InsertNewsImage(news_id, news_image);		 
 		}
 		//System.out.println("imagelist.length():"+imagelist.size());
@@ -148,13 +148,13 @@ public class NewsInputController {
 			List<NewsImage> imagelist=new ArrayList<NewsImage>();
 			JSONObject obj = (JSONObject)newsimgArray.get(0);
 			NewsImage img=(NewsImage) JSONToObj(obj.toString(), NewsImage.class);
-			String image="/images/news/"+img.getNews_image();
+			String image=img.getNews_image();
 			int flag2=0;
 			for (int i=0;i<newsimgArray.size();i++){
 				 JSONObject object = (JSONObject)newsimgArray.get(i); //对于每个json对象
 				 NewsImage e = (NewsImage) JSONToObj(object.toString(), NewsImage.class);
 				 imagelist.add(e);
-				 String news_image="/images/news/"+e.getNews_image();
+				 String news_image=e.getNews_image();
 				 flag2=newsInputDao.InsertNewsImage(news_id, news_image);		 
 			}
 					

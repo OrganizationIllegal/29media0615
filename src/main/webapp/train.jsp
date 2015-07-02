@@ -117,7 +117,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div style="font-size:20px;font-weight:bolder;font-family:黑体;">${item.title}</div>
 				<div>${item.detail}</div>
 				 </c:forEach>
-				 <div style="font-size:120px;font-weight:bolder;color:#7f7979;position:relative;z-index:1;left:98%;top:-420px;">1</div>
+				 <div style="font-size:120px;font-weight:bolder;color:#7f7979;position:relative;z-index:1;left:98%;top:-420px;width:50px;">1</div>
 			</div>
 			<div style="border-right:2px solid #7f7979;padding-right:30px;width:380px;float:left;padding-left:15px;">
 				<div style="font-size:30px;font-weight:bolder;font-family:黑体;"><a href="/TrainDetail?id=${trainid_lianxi}">练习生</a></div>
