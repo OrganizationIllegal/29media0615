@@ -75,6 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <!-- 绘制圆形 end -->
 </head>
 <body>
+
 		<jsp:include page="headnew.jsp" />
 		<div style="width:1140px;margin:0 auto;">
 		<div>
@@ -98,6 +99,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div style="z-index:1;width:350px;height:100px;opacity:0.5;background:#1c4587;top:-190px;left:15px;position:relative;filter:alpha(opacity=50);">
 					<div style="height:100%;line-height:100%;overflow:hidden;align:center;">
 						<h1 style="text-align:center;color:white;">${item.train_name}</h1>
+						<input type="hidden" value="${item.id}">
 					</div>
 			</div>
 			<div style="-margin-top:-100px;">${item.train_desc}</div>
@@ -118,10 +120,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div style="font-size:120px;font-weight:bolder;color:#7f7979;position:absolute;z-index:1;left:32%;">1</div>
 			<div class="col-md-4" style="border-right:2px solid #7f7979;padding-right:30px;">
-				<div style="font-size:30px;font-weight:bolder;font-family:黑体;"><a href="/TrainDetail?id=1">练习生</a></div>
+				<div style="font-size:30px;font-weight:bolder;font-family:黑体;"><a href="/TrainDetail?id=${trainid_lianxi}">练习生</a></div>
+						<c:forEach items="${lianxishengList}"  var="item">
+				<input type="hidden" value="${item.train_id}"/>
 				<div style="font-size:25px;font-weight:bolder;color:#7f7979;">TRAINEE</div>
 				<hr style="height:1px;border:none;border-top:3px solid #555555;width: 40%;margin-left: 0px;margin-top: 0px;margin-bottom:10px;" />
-				<c:forEach items="${lianxishengList}"  var="item">
 				<div class="row" style="margin-top:20px;">
 					<div class="col-md-6" style="padding-right:0px;"><img src="${item.train_img}" width="140px;" height="100px;"></div>
 					<div class="col-md-6" style="padding-left:0px;"><div style="font-size:18px;font-weight:bolder;">${item.title}</div>
@@ -145,5 +148,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<jsp:include page="foot.jsp" />
 </div>
+
 </body>
 </html>

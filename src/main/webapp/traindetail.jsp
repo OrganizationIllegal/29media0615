@@ -60,10 +60,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="col-md-2" style="padding-right:0px;padding-top:50px;">
 		<div style="font-size:30px;font-weight:bolder;border-bottom:1px solid;font-family:黑体;width:125px;">艺能培训</div>
 		<div style="margin-left:50px;border-left:1px solid /* rgba(121, 200, 225, 1) */;">
-		<c:forEach var="item" items="${typeNameList}" varStatus="stat">
+		<%-- <c:forEach var="item" items="${typeNameList}" varStatus="stat">
 			<div id="id1" style="padding-top:80px;font-size:30px;font-weight:bolder;font-family:黑体;filter:alpha(opacity=60);opacity:0.6;cursor:pointer;">
 			<a href="/TrainDetail?id=${stat.index+1}">${item}</a></div>
-		</c:forEach>
+		</c:forEach> --%>
+		 <c:forEach var="item" items="${lianxiList}" varStatus="stat">
+			<div id="id1" style="padding-top:80px;font-size:30px;font-weight:bolder;font-family:黑体;filter:alpha(opacity=60);opacity:0.6;cursor:pointer;">
+			<a href="/TrainDetail?id=${item.id}">${item.typename}</a></div>
+		</c:forEach> 
 		<!-- <div id="id2" style="padding-top:80px;font-size:30px;font-weight:bolder;font-family:黑体;filter:alpha(opacity=60);opacity:0.6;cursor:pointer;">艺术班</div>
 		<div id="id3" style="padding-top:80px;font-size:30px;font-weight:bolder;font-family:黑体;filter:alpha(opacity=60);opacity:0.6;cursor:pointer;">唱歌班</div>
 		<div id="id4" style="padding-top:80px;font-size:30px;font-weight:bolder;font-family:黑体;filter:alpha(opacity=60);opacity:0.6;cursor:pointer;">练习班</div> -->
@@ -73,6 +77,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="col-md-10" style="padding-left:0px;">
 		<div style=" /*border-left:1px solid rgba(121, 200, 225, 1) */;padding-top:20px;">
 		<div id="train1">
+		<%-- <div style="text-align:center;"><img src="/images/${data.img}"   height=310px; width=621px></div>
+		<div style="overflow-y:auto; width:910px; height:380px;margin-top:32px;color: black;">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${data.detail } --%>
 		<div style="text-align:center;"><img src="/images/${data.img}"   height=310px; width=621px></div>
 		<div style="overflow-y:auto; width:910px; height:380px;margin-top:32px;color: black;">
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${data.detail }

@@ -65,6 +65,56 @@ public class TrainDAO extends BaseDao{
 		return list;
         
 	}
+	public List<LianXi> findAllLianXiByTrainId(int train_id){
+		List<LianXi> list = new ArrayList<LianXi>();
+		try{
+			
+			String sql = " select * from lianxi where train_id="+train_id;
+	        Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			while(rs.next()){					
+				LianXi data = new LianXi();
+				data.setId(rs.getInt("id"));
+				data.setDetail(rs.getString("detail"));
+				data.setImg(rs.getString("img"));
+				data.setTrain_id(rs.getInt("train_id"));
+				data.setTypename(rs.getString("typename"));
+				list.add(data);
+			}
+			
+		}catch (Exception e) {
+            
+        }
+		
+		return list;
+        
+	}
+	public List<LianXi> findAllLianXiById(int id){
+		List<LianXi> list = new ArrayList<LianXi>();
+		try{
+			
+			String sql = " select * from lianxi where id="+id;
+	        Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			while(rs.next()){					
+				LianXi data = new LianXi();
+				data.setId(rs.getInt("id"));
+				data.setDetail(rs.getString("detail"));
+				data.setImg(rs.getString("img"));
+				data.setTrain_id(rs.getInt("train_id"));
+				data.setTypename(rs.getString("typename"));
+				list.add(data);
+			}
+			
+		}catch (Exception e) {
+            
+        }
+		
+		return list;
+        
+	}
 	
 	public LianXi findLianXiById(int train_id){
 		LianXi data = new LianXi();
@@ -73,6 +123,29 @@ public class TrainDAO extends BaseDao{
 			String sql = " select * from lianxi where train_id=?";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, train_id);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()){					
+				data.setId(rs.getInt("id"));
+				data.setDetail(rs.getString("detail"));
+				data.setImg(rs.getString("img"));
+				data.setTrain_id(rs.getInt("train_id"));
+				data.setTypename(rs.getString("typename"));
+			}
+			
+		}catch (Exception e) {
+            
+        }
+		
+		return data;
+        
+	}
+	public LianXi findnewsById(int id){
+		LianXi data = new LianXi();
+		try{
+			
+			String sql = " select * from lianxi where id=?";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, id);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()){					
 				data.setId(rs.getInt("id"));
