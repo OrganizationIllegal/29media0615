@@ -25,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 ctx.drawImage(img, 0, 0, 150, 150);
             }
 
-            img.src = "${videoimg1}";
+            img.src = "/29images/${videoimg1}";
      
     ctx.beginPath(); 
     //ctx1.fillStyle="#CDC9C9";  
@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 ctx.drawImage(img, 0, 0, 80, 80);
             }
 
-            img.src = "${videoimg2}";
+            img.src = "/29images/${videoimg2}";
      
     ctx.beginPath(); 
     //ctx1.fillStyle="#CDC9C9";  
@@ -59,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 ctx.drawImage(img, 0, 0, 80, 80);
             }
 
-            img.src ="${videoimg3}";
+            img.src ="/29images/${videoimg3}";
      
     ctx.beginPath(); 
     //ctx1.fillStyle="#CDC9C9";  
@@ -76,7 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 ctx.drawImage(img, 0, 0, 150, 150);
             }
 
-            img.src = "${videoimg4}";
+            img.src = "/29images/${videoimg4}";
      
     ctx.beginPath(); 
     //ctx1.fillStyle="#CDC9C9";  
@@ -112,19 +112,19 @@ function pop4(){
    <!-- 轮播（Carousel）项目 -->
    <div class="carousel-inner">
       <div class="item active">
-         <img src="${toplunbo1}" alt="First slide" style="width:1400px;height:370px;">
+         <img src="/29images/${toplunbo1}" alt="First slide" style="width:1400px;height:370px;">
          <div class="carousel-caption"></div>
       </div>
       <div class="item">
-         <img src="${toplunbo2}" alt="Second slide" style="width:1400px;height:370px;">
+         <img src="/29images/${toplunbo2}" alt="Second slide" style="width:1400px;height:370px;">
          <div class="carousel-caption"></div>
       </div>
       <div class="item">
-         <img src="${toplunbo3}" alt="Third slide" style="width:1400px;height:370px;">
+         <img src="/29images/${toplunbo3}" alt="Third slide" style="width:1400px;height:370px;">
          <div class="carousel-caption"></div>
       </div>
        <div class="item">
-         <img src="${toplunbo4}" alt="Forth slide" style="width:1400px;height:370px;">
+         <img src="/29images/${toplunbo4}" alt="Forth slide" style="width:1400px;height:370px;">
          <div class="carousel-caption"></div>
       </div>
       <!-- 轮播（Carousel）导航 -->
@@ -145,7 +145,7 @@ function pop4(){
 				<div class="topnews" style="width:568px;border:0px;">
 					<div class="topnewspic" id="hotsearchlist" style="filter:progid:DXImageTransform.Microsoft.GradientWipe(GradientSize=0.25,wipestyle=0,motion=forward)">
 					<c:forEach var="item" items="${NewsList}" varStatus="stat">
-						<div id="switch_${stat.index }"><a href="/News?newsId=${item.news_id}" target="_blank"><img width="314" height="143" alt="${item.title }" src="${item.image }" /></a></div>
+						<div id="switch_${stat.index }"><a href="/News?newsId=${item.news_id}" target="_blank"><img width="314" height="143" alt="${item.title }" src="/29images/${item.image }" /></a></div>
 					</c:forEach>
 						
 						
@@ -185,15 +185,15 @@ function pop4(){
     <!-- 轮播（Carousel）项目 -->
    <div class="carousel-inner">
       <div class="item active">
-         <img src="${trainlunbo1}" alt="First slide" style="width:570px;height:260px;">
+         <img src="/29images/${trainlunbo1}" alt="First slide" style="width:570px;height:260px;">
          <div class="carousel-caption"></div>
       </div>
       <div class="item">
-         <img src="${trainlunbo2}" alt="Second slide" style="width:570px;height:260px;">
+         <img src="/29images/${trainlunbo2}" alt="Second slide" style="width:570px;height:260px;">
          <div class="carousel-caption"></div>
       </div>
       <div class="item">
-         <img src="${trainlunbo3}" alt="Third slide" style="width:570px;height:260px;">
+         <img src="/29images/${trainlunbo3}" alt="Third slide" style="width:570px;height:260px;">
          <div class="carousel-caption"></div>
       </div> 
      </div>
@@ -209,10 +209,10 @@ function pop4(){
 		<!-- lize end -->
 		<div>
 			<div style="widht:570px;float:left;">
-					<div style="float:left;width:110px;height:220px;"><img src="${starimg1}" style="width:110px;height:110px;" title="新星新星"><img src="${starimg2}" style="width:110px;height:110px;" title="新星新星"></div>
-					<div style="float:left;width:240px;height:220px;"><img src="${starimg3}" style="width:240px;height:220px;" title="新星新星"></div>
-					<div style="float:left;width:110px;height:220px;"><img src="${starimg4}" style="width:110px;height:110px;" title="新星新星"><img src="${starimg5}" style="width:110px;height:110px;" title="新星新星"></div>
-					<div style="float:left;width:110px;height:220px;"><img src="${starimg6}" style="width:110px;height:110px;" title="新星新星"><img src="${starimg7}" style="width:110px;height:110px;" title="新星新星"></div>
+					<div style="float:left;width:110px;height:220px;"><img src="/29images/${starimg1}" style="width:110px;height:110px;" title="新星新星"><img src="/29images/${starimg2}" style="width:110px;height:110px;" title="新星新星"></div>
+					<div style="float:left;width:240px;height:220px;"><img src="/29images/${starimg3}" style="width:240px;height:220px;" title="新星新星"></div>
+					<div style="float:left;width:110px;height:220px;"><img src="/29images/${starimg4}" style="width:110px;height:110px;" title="新星新星"><img src="/29images/${starimg5}" style="width:110px;height:110px;" title="新星新星"></div>
+					<div style="float:left;width:110px;height:220px;"><img src="/29images/${starimg6}" style="width:110px;height:110px;" title="新星新星"><img src="/29images/${starimg7}" style="width:110px;height:110px;" title="新星新星"></div>
 			</div>
 			<div style="widht:570px;float:right;margin-right:40px;">
 					<div  style="margin-top:15px;float:left;"><canvas id="can1" width="150" height="150" onclick="pop1()"></canvas></div>
@@ -237,9 +237,9 @@ function pop4(){
 		</div>
 		<div style="margin-top:30px;">
 			<div style="width:200px;margin:0 auto;">
-					<div style="width:50px;height:50px;float:left;margin-left:25px;"><img alt="logo"  src="/images/pic2.PNG"></div>
-					<div style="width:50px;height:50px;float:left;"><img alt="logo"  src="/images/pic3.PNG"></div>
-					<div style="width:50px;height:50px;float:right;margin-right:25px;"><img alt="logo"  src="/images/pic4.PNG"></div>
+					<div style="width:50px;height:50px;float:left;margin-left:25px;"><img alt="logo"  src="/29images/pic2.PNG"></div>
+					<div style="width:50px;height:50px;float:left;"><img alt="logo"  src="/29images/pic3.PNG"></div>
+					<div style="width:50px;height:50px;float:right;margin-right:25px;"><img alt="logo"  src="/29images/pic4.PNG"></div>
 			</div>
 		</div>
 		<jsp:include page="foot.jsp" />
@@ -259,7 +259,7 @@ function pop4(){
             </div>
          </div>
          <div class="modal-body">
-            <img src="${videoimg1}" width="500" height="300" id="image"/>
+            <img src="/29images/${videoimg1}" width="500" height="300" id="image"/>
          </div>
    
       </div>      
@@ -279,7 +279,7 @@ function pop4(){
             </div>
          </div>
          <div class="modal-body">
-            <img src="${videoimg2}" width="500" height="300" id="image"/>
+            <img src="/29images/${videoimg2}" width="500" height="300" id="image"/>
          </div>
    
       </div>      
@@ -299,7 +299,7 @@ function pop4(){
             </div>
          </div>
          <div class="modal-body">
-            <img src="${videoimg3}" width="500" height="300" id="image"/>
+            <img src="/29images/${videoimg3}" width="500" height="300" id="image"/>
          </div>
    
       </div>      
@@ -319,7 +319,7 @@ function pop4(){
             </div>
          </div>
          <div class="modal-body">
-            <img src="${videoimg4}" width="500" height="300" id="image"/>
+            <img src="/29images/${videoimg4}" width="500" height="300" id="image"/>
          </div>
    
       </div>      

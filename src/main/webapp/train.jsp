@@ -95,7 +95,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div style="clear:both;">
 		  <c:forEach items="${trainList}"  var="item" varStatus="status">
 		  <c:if test="${status.index<3 }">
-			<div style="width:380px;float:left;text-align:center;"><img src="${item.train_image}" width="350px" height="280px">
+			<div style="width:380px;float:left;text-align:center;"><img src="/29images/${item.train_image}" width="350px" height="280px">
 			<div style="z-index:1;width:350px;height:100px;opacity:0.5;background:#1c4587;top:-190px;left:15px;position:relative;filter:alpha(opacity=50);">
 					<div style="height:100%;line-height:100%;overflow:hidden;align:center;">
 						<h1 style="text-align:center;color:white;">${item.train_name}</h1>
@@ -126,7 +126,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div style="font-size:25px;font-weight:bolder;color:#7f7979;">TRAINEE</div>
 				<hr style="height:1px;border:none;border-top:3px solid #555555;width: 40%;margin-left: 0px;margin-top: 0px;margin-bottom:10px;" />
 				<div class="row" style="margin-top:20px;">
-					<div class="col-md-6" style="padding-right:0px;"><img src="${item.train_img}" width="140px;" height="100px;"></div>
+					<div class="col-md-6" style="padding-right:0px;"><img src="/29images/${item.train_img}" width="140px;" height="100px;"></div>
 					<div class="col-md-6" style="padding-left:0px;"><div style="font-size:18px;font-weight:bolder;">${item.title}</div>
 					<div>${item.detail}</div>
 				</div>
@@ -139,7 +139,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div style="font-size:25px;font-weight:bolder;color:#7f7979;">INTERNATIONAL&nbsp;CLASS</div>
 				<hr style="height:1px;border:none;border-top:3px solid #555555;width: 40%;margin-left: 0px;margin-top: 0px;margin-bottom:10px;" />
 				<c:forEach items="${guojibanList}"  var="item">
-				<div><img src="${item.train_img}" width="320px" height="200px"></div>
+				<div><img src="/29images/${item.train_img}" width="320px" height="200px"></div>
 				<div>${item.detail}</div>
 				</c:forEach>
 			</div>

@@ -63,7 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  					<img alt="" src="images/img02.jpg"   height="170px" style="border:1px solid grey" class="yuanjiao" >
  					<img alt="" src="images/img03.jpg"   height="170px" style="border:1px solid grey" class="yuanjiao"> -->
  					 <c:forEach var="item" items="${starVedioList}" varStatus="stat">
- 					 		<img alt="" src="${item.video_pic}"   height="170px" style="border:1px solid grey" class="yuanjiao" >
+ 					 		<img alt="" src="/29images/${item.video_pic}"   height="170px" style="border:1px solid grey" class="yuanjiao" >
  					 </c:forEach>
  				</div>
  				<!--要播放视频列表end-->
@@ -77,7 +77,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  			<img alt="" src="images/img04.jpg"  width="250px" height="190px" style="border:1px solid grey">
  			<img alt="" src="images/img05.jpg"  width="250px" height="190px" style="border:1px solid grey"> -->
  			 <c:forEach var="item" items="${starlist}" varStatus="stat">
- 			   <a href="/VideoList?starNum=${item.star_num}"><img alt="" src="${item.star_img}" style="border:1px solid grey; width:240px;height:170px;"/>
+ 			   <a href="/VideoList?starNum=${item.star_num}"><img alt="" src="/29images/${item.star_img}" style="border:1px solid grey; width:240px;height:170px;"/>
  			   </a>
  			</c:forEach> 
  		</div>

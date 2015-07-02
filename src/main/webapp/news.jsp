@@ -70,13 +70,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    		<c:choose>
    			<c:when test="${stat.index==0 }">
 	   			 <div class="item active">
-			         <img src="${item.news_image }" alt="First slide" style="width:800px;height:400px;">
+			         <img src="/29images/${item.news_image }" alt="First slide" style="width:800px;height:400px;">
 			         <div class="carousel-caption"></div>
       			 </div>
    			</c:when>
    			<c:otherwise>
    				<div class="item">
-			         <img src="${item.news_image }" alt="First slide" style="width:800px;height:400px;">
+			         <img src="/29images/${item.news_image }" alt="First slide" style="width:800px;height:400px;">
 			         <div class="carousel-caption"></div>
       			 </div>
    			</c:otherwise>
