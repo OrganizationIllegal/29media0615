@@ -123,6 +123,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div style="font-size:30px;font-weight:bolder;font-family:黑体;"><a href="/TrainDetail?id=${trainid_lianxi}">练习生</a></div>
 				<div style="font-size:25px;font-weight:bolder;color:#7f7979;">TRAINEE</div>
 				<hr style="height:1px;border:none;border-top:3px solid #555555;width: 40%;margin-left: 0px;margin-top: 0px;margin-bottom:10px;" />
+
 				<c:forEach items="${lianxishengList}"  var="item">
 				<input type="hidden" value="${item.train_id}"/>
 				<div style="padding-top:20px;clear:both;">

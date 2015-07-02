@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div style="margin-top:20px;">
 		<div style="width:860px;height:900px;padding-left:30px;float:left;">
 		<div id="artist1">
-		<div style="text-align:center;"><img alt="" src="${star1.star_img}" style="width:600px;height:400px;"></div>
+		<div style="text-align:center;"><img alt="" src="/29images/${star1.star_img}" style="width:600px;height:400px;"></div>
 		<div style="margin-top:30px;width:600px;margin-left:50px;">
 		            <c:if test="${not empty star1.chinese_name}">
  						<div style="margin-bottom:8px;">
@@ -237,7 +237,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<c:forEach var="item" items="${list}" varStatus="stat">
 		
 		<div id="${stat.index }" style="margin-bottom:10px;">
-			<a href="/Artist?starNum=${stat.index+1}"><img alt="" src="${item.star_img}" style="width:240px;height:170px;cursor:pointer;">
+			<a href="/Artist?starNum=${stat.index+1}"><img alt="" src="/29images/${item.star_img}" style="width:240px;height:170px;cursor:pointer;">
 			</a>
 		</div>
 		<!-- <div id="id2" style="margin-bottom:10px;"><a href="/Artist?starNum=2"><img alt="" src="/images/artist/dyn1.png" style="width:240px;height:170px;cursor:pointer;"></a></div>
