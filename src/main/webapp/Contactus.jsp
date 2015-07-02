@@ -26,11 +26,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </style>
 </head>
 <body>
-
- <div class="container" >
- <jsp:include page="head.jsp" />
-
-  
+ <jsp:include page="headnew.jsp" />
+ <div style="width:1140px;margin:0 auto;height:700px;">
   <div style="/* background-color: rgb(17, 164, 231); */width: 1140px;height:700px;">
   <div style="text-align:center;margin:27px;padding-top:29px;"><I style="color:rgb(170, 237, 241);font-family:微软雅黑;font-size:29px;">加入我们</I>
   <I style="font-family:微软雅黑;font-size:29px;">Join Us</I> </div>

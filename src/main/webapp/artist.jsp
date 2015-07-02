@@ -25,223 +25,215 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    </script> -->
 </head>
 <body>
-<div class="container">
-		<jsp:include page="head.jsp" />
-		<div class="row" style="margin-top:20px;">
-		<div class="col-md-9" style="padding-left:32px;">
-		<div style="width:800px; height:890px;">
+		<jsp:include page="headnew.jsp" />
+		<div style="width:1140px;margin:0 auto;">
+		<div style="margin-top:20px;">
+		<div style="width:860px;height:900px;padding-left:30px;float:left;">
 		<div id="artist1">
 		<div style="text-align:center;"><img alt="" src="${star1.star_img}" style="width:600px;height:400px;"></div>
-		<div style="margin-top:30px;">
+		<div style="margin-top:30px;width:600px;margin-left:50px;">
 		            <c:if test="${not empty star1.chinese_name}">
- 						<div class="row">
- 						    <div class="col-md-2"></div>
-						    <label class="col-md-2 control-label">姓名：</label>
-						    <div class="col-md-8">
+ 						<div style="margin-bottom:8px;">
+						    <label class="control-label" style="width:100px;float:left;margin-left:100px;">姓名：</label>
+						    <div style="width:600px;">
 						      ${star1.chinese_name}
 						    </div>
 						</div>
 					</c:if>
  					
 					<c:if test="${not empty star1.bieming}">
-						<div class="row" >
-						    <div class="col-md-2"></div>
-						    <label class="col-md-2 control-label">别名:</label>
-						    <div class="col-md-8">
+						<div style="margin-bottom:8px;">
+						    <label class="control-label" style="width:100px;float:left;margin-left:100px;clear:both;">别名:</label>
+						    <div   style="width:600px;">
 						      ${star1.bieming}
 						    </div>
 						</div>
 					</c:if>
 					
 					<c:if test="${not empty star1.nation}">
-						<div class="row">
-						    <div class="col-md-2"></div>
-						    <label class="col-md-2 control-label">民族：</label>
-						    <div class="col-md-8">
+						<div style="margin-bottom:8px;">
+						   
+						    <label class=" control-label" style="width:100px;float:left;margin-left:100px;clear:both;">民族：</label>
+						    <div style="width:600px;">
 						      ${star1.nation}
 						    </div>
 						</div>
 					</c:if>
 					
 					<c:if test="${not empty star1.constellation}">
-						<div class="row">
-						<div class="col-md-2"></div>
-					    <label class="col-md-2 control-label">星座：</label>
-					    <div class="col-md-8">
+						<div style="margin-bottom:8px;">
+						
+					    <label class=" control-label" style="width:100px;float:left;margin-left:100px;clear:both;">星座：</label>
+					    <div style="width:600px;">
 					      ${ star1.constellation}
 					    </div>
 					</div>
 					</c:if>
 					
 					<c:if test="${not empty star1.bloodtype}">
-						<div class="row" >
-						<div class="col-md-2"></div>
-					    <label class="col-md-2 control-label">血型：</label>
-					    <div class="col-md-8">
+						<div style="margin-bottom:8px;" >
+						
+					    <label class=" control-label" style="width:100px;float:left;margin-left:100px;clear:both;">血型：</label>
+					    <div style="width:600px;">
 					     ${star1.bloodtype}
 					    </div>
 					</div>
 					</c:if>
 					
 					<c:if test="${not empty star1.height}">
-						<div class="row" >
-						<div class="col-md-2"></div>
-					    <label class="col-md-2 control-label">身高：</label>
-					    <div class="col-md-8">
+						<div style="margin-bottom:8px;" >
+						
+					    <label class=" control-label" style="width:100px;float:left;margin-left:100px;clear:both;">身高：</label>
+					    <div style="width:600px;">
 					      ${ star1.height}
 					    </div>
 					</div>
 					</c:if>
 					
 					<c:if test="${not empty star1.weight}">
-						<div class="row" >
-						<div class="col-md-2"></div>
-					    <label class="col-md-2 control-label">体重：</label>
-					   <div class="col-md-8">
+						<div style="margin-bottom:8px;" >
+						
+					    <label class=" control-label" style="width:100px;float:left;margin-left:100px;clear:both;">体重：</label>
+					   <div style="width:600px;">
 					      ${ star1.weight}
 					    </div>
 					</div>
 					</c:if>
 					
 					<c:if test="${not empty star1.birthday}">
-						<div class="row">
-						<div class="col-md-2"></div>
-					    <label class="col-md-2 control-label">生日：</label>
-					     <div class="col-md-8">
+						<div style="margin-bottom:8px;">
+						
+					    <label class=" control-label" style="width:100px;float:left;margin-left:100px;clear:both;">生日：</label>
+					     <div style="width:600px;">
 					      ${ star1.birthday}
 					    </div>
 					</div>
 					</c:if>
 					
 					<c:if test="${not empty  star1.birthplace}">
-						<div class="row">
-						<div class="col-md-2"></div>
-					    <label class="col-md-2 control-label">出生地：</label>
-					     <div class="col-md-8">
+						<div style="margin-bottom:8px;">
+						
+					    <label class=" control-label" style="width:100px;float:left;margin-left:100px;clear:both;">出生地：</label>
+					     <div style="width:600px;">
 					      ${ star1.birthplace}
 					    </div>
 					</div>
 					</c:if>
 					
 					<c:if test="${not empty star1.occupation}">
-						<div class="row">
-						<div class="col-md-2"></div>
-					    <label class="col-md-2 control-label">职业：</label>
-					     <div class="col-md-8">
+						<div style="margin-bottom:8px;">
+					
+					    <label class=" control-label" style="width:100px;float:left;margin-left:100px;clear:both;">职业：</label>
+					     <div style="width:600px;">
 					      ${ star1.occupation}
 					    </div>
 					</div>
 					</c:if>
 					
 					<c:if test="${not empty star1.brokerfirm}">
-						<div class="row">
-						<div class="col-md-2"></div>
-					    <label class="col-md-2 control-label">经纪公司：</label>
-					    <div class="col-md-8">
+						<div style="margin-bottom:8px;">
+						
+					    <label class=" control-label" style="width:100px;float:left;margin-left:100px;clear:both;">经纪公司：</label>
+					    <div style="width:600px;">
 					       ${ star1.brokerfirm}
 					    </div>
 					</div>
 					</c:if>
 					
 					<c:if test="${not empty star1.animal}">
-						<div class="row">
-						<div class="col-md-2"></div>
-					    <label class="col-md-2 control-label">属相：</label>
-					    <div class="col-md-8">
+						<div style="margin-bottom:8px;">
+						
+					    <label class=" control-label" style="width:100px;float:left;margin-left:100px;clear:both;">属相：</label>
+					    <div style="width:600px;">
 					      ${ star1.animal}
 					    </div>
 					</div>
 					</c:if>
 					
 					<c:if test="${not empty star1.representativeworks}">
-						<div class="row">
-					    <div class="col-md-2"></div>
-					    <label class="col-md-2 control-label">代表作品：</label>
-					    <div class="col-md-8">
+						<div style="margin-bottom:8px;">
+					    
+					    <label class=" control-label" style="width:100px;float:left;margin-left:100px;clear:both;">代表作品：</label>
+					    <div style="width:600px;">
 					      ${ star1.representativeworks}
 					    </div>
 					</div>
 					</c:if>
 					
 					<c:if test="${not empty star1.residence}">
-						<div class="row">
-					    <div class="col-md-2"></div>
-					    <label class="col-md-2 control-label">现居地：</label>
-					    <div class="col-md-8">
+						<div style="margin-bottom:8px;">
+					  
+					    <label class=" control-label" style="width:100px;float:left;margin-left:100px;clear:both;">现居地：</label>
+					    <div style="width:600px;">
 					      ${ star1.residence}
 					    </div>
 					</div>
 					</c:if>
 					
 					<c:if test="${not empty star1.gratuateunivercity}">
-						<div class="row">
-					    <div class="col-md-2"></div>
-					    <label class="col-md-2 control-label">毕业院校：</label>
-					    <div class="col-md-8">
+						<div style="margin-bottom:8px;">
+					    
+					    <label class=" control-label" style="width:100px;float:left;margin-left:100px;clear:both;">毕业院校：</label>
+					    <div style="width:600px;">
 					      ${ star1.gratuateunivercity}
 					    </div>
 					</div>
 					</c:if>
 					
 					<c:if test="${not empty star1.achivements}">
-						<div class="row">
-					    <div class="col-md-2"></div>
-					    <label class="col-md-2 control-label">成就：</label>
-					    <div class="col-md-8">
+						<div style="margin-bottom:8px;">
+					   
+					    <label class=" control-label" style="width:100px;float:left;margin-left:100px;clear:both;">成就：</label>
+					    <div style="width:600px;">
 					      ${ star1.achivements}
 					    </div>
 					</div>
 					</c:if>
 					
 					<c:if test="${not empty star1.nationality}">
-						<div class="row">
-					    <div class="col-md-2"></div>
-					    <label class="col-md-2 control-label">国籍：</label>
-					    <div class="col-md-8">
+						<div style="margin-bottom:8px;">
+					  
+					    <label class=" control-label" style="width:100px;float:left;margin-left:100px;clear:both;">国籍：</label>
+					    <div style="width:600px;">
 					      ${ star1.nationality}
 					    </div>
 					</div>
 					</c:if>
 					
 					<c:if test="${not empty star1.sex}">
-						<div class="row">
-					    <div class="col-md-2"></div>
-					    <label class="col-md-2 control-label">性别：</label>
-					    <div class="col-md-8">
+						<div style="margin-bottom:8px;">
+					 
+					    <label class=" control-label" style="width:100px;float:left;margin-left:100px;clear:both;">性别：</label>
+					    <div style="width:600px;">
 					      ${ star1.sex}
 					    </div>
 					</div>
 					</c:if>
 					
 					<c:if test="${not empty star1.specialty}">
-						<div class="row">
-						   <div class="col-md-2"></div>
-					    <label class="col-md-2 control-label">特长：</label>
-					    <div class="col-md-8">
+						<div style="margin-bottom:8px;">
+						  
+					    <label class=" control-label" style="width:100px;float:left;margin-left:100px;clear:both;">特长：</label>
+					    <div style="width:600px;">
 						      ${ star1.specialty}
 						    </div>
 						</div>
 					</c:if>
 					<c:if test="${not empty star1.musicalstyle}">
-					    <div class="row">
-						    <div class="col-md-2"></div>
-					    <label class="col-md-2 control-label">音乐风格：</label>
-					    <div class="col-md-8">
+					    <div style="margin-bottom:8px;">
+						   
+					    <label class=" control-label" style="width:100px;float:left;margin-left:100px;clear:both;">音乐风格：</label>
+					    <div style="width:600px;">
 						      ${ star1.musicalstyle}
 						    </div>
 						</div>
 					</c:if>
 		</div>
-		</div>
-		<!-- <div id="artist2" style="display:none;">
-		<div style="text-align:center;"><img alt="" src="/images/artist/big1.PNG" style="width:700px;height:550px;"></div>
-		<div style="text-align:center;margin-top:30px;"><img alt="" src="/images/artist/jianjie1.PNG"></div>
-		</div> -->
 		</div>	
 		</div>
 		
 		<c:if test="${!empty list}">
-		<div class="col-md-3" style="text-align:left;padding-left:0px;margin-left:-45px;">
+		<div  style="float:left;width:280px;">
 		<c:forEach var="item" items="${list}" varStatus="stat">
 		
 		<div id="${stat.index }" style="margin-bottom:10px;">

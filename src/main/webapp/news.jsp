@@ -38,10 +38,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    </script> -->
 </head>
 <body>
-<div class="container">
-		<jsp:include page="head.jsp" />
-		<div class="row" style="margin-top:50px;">
-		<div class="col-md-3" style="padding-right:0px;">
+<jsp:include page="headnew.jsp" />
+<div style="width:1140px;margin:0 auto;">
+		<div style="margin-top:50px;">
+		<div style="width:280px;float:left;">
 		<div style="text-align:center;font-size:20px;font-weight:bolder;padding-bottom:20px;border-bottom:1px solid;color:white;">NEWS TREND</div>
 		<!-- 新闻目录 -->
 		<c:forEach var="item" items="${trendList }" varStatus="stat">
@@ -51,7 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 		
 		</div>
-		<div class="col-md-9" style="padding-left:0px;">
+		<div style="width:860px;float:left;">
 		<div id="news1" style="border-left:1px solid;">
 		<div style="text-align:center;font-size:20px;font-weight:bolder;color:white;">${newsInfo.title}</div>
 		<div style="text-align:right;-filter:alpha(opacity=60);-opacity:0.6;border-bottom:1px solid;color:white;">${newsInfo.time}</div>

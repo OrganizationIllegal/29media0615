@@ -99,9 +99,8 @@ function pop4(){
    </script>   
 </head>
 <body>
-<div class="container">
-		<jsp:include page="head.jsp" />
-		<div style="width:1139px;">
+<jsp:include page="headnew.jsp" />
+<div style="width:1140px;margin:0 auto;">
 		<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="5000">
    <!-- 轮播（Carousel）指标 -->
    <ol class="carousel-indicators">
@@ -113,19 +112,19 @@ function pop4(){
    <!-- 轮播（Carousel）项目 -->
    <div class="carousel-inner">
       <div class="item active">
-         <img src="${toplunbo1}" alt="First slide" width="1200px">
+         <img src="${toplunbo1}" alt="First slide" style="width:1400px;height:370px;">
          <div class="carousel-caption"></div>
       </div>
       <div class="item">
-         <img src="${toplunbo2}" alt="Second slide" width="1200px">
+         <img src="${toplunbo2}" alt="Second slide" style="width:1400px;height:370px;">
          <div class="carousel-caption"></div>
       </div>
       <div class="item">
-         <img src="${toplunbo3}" alt="Third slide" width="1200px">
+         <img src="${toplunbo3}" alt="Third slide" style="width:1400px;height:370px;">
          <div class="carousel-caption"></div>
       </div>
        <div class="item">
-         <img src="${toplunbo4}" alt="Forth slide" width="1200px">
+         <img src="${toplunbo4}" alt="Forth slide" style="width:1400px;height:370px;">
          <div class="carousel-caption"></div>
       </div>
       <!-- 轮播（Carousel）导航 -->
@@ -136,12 +135,11 @@ function pop4(){
 
    </div>
    </div>
-   </div>
 		<!-- header end -->
 		<!-- <div style="height:500px;"></div> -->
 		<!-- lize start -->
-		<div class="row" style="padding-right:4px;">
-		<div class="col-md-6">
+		<div>
+		<div style="width:570px;float:left;">
 			<div class="topnewsbox">
 
 				<div class="topnews" style="width:568px;border:0px;">
@@ -174,8 +172,8 @@ function pop4(){
 				</div>
 		</div>
 	</div>
-	<div class="col-md-6">
-			<div class="row" style="height:262px;">
+	<div style="width:570px;float:right;">
+			<div style="height:262px;">
 				<!-- <img src="/images/star.jpg" width="98%" height="98%"> -->
 				<div id="myCarousel2" class="carousel slide" data-ride="carousel" data-interval="5000">
    <!-- 轮播（Carousel）指标 -->
@@ -200,7 +198,7 @@ function pop4(){
       </div> 
      </div>
      </div> 
-				<div style="z-index:100;width:60%;height:40%;opacity:0.5;background:#FFE1FF;top:30%;left:20%;position:absolute;filter:alpha(opacity=50);">
+				<div style="z-index:1;width:570px;height:90px;opacity:0.5;background:#FFE1FF;top:-180px;position:relative;filter:alpha(opacity=50);">
 					<div style="height:100%;line-height:100%;overflow:hidden;align:center;">
 						<h1 style="text-align:center"><a href="/Train">PeiXun 培训</a></h1>
 					</div>
@@ -209,56 +207,40 @@ function pop4(){
 	</div>
 </div>
 		<!-- lize end -->
-		<div class="row" style="margin-bottom:60px;">
-			<div class="col-md-6">
-				<div class="row">
-					<!-- <div class="col-md-1" style="width:30px;"></div> -->
-					<div class="col-md-2" ><img src="${starimg1}" style="width:110px;height:110px;" title="新星新星"><img src="${starimg2}" style="width:110px;height:110px;" title="新星新星"></div>
-					<div class="col-md-5" style="width:263px;"><img src="${starimg3}" style="width:250px;height:220px;" title="新星新星"></div>
-					<div class="col-md-2" style="padding-left:0px;"><img src="${starimg4}" style="width:110px;height:110px;" title="新星新星"><img src="${starimg5}" style="width:110px;height:110px;" title="新星新星"></div>
-					<div class="col-md-2"><img src="${starimg6}" style="width:110px;height:110px;" title="新星新星"><img src="${starimg7}" style="width:110px;height:110px;" title="新星新星"></div>
-					<div class="col-md-1"></div>
-				</div>
+		<div>
+			<div style="widht:570px;float:left;">
+					<div style="float:left;width:110px;height:220px;"><img src="${starimg1}" style="width:110px;height:110px;" title="新星新星"><img src="${starimg2}" style="width:110px;height:110px;" title="新星新星"></div>
+					<div style="float:left;width:240px;height:220px;"><img src="${starimg3}" style="width:240px;height:220px;" title="新星新星"></div>
+					<div style="float:left;width:110px;height:220px;"><img src="${starimg4}" style="width:110px;height:110px;" title="新星新星"><img src="${starimg5}" style="width:110px;height:110px;" title="新星新星"></div>
+					<div style="float:left;width:110px;height:220px;"><img src="${starimg6}" style="width:110px;height:110px;" title="新星新星"><img src="${starimg7}" style="width:110px;height:110px;" title="新星新星"></div>
 			</div>
-			<div class="col-md-6">
-				<div class="row">
-					<%-- <div class="col-md-4">
-						<div style="position:absolute;Z-index:-1"><canvas id="can1" width="150" height="150" ></canvas></div>
-                        <div ><img src="/images/shipin.png" style="width:150px;" onclick="pop1()"/></div>
-					</div> --%>
-					<div class="col-md-4" style="margin-top:15px;"><canvas id="can1" width="150" height="150" onclick="pop1()"></canvas></div>
-					<div class="col-md-2" style="margin-top:120px;"><canvas id="can2" width="80" height="80" onclick="pop2()"></canvas></div>
-					<div class="col-md-2" style="margin-top:20px;"><canvas id="can3" width="80" height="80" onclick="pop3()"></canvas></div>
-					<div class="col-md-4" style="margin-top:50px;"><canvas id="can4" width="150" height="150" onclick="pop4()"></canvas></div>
-				</div>
+			<div style="widht:570px;float:right;margin-right:40px;">
+					<div  style="margin-top:15px;float:left;"><canvas id="can1" width="150" height="150" onclick="pop1()"></canvas></div>
+					<div  style="margin-top:120px;float:left;"><canvas id="can2" width="80" height="80" onclick="pop2()"></canvas></div>
+					<div  style="margin-top:20px;float:left;"><canvas id="can3" width="80" height="80" onclick="pop3()"></canvas></div>
+					<div  style="margin-top:50px;float:left;"><canvas id="can4" width="150" height="150" onclick="pop4()"></canvas></div>
 			</div>
 		</div>
-		<div style="text-align:center;font-size:50px;font-weight:bold;color:#4ed6b8;margin-bottom:20px;">明星打造</div>
-		<div class="row">
-			<div class="col-md-5" style="margin-top:12px;">
+		<div style="text-align:center;font-size:50px;font-weight:bold;color:#4ed6b8;margin:0 auto;width:220px;padding-top:50px;clear:both;">明星打造</div>
+		<div style="margin-top:20px;">
+			<div style="width:470px;float:left;">
 				<hr style="border-top:2px solid #4ed6b8;"/>
 			</div>
-			<div class="col-md-2">
+			<div style="width:200px;float:left;">
 				<div style="text-align:center;color:#bf5540;font-size:16px">明星打造明星打造</div>
 				<div style="text-align:center;color:#4ed6b8;font-size:14px">mingxingdazaomingxing</div>
 				<div style="text-align:center;color:#4ed6b8;font-size:14px">mingxingdazao</div>
 			</div>
-			<div class="col-md-5" style="margin-top:12px;">
+			<div style="width:470px;float:right;">
 				<hr style="border-top:2px solid #4ed6b8;"/>
 			</div>
 		</div>
-		<div class="row" style="margin-top:30px;">
-			<div class="col-md-5"></div>
-			<div class="col-md-2">
-				<div class="row">
-					<div class="col-md-1" style="padding-right:0px;"></div>
-					<div class="col-md-3"><img alt="logo"  src="/images/pic2.PNG"></div>
-					<div class="col-md-3"><img alt="logo"  src="/images/pic3.PNG"></div>
-					<div class="col-md-3"><img alt="logo"  src="/images/pic4.PNG"></div>
-					<div class="col-md-1"></div>
-				</div>
+		<div style="margin-top:30px;">
+			<div style="width:200px;margin:0 auto;">
+					<div style="width:50px;height:50px;float:left;margin-left:25px;"><img alt="logo"  src="/images/pic2.PNG"></div>
+					<div style="width:50px;height:50px;float:left;"><img alt="logo"  src="/images/pic3.PNG"></div>
+					<div style="width:50px;height:50px;float:right;margin-right:25px;"><img alt="logo"  src="/images/pic4.PNG"></div>
 			</div>
-			<div class="col-md-5"></div>
 		</div>
 		<jsp:include page="foot.jsp" />
 	</div>
