@@ -102,13 +102,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<input type="hidden" value="${item.id}">
 					</div>
 			</div>
-			<div style="-margin-top:-100px;">${item.train_desc}</div>
+			<div style="margin-top:-100px;width:350px;text-align:left;padding-left:15px;">${item.train_desc}</div>
 		   </div>
 		   </c:if>
 		   </c:forEach>
 		</div>
-		<div class="row" style="margin-top:20px;padding-bottom:50px;">
-			<div class="col-md-4" style="border-right:2px solid #7f7979;padding-right:30px;">
+		<div>
+			<div style="border-right:2px solid #7f7979;padding-right:30px;width:380px;float:left;padding-left:15px;">
 				<div style="font-size:30px;font-weight:bolder;font-family:黑体;">兴趣班</div>
 				<div style="font-size:25px;font-weight:bolder;color:#7f7979;">INTEREST&nbsp;CLASS</div>
 				<hr style="height:1px;border:none;border-top:3px solid #555555;width: 40%;margin-left: 0px;margin-top: 0px;margin-bottom:10px;" />
@@ -117,24 +117,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div style="font-size:20px;font-weight:bolder;font-family:黑体;">${item.title}</div>
 				<div>${item.detail}</div>
 				 </c:forEach>
+				 <div style="font-size:120px;font-weight:bolder;color:#7f7979;position:relative;z-index:1;left:98%;top:-420px;">1</div>
 			</div>
-			<div style="font-size:120px;font-weight:bolder;color:#7f7979;position:absolute;z-index:1;left:32%;">1</div>
-			<div class="col-md-4" style="border-right:2px solid #7f7979;padding-right:30px;">
+			<div style="border-right:2px solid #7f7979;padding-right:30px;width:380px;float:left;padding-left:15px;">
 				<div style="font-size:30px;font-weight:bolder;font-family:黑体;"><a href="/TrainDetail?id=${trainid_lianxi}">练习生</a></div>
-						<c:forEach items="${lianxishengList}"  var="item">
-				<input type="hidden" value="${item.train_id}"/>
 				<div style="font-size:25px;font-weight:bolder;color:#7f7979;">TRAINEE</div>
 				<hr style="height:1px;border:none;border-top:3px solid #555555;width: 40%;margin-left: 0px;margin-top: 0px;margin-bottom:10px;" />
-				<div class="row" style="margin-top:20px;">
-					<div class="col-md-6" style="padding-right:0px;"><img src="/29images/${item.train_img}" width="140px;" height="100px;"></div>
-					<div class="col-md-6" style="padding-left:0px;"><div style="font-size:18px;font-weight:bolder;">${item.title}</div>
+
+				<c:forEach items="${lianxishengList}"  var="item">
+				<input type="hidden" value="${item.train_id}"/>
+				<div style="padding-top:20px;clear:both;">
+					<div  style="width:160px;float:left;"><img src="/29images/${item.train_img}" width="140px;" height="100px;"></div>
+					<div  style="width:160px;float:left;"><div style="font-size:18px;font-weight:bolder;">${item.title}</div>
 					<div>${item.detail}</div>
 				</div>
 			</div>
 			</c:forEach>
+			 <div style="font-size:120px;font-weight:bolder;color:#7f7979;position:relative;z-index:1;left:50%;top:-462px;">2</div>
 			</div>
-			<div style="font-size:120px;font-weight:bolder;color:#7f7979;position:absolute;z-index:1;left:61%;">2</div>
-			<div class="col-md-4" style="border-right:2px solid #7f7979;padding-right:30px;">
+			<div style="border-right:2px solid #7f7979;padding-right:30px;width:380px;float:left;padding-left:15px;">
 				<div style="font-size:30px;font-weight:bolder;font-family:黑体;">国际班</div>
 				<div style="font-size:25px;font-weight:bolder;color:#7f7979;">INTERNATIONAL&nbsp;CLASS</div>
 				<hr style="height:1px;border:none;border-top:3px solid #555555;width: 40%;margin-left: 0px;margin-top: 0px;margin-bottom:10px;" />
@@ -142,8 +143,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div><img src="/29images/${item.train_img}" width="320px" height="200px"></div>
 				<div>${item.detail}</div>
 				</c:forEach>
+			<div style="font-size:120px;font-weight:bolder;color:#7f7979;position:relative;z-index:1;left:98%;top:-462px;">3</div>
 			</div>
-			<div style="font-size:120px;font-weight:bolder;color:#7f7979;position:absolute;z-index:1;left:90%;">3</div>
 
 		</div>
 		<jsp:include page="foot.jsp" />
