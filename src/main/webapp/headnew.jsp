@@ -11,9 +11,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 @font-face {
 	    /* font-properties */
 	    font-family: shishang;
-	    src:url('/font/TRENDS.svg'),  
+	    src:url('/font/pinghei.svg'),  
 	    url('/font/时尚中黑简体.ttf'),
-	    url('/font/TRENDS.eot'); /* IE9 */
+	    url('/font/pinghei.eot'); /* IE9 */
 	}
    body{
    /* background-color:rgba(233, 243, 248, 1); */
