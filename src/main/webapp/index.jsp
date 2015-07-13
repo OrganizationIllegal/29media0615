@@ -14,7 +14,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <link href="/css/news.css" rel="stylesheet">
    <script src="/js/jquery.min.js"></script>
    <script src="/bootstrap/js/bootstrap.min.js"></script>
+   <style type="text/css">
+     img 
+   {
+   filter:progid:DXImageTransform.Microsoft.Shadow(color=#909090,direction=120,strength=3);/*ie*/
+   -moz-box-shadow: 2px 2px 10px #909090;/*firefox*/
+   -webkit-box-shadow: 2px 2px 10px #909090;/*safari或chrome*/
+   box-shadow:2px 2px 10px #909090;/*opera或ie9*/
+   }
    
+   </style>
     <!-- 绘制圆形 -->
    <script type="text/javascript">
    $(function(){
@@ -186,7 +195,7 @@ function pop4(){
     <!-- 轮播（Carousel）项目 -->
    <div class="carousel-inner">
       <div class="item active">
-         <a href="/Train"><img src="/29images/${trainlunbo1}" alt="First slide" style="width:570px;height:260px;"></a>
+         <a href="/Train"><img class="yinying" src="/29images/${trainlunbo1}" alt="First slide" style="width:570px;height:260px;"></a>
          <div class="carousel-caption"></div>
       </div>
       <div class="item">
@@ -210,10 +219,10 @@ function pop4(){
 		<!-- lize end -->
 		<div>
 			<div style="widht:570px;float:left;">
-					<div style="float:left;width:110px;height:220px;"><a href="Artist?starNum=1"><img src="/29images/${starimg1}" style="width:110px;height:110px;" title="新星新星"></a><a href="Artist?starNum=2"><img src="/29images/${starimg2}" style="width:110px;height:110px;" title="新星新星"></a></div>
-					<div style="float:left;width:240px;height:220px;"><a href="Artist?starNum=3"><img src="/29images/${starimg3}" style="width:240px;height:220px;" title="新星新星"></a></div>
-					<div style="float:left;width:110px;height:220px;"><a href="Artist?starNum=4"><img src="/29images/${starimg4}" style="width:110px;height:110px;" title="新星新星"></a><a href="Artist?starNum=5"><img src="/29images/${starimg5}" style="width:110px;height:110px;" title="新星新星"></a></div>
-					<div style="float:left;width:110px;height:220px;"><a href="Artist?starNum=6"><img src="/29images/${starimg6}" style="width:110px;height:110px;" title="新星新星"></a><a href="Artist?starNum=7"><img src="/29images/${starimg7}" style="width:110px;height:110px;" title="新星新星"></a></div>
+					<div style="float:left;width:110px;height:220px;"><a href="Artist?starNum=1"><img src="/29images/${starimg1}" style="width:110px;height:110px;padding:1px;" title="新星新星"></a><a href="Artist?starNum=2"><img src="/29images/${starimg2}" style="width:110px;height:110px;padding:1px;" title="新星新星"></a></div>
+					<div style="float:left;width:240px;height:220px;"><a href="Artist?starNum=3"><img src="/29images/${starimg3}" style="width:240px;height:220px;padding:1px;" title="新星新星"></a></div>
+					<div style="float:left;width:110px;height:220px;"><a href="Artist?starNum=4"><img src="/29images/${starimg4}" style="width:110px;height:110px;padding:1px;" title="新星新星"></a><a href="Artist?starNum=5"><img src="/29images/${starimg5}" style="width:110px;height:110px;padding:1px;" title="新星新星"></a></div>
+					<div style="float:left;width:110px;height:220px;"><a href="Artist?starNum=6"><img src="/29images/${starimg6}" style="width:110px;height:110px;padding:1px;" title="新星新星"></a><a href="Artist?starNum=7"><img src="/29images/${starimg7}" style="width:110px;height:110px;padding:1px;" title="新星新星"></a></div>
 			</div>
 			<div style="widht:570px;float:right;margin-right:40px;">
 					<div  style="margin-top:15px;float:left;"><canvas id="can1" width="150" height="150" onclick="pop1()"></canvas></div>
@@ -222,28 +231,24 @@ function pop4(){
 					<div  style="margin-top:50px;float:left;"><canvas id="can4" width="150" height="150" onclick="pop4()"></canvas></div>
 			</div>
 		</div>
-		<div style="text-align:center;font-size:50px;font-weight:bold;color:#4ed6b8;margin:0 auto;width:220px;padding-top:50px;clear:both;">明星打造</div>
-		<div style="margin-top:20px;">
-			<div style="width:470px;float:left;">
-				<hr style="border-top:2px solid #4ed6b8;"/>
-			</div>
+		<div style="width:460px;float:left;clear:both;padding-top:45px;"><hr style="border-top:2px solid #4ed6b8;"/></div>
+		<div style="text-align:center;font-size:50px;font-weight:bold;color:#4ed6b8;margin:0 auto;width:220px;padding-top:50px;float:left;">明星打造</div>
+		<div style="width:460px;float:right;padding-top:45px;"><hr style="border-top:2px solid #4ed6b8;"/></div>
+		<!-- <div style="margin-top:20px;">
 			<div style="width:200px;float:left;">
 				<div style="text-align:center;color:#bf5540;font-size:16px">明星打造明星打造</div>
 				<div style="text-align:center;color:#4ed6b8;font-size:14px">mingxingdazaomingxing</div>
 				<div style="text-align:center;color:#4ed6b8;font-size:14px">mingxingdazao</div>
 			</div>
-			<div style="width:470px;float:right;">
-				<hr style="border-top:2px solid #4ed6b8;"/>
-			</div>
-		</div>
-		<div style="margin-top:30px;">
+		</div> -->
+		<!-- <div style="margin-top:30px;">
 			<div style="width:200px;margin:0 auto;">
 					<div style="width:50px;height:50px;float:left;margin-left:25px;"><img alt="logo"  src="/29images/pic2.PNG"></div>
 					<div style="width:50px;height:50px;float:left;"><img alt="logo"  src="/29images/pic3.PNG"></div>
 					<div style="width:50px;height:50px;float:right;margin-right:25px;"><img alt="logo"  src="/29images/pic4.PNG"></div>
 			</div>
-		</div>
-		<jsp:include page="foot.jsp" />
+		</div> -->
+		<div style="clear:both;"><jsp:include page="foot.jsp" /></div>
 	</div>
 	<!-- 模态框 -->
    <div class="modal fade" id="modal1" tabindex="-1" role="dialog" 
