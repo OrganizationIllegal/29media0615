@@ -61,38 +61,45 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div style="width:650px;float:right;font-family:shishang;">
 			<div style="float:left;width:100px;padding-left:0px;padding-right:0px;border-color:white;border-right-style:solid;border-right-width:1px;padding-top:5px;padding-bottom:22px;">
 				<div style="padding-left:10px;margin-bottom:10px;"><a href="/Index" style="color:white;font-size:20px;">首页</a></div>
-				<div style="color:white;font-size:10px;-font-family:楷体;">LATEST NEWS</div>
-				<div style="color:white;font-size:10px;-font-family:楷体;">EVENT</div>
+				<div style="color:white;font-size:10px;-font-family:楷体;"><a href="/Index" style="color:white;font-size:15px;padding-left:10px;">INDEX</a></div>
+				<!-- <div style="color:white;font-size:10px;-font-family:楷体;">LATEST NEWS</div> -->
+				<!-- <div style="color:white;font-size:10px;-font-family:楷体;">EVENT</div> -->
 			</div>
             <div style="float:left;width:100px;padding-left:10px;padding-right:0px;border-color:white;border-right-style:solid;border-right-width:1px;padding-top:5px;padding-bottom:5px;">
 				<div style="padding-left:10px;margin-bottom:10px;"><a href="/News?newsId=1" style="color:white;font-size:20px;/* font-family:时尚中黑简体; */">动态</a></div>
-				<div style="color:white;font-size:10px;-font-family:楷体;">WEDDING</div>
+				<div style="color:white;font-size:10px;-font-family:楷体;"><a href="/News?newsId=1"  style="color:white;font-size:15px;padding-left:10px;">TRENDS</a></div>
+				<!-- <div style="color:white;font-size:10px;-font-family:楷体;">WEDDING</div>
 				<div style="color:white;font-size:10px;-font-family:楷体;">PHOTO</div>
-				<div style="color:white;font-size:10px;-font-family:楷体;">GUESTPHOTO</div>
+				<div style="color:white;font-size:10px;-font-family:楷体;">GUESTPHOTO</div> -->
 			</div>
 			<div style="float:left;width:100px;padding-left:10px;padding-right:0px;border-color:white;border-right-style:solid;border-right-width:1px;padding-top:5px;padding-bottom:39px;">
 
 				<div style="padding-left:10px;margin-bottom:10px;"><a href="/Artist" style="color:white;font-size:20px;/* font-family:时尚中黑简体; */">艺人</a></div>
-
-				<div style="color:white;font-size:10px;-font-family:楷体;">DOING</div>
+				<div style="color:white;font-size:10px;-font-family:楷体;"><a href="/Artist"  style="color:white;font-size:15px;padding-left:10px;">ARTISTS</a></div>
+				<!-- <div style="color:white;font-size:10px;-font-family:楷体;">DOING</div> -->
 			</div>
 			<div style="float:left;width:100px;padding-left:10px;padding-right:0px;border-color:white;border-right-style:solid;border-right-width:1px;padding-top:5px;padding-bottom:5px;">
 				<div style="padding-left:10px;margin-bottom:10px;"><a href="/Train" style="color:white;font-size:20px;/* font-family:时尚中黑简体; */">培训</a></div>
-				<div style="color:white;font-size:10px;-font-family:楷体;">ABOUT US</div>
+				<div style="color:white;font-size:10px;-font-family:楷体;"><a href="/Train"  style="color:white;font-size:15px;padding-left:10px;">TRAIN</a></div>
+				<!-- <div style="color:white;font-size:10px;-font-family:楷体;">ABOUT US</div>
 				<div style="color:white;font-size:10px;-font-family:楷体;">JOB</div>
-				<div style="color:white;font-size:10px;-font-family:楷体;">SERVICE TIPS</div>
+				<div style="color:white;font-size:10px;-font-family:楷体;">SERVICE TIPS</div> -->
 			</div>
 			<div style="float:left;width:100px;padding-left:10px;padding-right:0px;border-color:white;border-right-style:solid;border-right-width:1px;padding-top:5px;padding-bottom:5px;">
 				<div style="padding-left:10px;margin-bottom:10px;"><a href="/VideoList" style="color:white;font-size:20px;/* font-family:时尚中黑简体; */">影视</a></div>
-				<div style="color:white;font-size:10px;-font-family:楷体;">CONTACT</div>
+				<div style="color:white;font-size:10px;-font-family:楷体;"><a href="/VideoList"  style="color:white;font-size:15px;padding-left:10px;">VEDIO</a></div>
+				
+				<!-- <div style="color:white;font-size:10px;-font-family:楷体;">CONTACT</div>
 				<div style="color:white;font-size:10px;-font-family:楷体;">WEIBO</div>
-				<div style="color:white;font-size:10px;-font-family:楷体;">WEIXIN</div>
+				<div style="color:white;font-size:10px;-font-family:楷体;">WEIXIN</div> -->
 			</div>
 			<div style="float:left;width:100px;padding-left:10px;padding-right:0px;padding-top:5px;padding-bottom:5px;">
 				<div style="padding-left:10px;margin-bottom:10px;"><a href="/aboutus.jsp" style="color:white;font-size:20px;/* font-family:时尚中黑简体; */">联系我们</a></div>
-				<div style="color:white;font-size:10px;-font-family:楷体;">ABOUT US</div>
+				<div style="color:white;font-size:10px;-font-family:楷体;"><a href="/aboutus.jsp"  style="color:white;font-size:15px;padding-left:10px;">CONTACT</a></div>
+				
+				<!-- <div style="color:white;font-size:10px;-font-family:楷体;">ABOUT US</div>
 				<div style="color:white;font-size:10px;-font-family:楷体;">JOB</div>
-				<div style="color:white;font-size:10px;-font-family:楷体;">SERVICE TIPS</div>
+				<div style="color:white;font-size:10px;-font-family:楷体;">SERVICE TIPS</div> -->
 			</div>
 			</div>
 			<div style="clear:both;">

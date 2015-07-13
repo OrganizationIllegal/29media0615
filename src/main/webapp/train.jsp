@@ -7,7 +7,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-   <title>TRAIN</title>
+   <link rel="icon" sizes="any" type="image/x-icon"  href="images/Logo2.png">
+   <title>29传媒</title>
    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
    <script src="/js/jquery.min.js"></script>
    <script src="/bootstrap/js/bootstrap.min.js"></script>
@@ -78,7 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 		<jsp:include page="headnew.jsp" />
 		<div style="width:1140px;margin:0 auto;">
-		<div>
+		<!-- <div>
 			<div style="width:150px;height:170px;float:left;margin-left:60px;">
 			<canvas id="can1" width="150" height="150" ></canvas>
 			<div style="position:relative;z-index:1;top:-115px;color:white;text-align:center;"><p style="margin-bottom:0px;font-size:16px;">ABOUTUS</p><p style="margin-top:0px;margin-bottom:0px;font-size:30px;font-weight:bold;">JOB</p><p style="margin-top:0px;margin-bottom:0px;font-size:30px;font-weight:bold;font-family:黑体;">培训</p></div>
@@ -91,11 +92,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div  style="width:30px;float:left;padding-top:75px;color:#3c78d8;font-size:25px;"><span class="glyphicon glyphicon-chevron-right"></span></div>
 			</div>
 			
-		</div>
+		</div> -->
 		<div style="clear:both;">
 		  <c:forEach items="${trainList}"  var="item" varStatus="status">
 		  <c:if test="${status.index<3 }">
-			<div style="width:380px;float:left;text-align:center;"><img src="/29images/${item.train_image}" width="350px" height="280px">
+			<div style="width:380px;float:left;text-align:center;"><a href="/TrainDetail?id=${trainid_lianxi}"><img src="/29images/${item.train_image}" width="350px" height="280px"></a>
 			<div style="z-index:1;width:350px;height:100px;opacity:0.5;background:#1c4587;top:-190px;left:15px;position:relative;filter:alpha(opacity=50);">
 					<div style="height:100%;line-height:100%;overflow:hidden;align:center;">
 						<h1 style="text-align:center;color:white;">${item.train_name}</h1>
@@ -127,7 +128,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<c:forEach items="${lianxishengList}"  var="item">
 				<input type="hidden" value="${item.train_id}"/>
 				<div style="padding-top:20px;clear:both;">
-					<div  style="width:160px;float:left;"><img src="/29images/${item.train_img}" width="140px;" height="100px;"></div>
+					<div  style="width:160px;float:left;"><a href="/TrainDetail?id=${trainid_lianxi}"><img src="/29images/${item.train_img}" width="140px;" height="100px;"></a></div>
 					<div  style="width:160px;float:left;"><div style="font-size:18px;font-weight:bolder;">${item.title}</div>
 					<div>${item.detail}</div>
 				</div>
@@ -140,7 +141,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div style="font-size:25px;font-weight:bolder;color:#7f7979;">INTERNATIONAL&nbsp;CLASS</div>
 				<hr style="height:1px;border:none;border-top:3px solid #555555;width: 40%;margin-left: 0px;margin-top: 0px;margin-bottom:10px;" />
 				<c:forEach items="${guojibanList}"  var="item">
-				<div><img src="/29images/${item.train_img}" width="320px" height="200px"></div>
+				<div><a href="/TrainDetail?id=${trainid_lianxi}"><img src="/29images/${item.train_img}" width="320px" height="200px"></a></div>
 				<div>${item.detail}</div>
 				</c:forEach>
 			<div style="font-size:120px;font-weight:bolder;color:#7f7979;position:relative;z-index:1;left:98%;top:-462px;">3</div>

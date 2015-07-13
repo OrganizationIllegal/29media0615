@@ -22,7 +22,7 @@ public class NewsTrendsDAO extends BaseDao {
 	List<NewsTrends> list = new ArrayList<NewsTrends>();
 	try{
 		
-		String sql = " select * from news_trends";
+		String sql = " select * from news_trends order by time desc";
         Statement stmt = con.createStatement();
 		ResultSet rs = stmt.executeQuery(sql);
 		while(rs.next()){					
@@ -46,7 +46,7 @@ public class NewsTrendsDAO extends BaseDao {
 		List<NewsTrends> list = new ArrayList<NewsTrends>();
 		try{
 			
-			String sql = " select * from news_trends where news_id=?";
+			String sql = " select * from news_trends where news_id=? order by time desc";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, newsId);
 			ResultSet rs = pstmt.executeQuery();

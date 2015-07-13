@@ -7,7 +7,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-   <title>INDEX</title>
+   <link rel="icon" sizes="any" type="image/x-icon"  href="images/Logo2.png">
+   <title>29传媒</title>
    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
    <link href="/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
    <link href="/css/news.css" rel="stylesheet">
@@ -185,34 +186,34 @@ function pop4(){
     <!-- 轮播（Carousel）项目 -->
    <div class="carousel-inner">
       <div class="item active">
-         <img src="/29images/${trainlunbo1}" alt="First slide" style="width:570px;height:260px;">
+         <a href="/Train"><img src="/29images/${trainlunbo1}" alt="First slide" style="width:570px;height:260px;"></a>
          <div class="carousel-caption"></div>
       </div>
       <div class="item">
-         <img src="/29images/${trainlunbo2}" alt="Second slide" style="width:570px;height:260px;">
+         <a href="/Train"><img src="/29images/${trainlunbo2}" alt="Second slide" style="width:570px;height:260px;"></a>
          <div class="carousel-caption"></div>
       </div>
       <div class="item">
-         <img src="/29images/${trainlunbo3}" alt="Third slide" style="width:570px;height:260px;">
+         <a href="/Train"><img src="/29images/${trainlunbo3}" alt="Third slide" style="width:570px;height:260px;"></a>
          <div class="carousel-caption"></div>
       </div> 
      </div>
      </div> 
-				<div style="z-index:1;width:570px;height:90px;opacity:0.5;background:#FFE1FF;top:-180px;position:relative;filter:alpha(opacity=50);">
+				<!-- <div style="z-index:1;width:570px;height:90px;opacity:0.5;background:#FFE1FF;top:-180px;position:relative;filter:alpha(opacity=50);">
 					<div style="height:100%;line-height:100%;overflow:hidden;align:center;">
 						<h1 style="text-align:center"><a href="/Train">PeiXun 培训</a></h1>
 					</div>
-				</div>
+				</div> -->
 			</div>
 	</div>
 </div>
 		<!-- lize end -->
 		<div>
 			<div style="widht:570px;float:left;">
-					<div style="float:left;width:110px;height:220px;"><img src="/29images/${starimg1}" style="width:110px;height:110px;" title="新星新星"><img src="/29images/${starimg2}" style="width:110px;height:110px;" title="新星新星"></div>
-					<div style="float:left;width:240px;height:220px;"><img src="/29images/${starimg3}" style="width:240px;height:220px;" title="新星新星"></div>
-					<div style="float:left;width:110px;height:220px;"><img src="/29images/${starimg4}" style="width:110px;height:110px;" title="新星新星"><img src="/29images/${starimg5}" style="width:110px;height:110px;" title="新星新星"></div>
-					<div style="float:left;width:110px;height:220px;"><img src="/29images/${starimg6}" style="width:110px;height:110px;" title="新星新星"><img src="/29images/${starimg7}" style="width:110px;height:110px;" title="新星新星"></div>
+					<div style="float:left;width:110px;height:220px;"><a href="Artist?starNum=1"><img src="/29images/${starimg1}" style="width:110px;height:110px;" title="新星新星"></a><a href="Artist?starNum=2"><img src="/29images/${starimg2}" style="width:110px;height:110px;" title="新星新星"></a></div>
+					<div style="float:left;width:240px;height:220px;"><a href="Artist?starNum=3"><img src="/29images/${starimg3}" style="width:240px;height:220px;" title="新星新星"></a></div>
+					<div style="float:left;width:110px;height:220px;"><a href="Artist?starNum=4"><img src="/29images/${starimg4}" style="width:110px;height:110px;" title="新星新星"></a><a href="Artist?starNum=5"><img src="/29images/${starimg5}" style="width:110px;height:110px;" title="新星新星"></a></div>
+					<div style="float:left;width:110px;height:220px;"><a href="Artist?starNum=6"><img src="/29images/${starimg6}" style="width:110px;height:110px;" title="新星新星"></a><a href="Artist?starNum=7"><img src="/29images/${starimg7}" style="width:110px;height:110px;" title="新星新星"></a></div>
 			</div>
 			<div style="widht:570px;float:right;margin-right:40px;">
 					<div  style="margin-top:15px;float:left;"><canvas id="can1" width="150" height="150" onclick="pop1()"></canvas></div>
