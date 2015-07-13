@@ -44,13 +44,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  	</div>
 	  </div>
   <div style="float:left;width:400px;">
-  <form class="form-horizontal" role="form" method="post" name="fm" action="/login" style="width:400px;">
+  <form class="form-horizontal"  style="width:400px;" id="newsinfo">
    <div class="form-group">
       
       <div class="col-sm-10" style="margin-left:25px;">
          <input type="text" class="form-control" id="username" name="username"  placeholder="您的真实姓名">
-        <input type="hidden" class="form-control" id="role" 
-            name="role" placeholder="用户角色">
+        
       </div>
       <div id="user" style="height:60px;margin-left:20px;">
          
@@ -76,16 +75,137 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           
       </div>
    </div>
+ </form>  
+<form id="newsimg">
+<div class="c-fix" style="padding-left:35px;margin-top:20px;">
+<span class="area_span" style="float:left;">图片</span>
+<span> <input type="file" name="news_image" id="news_image" style="width:600px;border:1px solid rgb(239,235,242);float:left;margin-right:40px;"/><a href="#" class="addnewsimg">上传</a></span>
+</div>
+</form>
+<div id="newsimglist" style="margin-top:20px;" name = "newsimglist1"></div>
+<div class="area_left4 c-fix"><button type="button" class="btn" onclick="add()">提交</button></div>
+<!-- <div class="area_right4"><button type="button" class="btn" onclick="chongzhi()">重置</button></div>
+ -->
+ </div>
    
-</form></div>
+</div>
 <div style="  clear: both;
   margin-left: 765px;"><a href="#"><U style="color:rgb(170, 237, 241)">确认邮件寄出</U></a></div>
  <!--  <div style="text-align:center;"><img src="images/12.png"></div> -->
 </div >
 <jsp:include page="foot.jsp" />
-  </div>
+</div>
 
 
 </body>
 </html>
-   
+<script>
+	function add(){
+	
+	  var newsinfo=DataDeal.formToJson(data= decodeURIComponent($("#newsinfo").serialize(),true)); 
+	  newsinfo=eval("("+newsinfo+")");
+	  /* var newsid=newsinfo.news_id;
+	  var newstime=newsinfo.time;  */
+	  var name = $("#username");
+	  var email = $("#email");
+	  var content = $("#content");
+	  var newsimglist1 = JSON.stringify(newsimglist);
+	  
+	  /* $("#form1").submit(); */
+	  $.ajax({
+	 	    type: "POST",
+	 		data: {"newsinfo":JSON.stringify(newsinfo),"newsimglist":JSON.stringify(newsimglist)},
+	 		dataType: "json",
+	 		url: "/inputJoinUs",
+	 		success:function(data){
+	 			if(data.flag ==1){
+	 				alert("添加成功！");
+	 			}else if(data.flag ==0){
+	 				alert("添加失败！");
+	 			}
+	 		},
+	 		error:function(){
+	 			alert("error")
+	 		}
+	 	});
+	  }
+
+
+
+function chongzhi(){
+	$("#news_id").val("").focus();
+	$("#title").val("");
+	$("#time").val("");
+	$("#detail").val("");
+}
+</script>
+<script type="text/javascript">
+
+var newsimglist=[];
+var isnewsimgedit=100;
+var newsimgedititem;
+var newsimgecount=0;
+$(function(){
+	$.ajaxSetup({  
+	    contentType: "application/x-www-form-urlencoded; charset=utf-8"
+	});  
+	$(".addnewsimg").click(function(){
+		//alert(isnewsimgedit);
+		if(isnewsimgedit==100){
+
+			if($('#news_image').val()==""){
+				alert("请选择文件！");
+				return false;}
+			var newsimg={};
+			var filenames=$('#news_image').val().split("\\");
+			var filename=filenames[filenames.length-1];
+			/* newsimg=DataDeal.formToJson(data= decodeURIComponent($("#newsimg").serialize(),true)); */
+			/* newsimg=eval("("+newsimg+")"); */
+			newsimg.news_image=filename;
+			newsimglist.push(newsimg);
+			/* for(var i=0;i<newsimglist.length;i++){
+				alert(newsimglist[i].news_image)
+				} */
+			$("#newsimglist").append("<div style='float:left;padding-left:35px;width:817px;padding-top:10px;'><span style='padding-right:50px;'>"+(++newsimgecount)+"</span><span style='padding-right:10px;'>"+newsimglist[newsimgecount-1].news_image+"</span><span style='padding-left: 30px;padding-right: 40px;'></span><span><a href='#' class='deletenewsimg'>删除</a></span></div>");			
+			UploadFile("news_image");
+			$("#newsimg input").each(function(){
+				$(this).val("");
+				});
+			}
+		});
+	
+	    $("#newsimglist").on("click",".deletenewsimg",function(){
+		newsimglist.splice($(this).parent().parent().children().eq(0).text()-1,1);
+		$(this).parent().parent().empty(); 
+		newsimgecount--;
+		});	
+});
+
+
+
+var DataDeal = {  
+		//将从form中通过$('#form').serialize()获取的值转成json  
+		           formToJson: function (data) {  
+		               data=data.replace(/&/g,"\",\"");  
+		               data=data.replace(/=/g,"\":\"");  
+		               data="{\""+data+"\"}";  
+		               return data;  
+		            },  
+		}; 
+function UploadFile(imageid) {
+    var fileObj = document.getElementById(imageid).files[0]; // 获取文件对象
+    var FileController = "/imageupload";                    // 接收上传文件的后台地址 
+    // FormData 对象
+    var form = new FormData();
+    form.append("file", fileObj);                           // 文件对象
+    // XMLHttpRequest 对象
+    var xhr = new XMLHttpRequest();
+    xhr.open("post", FileController, true);
+    xhr.onload = function () {
+        alert("上传完成!");
+    };
+    xhr.send(form);
+} 
+
+
+</script>

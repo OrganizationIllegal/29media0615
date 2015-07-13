@@ -103,6 +103,27 @@ public class NewsInputDAO extends BaseDao {
 		return exeResult;
         
 	}
+	
+	//编辑新闻
+		public int addJoinUs(String name, String  email,String content,String image){
+			int exeResult=0;
+			try {
+				String sql = "insert into join_us(name, email,content,image) values(?,?,?,?)";
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, name);
+				pstmt.setString(2, email);
+				pstmt.setString(3, content);
+				pstmt.setString(4, image);
+				exeResult = pstmt.executeUpdate();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return exeResult;
+	        
+		}
+		
+		
 	//查找新闻
 	public NewsTrends findById(int id){
 		NewsTrends data = new NewsTrends();

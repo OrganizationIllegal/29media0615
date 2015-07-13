@@ -14,13 +14,11 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.kate.app.dao.ImageDao;
 import com.kate.app.dao.NewsInputDAO;
+import com.kate.app.model.JoinUs;
 import com.kate.app.model.NewsImage;
 import com.kate.app.model.NewsTrends;
 
@@ -29,7 +27,7 @@ public class NewsInputController {
 	@Autowired
 	private NewsInputDAO newsInputDao;
 	
-	//新闻动态列表
+	//鏂伴椈鍔ㄦ�鍒楄〃
 	@RequestMapping({ "/NewsTrendList" })    
 	public void selectAreaList(HttpServletRequest req, HttpServletResponse resp){
 		JSONObject json = new JSONObject();
@@ -45,7 +43,7 @@ public class NewsInputController {
 			e.printStackTrace();
 		}
 	}
-	//新闻查找
+	//鏂伴椈鏌ユ壘
 	@RequestMapping({ "/findNewsTrends" })
 	public String findNewsTrends(HttpServletRequest req,HttpServletResponse resp){
 		int id = Integer.parseInt(req.getParameter("id"));
@@ -55,7 +53,7 @@ public class NewsInputController {
 	}
 	
 	
-	//新闻录入
+	//鏂伴椈褰曞叆
 	@RequestMapping({ "/inputNewsTrends" })
 	public void inputNewsTrends(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 		String newsinfo=req.getParameter("newsinfo");		
@@ -68,7 +66,7 @@ public class NewsInputController {
 			time = "2015-05-09";
 		}else{
 			Date date=newstrends.getTime();
-			DateFormat df= DateFormat.getDateInstance();//日期格式，精确到日
+			DateFormat df= DateFormat.getDateInstance();//鏃ユ湡鏍煎紡锛岀簿纭埌鏃�
 			time=df.format(date);
 			System.out.println(time);			
 		}
@@ -82,7 +80,7 @@ public class NewsInputController {
 		String image=img.getNews_image();
 		int flag2=0;
 		for (int i=0;i<newsimgArray.size();i++){
-			 JSONObject object = (JSONObject)newsimgArray.get(i); //对于每个json对象
+			 JSONObject object = (JSONObject)newsimgArray.get(i); //瀵逛簬姣忎釜json瀵硅薄
 			 NewsImage e = (NewsImage) JSONToObj(object.toString(), NewsImage.class);
 			 imagelist.add(e);
 			 String news_image=e.getNews_image();
@@ -104,7 +102,7 @@ public class NewsInputController {
 	}
 	
 	
-	//删除新闻
+	//鍒犻櫎鏂伴椈
 	@RequestMapping({ "/deleteNewsTrends" })
 	public void deleteNewsTrends(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 		int id = Integer.parseInt(req.getParameter("id"));
@@ -125,7 +123,48 @@ public class NewsInputController {
 		}
 	}
 	
-	//新闻编辑
+	//鏂伴椈缂栬緫
+			@RequestMapping({ "/inputJoinUs" })
+			public void inputJoinUs(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+				String newsinfo=req.getParameter("newsinfo");		
+				JoinUs joinUs = (JoinUs) JSONToObj(newsinfo,JoinUs.class);
+				String name = joinUs.getUsername();
+				String email  = joinUs.getEmail();
+				String content = joinUs.getContent();
+				
+				String newsimglist=req.getParameter("newsimglist");
+				JSONArray newsimgArray = JSONArray.parseArray(newsimglist);
+				List<NewsImage> imagelist=new ArrayList<NewsImage>();
+				JSONObject obj = null;
+				if(newsimglist!=null && !"".equals(newsimglist)){
+					obj= (JSONObject)newsimgArray.get(0);
+				}
+				NewsImage img=(NewsImage) JSONToObj(obj.toString(), NewsImage.class);
+				String image=img.getNews_image();
+				/*int flag2=0;
+				for (int i=0;i<newsimgArray.size();i++){
+					 JSONObject object = (JSONObject)newsimgArray.get(i); //瀵逛簬姣忎釜json瀵硅薄
+					 NewsImage e = (NewsImage) JSONToObj(object.toString(), NewsImage.class);
+					 imagelist.add(e);
+					 String news_image=e.getNews_image();
+					 flag2=newsInputDao.InsertNewsImage(news_id, news_image);		 
+				}*/
+						
+				int flag1 = 0;
+				JSONObject json = new JSONObject();
+				flag1 =newsInputDao.addJoinUs(name, email, content, image);
+				json.put("flag", flag1);
+				try{
+					writeJson(json.toJSONString(),resp);
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+				
+			}
+	
+	
+	
+	//鏂伴椈缂栬緫
 		@RequestMapping({ "/editNewsTrends" })
 		public void editNewsTrends(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 			String newsinfo=req.getParameter("newsinfo");		
@@ -139,7 +178,7 @@ public class NewsInputController {
 				time = "2015-05-09";
 			}else{
 				Date date=newstrends.getTime();
-				DateFormat df= DateFormat.getDateInstance();//日期格式，精确到日
+				DateFormat df= DateFormat.getDateInstance();//鏃ユ湡鏍煎紡锛岀簿纭埌鏃�
 				time=df.format(date);			
 			}
 					
@@ -151,7 +190,7 @@ public class NewsInputController {
 			String image=img.getNews_image();
 			int flag2=0;
 			for (int i=0;i<newsimgArray.size();i++){
-				 JSONObject object = (JSONObject)newsimgArray.get(i); //对于每个json对象
+				 JSONObject object = (JSONObject)newsimgArray.get(i); //瀵逛簬姣忎釜json瀵硅薄
 				 NewsImage e = (NewsImage) JSONToObj(object.toString(), NewsImage.class);
 				 imagelist.add(e);
 				 String news_image=e.getNews_image();
@@ -170,7 +209,7 @@ public class NewsInputController {
 			
 		}
 		
-		//新闻图片列表
+		//鏂伴椈鍥剧墖鍒楄〃
 		@RequestMapping({ "/NewsImgList" })    
 		public void NewsImgList(HttpServletRequest req, HttpServletResponse resp){
 			JSONObject json = new JSONObject();
@@ -186,7 +225,7 @@ public class NewsInputController {
 				e.printStackTrace();
 			}
 		}
-		//删除新闻图片
+		//鍒犻櫎鏂伴椈鍥剧墖
 		@RequestMapping({ "/deleteNewsImg" })
 		public void deleteNewsImg(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 			int id = Integer.parseInt(req.getParameter("id"));
