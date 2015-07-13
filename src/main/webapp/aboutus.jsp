@@ -12,9 +12,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
    <script src="/js/jquery.min.js"></script>
    <script src="/bootstrap/js/bootstrap.min.js"></script>
-    <style type="text/css">
-   body{
-   background-color:rgba(233, 243, 248, 1);
+   <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0&mkt=zh-cn"></script> 
+   <script type="text/javascript" src="/js/bingMap.js"></script>
+    <style type="text/css">  
+   img 
+   {
+   filter:progid:DXImageTransform.Microsoft.Shadow(color=#909090,direction=120,strength=3);/*ie*/
+   -moz-box-shadow: 2px 2px 10px #909090;/*firefox*/
+   -webkit-box-shadow: 2px 2px 10px #909090;/*safari或chrome*/
+   box-shadow:2px 2px 10px #909090;/*opera或ie9*/
    }
    </style>
    <script type="text/javascript">
@@ -77,6 +83,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div id="lianxi2" style="border-left:1px solid;display:none;">
 		<div style="text-align:center;font-size:20px;font-weight:bolder;padding-bottom:10px;padding-top:10px;border-bottom:1px solid">联系我们</div>
 		<div style="overflow-y:auto; width:863px; height:670px;text-align:center;"><img alt="联系我们" src="/29images/lianxi.PNG"></div>
+		<!-- <div id="container"></div> -->
 		</div>
 		</div>
 		</div>

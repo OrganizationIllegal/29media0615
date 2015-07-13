@@ -12,6 +12,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
    <script src="/js/jquery.min.js"></script>
    <script src="/bootstrap/js/bootstrap.min.js"></script>
+   <style type="text/css">
+     img 
+   {
+   filter:progid:DXImageTransform.Microsoft.Shadow(color=#909090,direction=120,strength=3);/*ie*/
+   -moz-box-shadow: 2px 2px 10px #909090;/*firefox*/
+   -webkit-box-shadow: 2px 2px 10px #909090;/*safari或chrome*/
+   box-shadow:2px 2px 10px #909090;/*opera或ie9*/
+   }
+   
+   </style>
   <!--  <script type="text/javascript">
    $(function(){
 	   $("#id1").click(function(){

@@ -57,7 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
  <!-- header start -->
 		<div style="padding-top:30px;margin:0 auto;width:1140px;height:155px;">
-		    <div style="width:250px;height:100px;float:left;margin-left:60px;"><img alt="LOGO" src="images/logo1.png" style="width:220px;height:100px;"></div>
+		    <div style="width:250px;height:100px;float:left;margin-left:60px;"><img alt="LOGO" src="images/logo1.png" style="width:220px;height:100px;-webkit-box-shadow: 0px 0px 0px;box-shadow:0px 0px 0px; -moz-box-shadow: 0px 0px 0px;filter:progid:DXImageTransform.Microsoft.Shadow(direction=0,strength=0);"></div>
 			<div style="width:650px;float:right;font-family:shishang;">
 			<div style="float:left;width:100px;padding-left:0px;padding-right:0px;border-color:white;border-right-style:solid;border-right-width:1px;padding-top:5px;padding-bottom:22px;">
 				<div style="padding-left:10px;margin-bottom:10px;"><a href="/Index" style="color:white;font-size:20px;">首页</a></div>
