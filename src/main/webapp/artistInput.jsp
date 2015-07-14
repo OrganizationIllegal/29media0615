@@ -94,7 +94,8 @@ body{
 <div class="area_left c-fix">
 <span class="area_span">艺人详情</span>
 </div>
-<div class="c-fix" style="margin-bottom:15px;"><textarea id="star_detail" placeholder="艺人详情" name="star_detail"></textarea></div>
+<div class="c-fix" style="margin-bottom:15px;">
+<textarea id="star_detail" placeholder="艺人详情" name="star_detail"></textarea></div>
 </form>
 <div class="area_bkg2 c-fix" id="brokerinfo">艺人图片</div>
 <form id="artistimg">
@@ -129,6 +130,7 @@ CKEDITOR.replace( 'star_detail' );
 function add(){
 	  var artistinfo=DataDeal.formToJson(data= decodeURIComponent($("#artistinfo").serialize(),true)); 
 	  artistinfo=eval("("+artistinfo+")");
+	  artistinfo.star_detail = CKEDITOR.instances.star_detail.getData();
 	  $.ajax({
 	 	    type: "POST",
 	 		data: {"artistinfo":JSON.stringify(artistinfo),"artistimglist":JSON.stringify(artistimglist),"videoimglist":JSON.stringify(videoimglist)},

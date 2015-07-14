@@ -52,9 +52,14 @@ public class IndexController {
 			}
 		}
 		String toplunbo1=null;
+		String href1 = null;
 		String toplunbo2=null;
+		String href2 = null;
 		String toplunbo3=null;
+		String href3 = null;
 		String toplunbo4=null;
+		String href4 = null;
+		
 		if(list50.size()>3){
 			if(list50.get(0).getImg()==null||"".equals(list50.get(0).getImg())){
 				toplunbo1="lunbo1.jpg";
@@ -75,12 +80,37 @@ public class IndexController {
 				toplunbo4="lunbo2.jpg";
 			}else{
 				toplunbo4=list50.get(3).getImg();
-			}		
+			}	
+			if(list50.get(0).getHref()==null||"".equals(list50.get(0).getHref())){
+				href1="";
+			}else{
+				href1=list50.get(0).getHref();
+			}
+			if(list50.get(1).getHref()==null||"".equals(list50.get(1).getHref())){
+				href2="";
+			}else{
+				href2=list50.get(1).getHref();
+			}
+			if(list50.get(2).getHref()==null||"".equals(list50.get(2).getHref())){
+				href3="";
+			}else{
+				href3=list50.get(2).getHref();
+			}
+			if(list50.get(3).getHref()==null||"".equals(list50.get(3).getHref())){
+				href4="";
+			}else{
+				href4=list50.get(3).getHref();
+			}
+			
 		}else{
 			toplunbo1="lunbo1.jpg";
 			toplunbo2="lunbo2.jpg";
 			toplunbo3="lunbo3.jpg";
 			toplunbo4="lunbo4.jpg";
+			href1="";
+			href2="";
+			href3="";
+			href4="";
 		}
 		String trainlunbo1=null;
 		String trainlunbo2=null;
@@ -194,6 +224,10 @@ public class IndexController {
 		req.setAttribute("toplunbo2", toplunbo2);
 		req.setAttribute("toplunbo3", toplunbo3);
 		req.setAttribute("toplunbo4", toplunbo4);
+		req.setAttribute("href1", href1);
+		req.setAttribute("href2", href2);
+		req.setAttribute("href3", href3);
+		req.setAttribute("href4", href4);
 		req.setAttribute("trainlunbo1", trainlunbo1);
 		req.setAttribute("trainlunbo2", trainlunbo2);
 		req.setAttribute("trainlunbo3", trainlunbo3);

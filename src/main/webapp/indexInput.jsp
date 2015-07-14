@@ -36,7 +36,10 @@ body{
 </select>
 </span>
 </div>
-<div class="area_right"></div>
+<div class="area_right">
+<span class="area_span">图片链接</span>
+<input type="text" id="href" name="href" >
+</div>
 <div class="c-fix" style="padding-left:35px;margin-top:50px;">
 <span class="area_span" style="float:left;">轮播图片</span>
 <span> <input type="file" name="img" id="img" style="width:600px;border:1px solid rgb(239,235,242);float:left;margin-right:40px;"/><a href="#" class="addindeximg">添加</a></span>

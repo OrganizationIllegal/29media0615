@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <head>
    <link rel="icon" sizes="any" type="image/x-icon"  href="images/Logo2.png">
-   <title>29传媒</title>
+   <title>贰玖传媒</title>
    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
    <script src="/js/jquery.min.js"></script>
    <script src="/bootstrap/js/bootstrap.min.js"></script>

@@ -7,6 +7,14 @@ public class LunboImage{
 	private int id;
 	private String img;
 	private String type;
+	private String href;
+	
+	public String getHref() {
+		return href;
+	}
+	public void setHref(String href) {
+		this.href = href;
+	}
 	public int getId() {
 		return id;
 	}

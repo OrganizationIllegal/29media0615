@@ -48,6 +48,7 @@ body{
             <th data-field="id" data-sortable="true" data-editable="true">ID</th>
             <th data-field="type" data-sortable="true" data-editable="true">类型</th>
             <th data-field="img" data-sortable="true" data-editable="true">图片</th>
+            <th data-field="href" data-sortable="true" data-editable="true">链接</th>
             <th data-field="operate"
                 data-formatter="operateFormatter"
                 data-events="operateEvents">Item Operate</th>

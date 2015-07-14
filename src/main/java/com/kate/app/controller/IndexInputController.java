@@ -27,7 +27,7 @@ public class IndexInputController {
 	@Autowired
 	private LunboImageDAO lunboImageDAO;
 	
-	//轮播图列表
+	//杞挱鍥惧垪琛�
 		@RequestMapping({ "/LunboList" })    
 		public void LunboList(HttpServletRequest req, HttpServletResponse resp){
 			JSONObject json = new JSONObject();
@@ -43,7 +43,7 @@ public class IndexInputController {
 				e.printStackTrace();
 			}
 		}
-		//删除轮播
+		//鍒犻櫎杞挱
 				@RequestMapping({ "/deleteLunbo" })
 				public void deleteLunbo(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 					int id = Integer.parseInt(req.getParameter("id"));
@@ -57,7 +57,7 @@ public class IndexInputController {
 					}
 				}
 	
-	//轮播图录入
+	//杞挱鍥惧綍鍏�
 			@RequestMapping({ "/inputLunbo" })
 			public void inputLunbo(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 				String indeximglist=req.getParameter("indeximglist");
@@ -66,12 +66,14 @@ public class IndexInputController {
 				int flag=0;
 				JSONObject json = new JSONObject();
 				for (int i=0;i<indeximgArray.size();i++){
-					 JSONObject object = (JSONObject)indeximgArray.get(i); //对于每个json对象
+					 JSONObject object = (JSONObject)indeximgArray.get(i); //瀵逛簬姣忎釜json瀵硅薄
 					 LunboImage e = (LunboImage) JSONToObj(object.toString(), LunboImage.class);
 					 imagelist.add(e);
 					 String type=e.getType();
 					 String img=e.getImg();
-					 flag=lunboImageDAO.InsertTrain(type, img);
+					 String href=e.getHref();
+					 
+					 flag=lunboImageDAO.InsertTrain(type, img, href);
 					 System.out.println(flag);
 				     json.put("flag", flag);
 				}

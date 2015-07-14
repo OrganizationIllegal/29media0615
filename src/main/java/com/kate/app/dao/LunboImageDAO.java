@@ -16,7 +16,7 @@ import com.kate.app.model.Train;
 @Repository 
 public class LunboImageDAO extends BaseDao{
 	
-	//轮播图列表
+	//杞挱鍥惧垪琛�
 		public JSONArray selectLunboList(){
 			JSONArray jsonArray=new JSONArray();
 			try {
@@ -28,6 +28,13 @@ public class LunboImageDAO extends BaseDao{
 					obj.put("id", rs.getInt("id"));
 					obj.put("type", rs.getString("type"));
 					obj.put("img", rs.getString("img"));
+					String href = rs.getString("href");
+					if(href.equals("") || href==null){
+						obj.put("href", "");
+					}
+					else{
+						obj.put("href", rs.getString("href"));
+					}
 					jsonArray.add(obj);
 				}
 			} catch (Exception e) {
@@ -38,14 +45,15 @@ public class LunboImageDAO extends BaseDao{
 		} 
 		
 	
-	//轮播图录入
-		public int InsertTrain(String  type, String img){
+	//杞挱鍥惧綍鍏�
+		public int InsertTrain(String  type, String img, String href1){
 			int exeResult=0;
 			try {
-				String sql = "insert into lunbo_image(type,img) values(?,?)";
+				String sql = "insert into lunbo_image(type,img,href) values(?,?,?)";
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, type);
 				pstmt.setString(2, img);
+				pstmt.setString(3, href1);
 				exeResult = pstmt.executeUpdate();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -54,7 +62,7 @@ public class LunboImageDAO extends BaseDao{
 			return exeResult;
 		} 	
 		
-		//删除轮播
+		//鍒犻櫎杞挱
 		public int deleteLunbo(int id){
 			int exeResult=0;
 			try{
@@ -67,7 +75,7 @@ public class LunboImageDAO extends BaseDao{
 		        }
 			    return exeResult;
 		}
-        //查找轮播图
+        //鏌ユ壘杞挱鍥�
 		public List<LunboImage> findAll(){
 			List<LunboImage> list = new ArrayList<LunboImage>();
 			try{
@@ -80,6 +88,7 @@ public class LunboImageDAO extends BaseDao{
 					data.setId(rs.getInt("id"));
 					data.setImg(rs.getString("img"));
 					data.setType(rs.getString("type"));
+					data.setHref(rs.getString("href"));
 					list.add(data);
 				}
 				

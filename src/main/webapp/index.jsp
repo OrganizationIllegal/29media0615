@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <head>
    <link rel="icon" sizes="any" type="image/x-icon"  href="images/Logo2.png">
-   <title>29传媒</title>
+   <title>贰玖传媒</title>
    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
    <link href="/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
    <link href="/css/news.css" rel="stylesheet">
@@ -122,19 +122,19 @@ function pop4(){
    <!-- 轮播（Carousel）项目 -->
    <div class="carousel-inner">
       <div class="item active">
-         <img src="/29images/${toplunbo1}" alt="First slide" style="width:1400px;height:370px;">
+         <a href="${href1}"><img src="/29images/${toplunbo1}" alt="First slide" style="width:1400px;height:370px;"></a>
          <div class="carousel-caption"></div>
       </div>
       <div class="item">
-         <img src="/29images/${toplunbo2}" alt="Second slide" style="width:1400px;height:370px;">
+         <a href="${href2}"><img src="/29images/${toplunbo2}" alt="Second slide" style="width:1400px;height:370px;"></a>
          <div class="carousel-caption"></div>
       </div>
       <div class="item">
-         <img src="/29images/${toplunbo3}" alt="Third slide" style="width:1400px;height:370px;">
+         <a href="${href3}"><img src="/29images/${toplunbo3}" alt="Third slide" style="width:1400px;height:370px;"></a>
          <div class="carousel-caption"></div>
       </div>
        <div class="item">
-         <img src="/29images/${toplunbo4}" alt="Forth slide" style="width:1400px;height:370px;">
+         <a href="${href4}"><img src="/29images/${toplunbo4}" alt="Forth slide" style="width:1400px;height:370px;"></a>
          <div class="carousel-caption"></div>
       </div>
       <!-- 轮播（Carousel）导航 -->
