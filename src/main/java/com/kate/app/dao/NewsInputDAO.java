@@ -71,6 +71,25 @@ public class NewsInputDAO extends BaseDao {
 			return exeResult;
 		} 
 		
+		
+		//新闻图片录入
+				public int InsertJoinImage(int join_id, String image){
+					int exeResult=0;
+					try {
+						String sql = "insert into join_image(join_id,image) values(?,?)";
+						PreparedStatement pstmt = con.prepareStatement(sql);
+						pstmt.setInt(1, join_id);
+						pstmt.setString(2, image);
+						exeResult = pstmt.executeUpdate();
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return exeResult;
+				} 
+				
+				
+		
 	//删除新闻
 	public int deleteNewsTrends(int id){
 		int exeResult=0;
@@ -105,15 +124,14 @@ public class NewsInputDAO extends BaseDao {
 	}
 	
 	//编辑新闻
-		public int addJoinUs(String name, String  email,String content,String image){
+		public int addJoinUs(String name, String  email,String content){
 			int exeResult=0;
 			try {
-				String sql = "insert into join_us(name, email,content,image) values(?,?,?,?)";
+				String sql = "insert into join_us(name, email,content) values(?,?,?)";
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, name);
 				pstmt.setString(2, email);
 				pstmt.setString(3, content);
-				pstmt.setString(4, image);
 				exeResult = pstmt.executeUpdate();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -123,6 +141,24 @@ public class NewsInputDAO extends BaseDao {
 	        
 		}
 		
+		//编辑新闻
+				public int selectJoinUs(String  email){
+					int exeResult=0;
+					try {
+						String sql = "select id from  join_us where email=?";
+						PreparedStatement pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, email);
+						ResultSet rs = pstmt.executeQuery();
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return exeResult;
+			        
+				}
+				
+				
+	
 		
 	//查找新闻
 	public NewsTrends findById(int id){

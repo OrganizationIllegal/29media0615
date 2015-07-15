@@ -19,6 +19,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.kate.app.dao.NewsInputDAO;
 import com.kate.app.model.JoinUs;
+import com.kate.app.model.JoinUsImage;
 import com.kate.app.model.NewsImage;
 import com.kate.app.model.NewsTrends;
 
@@ -126,21 +127,37 @@ public class NewsInputController {
 	//鏂伴椈缂栬緫
 			@RequestMapping({ "/inputJoinUs" })
 			public void inputJoinUs(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+				int flag1 = 0;
+				int flag2 = 0;
+				JSONObject json = new JSONObject();
+				
 				String newsinfo=req.getParameter("newsinfo");		
 				JoinUs joinUs = (JoinUs) JSONToObj(newsinfo,JoinUs.class);
 				String name = joinUs.getUsername();
 				String email  = joinUs.getEmail();
 				String content = joinUs.getContent();
+				int join_id = 0;
+				flag1 =newsInputDao.addJoinUs(name, email, content);
+				if(flag1>0){
+					join_id = newsInputDao.selectJoinUs(email); 
+				}
 				
 				String newsimglist=req.getParameter("newsimglist");
 				JSONArray newsimgArray = JSONArray.parseArray(newsimglist);
-				List<NewsImage> imagelist=new ArrayList<NewsImage>();
+				
+				List<JoinUsImage> imagelist=new ArrayList<JoinUsImage>();
 				JSONObject obj = null;
 				if(newsimglist!=null && !"".equals(newsimglist)){
-					obj= (JSONObject)newsimgArray.get(0);
+					for (int i=0;i<newsimgArray.size();i++){
+						 JSONObject object = (JSONObject)newsimgArray.get(i); //瀵逛簬姣忎釜json瀵硅薄
+						 JoinUsImage e = (JoinUsImage) JSONToObj(object.toString(), JoinUsImage.class);
+						 imagelist.add(e);
+						 String image=e.getImage();
+						 flag2=newsInputDao.InsertJoinImage(join_id, image);		 
+					}
 				}
-				NewsImage img=(NewsImage) JSONToObj(obj.toString(), NewsImage.class);
-				String image=img.getNews_image();
+				/*NewsImage img=(NewsImage) JSONToObj(obj.toString(), NewsImage.class);
+				String image=img.getNews_image();*/
 				/*int flag2=0;
 				for (int i=0;i<newsimgArray.size();i++){
 					 JSONObject object = (JSONObject)newsimgArray.get(i); //瀵逛簬姣忎釜json瀵硅薄
@@ -150,10 +167,9 @@ public class NewsInputController {
 					 flag2=newsInputDao.InsertNewsImage(news_id, news_image);		 
 				}*/
 						
-				int flag1 = 0;
-				JSONObject json = new JSONObject();
-				flag1 =newsInputDao.addJoinUs(name, email, content, image);
-				json.put("flag", flag1);
+				
+				
+				json.put("flag", flag1+flag2);
 				try{
 					writeJson(json.toJSONString(),resp);
 				}catch(Exception e){

@@ -122,19 +122,19 @@ function pop4(){
    <!-- 轮播（Carousel）项目 -->
    <div class="carousel-inner">
       <div class="item active">
-         <a href="${href1}"><img src="/29images/${toplunbo1}" alt="First slide" style="width:1400px;height:370px;"></a>
+         <a href="http://${href1}"><img src="/29images/${toplunbo1}" alt="First slide" style="width:1400px;height:370px;"></a>
          <div class="carousel-caption"></div>
       </div>
       <div class="item">
-         <a href="${href2}"><img src="/29images/${toplunbo2}" alt="Second slide" style="width:1400px;height:370px;"></a>
+         <a href="http://${href2}"><img src="/29images/${toplunbo2}" alt="Second slide" style="width:1400px;height:370px;"></a>
          <div class="carousel-caption"></div>
       </div>
       <div class="item">
-         <a href="${href3}"><img src="/29images/${toplunbo3}" alt="Third slide" style="width:1400px;height:370px;"></a>
+         <a href="http://${href3}"><img src="/29images/${toplunbo3}" alt="Third slide" style="width:1400px;height:370px;"></a>
          <div class="carousel-caption"></div>
       </div>
        <div class="item">
-         <a href="${href4}"><img src="/29images/${toplunbo4}" alt="Forth slide" style="width:1400px;height:370px;"></a>
+         <a href="http://${href4}"><img src="/29images/${toplunbo4}" alt="Forth slide" style="width:1400px;height:370px;"></a>
          <div class="carousel-caption"></div>
       </div>
       <!-- 轮播（Carousel）导航 -->

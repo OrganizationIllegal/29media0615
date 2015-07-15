@@ -119,7 +119,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 		dataType: "json",
 	 		url: "/inputJoinUs",
 	 		success:function(data){
-	 			if(data.flag ==1){
+	 			if(data.flag ==2){
 	 				alert("添加成功！");
 	 			}else if(data.flag ==0){
 	 				alert("添加失败！");

@@ -40,7 +40,7 @@ public class IndexController {
 		list5=lunboImageDAO.findAll();
 		if(list5.size()>0){
 			for(LunboImage item : list5){
-				if(item.getType().equals("é¡¶éƒ¨è½®æ’­")){
+				if(item.getType().equals("¶¥²¿ÂÖ²¥")){
 					list50.add(item);
 				}else if(item.getType().equals("åŸ¹è®­è½®æ’­")){
 					list51.add(item);
