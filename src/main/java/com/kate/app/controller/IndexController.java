@@ -40,7 +40,7 @@ public class IndexController {
 		list5=lunboImageDAO.findAll();
 		if(list5.size()>0){
 			for(LunboImage item : list5){
-				if(item.getType().equals("¶¥²¿ÂÖ²¥")){
+				if(item.getType().equals("é¡¶éƒ¨è½®æ’­")){
 					list50.add(item);
 				}else if(item.getType().equals("åŸ¹è®­è½®æ’­")){
 					list51.add(item);
@@ -143,6 +143,13 @@ public class IndexController {
 		String starimg5=null;
 		String starimg6=null;
 		String starimg7=null;
+		String starhref1 = null;
+		String starhref2 = null;
+		String starhref3 = null;
+		String starhref4 = null;
+		String starhref5 = null;
+		String starhref6 = null;
+		String starhref7 = null;
 		if(list52.size()>6){
 			if(list52.get(0).getImg()==null||"".equals(list52.get(0).getImg())){
 				starimg1="img01.jpg";
@@ -179,6 +186,41 @@ public class IndexController {
 			}else{
 				starimg7=list52.get(6).getImg();
 			}
+			if(list52.get(0).getHref()==null||"".equals(list52.get(0).getHref())){
+				starhref1="";
+			}else{
+				starhref1=list52.get(0).getHref();
+			}
+			if(list52.get(1).getHref()==null||"".equals(list52.get(1).getHref())){
+				starhref2="";
+			}else{
+				starhref2=list52.get(1).getHref();
+			}
+			if(list52.get(2).getHref()==null||"".equals(list52.get(2).getHref())){
+				starhref3="";
+			}else{
+				starhref3=list52.get(2).getHref();
+			}
+			if(list52.get(3).getHref()==null||"".equals(list52.get(3).getHref())){
+				starhref4="";
+			}else{
+				starhref4=list52.get(3).getHref();
+			}
+			if(list52.get(4).getHref()==null||"".equals(list52.get(4).getHref())){
+				starhref5="";
+			}else{
+				starhref5=list52.get(4).getHref();
+			}
+			if(list52.get(5).getHref()==null||"".equals(list52.get(5).getHref())){
+				starhref6="";
+			}else{
+				starhref6=list52.get(5).getHref();
+			}
+			if(list52.get(6).getHref()==null||"".equals(list52.get(6).getHref())){
+				starhref7="";
+			}else{
+				starhref7=list52.get(6).getHref();
+			}
 		}else{
 			starimg1="img01.jpg";
 			starimg2="img02.jpg";
@@ -187,6 +229,13 @@ public class IndexController {
 			starimg5="img02.jpg";
 			starimg6="img04.jpg";
 			starimg7="img05.jpg";
+			starhref1="";
+			starhref2="";
+			starhref3="";
+			starhref4="";
+			starhref5="";
+			starhref6="";
+			starhref7="";
 		}
 		String videoimg1=null;
 		String videoimg2=null;
@@ -238,6 +287,13 @@ public class IndexController {
 		req.setAttribute("starimg5", starimg5);
 		req.setAttribute("starimg6", starimg6);
 		req.setAttribute("starimg7", starimg7);
+		req.setAttribute("starhref1", starhref1);
+		req.setAttribute("starhref2", starhref2);
+		req.setAttribute("starhref3", starhref3);
+		req.setAttribute("starhref4", starhref4);
+		req.setAttribute("starhref5", starhref5);
+		req.setAttribute("starhref6", starhref6);
+		req.setAttribute("starhref7", starhref7);
 		req.setAttribute("videoimg1", videoimg1);
 		req.setAttribute("videoimg2", videoimg2);
 		req.setAttribute("videoimg3", videoimg3);

@@ -56,7 +56,9 @@ body{
 <script type="text/javascript">
 function add(){
 	  var newsinfo=DataDeal.formToJson(data= decodeURIComponent($("#newsinfo").serialize(),true)); 
+	  alert("ffff")
 	  newsinfo=eval("("+newsinfo+")");
+	  alert("fffffffffffffff")
 	  $.ajax({
 	 	    type: "POST",
 	 		data: {"newsinfo":JSON.stringify(newsinfo),"newsimglist":JSON.stringify(newsimglist)},
