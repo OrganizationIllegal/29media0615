@@ -52,7 +52,7 @@ public class NewsController {
 		if(newsInfo!=null){
 			detail = newsInfo.getDetail();
 		}
-		//System.out.println(newsInfo.getDetail());
+
 		req.setAttribute("detail", detail);
 		req.setAttribute("newsInfo", newsInfo);
 		req.setAttribute("trendList", trendList);

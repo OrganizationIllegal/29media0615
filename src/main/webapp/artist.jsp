@@ -239,6 +239,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						    </div>
 						</div>
 					</c:if>
+					<c:if test="${not empty star1.star_detail}">
+						<div style="margin-bottom:8px;" >
+						
+					    <label class=" control-label" style="width:100px;float:left;margin-left:100px;">详细信息：</label>
+					  <br/>
+					   <div style="width:600px;float:left;margin-left:100px;">
+					      ${ star1.star_detail}
+					    </div>
+					</div>
+					</c:if>
 		</div>
 		</div>	
 		</div>
@@ -248,7 +258,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<c:forEach var="item" items="${list}" varStatus="stat">
 		
 		<div id="${stat.index }" style="margin-bottom:10px;">
-			<a href="/Artist?starNum=${stat.index+1}"><img alt="" src="/29images/${item.star_img}" style="width:240px;height:170px;cursor:pointer;">
+			<a href="/Artist?starNum=${item.star_num}"><img alt="" src="/29images/${item.star_img}" style="width:240px;height:170px;cursor:pointer;">
 			</a>
 		</div>
 		<!-- <div id="id2" style="margin-bottom:10px;"><a href="/Artist?starNum=2"><img alt="" src="/images/artist/dyn1.png" style="width:240px;height:170px;cursor:pointer;"></a></div>
