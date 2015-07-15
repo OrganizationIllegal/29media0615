@@ -71,7 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</c:forEach> --%>
 		 <c:forEach var="item" items="${lianxiList}" varStatus="stat">
 			<div id="id1" style="padding-top:80px;font-size:30px;font-weight:bolder;font-family:黑体;filter:alpha(opacity=60);opacity:0.6;cursor:pointer;">
-			<a href="/TrainDetail?id=${item.id}">${item.typename}</a></div>
+			<a href="/TrainDetail?id=${item.id}&train_id=${item.train_id}">${item.typename}</a></div>
 		</c:forEach> 
 		<!-- <div id="id2" style="padding-top:80px;font-size:30px;font-weight:bolder;font-family:黑体;filter:alpha(opacity=60);opacity:0.6;cursor:pointer;">艺术班</div>
 		<div id="id3" style="padding-top:80px;font-size:30px;font-weight:bolder;font-family:黑体;filter:alpha(opacity=60);opacity:0.6;cursor:pointer;">唱歌班</div>

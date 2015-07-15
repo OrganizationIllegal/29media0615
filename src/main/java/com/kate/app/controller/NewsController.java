@@ -48,7 +48,12 @@ public class NewsController {
 		NewsTrends newsInfo = newsTrendsDAO.findByNewsTrendId(news_id).get(0);
 		List<NewsTrends> trendList = newsTrendsDAO.findAll();
 		List<NewsImage> imageList = newsImageDAO.findByNewsImgId(news_id);
-		
+		String detail = "";
+		if(newsInfo!=null){
+			detail = newsInfo.getDetail();
+		}
+		//System.out.println(newsInfo.getDetail());
+		req.setAttribute("detail", detail);
 		req.setAttribute("newsInfo", newsInfo);
 		req.setAttribute("trendList", trendList);
 		req.setAttribute("imageList", imageList);

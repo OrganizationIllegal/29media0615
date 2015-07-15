@@ -56,7 +56,6 @@ function add(){
 	  var newsinfo=DataDeal.formToJson(data= decodeURIComponent($("#newsinfo").serialize(),true)); 
 	  newsinfo=eval("("+newsinfo+")");
 	  var result = $("#detail").val();
-	  
 	  var newsid=newsinfo.news_id;
 	  var newstime=newsinfo.time;
 	  if(isNaN(newsid)){

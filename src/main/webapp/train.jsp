@@ -100,7 +100,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div style="clear:both;">
 		  <c:forEach items="${trainList}"  var="item" varStatus="status">
 		  <c:if test="${status.index<3 }">
-			<div style="width:380px;float:left;text-align:center;"><a href="/TrainDetail?id=${trainid_lianxi}"><img src="/29images/${item.train_image}" width="350px" height="280px"></a>
+			<div style="width:380px;float:left;text-align:center;"><a href="/TrainDetail?train_id=${item.train_id}"><img src="/29images/${item.train_image}" width="350px" height="280px"></a>
 			<div style="z-index:1;width:350px;height:100px;opacity:0.5;background:#1c4587;top:-190px;left:15px;position:relative;filter:alpha(opacity=50);">
 					<div style="height:100%;line-height:100%;overflow:hidden;align:center;">
 						<h1 style="text-align:center;color:white;">${item.train_name}</h1>

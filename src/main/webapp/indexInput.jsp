@@ -53,7 +53,7 @@ body{
 function add(){
 	  var h = $("#href").val();
 	  indeximglist.href = $("#href").val();
-	  alert(indeximglist.href)
+	  //alert(indeximglist.href)
 	  $.ajax({
 	 	    type: "POST",
 	 		data: {"h":h, "indeximglist":JSON.stringify(indeximglist)},

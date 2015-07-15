@@ -71,17 +71,49 @@ public class TrainController {
 	
 	@RequestMapping({ "/TrainDetail" })
 	public String TrainDetail(HttpServletRequest req,HttpServletResponse resp){
-		String news_id_str = req.getParameter("id");
-		int news_id=Integer.parseInt(news_id_str);
-		//根据train_id从lianxi表中得到信息
+		String id_str = req.getParameter("id");
+		int id = 0;
+		int train_id=0;	
 		List<LianXi> lianxiList=new ArrayList<LianXi>();
-		lianxiList=trainDao.findAllLianXi();
+		LianXi data = new LianXi();
+		if(null!=id_str && !"".equals(id_str)){
+			id = Integer.parseInt(id_str);
+			data = trainDao.findnewsById(id);
+		}
+		
+		String train_id_str = req.getParameter("train_id");
+		if(train_id_str!=null  && !"".equals(train_id_str)){
+			train_id = Integer.parseInt(train_id_str);
+			lianxiList=trainDao.findAllLianXiByTrainId(train_id);
+		}
+		
+		//根据train_id从lianxi表中得到信息
+		
+		
 		req.setAttribute("lianxiList", lianxiList);
 		//根据id在lianxi表中找相应记录
-		LianXi data = trainDao.findnewsById(news_id);
+		
 		req.setAttribute("data", data);
 		return "/traindetail.jsp";
 	}
+	
+	
+	/*@RequestMapping({ "/TrainDetailNeirong" })
+	public String TrainDetailNeirong(HttpServletRequest req,HttpServletResponse resp){
+		String id_str = req.getParameter("id");
+		int id=Integer.parseInt(id_str);
+			
+		//根据train_id从lianxi表中得到信息
+		LianXi data=new LianXi();
+		data = trainDao.findLianXiById(id);
+		req.setAttribute("data", data);
+		//根据id在lianxi表中找相应记录
+		LianXi data = trainDao.findnewsById(id);
+		req.setAttribute("data", data);
+		return "/traindetail.jsp";
+	}*/
+	
+	
 	/*//lianxi表中根据id取记录
 	@RequestMapping({ "/Detail" })
 	public String Detail(HttpServletRequest req,HttpServletResponse resp){
