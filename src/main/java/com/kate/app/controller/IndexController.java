@@ -241,6 +241,10 @@ public class IndexController {
 		String videoimg2=null;
 		String videoimg3=null;
 		String videoimg4=null;
+		String videohref1=null;
+		String videohref2=null;
+		String videohref3=null;
+		String videohref4=null;
 		if(list53.size()>3){
 			if(list53.get(0).getImg()==null||"".equals(list53.get(0).getImg())){
 				videoimg1="img01.jpg";
@@ -262,11 +266,35 @@ public class IndexController {
 			}else{
 				videoimg4=list53.get(3).getImg();
 			}
+			if(list53.get(0).getHref()==null||"".equals(list53.get(0).getHref())){
+				videohref1="";
+			}else{
+				videohref1=list53.get(0).getHref();
+			}
+			if(list53.get(1).getHref()==null||"".equals(list53.get(1).getHref())){
+				videohref2="";
+			}else{
+				videohref2=list53.get(1).getHref();
+			}
+			if(list53.get(2).getHref()==null||"".equals(list53.get(2).getHref())){
+				videohref3="";
+			}else{
+				videohref3=list53.get(2).getHref();
+			}
+			if(list53.get(3).getHref()==null||"".equals(list53.get(3).getHref())){
+				videohref4="";
+			}else{
+				videohref4=list53.get(3).getHref();
+			}
 		}else{
 			videoimg1="img01.jpg";
 			videoimg2="img02.jpg";
 			videoimg3="img04.jpg";
 			videoimg4="img05.jpg";
+			videohref1="";
+			videohref2="";
+			videohref3="";
+			videohref4="";
 		}
 		req.setAttribute("NewsList", list1);
 		req.setAttribute("toplunbo1", toplunbo1);
@@ -297,7 +325,11 @@ public class IndexController {
 		req.setAttribute("videoimg1", videoimg1);
 		req.setAttribute("videoimg2", videoimg2);
 		req.setAttribute("videoimg3", videoimg3);
-		req.setAttribute("videoimg4", videoimg4);		
+		req.setAttribute("videoimg4", videoimg4);
+		req.setAttribute("videohref1", videohref1);
+		req.setAttribute("videohref2", videohref2);
+		req.setAttribute("videohref3", videohref3);
+		req.setAttribute("videohref4", videohref4);
 		return "/index.jsp";
 	}
 

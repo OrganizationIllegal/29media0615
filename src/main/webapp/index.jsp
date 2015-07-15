@@ -122,19 +122,19 @@ function pop4(){
    <!-- 轮播（Carousel）项目 -->
    <div class="carousel-inner">
       <div class="item active">
-         <a href="http://${href1}"><img src="/29images/${toplunbo1}" alt="First slide" style="width:1400px;height:370px;"></a>
+         <a href="${href1}"><img src="/29images/${toplunbo1}" alt="First slide" style="width:1400px;height:370px;"></a>
          <div class="carousel-caption"></div>
       </div>
       <div class="item">
-         <a href="http://${href2}"><img src="/29images/${toplunbo2}" alt="Second slide" style="width:1400px;height:370px;"></a>
+         <a href="${href2}"><img src="/29images/${toplunbo2}" alt="Second slide" style="width:1400px;height:370px;"></a>
          <div class="carousel-caption"></div>
       </div>
       <div class="item">
-         <a href="http://${href3}"><img src="/29images/${toplunbo3}" alt="Third slide" style="width:1400px;height:370px;"></a>
+         <a href="${href3}"><img src="/29images/${toplunbo3}" alt="Third slide" style="width:1400px;height:370px;"></a>
          <div class="carousel-caption"></div>
       </div>
        <div class="item">
-         <a href="http://${href4}"><img src="/29images/${toplunbo4}" alt="Forth slide" style="width:1400px;height:370px;"></a>
+         <a href="${href4}"><img src="/29images/${toplunbo4}" alt="Forth slide" style="width:1400px;height:370px;"></a>
          <div class="carousel-caption"></div>
       </div>
       <!-- 轮播（Carousel）导航 -->
@@ -225,10 +225,15 @@ function pop4(){
 					<div style="float:left;width:110px;height:220px;"><a href="${starhref6}"><img src="/29images/${starimg6}" style="width:110px;height:110px;padding:1px;" title="新星新星"></a><a href="${starhref7}"><img src="/29images/${starimg7}" style="width:110px;height:110px;padding:1px;" title="新星新星"></a></div>
 			</div>
 			<div style="widht:570px;float:right;margin-right:40px;">
-					<div  style="margin-top:15px;float:left;"><canvas id="can1" width="150" height="150" onclick="pop1()"></canvas></div>
+					<%-- <div  style="margin-top:15px;float:left;"><canvas id="can1" width="150" height="150" onclick="pop1()"></canvas></div>
 					<div  style="margin-top:120px;float:left;"><canvas id="can2" width="80" height="80" onclick="pop2()"></canvas></div>
 					<div  style="margin-top:20px;float:left;"><canvas id="can3" width="80" height="80" onclick="pop3()"></canvas></div>
-					<div  style="margin-top:50px;float:left;"><canvas id="can4" width="150" height="150" onclick="pop4()"></canvas></div>
+					<div  style="margin-top:50px;float:left;"><canvas id="can4" width="150" height="150" onclick="pop4()"></canvas></div> --%>
+					
+					<div  style="margin-top:15px;float:left;"><a href="${videohref1}"><canvas id="can1" width="150" height="150"></canvas></a></div>
+					<div  style="margin-top:120px;float:left;"><a href="${videohref2}"><canvas id="can2" width="80" height="80"></canvas></a></div>
+					<div  style="margin-top:20px;float:left;"><a href="${videohref3}"><canvas id="can3" width="80" height="80"></canvas></a></div>
+					<div  style="margin-top:50px;float:left;"><a href="${videohref4}"><canvas id="can4" width="150" height="150"></canvas></a></div>
 			</div>
 		</div>
 		<div style="width:460px;float:left;clear:both;padding-top:45px;"><hr style="border-top:2px solid #4ed6b8;"/></div>
