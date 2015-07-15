@@ -101,11 +101,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    </div>
    </div>
    </div>
-   <!--  轮播图 -->
-  <div style="overflow-y:auto; width:850px; height:300px;text-align:left;padding:30px;">&nbsp;&nbsp;&nbsp;&nbsp;${newsInfo.detail }</div>
-		</div>
-	
-	<%--<div id="news2" style="border-left:1px solid;display:none;">
+   <%--<div id="news2" style="border-left:1px solid;display:none;">
 		<div style="text-align:center;font-size:20px;font-weight:bolder;">吉克隽逸献唱申冬奥歌曲《呼唤爱》 帅气展现正能量</div>
 		<div style="text-align:right;filter:alpha(opacity=60);opacity:0.6;border-bottom:1px solid">2015年05月28日</div>
 		<!-- 轮播图 -->
