@@ -219,10 +219,10 @@ function pop4(){
 		<!-- lize end -->
 		<div>
 			<div style="widht:570px;float:left;">
-					<div style="float:left;width:110px;height:220px;"><a href="Artist?starNum=1"><img src="/29images/${starimg1}" style="width:110px;height:110px;padding:1px;" title="新星新星"></a><a href="Artist?starNum=2"><img src="/29images/${starimg2}" style="width:110px;height:110px;padding:1px;" title="新星新星"></a></div>
-					<div style="float:left;width:240px;height:220px;"><a href="Artist?starNum=3"><img src="/29images/${starimg3}" style="width:240px;height:220px;padding:1px;" title="新星新星"></a></div>
-					<div style="float:left;width:110px;height:220px;"><a href="Artist?starNum=4"><img src="/29images/${starimg4}" style="width:110px;height:110px;padding:1px;" title="新星新星"></a><a href="Artist?starNum=5"><img src="/29images/${starimg5}" style="width:110px;height:110px;padding:1px;" title="新星新星"></a></div>
-					<div style="float:left;width:110px;height:220px;"><a href="Artist?starNum=6"><img src="/29images/${starimg6}" style="width:110px;height:110px;padding:1px;" title="新星新星"></a><a href="Artist?starNum=7"><img src="/29images/${starimg7}" style="width:110px;height:110px;padding:1px;" title="新星新星"></a></div>
+					<div style="float:left;width:110px;height:220px;"><a href="${starhref1}"><img src="/29images/${starimg1}" style="width:110px;height:110px;padding:1px;" title="新星新星"></a><a href="${starhref2}"><img src="/29images/${starimg2}" style="width:110px;height:110px;padding:1px;" title="新星新星"></a></div>
+					<div style="float:left;width:240px;height:220px;"><a href="${starhref3}"><img src="/29images/${starimg3}" style="width:240px;height:220px;padding:1px;" title="新星新星"></a></div>
+					<div style="float:left;width:110px;height:220px;"><a href="${starhref4}"><img src="/29images/${starimg4}" style="width:110px;height:110px;padding:1px;" title="新星新星"></a><a href="${starhref5}"><img src="/29images/${starimg5}" style="width:110px;height:110px;padding:1px;" title="新星新星"></a></div>
+					<div style="float:left;width:110px;height:220px;"><a href="${starhref6}"><img src="/29images/${starimg6}" style="width:110px;height:110px;padding:1px;" title="新星新星"></a><a href="${starhref7}"><img src="/29images/${starimg7}" style="width:110px;height:110px;padding:1px;" title="新星新星"></a></div>
 			</div>
 			<div style="widht:570px;float:right;margin-right:40px;">
 					<div  style="margin-top:15px;float:left;"><canvas id="can1" width="150" height="150" onclick="pop1()"></canvas></div>
