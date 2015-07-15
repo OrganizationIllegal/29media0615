@@ -49,6 +49,7 @@ body{
             <th data-field="star_num" data-sortable="true" data-editable="true">艺人编号</th>
             <th data-field="chinese_name" data-sortable="true" data-editable="true">姓名</th>
             <th data-field="sex" data-sortable="true" data-editable="true">性别</th>
+            <th data-field="star_img" data-sortable="true" data-editable="true">图片</th>
             <th data-field="operate"
                 data-formatter="operateFormatter"
                 data-events="operateEvents">Item Operate</th>
