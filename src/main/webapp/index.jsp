@@ -229,7 +229,7 @@ function pop4(){
 					<div  style="margin-top:120px;float:left;"><canvas id="can2" width="80" height="80" onclick="pop2()"></canvas></div>
 					<div  style="margin-top:20px;float:left;"><canvas id="can3" width="80" height="80" onclick="pop3()"></canvas></div>
 					<div  style="margin-top:50px;float:left;"><canvas id="can4" width="150" height="150" onclick="pop4()"></canvas></div> --%>
-					
+					<div style="width:250px;height:25px;background-color:rgba(218, 218, 218, 1);text-align:center;font-size:16px;font-weight:bold;margin-left:100px;">明星视频</div>
 					<div  style="margin-top:15px;float:left;"><a href="${videohref1}"><canvas id="can1" width="150" height="150"></canvas></a></div>
 					<div  style="margin-top:120px;float:left;"><a href="${videohref2}"><canvas id="can2" width="80" height="80"></canvas></a></div>
 					<div  style="margin-top:20px;float:left;"><a href="${videohref3}"><canvas id="can3" width="80" height="80"></canvas></a></div>
