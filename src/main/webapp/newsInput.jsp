@@ -34,11 +34,12 @@ body{
 <div class="area_left">
 <span class="area_span">发布时间</span><span><input type="text" id="time" name="time" class="area_input" placeholder="请输入日期：yyyy-mm-dd"></span>
 </div>
+</form>
 <div class="area_left c-fix">
 <span class="area_span">新闻详情</span>
 </div>
 <div class="c-fix" style="margin-bottom:15px;margin-left:35px;"><textarea id="detail" name="detail" rows="3" cols="112" style="background-color:rgb(237,238,243);border:0px;"></textarea></div>
-</form>
+
 <div class="area_bkg2 c-fix" id="newsimg">新闻图片</div>
 <form id="newsimg">
 <div class="c-fix" style="padding-left:35px;margin-top:20px;">
@@ -54,8 +55,8 @@ body{
 function add(){
 	  var newsinfo=DataDeal.formToJson(data= decodeURIComponent($("#newsinfo").serialize(),true)); 
 	  newsinfo=eval("("+newsinfo+")");
-	  newsinfo.detail = $("#detail").val();
-	  alert(newsinfo.detail+"fffffffff")
+	  var result = $("#detail").val();
+	  
 	  var newsid=newsinfo.news_id;
 	  var newstime=newsinfo.time;
 	  if(isNaN(newsid)){
@@ -70,7 +71,7 @@ function add(){
 		  }
 	  $.ajax({
 	 	    type: "POST",
-	 		data: {"newsinfo":JSON.stringify(newsinfo),"newsimglist":JSON.stringify(newsimglist)},
+	 		data: {"result":result, "newsinfo":JSON.stringify(newsinfo),"newsimglist":JSON.stringify(newsimglist)},
 	 		dataType: "json",
 	 		url: "/inputNewsTrends",
 	 		success:function(data){

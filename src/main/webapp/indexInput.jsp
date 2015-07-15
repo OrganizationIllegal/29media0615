@@ -51,12 +51,12 @@ body{
 </div>
 <script type="text/javascript">
 function add(){
-	
+	  var h = $("#href").val();
 	  indeximglist.href = $("#href").val();
-	  alert(indeximglist.href+"d"+$("#href").val())
+	  alert(indeximglist.href)
 	  $.ajax({
 	 	    type: "POST",
-	 		data: {"indeximglist":JSON.stringify(indeximglist)},
+	 		data: {"h":h, "indeximglist":JSON.stringify(indeximglist)},
 	 		dataType: "json",
 	 		url: "/inputLunbo",
 	 		success:function(data){

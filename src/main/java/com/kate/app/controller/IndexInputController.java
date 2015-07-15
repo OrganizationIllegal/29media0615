@@ -62,7 +62,7 @@ public class IndexInputController {
 			@RequestMapping({ "/inputLunbo" })
 			public void inputLunbo(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 				String indeximglist=req.getParameter("indeximglist");
-				
+				String h = req.getParameter("h");
 				
 				/*JoinUs joinUs = (JoinUs) JSONToObj(newsinfo,JoinUs.class);
 				String name = joinUs.getUsername();
@@ -82,7 +82,7 @@ public class IndexInputController {
 					 imagelist.add(e);
 					 String type=e.getType();
 					 String img=e.getImg();
-					 String href=e.getHref();
+					 String href=h;
 					 
 					 flag=lunboImageDAO.InsertTrain(type, img, href);
 					 System.out.println(flag);

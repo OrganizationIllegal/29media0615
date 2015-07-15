@@ -40,13 +40,13 @@ public class IndexController {
 		list5=lunboImageDAO.findAll();
 		if(list5.size()>0){
 			for(LunboImage item : list5){
-				if(item.getType().equals("é¡¶éƒ¨è½®æ’­")){
+				if(item.getType().equals("¶¥²¿ÂÖ²¥")){
 					list50.add(item);
-				}else if(item.getType().equals("åŸ¹è®­è½®æ’­")){
+				}else if(item.getType().equals("ÅàÑµÂÖ²¥")){
 					list51.add(item);
-				}else if(item.getType().equals("æ˜Žæ˜Ÿå›¾ç‰‡")){
+				}else if(item.getType().equals("Ã÷ÐÇÍ¼Æ¬")){
 					list52.add(item);
-				}else if(item.getType().equals("å½±è§†å›¾ç‰‡")){
+				}else if(item.getType().equals("Ó°ÊÓÍ¼Æ¬")){
 					list53.add(item);
 				}	
 			}

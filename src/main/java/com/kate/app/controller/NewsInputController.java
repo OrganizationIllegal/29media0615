@@ -58,11 +58,12 @@ public class NewsInputController {
 	@RequestMapping({ "/inputNewsTrends" })
 	public void inputNewsTrends(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 		String newsinfo=req.getParameter("newsinfo");		
+		String detail1=req.getParameter("result");	
 		NewsTrends newstrends = (NewsTrends) JSONToObj(newsinfo, NewsTrends.class);
 		String time;
 		int news_id = newstrends.getNews_id();
 		String title  = newstrends.getTitle();
-		String detail = newstrends.getDetail();
+		String detail = detail1;
 		if(newstrends.getTime()==null||"".equals(newstrends.getTime())){
 			time = "2015-05-09";
 		}else{
@@ -183,13 +184,14 @@ public class NewsInputController {
 	//鏂伴椈缂栬緫
 		@RequestMapping({ "/editNewsTrends" })
 		public void editNewsTrends(HttpServletRequest req, HttpServletResponse resp) throws Exception{
-			String newsinfo=req.getParameter("newsinfo");		
+			String newsinfo=req.getParameter("newsinfo");	
+			String detail1=req.getParameter("result");	
 			NewsTrends newstrends = (NewsTrends) JSONToObj(newsinfo, NewsTrends.class);
 			String time;
 			int id=newstrends.getId();
 			int news_id = newstrends.getNews_id();
 			String title  = newstrends.getTitle();
-			String detail = newstrends.getDetail();
+			String detail = detail1;
 			if(newstrends.getTime()==null||"".equals(newstrends.getTime())){
 				time = "2015-05-09";
 			}else{

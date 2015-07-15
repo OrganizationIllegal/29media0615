@@ -37,11 +37,13 @@ body{
 <div class="area_right" style="display:none;">
 <span class="area_span">id</span><span><input type="text" id="id" name="id" class="area_input" value=${newstrends.id}></span>
 </div>
+</form>
+
 <div class="area_left c-fix">
 <span class="area_span">新闻详情</span>
 </div>
 <div class="c-fix" style="margin-bottom:15px;margin-left:35px;"><textarea id="detail" name="detail" rows="3" cols="112" style="background-color:rgb(237,238,243);border:0px;" >${newstrends.detail}</textarea></div>
-</form>
+
 <div class="area_bkg2 c-fix" id="newsimg">新闻图片</div>
 <form id="newsimg">
 <div class="c-fix" style="padding-left:35px;margin-top:20px;">
@@ -61,7 +63,7 @@ function add(){
 	  newsinfo.detail = result;
 	  $.ajax({
 	 	    type: "POST",
-	 		data: {"newsinfo":JSON.stringify(newsinfo),"newsimglist":JSON.stringify(newsimglist)},
+	 		data: {"result":result, "newsinfo":JSON.stringify(newsinfo),"newsimglist":JSON.stringify(newsimglist)},
 	 		dataType: "json",
 	 		url: "/editNewsTrends",
 	 		success:function(data){
