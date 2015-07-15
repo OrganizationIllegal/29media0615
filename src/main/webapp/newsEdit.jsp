@@ -58,7 +58,6 @@ function add(){
 	  var newsinfo=DataDeal.formToJson(data= decodeURIComponent($("#newsinfo").serialize(),true));
 	  newsinfo=eval("("+newsinfo+")");
 	  var result = $("#detail").val();
-	  result = encodeURI($("#detail").val()).replace(/%0A/g,"brHH"); 
 	  newsinfo.detail = result;
 	  $.ajax({
 	 	    type: "POST",
