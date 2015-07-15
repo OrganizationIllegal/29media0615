@@ -103,6 +103,22 @@ public class NewsInputDAO extends BaseDao {
 	        }
 		    return exeResult;
 	}
+	
+	
+	public int deleteNewsImage(int news_id){
+		int exeResult=0;
+		try{
+				String sql = " delete from news_image where news_id= ?";
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, news_id);
+				exeResult = pstmt.executeUpdate();
+			}catch (Exception e) {
+	            e.printStackTrace();
+	        }
+		    return exeResult;
+	}
+	
+	
 	//编辑新闻
 	public int editNewsTrends(int id, int news_id, String  title,String time,String detail,String image){
 		int exeResult=0;
@@ -149,6 +165,10 @@ public class NewsInputDAO extends BaseDao {
 						PreparedStatement pstmt = con.prepareStatement(sql);
 						pstmt.setString(1, email);
 						ResultSet rs = pstmt.executeQuery();
+						while(rs.next()){
+							exeResult = rs.getInt("id");
+						}
+						
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

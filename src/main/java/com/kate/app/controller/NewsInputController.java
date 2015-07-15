@@ -138,7 +138,7 @@ public class NewsInputController {
 				String content = joinUs.getContent();
 				int join_id = 0;
 				flag1 =newsInputDao.addJoinUs(name, email, content);
-				if(flag1>0){
+				if(flag1 > 0){
 					join_id = newsInputDao.selectJoinUs(email); 
 				}
 				
@@ -152,7 +152,7 @@ public class NewsInputController {
 						 JSONObject object = (JSONObject)newsimgArray.get(i); //瀵逛簬姣忎釜json瀵硅薄
 						 JoinUsImage e = (JoinUsImage) JSONToObj(object.toString(), JoinUsImage.class);
 						 imagelist.add(e);
-						 String image=e.getImage();
+						 String image=e.getNews_image();
 						 flag2=newsInputDao.InsertJoinImage(join_id, image);		 
 					}
 				}
@@ -197,7 +197,7 @@ public class NewsInputController {
 				DateFormat df= DateFormat.getDateInstance();//鏃ユ湡鏍煎紡锛岀簿纭埌鏃�
 				time=df.format(date);			
 			}
-					
+			int result = newsInputDao.deleteNewsImage(news_id);
 			String newsimglist=req.getParameter("newsimglist");
 			JSONArray newsimgArray = JSONArray.parseArray(newsimglist);
 			List<NewsImage> imagelist=new ArrayList<NewsImage>();

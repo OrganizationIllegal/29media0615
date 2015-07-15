@@ -51,6 +51,9 @@ body{
 </div>
 <script type="text/javascript">
 function add(){
+	
+	  indeximglist.href = $("#href").val();
+	  alert(indeximglist.href+"d"+$("#href").val())
 	  $.ajax({
 	 	    type: "POST",
 	 		data: {"indeximglist":JSON.stringify(indeximglist)},

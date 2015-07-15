@@ -6,7 +6,7 @@ package com.kate.app.model;
 public class JoinUsImage{
 	private int id;
 	private int join_id;
-	private String image;
+	private String news_image;
 	public int getId() {
 		return id;
 	}
@@ -19,11 +19,12 @@ public class JoinUsImage{
 	public void setJoin_id(int join_id) {
 		this.join_id = join_id;
 	}
-	public String getImage() {
-		return image;
+	public String getNews_image() {
+		return news_image;
 	}
-	public void setImage(String image) {
-		this.image = image;
+	public void setNews_image(String news_image) {
+		this.news_image = news_image;
 	}
+	
 	
 }
