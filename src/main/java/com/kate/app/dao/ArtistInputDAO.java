@@ -32,6 +32,7 @@ public class ArtistInputDAO extends BaseDao {
 				obj.put("english_name", rs.getString("english_name"));
 				obj.put("bieming", rs.getString("bieming"));
 				obj.put("sex", rs.getString("sex"));
+				obj.put("star_img", rs.getString("star_img"));
 				jsonArray.add(obj);
 			}
 		} catch (Exception e) {
