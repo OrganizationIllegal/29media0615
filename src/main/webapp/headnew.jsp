@@ -152,7 +152,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </button>
          </div>
          <div class="modal-body">
-  <div style="text-align:center;margin-top:5px;"><div style="font-size:20px;font-weight:bold;">欢迎登录海外房产优选</div>
+  <div style="text-align:center;margin-top:5px;"><div style="font-size:20px;font-weight:bold;">欢迎登录</div>
   <form method="post" name="fm" action="/login" autocomplete="off" >
   <div  style="padding-top:25px;">
          <input type="text"  id="username"

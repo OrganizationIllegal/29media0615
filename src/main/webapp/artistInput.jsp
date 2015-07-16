@@ -105,7 +105,7 @@ body{
 </div>
 </form>
 <div id="artistimglist" style="margin-top:20px;"></div>
-<div class="area_bkg2 c-fix" id="brokerinfo">艺人影视</div>
+<!-- <div class="area_bkg2 c-fix" id="brokerinfo">艺人影视</div>
 <form id="videoimg">
 <div class="area_left">
 <span class="area_span">影视编号</span><span><input type="text" id="video_id" name="video_id" class="area_input"></span>
@@ -118,7 +118,7 @@ body{
 <span style="float:right;"> <input type="file" name="video_pic" id="video_pic" style="width:677px;border:1px solid rgb(239,235,242);float:left;margin-right:20px;"/><a href="#" class="addvideoimg">添加</a></span>
 </div>
 </form>
-<div id="videoimglist" style="margin-top:20px;"></div>
+<div id="videoimglist" style="margin-top:20px;"></div> -->
 <div class="area_left4"><button type="button" class="btn" onclick="add()">提交</button></div>
 <div class="area_right4"><button type="button" class="btn" onclick="chongzhi()">重置</button></div>
 </div>

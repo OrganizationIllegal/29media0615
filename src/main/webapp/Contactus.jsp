@@ -46,52 +46,52 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  </div>
   <div style="float:left;width:400px;">
   <form class="form-horizontal"  style="width:400px;" id="newsinfo">
-   <div class="form-group">
+   <div class="form-group" style="margin-bottom:10px;">
       
       <div class="col-sm-10" style="margin-left:25px;">
-         <input type="text" class="form-control" id="username" name="username"  placeholder="您的真实姓名">
+         <input type="text" class="form-control" id="username" name="username"  placeholder="您的真实姓名" style="height:30px;">
         
       </div>
-      <div id="user" style="height:60px;margin-left:20px;">
+      <!-- <div id="user" style="height:30px;margin-left:20px;">
          
-      </div>
+      </div> -->
       
    </div>
    <div class="form-group">
       
       <div class="col-sm-10" style="margin-left:25px;">
-         <input type="text" class="form-control" id="email" name="email" placeholder="您的邮箱">
+         <input type="text" class="form-control" id="email" name="email" placeholder="您的邮箱" style="height:30px;">
       </div>
-       <div id="pass" style="height:60px;margin-left:20px;">
+      <!--  <div id="pass" style="height:30px;margin-left:20px;">
           
-      </div>
+      </div> -->
    </div>
    
     <div class="form-group">
       
       <div class="col-sm-10" style="margin-left:25px;">
-         <input type="text" class="form-control" id="content" name="content" placeholder="报名的内容">
+         <!-- <input type="text" class="form-control" id="content" name="content" placeholder="报名的内容"> -->
+         <textarea rows="3" cols="20" class="form-control" id="content" name="content" placeholder="报名的内容" style="height:100px;"></textarea>
       </div>
-       <div id="pass" style="height:60px;margin-left:20px;">
+       <!-- <div id="pass" style="height:60px;margin-left:20px;">
           
-      </div>
+      </div> -->
    </div>
  </form>  
 <form id="newsimg">
-<div class="c-fix" style="padding-left:35px;margin-top:20px;">
+<div class="c-fix" style="padding-left:25px;margin-top:5px;">
 <span class="area_span" style="float:left;">图片</span>
-<span> <input type="file" name="news_image" id="news_image" style="width:600px;border:1px solid rgb(239,235,242);float:left;margin-right:40px;"/><a href="#" class="addnewsimg">上传</a></span>
+<span> <input type="file" name="news_image" id="news_image" style="width:330px;border:1px solid rgb(239,235,242);float:left;margin-right:40px;margin-top:5px;"/><a href="#" class="addnewsimg">上传</a></span>
 </div>
 </form>
 <div id="newsimglist" style="margin-top:20px;" name = "newsimglist1"></div>
-<div class="area_left4 c-fix"><button type="button" class="btn" onclick="add()">提交</button></div>
+<div class="area_left4" style="margin-left:25px;"><button type="button" class="btn" onclick="add()" style="margin-top:10px;">提交</button></div>
 <!-- <div class="area_right4"><button type="button" class="btn" onclick="chongzhi()">重置</button></div>
  -->
  </div>
    
 </div>
-<div style="  clear: both;
-  margin-left: 765px;"><a href="#"><U style="color:rgb(170, 237, 241)">确认邮件寄出</U></a></div>
+<!-- <div style="clear:both;margin-left: 765px;"><a href="#"><U style="color:rgb(170, 237, 241)">确认邮件寄出</U></a></div> -->
  <!--  <div style="text-align:center;"><img src="images/12.png"></div> -->
 </div >
 <jsp:include page="foot.jsp" />

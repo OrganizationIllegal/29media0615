@@ -202,8 +202,8 @@ $(function(){
 			//alert(index+"index");
 			istrainimgedit=index;
 			$("#title").val(trainimgedititem.title);
-			var date=new Date(parseInt(trainimglist[0].time.time))
-			alert(trainimglist[0].time.time)
+			var date=new Date(trainimgedititem.time)
+			//alert(trainimgedititem.time)
 			$("#time").val(date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate());
 			trainimgedititem.detail = change(trainimgedititem.detail); 
 			$("#detail").val(trainimgedititem.detail);
