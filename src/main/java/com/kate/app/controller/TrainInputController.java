@@ -75,8 +75,7 @@ public class TrainInputController {
 			int train_id=train.getTrain_id();
 			String train_name=train.getTrain_name();
 			String train_desc=train.getTrain_desc();
-			train_desc = train_desc.replace("<br/>", "\n");
-			train_desc = train_desc.replace("&nbsp;", " ");		
+			train_desc = filter(train_desc);	
 			String trainimglist=req.getParameter("trainimglist");
 			JSONArray trainimgArray = JSONArray.parseArray(trainimglist);
 			List<TrainDetail> imagelist=new ArrayList<TrainDetail>();
@@ -91,8 +90,7 @@ public class TrainInputController {
 				 String title=e.getTitle();
 				 String time;
 				 String detail1=e.getDetail();
-				 detail1 = detail1.replace("<br/>", "\n");
-				 detail1 = detail1.replace("&nbsp;", " ");	
+				 detail1 = filter(detail1);
 				 String train_img=e.getTrain_img();
 				 if(e.getTime()==null||"".equals(e.getTime())){
 						time = "2015-05-09";
@@ -116,8 +114,7 @@ public class TrainInputController {
 				 lianxilist.add(e);
 				 String typename=e.getTypename();
 				 String detail2=e.getDetail();
-				 detail2 = detail2.replace("<br/>", "\n");
-				 detail2 = detail2.replace("&nbsp;", " ");		
+				 detail2 = filter(detail2);
 				 String img=e.getImg();
 				 flag3=trainInputDao.InsertLianxi(train_id, typename, detail2, img);	 
 			}
@@ -164,8 +161,8 @@ public class TrainInputController {
 					int train_id=train.getTrain_id();
 					String train_name=train.getTrain_name();
 					String train_desc=train.getTrain_desc();
-					train_desc = train_desc.replace("<br/>", "\n");
-					train_desc = train_desc.replace("&nbsp;", " ");
+					
+					train_desc = filter(train_desc);
 					int result = 0;
 					result+=trainInputDao.deleteTrainDetail(train_id);
 					result+=trainInputDao.deleteLianXi(train_id);
@@ -176,7 +173,10 @@ public class TrainInputController {
 					if(trainimgArray.size() > 0){
 						JSONObject obj = (JSONObject)trainimgArray.get(0);
 						trainimg=(TrainDetail) JSONToObj(obj.toString(), TrainDetail.class);
-						image=trainimg.getTrain_img();
+						if(trainimg!=null && !"".equals(trainimg)){
+							image=trainimg.getTrain_img();
+						}
+						
 					}
 					List<TrainDetail> imagelist=new ArrayList<TrainDetail>();
 					
@@ -190,8 +190,7 @@ public class TrainInputController {
 						 String title=e.getTitle();
 						 String time;
 						 String detail2=e.getDetail();
-						 detail2 = detail2.replace("<br/>", "\n");
-						 detail2 = detail2.replace("&nbsp;", " ");	
+						 detail2 = filter(detail2);
 						 String train_img=e.getTrain_img();
 						 if(e.getTime()==null||"".equals(e.getTime())){
 								time = "2015-05-09";
@@ -222,8 +221,7 @@ public class TrainInputController {
 						 int id3=0;
 						 String typename=e.getTypename();
 						 String detail3=e.getDetail();
-						 detail3 = detail3.replace("<br/>", "\n");
-						 detail3 = detail3.replace("&nbsp;", " ");	
+						 detail3 = filter(detail3);
 						 String img=e.getImg();
 						 /*if(e.getId()==0){*/
 								flag3=trainInputDao.InsertLianxi(train_id, typename, detail3, img);
@@ -270,6 +268,19 @@ public class TrainInputController {
 	        }
 	        return t;
 	    }
-	
+	public String filter(String text){
+		String theString = text.replace(">", "&gt;");  
+        theString = theString.replace("<", "&lt;");  
+        theString = theString.replace(" ", "&nbsp;");  
+        theString = theString.replace("\"", "&quot;");  
+        theString = theString.replace("\'", "&#39;"); 
+        theString = theString.replace("“", "&quot;"); 
+        theString = theString.replace("”", "&quot;"); 
+        theString = theString.replace("\\", "\\\\");//对斜线的转义  
+        theString = theString.replace("\n", "\\n");  
+        theString = theString.replace("\r", "\\r"); 
+        //theString = theString.replace(":", "\:"); 
+        return theString;
+	}
 	
 }

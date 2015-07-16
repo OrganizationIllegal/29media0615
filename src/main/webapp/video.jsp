@@ -68,9 +68,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  				</div>
  				<!--要播放视频列表start-->
  				<div >
- 				 	<!-- <img alt="" src="images/img01.jpg"   height="170px" style="border:1px solid grey" class="yuanjiao">
- 					<img alt="" src="images/img02.jpg"   height="170px" style="border:1px solid grey" class="yuanjiao" >
- 					<img alt="" src="images/img03.jpg"   height="170px" style="border:1px solid grey" class="yuanjiao"> -->
  					 <c:forEach var="item" items="${vedioList}" varStatus="stat">
  					 		<img alt="" src="/29images/${item.video_pic}"   height="170px" style="border:1px solid grey" class="yuanjiao" >
  					 </c:forEach>
@@ -80,13 +77,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  		<!--左侧视频播放end-->
  		<!--右侧图片列表start-->
  		<div align="right" style="margin-left: -18px;padding-right:80px;width:380px;float:left;">
- 			<!--  <img alt="" src="images/img01.jpg"  width="250px" height="190px" style="border:1px solid grey">
- 			<img alt="" src="images/img02.jpg"  width="250px" height="190px" style="border:1px solid grey">
- 			<img alt="" src="images/img03.jpg"  width="250px" height="190px" style="border:1px solid grey">
- 			<img alt="" src="images/img04.jpg"  width="250px" height="190px" style="border:1px solid grey">
- 			<img alt="" src="images/img05.jpg"  width="250px" height="190px" style="border:1px solid grey"> -->
- 			 <c:forEach var="item" items="${starlist}" varStatus="stat">
- 			   <a href="/VideoList?starNum=${item.star_num}"><img alt="" src="/29images/${item.star_img}" style="border:1px solid grey; width:240px;height:170px;"/>
+ 			 <c:forEach var="item" items="${starVedioList}" varStatus="stat">
+ 			   <a href="#"><img alt="" src="/29images/${item.video_pic}" style="border:1px solid grey; width:240px;height:170px;"/>
  			   </a>
  			</c:forEach> 
  		</div>

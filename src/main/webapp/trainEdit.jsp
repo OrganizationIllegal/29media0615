@@ -50,7 +50,8 @@ body{
 <div class="area_left c-fix">
 <span class="area_span">详情</span>
 </div>
-<div class="c-fix" style="margin-bottom:15px;margin-left:35px;"><textarea id="detail" name="detail" rows="3" cols="112" style="background-color:rgb(237,238,243);border:0px;"></textarea></div>
+<div class="c-fix" style="margin-bottom:15px;margin-left:35px;">
+<textarea id="detail" name="detail" rows="3" cols="112" style="background-color:rgb(237,238,243);border:0px;"></textarea></div>
 <div class="c-fix" style="padding-left:35px;margin-top:20px;">
 <span class="area_span" style="float:left;">培训图片</span>
 <span> <input type="file" name="train_img" id="train_img" style="width:600px;border:1px solid rgb(239,235,242);float:left;margin-right:40px;"/><a href="#" class="addtrainimg">添加</a></span>
@@ -73,7 +74,7 @@ body{
 <div class="area_left c-fix">
 <span class="area_span">详情</span>
 </div>
-<div class="c-fix" style="margin-bottom:15px;margin-left:35px;"><textarea id="detail" name="detail" rows="3" cols="112" style="background-color:rgb(237,238,243);border:0px;"></textarea></div>
+<div class="c-fix" style="margin-bottom:15px;margin-left:35px;"><textarea id="detail1" name="detail" rows="3" cols="112" style="background-color:rgb(237,238,243);border:0px;"></textarea></div>
 <div class="c-fix" style="padding-left:35px;margin-top:20px;">
 <span class="area_span" style="float:left;">培训图片</span>
 <span> <input type="file" name="img" id="img" style="width:600px;border:1px solid rgb(239,235,242);float:left;margin-right:40px;"/><a href="#" class="addyineng">添加</a></span>
@@ -82,7 +83,7 @@ body{
 <div id="yinenglist" style="margin-top:20px;">
 <c:forEach var="item" items="${lianxiList}" varStatus="status">
 <div style='float:left;padding-left:35px;width:900px;margin-top:5px;margin-bottom:5px;'>
-<span style='padding-right:100px;'>${status.index + 1}</span><span style='padding-right:100px;'>${item.typename}</span><span style='padding-right:100px;'>${item.detail}</span><span style='padding-right:100px;'>${item.img}</span><span style="display:none;">${item.id}</span><span><a href="#" class="edityineng" style='padding-right:10px;'>编辑</a><a href="#" class="deleteyineng">删除</a></span>
+<span style='padding-right:100px;'>${status.index + 1}</span><span style='padding-right:100px;'>${item.typename}</span><%-- <span style='padding-right:100px;'>${item.detail}</span> --%><span style='padding-right:100px;'>${item.img}</span><span style="display:none;">${item.id}</span><span><a href="#" class="edityineng" style='padding-right:10px;'>编辑</a><a href="#" class="deleteyineng">删除</a></span>
 </div>
 </c:forEach>
 </div>
@@ -90,6 +91,7 @@ body{
 <div class="area_right4"><button type="reset" class="btn" onclick="fanhui()">返回</button></div>
 </div>
 <script type="text/javascript">
+
 function add(){
 	  var traininfo=DataDeal.formToJson(data= decodeURIComponent($("#traininfo").serialize(),true)); 
 	  traininfo=eval("("+traininfo+")");
@@ -147,9 +149,15 @@ $(function(){
 			trainimg.title = $("#title").val();
 			trainimg.time = $("#time").val();
 			trainimg.detail = $("#detail").val();
+			var traintime=trainimg.time;
+			if(!RQcheck(traintime)){
+				  alert("请输入正确的日期！(yyyy-mm-dd)");
+				  $("#time").focus();
+				  return false;
+				  }
 			trainimg.train_img=filename;
 			trainimglist.push(trainimg);
-			$("#trainimglist").append("<div style='float:left;padding-left:35px;width:900px;margin-top:5px;margin-bottom:5px;'><span style='padding-right:100px;'>"+(++trainimgecount)+"</span><span style='padding-right:100px;'>"+trainimglist[trainimgecount-1].title+"</span><span style='padding-right:100px;'>"+trainimglist[trainimgecount-1].time+"</span><span style='padding-right:100px;'>"+trainimglist[trainimgecount-1].train_img+"</span><span><a href='#' style='padding-right:10px;' class='edittrainimg'>编辑</a><a href='#' class='deletetrainimg'>删除</a></span></div>");			
+			$("#trainimglist").append("<div style='float:left;padding-left:35px;width:817px;padding-top:10px;'><span style='padding-right:50px;'>"+(++trainimgecount)+"</span><span style='padding-right:50px;'>"+trainimglist[trainimgecount-1].train_img+"</span><span style='padding-right:50px;'>"+trainimglist[trainimgecount-1].title+"</span><span style='padding-right:50px;'>"+trainimglist[trainimgecount-1].time+"</span><span style='padding-left: 30px;padding-right: 40px;'></span><span><a href='#' style='padding-right:10px;' class='edittrainimg'>编辑</a><a href='#' class='deletetrainimg'>删除</a></span></div>");			
 			UploadFile("train_img");
 			$("#trainimg input").each(function(){
 				$(this).val("");
@@ -166,7 +174,6 @@ $(function(){
 				trainimgedititem["title"]=$("#title").val();
 				trainimgedititem["time"]=$("#time").val();
 				trainimgedititem["detail"]=$("#detail").val();
-				
 				trainimgedititem["train_img"]=filename;
 				UploadFile("train_img");
 				$("#trainimg input").each(function(){
@@ -174,7 +181,7 @@ $(function(){
 					});
 				trainimglist[istrainimgedit]=trainimgedititem;
 				//alert($("#trainimglist").children().eq(istrainimgedit));
-				$("#trainimglist").children().eq(istrainimgedit).html("<div style='float:left;width:900px;margin-top:5px;margin-bottom:5px;'><span style='padding-right:100px;'>"+(istrainimgedit+1)+"</span><span style='padding-right:100px;'>"+trainimglist[trainimgecount-1].title+"</span><span style='padding-right:100px;'>"+trainimglist[trainimgecount-1].time+"</span><span style='padding-right:100px;'>"+trainimglist[trainimgecount-1].train_img+"</span><a href='#' style='padding-right:10px;' class='edittrainimg'>编辑</a><a href='#' class='deletetrainimg'>删除</a></span></div>").show();
+				$("#trainimglist").children().eq(istrainimgedit).html("<div style='float:left;width:817px;padding-top:10px;'><span style='padding-right:50px;'>"+(istrainimgedit+1)+"</span><span style='padding-right:50px;'>"+trainimglist[trainimgecount-1].train_img+"</span><span style='padding-right:50px;'>"+trainimglist[trainimgecount-1].title+"</span><span style='padding-right:50px;'>"+trainimglist[trainimgecount-1].time+"</span><span style='padding-left: 30px;padding-right: 40px;'><a href='#' style='padding-right:10px;' class='edittrainimg'>编辑</a><a href='#' class='deletetrainimg'>删除</a></span></div>").show();
 				istrainimgedit=100;				
 				}
 		
@@ -196,11 +203,26 @@ $(function(){
 			istrainimgedit=index;
 			$("#title").val(trainimgedititem.title);
 			var date=new Date(parseInt(trainimglist[0].time.time))
+			alert(trainimglist[0].time.time)
 			$("#time").val(date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate());
+			trainimgedititem.detail = change(trainimgedititem.detail); 
 			$("#detail").val(trainimgedititem.detail);
 			}); 
 	
 });
+
+function change(strvalue){
+strvalue = strvalue.replace(/&amp;/g,"&");
+strvalue = strvalue.replace(/&lt;/g,"<");
+strvalue = strvalue.replace(/&gt;/g,">");
+strvalue = strvalue.replace(/&quot;/g,"\"");
+strvalue = strvalue.replace(/&#39;/g,"'");
+strvalue = strvalue.replace(/&nbsp;/g, " "); 
+return strvalue;
+}
+
+
+
 
 var yinenglist='${lianxiListJson}';
 yinenglist=eval("("+yinenglist+")"); 
@@ -240,7 +262,7 @@ $(function(){
 				/* yinengedititem=DataDeal.formToJson(data= decodeURIComponent($("#yineng").serialize(),true));
 				yinengedititem=eval("("+yinengedititem+")"); */
 				yinengedititem["typename"]=$("#typename").val();
-				yinengedititem["detail"]=$("#detail").val();
+				yinengedititem["detail"]=$("#detail1").val();
 				yinengedititem["img"]=filename;
 				UploadFile("img");
 				$("#yineng input").each(function(){
@@ -268,7 +290,8 @@ $(function(){
 			//alert(index+"index");
 			isyinengedit=index;
 			$("#typename").val(yinengedititem.typename);
-			$("#detail").val(yinengedititem.detail);
+			yinengedititem.detail = change(yinengedititem.detail);
+			$("#detail1").val(yinengedititem.detail);
 			});
 	
 });
@@ -297,8 +320,15 @@ function UploadFile(imageid) {
     };
     xhr.send(form);
 }
- 
+function RQcheck(RQ) {
+    var date = RQ;
+    var result = date.match(/^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2})$/);
+    if (result == null)
+        return false;
+    var d = new Date(result[1], result[3] - 1, result[4]);
+    return (d.getFullYear() == result[1] && (d.getMonth() + 1) == result[3] && d.getDate() == result[4]);
 
+}
 </script>
 </body>
 </html>
