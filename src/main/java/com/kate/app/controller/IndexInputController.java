@@ -82,7 +82,7 @@ public class IndexInputController {
 					 imagelist.add(e);
 					 String type=e.getType();
 					 String img=e.getImg();
-					 String href=h;
+					 String href=e.getHref();
 					 
 					 flag=lunboImageDAO.InsertTrain(type, img, href);
 					 System.out.println(flag);

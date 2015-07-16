@@ -62,6 +62,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					              }
 				            ]         
 				  },
+				  {
+				    text: '影视录入',	
+				    color: '#ffffff', 
+				    backColor:'rgb(59,94,132)',
+				    href:'#title',
+				    nodes: [
+				    
+				              {
+					                text: '影视信息'
+						                          
+					              }
+				            ]         
+				  },
 		          {
 			            text: '新闻录入',	
 			            color: '#ffffff', 
@@ -142,6 +155,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						            color: '#ffffff', 
 						            backColor:'rgb(59,94,132)', 
 						            href:'#title'       
+						          },
+						           {
+						            text: '影视列表',	
+						            color: '#ffffff', 
+						            backColor:'rgb(59,94,132)', 
+						            href:'#title'       
 						          }
 					         
 	        ];
@@ -153,6 +172,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	          onNodeSelected: function(event, node) {
 	        	  if(node.text=="首页录入"){
 		           		$("#showlist").load("indexInput.jsp");
+		           }
+		           if(node.text=="影视录入"){
+		           		$("#showlist").load("vedioInput.jsp");
 		           }
 	           if(node.text=="新闻录入"){
 	           		$("#showlist").load("newsInput.jsp");
@@ -174,6 +196,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	           }
 	           if(node.text=="培训列表"){
 	           		$("#showlist").load("trainList.jsp");
+	           }
+	           if(node.text=="影视列表"){
+	           		$("#showlist").load("vedioList.jsp");
 	           }
 	          }   
 	        });

@@ -245,7 +245,26 @@ public class IndexController {
 		String videohref2=null;
 		String videohref3=null;
 		String videohref4=null;
-		if(list53.size()>3){
+		if(list53.size()>0){
+			if(list53.get(0).getImg()==null||"".equals(list53.get(0).getImg())){
+				videoimg1="star.jpg";
+			}else{
+				videoimg1=list53.get(0).getImg();
+			}
+			
+			if(list53.get(0).getHref()==null||"".equals(list53.get(0).getHref())){
+				videohref1="";
+			}else{
+				videohref1=list53.get(0).getHref();
+			}
+			
+		}else{
+			videoimg1="img01.jpg";
+			
+			videohref1="";
+			
+		}
+		/*if(list53.size()>3){
 			if(list53.get(0).getImg()==null||"".equals(list53.get(0).getImg())){
 				videoimg1="img01.jpg";
 			}else{
@@ -295,7 +314,7 @@ public class IndexController {
 			videohref2="";
 			videohref3="";
 			videohref4="";
-		}
+		}*/
 		req.setAttribute("NewsList", list1);
 		req.setAttribute("toplunbo1", toplunbo1);
 		req.setAttribute("toplunbo2", toplunbo2);

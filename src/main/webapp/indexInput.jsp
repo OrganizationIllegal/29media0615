@@ -51,12 +51,9 @@ body{
 </div>
 <script type="text/javascript">
 function add(){
-	  var h = $("#href").val();
-	  indeximglist.href = $("#href").val();
-	  //alert(indeximglist.href)
 	  $.ajax({
 	 	    type: "POST",
-	 		data: {"h":h, "indeximglist":JSON.stringify(indeximglist)},
+	 		data: {"indeximglist":JSON.stringify(indeximglist)},
 	 		dataType: "json",
 	 		url: "/inputLunbo",
 	 		success:function(data){
@@ -89,11 +86,15 @@ $(function(){
 			var indeximg={};
 			var filenames=$('#img').val().split("\\");
 			var filename=filenames[filenames.length-1];
-			indeximg=DataDeal.formToJson(data= decodeURIComponent($("#indeximg").serialize(),true));
-			indeximg=eval("("+indeximg+")"); 
+			/* indeximg=DataDeal.formToJson(data= decodeURIComponent($("#indeximg").serialize(),true));
+			indeximg=eval("("+indeximg+")");  */
+			
+			indeximg.type=$("#type").val();
+			indeximg.href=$("#href").val();
+			
 			indeximg.img=filename;
 			indeximglist.push(indeximg);
-			$("#indeximglist").append("<div style='float:left;padding-left:35px;width:900px;margin-top:5px;margin-bottom:5px;'><span style='padding-right:100px;'>"+(++indeximgecount)+"</span><span style='padding-right:100px;'>"+indeximglist[indeximgecount-1].type+"</span><span style='padding-right:100px;'>"+indeximglist[indeximgecount-1].img+"</span><span><a href='#' style='padding-right:10px;' class='editindeximg'>编辑</a><a href='#' class='deleteindeximg'>删除</a></span></div>");			
+			$("#indeximglist").append("<div style='float:left;padding-left:35px;width:900px;margin-top:5px;margin-bottom:5px;'><span style='padding-right:100px;'>"+(++indeximgecount)+"</span><span style='padding-right:100px;'>"+indeximglist[indeximgecount-1].type+"</span><span style='padding-right:100px;'>"+indeximglist[indeximgecount-1].href+"</span><span style='padding-right:100px;'>"+indeximglist[indeximgecount-1].img+"</span><span><a href='#' style='padding-right:10px;' class='editindeximg'>编辑</a><a href='#' class='deleteindeximg'>删除</a></span></div>");			
 			UploadFile("img");
 			$("#indeximg input").each(function(){
 				$(this).val("");

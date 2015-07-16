@@ -42,6 +42,32 @@ public class ArtistInputDAO extends BaseDao {
 		return jsonArray;
 	} 
 	
+	
+	
+	//艺人列表
+		public JSONArray selectVedioList(){
+			JSONArray jsonArray=new JSONArray();
+			try {
+				String sql = " select * from vedio";
+				Statement stmt = con.createStatement();
+				ResultSet rs = stmt.executeQuery(sql);
+				while(rs.next()){
+					JSONObject obj = new JSONObject();
+					obj.put("id", rs.getInt("id"));
+					obj.put("video_id", rs.getString("video_id"));
+					obj.put("video_pic", rs.getString("video_pic"));
+					obj.put("video_link", rs.getString("video_link"));
+					
+					jsonArray.add(obj);
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return jsonArray;
+		} 
+		
+		
 	//艺人录入
 		public int InsertArtistInfo(String star_num, String  chinese_name,String english_name,String bieming,String nation, String  constellation,String bloodtype,String height,String weight, String  birthplace,String birthday,String occupation,String brokerfirm,String animal, String  representativeworks,String residence,String gratuateunivercity,String achivements,String nationality, String  sex,String specialty,String musicalstyle,String star_detail,String star_img){
 			int exeResult=0;
@@ -111,7 +137,24 @@ public class ArtistInputDAO extends BaseDao {
 						e.printStackTrace();
 					}
 					return exeResult;
+				} 	
+				
+				public int InsertVideo(String  video_id, String video_pic, String  video_link){
+					int exeResult=0;
+					try {
+						String sql = "insert into vedio(video_id,video_pic,video_link) values(?,?,?)";
+						PreparedStatement pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, video_id);
+						pstmt.setString(2, video_pic);
+						pstmt.setString(3, video_link);
+						exeResult = pstmt.executeUpdate();
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return exeResult;
 				} 		
+
 
 				//删除艺人
 				public int deleteArtist(int id){
@@ -126,6 +169,22 @@ public class ArtistInputDAO extends BaseDao {
 				        }
 					    return exeResult;
 				}
+				
+				//删除艺人
+				public int deleteVedio(int id){
+					int exeResult=0;
+					try{
+							String sql = " delete from vedio where id= ?";
+							PreparedStatement pstmt = con.prepareStatement(sql);
+							pstmt.setInt(1, id);
+							exeResult = pstmt.executeUpdate();
+						}catch (Exception e) {
+				            e.printStackTrace();
+				        }
+					    return exeResult;
+				}
+				
+				
 				
 				//删除艺人图片
 				public int deleteArtistImg(String star_num){
@@ -154,6 +213,22 @@ public class ArtistInputDAO extends BaseDao {
 				        }
 					    return exeResult;
 				}
+				
+				
+				//删除艺人影视
+				public int deleteVideo(){
+					int exeResult=0;
+					try{
+							String sql = " delete from vedio";
+							PreparedStatement pstmt = con.prepareStatement(sql);
+							
+							exeResult = pstmt.executeUpdate();
+						}catch (Exception e) {
+				            e.printStackTrace();
+				        }
+					    return exeResult;
+				}
+				
 				
 				//艺人编辑
 				public int EditArtistInfo(int id, String star_num, String  chinese_name,String english_name,String bieming,String nation, String  constellation,String bloodtype,String height,String weight, String  birthplace,String birthday,String occupation,String brokerfirm,String animal, String  representativeworks,String residence,String gratuateunivercity,String achivements,String nationality, String  sex,String specialty,String musicalstyle,String star_detail,String star_img){
@@ -259,6 +334,35 @@ public class ArtistInputDAO extends BaseDao {
 				    }
 						return list;
 					}
+				
+				
+				
+				//查找艺人影视
+				public List<StarVedio> findVedio(){
+					List<StarVedio> list = new ArrayList<StarVedio>();
+					try{
+						
+						String sql = " select * from vedio";
+						PreparedStatement pstmt = con.prepareStatement(sql);
+						ResultSet rs = pstmt.executeQuery();
+						
+						while(rs.next()){					
+							StarVedio data = new StarVedio();
+							data.setId(rs.getInt("id"));
+							data.setVideo_link(rs.getString("video_id"));
+							data.setVideo_link(rs.getString("video_link"));
+							data.setVideo_pic(rs.getString("video_pic"));							
+							list.add(data);
+						}
+						
+					}catch (Exception e) {
+				        
+				    }
+						return list;
+					}
+				
+				
+				
 				//编辑艺人影视
 				public int editStarVideo(int id, String star_num, String  video_id, String video_pic, String  video_link){
 					int exeResult=0;

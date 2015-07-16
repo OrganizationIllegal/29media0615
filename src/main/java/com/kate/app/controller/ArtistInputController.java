@@ -51,6 +51,23 @@ public class ArtistInputController {
 		}
 	}
 	
+	//艺人列表
+		@RequestMapping({ "/VedioList" })    
+		public void VedioList(HttpServletRequest req, HttpServletResponse resp){
+			JSONObject json = new JSONObject();
+			JSONArray array = new JSONArray();
+			array = artistInputDao.selectVedioList();
+			int count = array.size();
+			json.put("total", count);
+			json.put("rows", array);
+			
+			try{
+				writeJson(json.toJSONString(),resp);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+	
 	//艺人录入
 		@RequestMapping({ "/inputArtist" })
 		public void inputArtist(HttpServletRequest req, HttpServletResponse resp) throws Exception{
@@ -142,6 +159,24 @@ public class ArtistInputController {
 			}
 		}
 		
+		
+		//删除艺人
+				@RequestMapping({ "/deleteVedio" })
+				public void deleteVedio(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+					int id = Integer.parseInt(req.getParameter("id"));
+					int flag =0;
+					flag = artistInputDao.deleteVedio(id);
+					JSONObject json = new JSONObject();
+					json.put("flag", flag);
+					try{
+						writeJson(json.toJSONString(),resp);
+					}catch(Exception e){
+						e.printStackTrace();
+					}
+				}
+				
+				
+		
 		//艺人查找
 		@RequestMapping({ "/findArtist" })
 		public String findArtist(HttpServletRequest req,HttpServletResponse resp){
@@ -154,6 +189,17 @@ public class ArtistInputController {
 			req.setAttribute("videoListJson", ConvertJson.list2json(videoList));
 			return "/artistEdit.jsp";
 		}
+		
+		//艺人查找
+				@RequestMapping({ "/findVedio" })
+				public String findVedio(HttpServletRequest req,HttpServletResponse resp){
+					int id = Integer.parseInt(req.getParameter("id"));
+					List<StarVedio> videoList = new ArrayList<StarVedio>();
+					videoList=artistInputDao.findVedio();
+					req.setAttribute("videoList", videoList);
+					req.setAttribute("videoListJson", ConvertJson.list2json(videoList));
+					return "/vedioEdit.jsp";
+				}
 		
 		//艺人编辑
 				@RequestMapping({ "/editArtist" })
@@ -238,6 +284,44 @@ public class ArtistInputController {
 					}
 					
 				}
+				
+				
+				//艺人编辑
+				@RequestMapping({ "/editVedio" })
+				public void editVedio(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+					String videoimglist=req.getParameter("videoimglist");
+					JSONArray videoimgArray = JSONArray.parseArray(videoimglist);
+					List<StarVedio> videolist=new ArrayList<StarVedio>();
+					int flag3=0;
+					
+					int flag = artistInputDao.deleteVideo();
+					
+					for (int i=0;i<videoimgArray.size();i++){
+						 JSONObject object = (JSONObject)videoimgArray.get(i); //对于每个json对象
+						 StarVedio e = (StarVedio) JSONToObj(object.toString(), StarVedio.class);
+						 videolist.add(e);
+						 int id3=0;
+						 String video_id=e.getVideo_id();
+						 String video_link=e.getVideo_link();
+						 String video_pic=e.getVideo_pic();
+						 flag3=artistInputDao.InsertVideo(video_id, video_pic, video_link);
+						 System.out.println("add"+flag3);
+						 
+					}
+					
+					
+					JSONObject json = new JSONObject();
+					
+					json.put("flag", flag3);
+					try{
+						writeJson(json.toJSONString(),resp);
+					}catch(Exception e){
+						e.printStackTrace();
+					}
+					
+				}
+				
+				
 					
 	public void writeJson(String json, HttpServletResponse response)throws Exception{
 	    response.setContentType("text/html");
@@ -249,7 +333,33 @@ public class ArtistInputController {
 	    out.flush();
 	    out.close();
 	}
-	
+	//艺人录入
+			@RequestMapping({ "/inputVedio" })
+			public void inputVedio(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+				String videoimglist=req.getParameter("videoimglist");
+				JSONArray videoimgArray = JSONArray.parseArray(videoimglist);
+				List<StarVedio> videolist=new ArrayList<StarVedio>();
+				int flag3=0;
+				for (int i=0;i<videoimgArray.size();i++){
+					 JSONObject object = (JSONObject)videoimgArray.get(i); //对于每个json对象
+					 StarVedio e = (StarVedio) JSONToObj(object.toString(), StarVedio.class);
+					 videolist.add(e);
+					 String video_id=e.getVideo_id();
+					 String video_link=e.getVideo_link();
+					 String video_pic=e.getVideo_pic();
+					 flag3=artistInputDao.InsertVideo(video_id, video_pic, video_link);		 
+				}
+				System.out.println(flag3);
+				JSONObject json = new JSONObject();
+				json.put("flag", flag3);
+				try{
+					writeJson(json.toJSONString(),resp);
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+			}
+			
+			
 	 public static<T> Object JSONToObj(String jsonStr,Class<T> obj) {
 	        T t = null;
 	        try {
