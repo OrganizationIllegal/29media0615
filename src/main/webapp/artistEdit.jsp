@@ -109,7 +109,7 @@ body{
 </div>
 </form>
 <div id="artistimglist" style="margin-top:20px;"></div>
-<div class="area_bkg2 c-fix" id="brokerinfo">艺人影视</div>
+<%-- <div class="area_bkg2 c-fix" id="brokerinfo">艺人影视</div>
 <form id="videoimg">
 <div class="area_left">
 <span class="area_span">影视编号</span><span><input type="text" id="video_id" name="video_id" class="area_input"></span>
@@ -128,7 +128,7 @@ body{
 <span style='padding-right:100px;'>${status.index + 1}</span><span style='padding-right:100px;'>${item.video_id}</span><span style='padding-right:100px;'>${item.video_link}</span><span style='padding-right:100px;'>${item.video_pic}</span><span style="display:none;">${item.id}</span><span><a href="#" class="editvideoimg" style='padding-right:10px;'>编辑</a><a href="#" class="deletevideoimg">删除</a></span>
 </div>
 </c:forEach>
-</div>
+</div> --%>
 <div class="area_left4"><button type="button" class="btn" onclick="add()">提交</button></div>
 <div class="area_right4"><button type="reset" class="btn" onclick="fanhui()">返回</button></div>
 </div>

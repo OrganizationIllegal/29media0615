@@ -238,9 +238,9 @@ function pop4(){
 					<div  style="margin-top:50px;float:left;"><a href="${videohref4}"><canvas id="can4" width="150" height="150"></canvas></a></div> --%>
 			</div>
 		</div>
-		<div style="width:460px;float:left;clear:both;padding-top:45px;"><hr style="border-top:2px solid #4ed6b8;"/></div>
-		<div style="text-align:center;font-size:50px;font-weight:bold;color:#4ed6b8;margin:0 auto;width:220px;padding-top:50px;float:left;">明星打造</div>
-		<div style="width:460px;float:right;padding-top:45px;"><hr style="border-top:2px solid #4ed6b8;"/></div>
+		<!-- <div style="width:460px;float:left;clear:both;padding-top:45px;"><hr style="border-top:2px solid #4ed6b8;"/></div> -->
+		<div style="text-align:center;font-size:50px;font-weight:bold;color:#4ed6b8;margin:0 auto;width:1140px;padding-top:50px;float:left;">明星打造</div>
+		<!-- <div style="width:460px;float:right;padding-top:45px;"><hr style="border-top:2px solid #4ed6b8;"/></div> -->
 		<!-- <div style="margin-top:20px;">
 			<div style="width:200px;float:left;">
 				<div style="text-align:center;color:#bf5540;font-size:16px">明星打造明星打造</div>
