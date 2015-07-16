@@ -32,6 +32,11 @@ body{
 <div class="area_right">
 <span class="area_span">影视链接</span><span><input type="text" id="video_link" name="video_link" class="area_input"></span>
 </div>
+<div class="area_left c-fix">
+<span class="area_span">影视描述</span>
+</div>
+<div class="c-fix" style="margin-bottom:15px;margin-left:35px;"><textarea id="video_desc" name="video_desc" rows="3" cols="112" style="background-color:rgb(237,238,243);border:0px;"></textarea></div>
+
 <div class="c-fix" style="padding-left:35px;margin-top:20px;">
 <span class="area_span">影视图片</span>
 <span style="float:right;"> <input type="file" name="video_pic" id="video_pic" style="width:677px;border:1px solid rgb(239,235,242);float:left;margin-right:20px;"/><a href="#" class="addvideoimg">添加</a></span>
@@ -95,6 +100,8 @@ $(function(){
 			var filename=filenames[filenames.length-1];
 			videoimg.video_id=$("#video_id").val();
 			videoimg.video_link=$("#video_link").val();
+			videoimg.video_desc=$("#video_desc").val();
+			
 			videoimg.video_pic=filename;
 			videoimglist.push(videoimg);
 			$("#videoimglist").append("<div style='float:left;padding-left:35px;width:900px;margin-top:5px;margin-bottom:5px;'><span style='padding-right:50px;'>"+(++videoimgecount)+"</span><span style='padding-right:100px;'>"+videoimglist[videoimgecount-1].video_id+"</span><span style='padding-right:100px;'>"+videoimglist[videoimgecount-1].video_link+"</span><span style='padding-right:100px;'>"+videoimglist[videoimgecount-1].video_pic+"</span><span><a href='#' style='padding-right:10px;' class='editvideoimg'>编辑</a><a href='#' class='deletevideoimg'>删除</a></span></div>");			
@@ -114,6 +121,7 @@ $(function(){
 				
 				videoimgedititem["video_id"]=$("#video_id").val();
 				videoimgedititem["video_link"]=$("#video_link").val();
+				videoimgedititem["video_desc"]=$("#video_desc").val();
 				videoimgedititem["video_pic"]=filename;
 				UploadFile("video_pic");
 				$("#videoimg input").each(function(){
@@ -142,6 +150,7 @@ $(function(){
 			isvideoimgedit=index;
 			$("#video_id").val(videoimgedititem.video_id);
 			$("#video_link").val(videoimgedititem.video_link);
+			$("#video_desc").val(videoimgedititem.video_desc);
 			});
 });
 

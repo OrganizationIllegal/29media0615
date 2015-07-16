@@ -17,7 +17,7 @@ public class TrainDAO extends BaseDao{
 		List<Train> list = new ArrayList<Train>();
 		try{
 			
-			String sql = " select * from Train";
+			String sql = " select * from Train order by id desc";
 	        Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 			

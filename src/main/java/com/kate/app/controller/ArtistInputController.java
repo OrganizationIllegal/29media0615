@@ -304,7 +304,8 @@ public class ArtistInputController {
 						 String video_id=e.getVideo_id();
 						 String video_link=e.getVideo_link();
 						 String video_pic=e.getVideo_pic();
-						 flag3=artistInputDao.InsertVideo(video_id, video_pic, video_link);
+						 String video_desc=e.getVideo_desc();
+						 flag3=artistInputDao.InsertVideo(video_id, video_pic, video_link, video_desc);
 						 System.out.println("add"+flag3);
 						 
 					}
@@ -347,7 +348,8 @@ public class ArtistInputController {
 					 String video_id=e.getVideo_id();
 					 String video_link=e.getVideo_link();
 					 String video_pic=e.getVideo_pic();
-					 flag3=artistInputDao.InsertVideo(video_id, video_pic, video_link);		 
+					 String video_desc = e.getVideo_desc();
+					 flag3=artistInputDao.InsertVideo(video_id, video_pic, video_link, video_desc);		 
 				}
 				System.out.println(flag3);
 				JSONObject json = new JSONObject();

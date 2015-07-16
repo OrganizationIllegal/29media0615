@@ -102,10 +102,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  <c:if test="${status.index<3 }">
 			<div style="width:380px;float:left;text-align:center;"><a href="/TrainDetail?train_id=${item.train_id}"><img src="/29images/${item.train_image}" width="350px" height="280px"></a>
 			<div style="z-index:1;width:350px;height:100px;opacity:0.5;stop:-190px;left:15px;position:relative;">
-					<%-- <div style="height:100%;line-height:100%;overflow:hidden;align:center;">
-						<h1 style="text-align:center;color:white;">${item.train_name}</h1>
-						<input type="hidden" value="${item.id}">
-					</div> --%>
+					
 			</div>
 			<div style="margin-top:-100px;width:350px;text-align:left;padding-left:15px;">${item.train_desc}</div>
 		   </div>

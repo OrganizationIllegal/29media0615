@@ -45,12 +45,35 @@ public class TrainController {
 		List<TrainDetail> xingqubanList = new ArrayList<TrainDetail>();
 		List<TrainDetail> lianxishengList = new ArrayList<TrainDetail>();
 		List<TrainDetail> guojibanList = new ArrayList<TrainDetail>();
-		String detailXingquban = null;
-		String detailLianXiSheng = null;
-		String detailGuojiban = null;
 		
 		trainList=trainDao.findAll();
-		for(Train item : trainList){
+		if(trainList.size() > 3){
+			trainList = trainList.subList(0, 3);
+		}
+		if(trainList.size()==3){
+			for(int i =0; i<trainList.size(); i++){
+				xingqubanList = trainDetailDAO.findByTrainId(trainList.get(0).getTrain_id());
+				lianxishengList = trainDetailDAO.findByTrainId(trainList.get(1).getTrain_id());
+				guojibanList = trainDetailDAO.findByTrainId(trainList.get(2).getTrain_id());
+			}
+			
+		}
+		else if(trainList.size()==2){
+			for(int i =0; i<trainList.size(); i++){
+				xingqubanList = trainDetailDAO.findByTrainId(trainList.get(0).getTrain_id());
+				lianxishengList = trainDetailDAO.findByTrainId(trainList.get(1).getTrain_id());
+				
+			}
+		}
+		else{
+			for(int i =0; i<trainList.size(); i++){
+				xingqubanList = trainDetailDAO.findByTrainId(trainList.get(0).getTrain_id());
+				
+			}
+		}
+		
+		/*for(Train item : trainList){
+			int train_id = item.getTrain_id();
 			if(item.getTrain_id()==1)
 				xingqubanList = trainDetailDAO.findByTrainId(item.getTrain_id());
 			
@@ -58,7 +81,7 @@ public class TrainController {
 				lianxishengList = trainDetailDAO.findByTrainId(item.getTrain_id());
 			else if(item.getTrain_id()==3)
 				guojibanList = trainDetailDAO.findByTrainId(item.getTrain_id());
-		}
+		}*/
 		req.setAttribute("trainList", trainList);
 		req.setAttribute("xingqubanList", xingqubanList);
 		req.setAttribute("lianxishengList", lianxishengList);

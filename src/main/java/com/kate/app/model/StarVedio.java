@@ -9,8 +9,15 @@ public class StarVedio{
 	private String video_link;
 	private String video_pic;
 	private String video_id;
+	private String video_desc;
 	public int getId() {
 		return id;
+	}
+	public String getVideo_desc() {
+		return video_desc;
+	}
+	public void setVideo_desc(String video_desc) {
+		this.video_desc = video_desc;
 	}
 	public void setId(int id) {
 		this.id = id;

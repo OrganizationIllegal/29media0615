@@ -48,6 +48,7 @@ body{
             <th data-field="id" data-sortable="true" data-editable="true">ID</th>
             <th data-field="video_id" data-sortable="true" data-editable="true">影视编号</th>
             <th data-field="video_pic" data-sortable="true" data-editable="true">图片</th>
+            <th data-field="video_desc" data-sortable="true" data-editable="true">描述</th>
             <th data-field="video_link" data-sortable="true" data-editable="true">链接</th>
             <th data-field="operate"
                 data-formatter="operateFormatter"

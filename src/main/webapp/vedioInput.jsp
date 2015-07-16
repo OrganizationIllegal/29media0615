@@ -31,10 +31,19 @@ body{
 <div class="area_right">
 <span class="area_span">影视链接</span><span><input type="text" id="video_link" name="video_link" class="area_input"></span>
 </div>
+
+<div class="area_left c-fix">
+<span class="area_span">影视描述</span>
+</div>
+<div class="c-fix" style="margin-bottom:15px;margin-left:35px;"><textarea id="video_desc" name="video_desc" rows="3" cols="112" style="background-color:rgb(237,238,243);border:0px;"></textarea></div>
+
 <div class="c-fix" style="padding-left:35px;margin-top:20px;">
 <span class="area_span">影视图片</span>
 <span style="float:right;"> <input type="file" name="video_pic" id="video_pic" style="width:677px;border:1px solid rgb(239,235,242);float:left;margin-right:20px;"/><a href="#" class="addvideoimg">添加</a></span>
 </div>
+
+
+
 </form>
 <div id="videoimglist" style="margin-top:20px;"></div>
 <div class="area_left4"><button type="button" class="btn" onclick="add()">提交</button></div>
@@ -88,6 +97,7 @@ $(function(){
 			//videoimg=DataDeal.formToJson(data= decodeURIComponent($("#videoimg").serialize(),true)); 
 			videoimg.video_id=$("#video_id").val();
 			videoimg.video_link=$("#video_link").val();
+			videoimg.video_desc=$("#video_desc").val();
 			
 			//videoimg=eval("("+videoimg+")"); 
 			videoimg.video_pic=filename;
@@ -109,6 +119,8 @@ $(function(){
 				
 				videoimgedititem["video_id"]=$("#video_id").val();
 				videoimgedititem["video_link"]=$("#video_link").val();
+				videoimgedititem["video_desc"]=$("#video_desc").val();
+				
 				videoimgedititem["video_pic"]=filename;
 				UploadFile("video_pic");
 				$("#videoimg input").each(function(){
@@ -137,6 +149,8 @@ $(function(){
 			isvideoimgedit=index;
 			$("#video_id").val(videoimgedititem.video_id);
 			$("#video_link").val(videoimgedititem.video_link);
+			$("#video_desc").val(videoimgedititem.video_desc);
+			
 			});
 });
 
