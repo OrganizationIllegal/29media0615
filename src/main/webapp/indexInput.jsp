@@ -38,7 +38,7 @@ body{
 </div>
 <div class="area_right">
 <span class="area_span">图片链接</span>
-<input type="text" id="href" name="href" >
+<span><input type="text" id="href" name="href" class="area_input"></span>
 </div>
 <div class="c-fix" style="padding-left:35px;margin-top:50px;">
 <span class="area_span" style="float:left;">轮播图片</span>
