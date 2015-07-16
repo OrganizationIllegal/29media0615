@@ -84,7 +84,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  		</div>
  		<!--右侧图片列表end-->
  	</div>
- 	<jsp:include page="foot.jsp" />
+ 	<div style="clear:both;">
+		<jsp:include page="foot.jsp" />
+		</div>
  </div>
 </body>
 </html>

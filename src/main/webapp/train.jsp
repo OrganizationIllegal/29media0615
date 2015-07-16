@@ -125,7 +125,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 <div style="font-size:120px;font-weight:bolder;color:#7f7979;position:relative;z-index:1;left:98%;top:-420px;width:50px;">1</div>
 			</div>
 			<div style="border-right:2px solid #7f7979;padding-right:30px;width:380px;float:left;padding-left:15px;">
-				<div style="font-size:30px;font-weight:bolder;font-family:黑体;"><a href="/TrainDetail?id=${trainid_lianxi}">练习生</a></div>
+				<div style="font-size:30px;font-weight:bolder;font-family:黑体;">练习生</div>
 				<div style="font-size:25px;font-weight:bolder;color:#7f7979;">TRAINEE</div>
 				<hr style="height:1px;border:none;border-top:3px solid #555555;width: 40%;margin-left: 0px;margin-top: 0px;margin-bottom:10px;" />
 
@@ -153,7 +153,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 
 		</div>
+		<div style="clear:both;">
 		<jsp:include page="foot.jsp" />
+		</div>
 </div>
 
 </body>
