@@ -71,7 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  				 	<!-- <img alt="" src="images/img01.jpg"   height="170px" style="border:1px solid grey" class="yuanjiao">
  					<img alt="" src="images/img02.jpg"   height="170px" style="border:1px solid grey" class="yuanjiao" >
  					<img alt="" src="images/img03.jpg"   height="170px" style="border:1px solid grey" class="yuanjiao"> -->
- 					 <c:forEach var="item" items="${starVedioList}" varStatus="stat">
+ 					 <c:forEach var="item" items="${vedioList}" varStatus="stat">
  					 		<img alt="" src="/29images/${item.video_pic}"   height="170px" style="border:1px solid grey" class="yuanjiao" >
  					 </c:forEach>
  				</div>

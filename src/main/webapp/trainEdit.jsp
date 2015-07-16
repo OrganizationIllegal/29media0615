@@ -93,6 +93,11 @@ body{
 function add(){
 	  var traininfo=DataDeal.formToJson(data= decodeURIComponent($("#traininfo").serialize(),true)); 
 	  traininfo=eval("("+traininfo+")");
+	 /*  var traininfo={};
+	  traininfo.train_id = $("#train_id"); 
+	  traininfo.train_name = $("#train_name"); 
+	  traininfo.train_desc = $("#train_desc"); */ 
+	  
 	  $.ajax({
 	 	    type: "POST",
 	 		data: {"traininfo":JSON.stringify(traininfo),"trainimglist":JSON.stringify(trainimglist),"yinenglist":JSON.stringify(yinenglist)},
@@ -137,8 +142,11 @@ $(function(){
 			var trainimg={};
 			var filenames=$('#train_img').val().split("\\");
 			var filename=filenames[filenames.length-1];
-			trainimg=DataDeal.formToJson(data= decodeURIComponent($("#trainimg").serialize(),true)); 
-			trainimg=eval("("+trainimg+")");
+			/* trainimg=DataDeal.formToJson(data= decodeURIComponent($("#trainimg").serialize(),true)); 
+			trainimg=eval("("+trainimg+")"); */
+			trainimg.title = $("#title").val();
+			trainimg.time = $("#time").val();
+			trainimg.detail = $("#detail").val();
 			trainimg.train_img=filename;
 			trainimglist.push(trainimg);
 			$("#trainimglist").append("<div style='float:left;padding-left:35px;width:900px;margin-top:5px;margin-bottom:5px;'><span style='padding-right:100px;'>"+(++trainimgecount)+"</span><span style='padding-right:100px;'>"+trainimglist[trainimgecount-1].title+"</span><span style='padding-right:100px;'>"+trainimglist[trainimgecount-1].time+"</span><span style='padding-right:100px;'>"+trainimglist[trainimgecount-1].train_img+"</span><span><a href='#' style='padding-right:10px;' class='edittrainimg'>编辑</a><a href='#' class='deletetrainimg'>删除</a></span></div>");			
@@ -153,8 +161,12 @@ $(function(){
 				//alert("edit");
 				var filenames=$('#train_img').val().split("\\");
 				var filename=filenames[filenames.length-1];
-				trainimgedititem=DataDeal.formToJson(data= decodeURIComponent($("#trainimg").serialize(),true));
-				trainimgedititem=eval("("+trainimgedititem+")");
+				/* trainimgedititem=DataDeal.formToJson(data= decodeURIComponent($("#trainimg").serialize(),true));
+				trainimgedititem=eval("("+trainimgedititem+")"); */
+				trainimgedititem["title"]=$("#title").val();
+				trainimgedititem["time"]=$("#time").val();
+				trainimgedititem["detail"]=$("#detail").val();
+				
 				trainimgedititem["train_img"]=filename;
 				UploadFile("train_img");
 				$("#trainimg input").each(function(){
@@ -207,8 +219,10 @@ $(function(){
 			var yineng={};
 			var filenames=$('#img').val().split("\\");
 			var filename=filenames[filenames.length-1];
-			yineng=DataDeal.formToJson(data= decodeURIComponent($("#yineng").serialize(),true)); 
-			yineng=eval("("+yineng+")"); 
+			/* yineng=DataDeal.formToJson(data= decodeURIComponent($("#yineng").serialize(),true)); 
+			yineng=eval("("+yineng+")");  */
+			yineng.typename=$("#typename").val();
+			yineng.detail=$("#detail").val();
 			yineng.img=filename;
 			yinenglist.push(yineng);
 			$("#yinenglist").append("<div style='float:left;padding-left:35px;width:817px;padding-top:10px;'><span style='padding-right:50px;'>"+(++yinengecount)+"</span><span style='padding-right:50px;'>"+yinenglist[yinengecount-1].img+"</span><span style='padding-right:50px;'>"+yinenglist[yinengecount-1].typename+"</span><span style='padding-left: 30px;padding-right: 40px;'></span><span><a href='#' style='padding-right:10px;' class='edityineng'>编辑</a><a href='#' class='deleteyineng'>删除</a></span></div>");			
@@ -223,8 +237,10 @@ $(function(){
 				//alert("edit");
 				var filenames=$('#img').val().split("\\");
 				var filename=filenames[filenames.length-1];
-				yinengedititem=DataDeal.formToJson(data= decodeURIComponent($("#yineng").serialize(),true));
-				yinengedititem=eval("("+yinengedititem+")");
+				/* yinengedititem=DataDeal.formToJson(data= decodeURIComponent($("#yineng").serialize(),true));
+				yinengedititem=eval("("+yinengedititem+")"); */
+				yinengedititem["typename"]=$("#typename").val();
+				yinengedititem["detail"]=$("#detail").val();
 				yinengedititem["img"]=filename;
 				UploadFile("img");
 				$("#yineng input").each(function(){

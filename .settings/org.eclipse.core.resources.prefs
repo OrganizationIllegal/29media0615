@@ -1,4 +1,4 @@
-#Thu Jul 16 16:00:23 CST 2015
+#Thu Jul 16 16:34:29 CST 2015
 =\=\=\=\=\=\=
 <<<<<<<=HEAD
 >>>>>>>=efc214e9d4f42cfa1327d82d0863d102e41cb198
@@ -8,5 +8,7 @@ encoding//src/main/java/com/kate/app/controller/NewsInputController.java=UTF-8
 encoding//src/main/java/com/kate/app/controller/TrainController.java=UTF-8
 encoding//src/main/java/com/kate/app/controller/TrainInputController.java=UTF-8
 encoding//src/main/java/com/kate/app/controller/UserInfoController.java=UTF-8
+encoding//src/main/java/com/kate/app/controller/VedioController.java=UTF-8
 encoding//src/main/java/com/kate/app/dao/BaseDao.java=UTF-8
+encoding//src/main/java/com/kate/app/dao/VedioDAO.java=UTF-8
 encoding//src/main/resources=GBK

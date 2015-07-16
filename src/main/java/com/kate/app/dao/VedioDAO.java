@@ -12,7 +12,7 @@ import com.kate.app.model.StarVedio;
 
 @Repository 
 public class VedioDAO extends BaseDao {
-	//根据star_num从star_video中找到信息
+	//鏍规嵁star_num浠巗tar_video涓壘鍒颁俊鎭�
 	public List<StarVedio> findVedioByStarNum(String star_num){
 		List<StarVedio> list = new ArrayList<StarVedio>();
 		try{
@@ -35,6 +35,30 @@ public class VedioDAO extends BaseDao {
 	    }
 			return list;
 		}
+	
+	//鏍规嵁star_num浠巗tar_video涓壘鍒颁俊鎭�
+		public List<StarVedio> findVedio(){
+			List<StarVedio> list = new ArrayList<StarVedio>();
+			try{
+				
+				String sql = " select * from vedio ";
+		        Statement stmt = con.createStatement();
+				ResultSet rs = stmt.executeQuery(sql);
+				while(rs.next()){					
+					StarVedio starVedio=new StarVedio();
+					starVedio.setId(rs.getInt("id"));
+					
+					starVedio.setVideo_pic(rs.getString("video_pic"));
+					starVedio.setVideo_id(rs.getString("video_id"));
+					starVedio.setVideo_link(rs.getString("video_link"));
+					list.add(starVedio);
+				}
+				
+			}catch (Exception e) {
+		        
+		    }
+				return list;
+			}
 
 	
 }

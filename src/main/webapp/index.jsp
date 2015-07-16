@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    </style>
     <!-- 绘制圆形 -->
    <script type="text/javascript">
-   $(function(){
+   /* $(function(){
     var can = document.getElementById("can1");
     var ctx = can.getContext("2d");     
    var img = new Image();
@@ -93,7 +93,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     ctx.arc(75,75,60,0,Math.PI*2); // context.arc(x,y,r,sAngle,eAngle,counterclockwise)
     //ctx1.fill();　　　　　　//使用ctx.fill();就是填充色；
     ctx.clip();                       
-})
+}) */
    function pop1(){
   $('#modal1').modal('show');
 }
@@ -229,7 +229,7 @@ function pop4(){
 					<div  style="margin-top:120px;float:left;"><canvas id="can2" width="80" height="80" onclick="pop2()"></canvas></div>
 					<div  style="margin-top:20px;float:left;"><canvas id="can3" width="80" height="80" onclick="pop3()"></canvas></div>
 					<div  style="margin-top:50px;float:left;"><canvas id="can4" width="150" height="150" onclick="pop4()"></canvas></div> --%>
-					<div style="width:250px;height:25px;background-color:rgba(218, 218, 218, 1);text-align:center;font-size:16px;font-weight:bold;margin-left:152px;">影视</div>
+					<div style="width:250px;height:25px;background-color:rgba(218, 218, 218, 1);text-align:center;font-size:16px;font-weight:bold;margin-left:152px;"><!-- 影视 --></div>
 					<div  style="margin-top:15px;float:left;"><a href="${videohref1}">
 					<img src="/29images/${videoimg1}" alt="First slide" style="width: 570px;height: 220px;margin-top: -40px;">
 					<!-- <canvas id="can1" width="150" height="150"></canvas> --></a></div>

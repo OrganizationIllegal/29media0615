@@ -75,7 +75,8 @@ public class TrainInputController {
 			int train_id=train.getTrain_id();
 			String train_name=train.getTrain_name();
 			String train_desc=train.getTrain_desc();
-					
+			train_desc = train_desc.replace("<br/>", "\n");
+			train_desc = train_desc.replace("&nbsp;", " ");		
 			String trainimglist=req.getParameter("trainimglist");
 			JSONArray trainimgArray = JSONArray.parseArray(trainimglist);
 			List<TrainDetail> imagelist=new ArrayList<TrainDetail>();
@@ -90,6 +91,8 @@ public class TrainInputController {
 				 String title=e.getTitle();
 				 String time;
 				 String detail1=e.getDetail();
+				 detail1 = detail1.replace("<br/>", "\n");
+				 detail1 = detail1.replace("&nbsp;", " ");	
 				 String train_img=e.getTrain_img();
 				 if(e.getTime()==null||"".equals(e.getTime())){
 						time = "2015-05-09";
@@ -113,6 +116,8 @@ public class TrainInputController {
 				 lianxilist.add(e);
 				 String typename=e.getTypename();
 				 String detail2=e.getDetail();
+				 detail2 = detail2.replace("<br/>", "\n");
+				 detail2 = detail2.replace("&nbsp;", " ");		
 				 String img=e.getImg();
 				 flag3=trainInputDao.InsertLianxi(train_id, typename, detail2, img);	 
 			}
@@ -159,6 +164,8 @@ public class TrainInputController {
 					int train_id=train.getTrain_id();
 					String train_name=train.getTrain_name();
 					String train_desc=train.getTrain_desc();
+					train_desc = train_desc.replace("<br/>", "\n");
+					train_desc = train_desc.replace("&nbsp;", " ");
 					int result = 0;
 					result+=trainInputDao.deleteTrainDetail(train_id);
 					result+=trainInputDao.deleteLianXi(train_id);
@@ -183,6 +190,8 @@ public class TrainInputController {
 						 String title=e.getTitle();
 						 String time;
 						 String detail2=e.getDetail();
+						 detail2 = detail2.replace("<br/>", "\n");
+						 detail2 = detail2.replace("&nbsp;", " ");	
 						 String train_img=e.getTrain_img();
 						 if(e.getTime()==null||"".equals(e.getTime())){
 								time = "2015-05-09";
@@ -213,6 +222,8 @@ public class TrainInputController {
 						 int id3=0;
 						 String typename=e.getTypename();
 						 String detail3=e.getDetail();
+						 detail3 = detail3.replace("<br/>", "\n");
+						 detail3 = detail3.replace("&nbsp;", " ");	
 						 String img=e.getImg();
 						 /*if(e.getId()==0){*/
 								flag3=trainInputDao.InsertLianxi(train_id, typename, detail3, img);

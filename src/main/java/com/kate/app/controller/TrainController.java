@@ -45,12 +45,15 @@ public class TrainController {
 		List<TrainDetail> xingqubanList = new ArrayList<TrainDetail>();
 		List<TrainDetail> lianxishengList = new ArrayList<TrainDetail>();
 		List<TrainDetail> guojibanList = new ArrayList<TrainDetail>();
-		
+		String detailXingquban = null;
+		String detailLianXiSheng = null;
+		String detailGuojiban = null;
 		
 		trainList=trainDao.findAll();
 		for(Train item : trainList){
 			if(item.getTrain_id()==1)
 				xingqubanList = trainDetailDAO.findByTrainId(item.getTrain_id());
+			
 			else if(item.getTrain_id()==2)
 				lianxishengList = trainDetailDAO.findByTrainId(item.getTrain_id());
 			else if(item.getTrain_id()==3)

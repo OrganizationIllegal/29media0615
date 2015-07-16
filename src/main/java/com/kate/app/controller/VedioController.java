@@ -24,14 +24,14 @@ public class VedioController {
 	private VedioDAO vedioDao;
 	@RequestMapping({"/VideoList" })
 	public String getVedio(HttpServletRequest req,HttpServletResponse resp){
-		String star_num=req.getParameter("starNum");
-		//找出多有艺人图片
+		/*String star_num=req.getParameter("starNum");*/
+		//鎵惧嚭澶氭湁鑹轰汉鍥剧墖
 		List<StarInfo> starlist=new ArrayList<StarInfo>();
 		starlist=starInfoDAO.findAll();
 		req.setAttribute("starlist", starlist);
-		//找出艺人star_num找出艺人相关的视频信息
-		List<StarVedio> starVedioList=vedioDao.findVedioByStarNum(star_num);
-		req.setAttribute("starVedioList", starVedioList);
+		//鎵惧嚭鑹轰汉star_num鎵惧嚭鑹轰汉鐩稿叧鐨勮棰戜俊鎭�
+		List<StarVedio> vedioList=vedioDao.findVedio();
+		req.setAttribute("starVedioList", vedioList);
 		return "/video.jsp";
 	}
 
