@@ -32,7 +32,7 @@ public class TrainInputController {
 	@Autowired
 	private TrainDetailDAO trainDetailDAO;
 	
-	//培训列表
+	//鍩硅鍒楄〃
 	@RequestMapping({ "/TrainList" })    
 	public void TrainList(HttpServletRequest req, HttpServletResponse resp){
 		JSONObject json = new JSONObject();
@@ -49,7 +49,7 @@ public class TrainInputController {
 		}
 	}
 	
-	//查找培训
+	//鏌ユ壘鍩硅
 		@RequestMapping({ "/findTrain" })
 		public String findTrain(HttpServletRequest req,HttpServletResponse resp){
 			int id = Integer.parseInt(req.getParameter("id"));
@@ -67,7 +67,7 @@ public class TrainInputController {
 		}
 		
 	
-	//培训录入
+	//鍩硅褰曞叆
 		@RequestMapping({ "/inputTrain" })
 		public void inputTrain(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 			String traininfo=req.getParameter("traininfo");		
@@ -84,7 +84,7 @@ public class TrainInputController {
 			String image=trainimg.getTrain_img();
 			int flag2=0;
 			for (int i=0;i<trainimgArray.size();i++){
-				 JSONObject object = (JSONObject)trainimgArray.get(i); //对于每个json对象
+				 JSONObject object = (JSONObject)trainimgArray.get(i); //瀵逛簬姣忎釜json瀵硅薄
 				 TrainDetail e = (TrainDetail) JSONToObj(object.toString(), TrainDetail.class);
 				 imagelist.add(e);
 				 String title=e.getTitle();
@@ -95,7 +95,7 @@ public class TrainInputController {
 						time = "2015-05-09";
 					}else{
 						Date date=e.getTime();
-						DateFormat df= DateFormat.getDateInstance();//日期格式，精确到日
+						DateFormat df= DateFormat.getDateInstance();//鏃ユ湡鏍煎紡锛岀簿纭埌鏃�
 						time=df.format(date);			
 					}
 				 flag2=trainInputDao.InsertTrainDetail(train_id, title, time, detail1, train_img);		 
@@ -108,7 +108,7 @@ public class TrainInputController {
 			List<LianXi> lianxilist=new ArrayList<LianXi>();
 			int flag3=0;
 			for (int i=0;i<yinengArray.size();i++){
-				 JSONObject object = (JSONObject)yinengArray.get(i); //对于每个json对象
+				 JSONObject object = (JSONObject)yinengArray.get(i); //瀵逛簬姣忎釜json瀵硅薄
 				 LianXi e = (LianXi) JSONToObj(object.toString(), LianXi.class);
 				 lianxilist.add(e);
 				 String typename=e.getTypename();
@@ -131,7 +131,7 @@ public class TrainInputController {
 			
 		}
 		
-		//删除培训
+		//鍒犻櫎鍩硅
 		@RequestMapping({ "/deleteTrain" })
 		public void deleteNewsTrends(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 			int id = Integer.parseInt(req.getParameter("id"));
@@ -150,7 +150,7 @@ public class TrainInputController {
 		}
 		
 		
-		//编辑培训
+		//缂栬緫鍩硅
 				@RequestMapping({ "/editTrain" })
 				public void editTrain(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 					String traininfo=req.getParameter("traininfo");		
@@ -159,16 +159,24 @@ public class TrainInputController {
 					int train_id=train.getTrain_id();
 					String train_name=train.getTrain_name();
 					String train_desc=train.getTrain_desc();
-					
+					int result = 0;
+					result+=trainInputDao.deleteTrainDetail(train_id);
+					result+=trainInputDao.deleteLianXi(train_id);
+					TrainDetail trainimg = null;
+					String image = null;
 					String trainimglist=req.getParameter("trainimglist");
 					JSONArray trainimgArray = JSONArray.parseArray(trainimglist);
+					if(trainimgArray.size() > 0){
+						JSONObject obj = (JSONObject)trainimgArray.get(0);
+						trainimg=(TrainDetail) JSONToObj(obj.toString(), TrainDetail.class);
+						image=trainimg.getTrain_img();
+					}
 					List<TrainDetail> imagelist=new ArrayList<TrainDetail>();
-					JSONObject obj = (JSONObject)trainimgArray.get(0);
-					TrainDetail trainimg=(TrainDetail) JSONToObj(obj.toString(), TrainDetail.class);
-					String image=trainimg.getTrain_img();
+					
+					
 					int flag2=0;
 					for (int i=0;i<trainimgArray.size();i++){
-						 JSONObject object = (JSONObject)trainimgArray.get(i); //对于每个json对象
+						 JSONObject object = (JSONObject)trainimgArray.get(i); //瀵逛簬姣忎釜json瀵硅薄
 						 TrainDetail e = (TrainDetail) JSONToObj(object.toString(), TrainDetail.class);
 						 imagelist.add(e);
 						 int id2=0;
@@ -180,17 +188,17 @@ public class TrainInputController {
 								time = "2015-05-09";
 							}else{
 								Date date=e.getTime();
-								DateFormat df= DateFormat.getDateInstance();//日期格式，精确到日
+								DateFormat df= DateFormat.getDateInstance();//鏃ユ湡鏍煎紡锛岀簿纭埌鏃�
 								time=df.format(date);			
 							}
-						 if(e.getId()==0){
+						/* if(e.getId()==0){*/
 								flag2=trainInputDao.InsertTrainDetail(train_id, title, time, detail2, train_img);
 								System.out.println("add"+flag2);
-							}else{
+							/*}else{
 								id2=e.getId();
 								flag2=trainInputDao.editTrainDetail(id2, train_id, title, time, detail2, train_img);
 								System.out.println("edit"+flag2);
-							}	 
+							}	*/ 
 					}
 					//System.out.println("imagelist.length():"+imagelist.size());
 					
@@ -199,29 +207,28 @@ public class TrainInputController {
 					List<LianXi> lianxilist=new ArrayList<LianXi>();
 					int flag3=0;
 					for (int i=0;i<yinengArray.size();i++){
-						 JSONObject object = (JSONObject)yinengArray.get(i); //对于每个json对象
+						 JSONObject object = (JSONObject)yinengArray.get(i); //瀵逛簬姣忎釜json瀵硅薄
 						 LianXi e = (LianXi) JSONToObj(object.toString(), LianXi.class);
 						 lianxilist.add(e);
 						 int id3=0;
 						 String typename=e.getTypename();
 						 String detail3=e.getDetail();
 						 String img=e.getImg();
-						 if(e.getId()==0){
+						 /*if(e.getId()==0){*/
 								flag3=trainInputDao.InsertLianxi(train_id, typename, detail3, img);
 								System.out.println("add"+flag3);
-							}else{
+							/*}else{
 								id3=e.getId();
 								flag3=trainInputDao.editLianxi(id3, train_id, typename, detail3, img);
 								System.out.println("edit"+flag3);
-							}
+							}*/
 					}
 					
-							
 					int flag1 = 0;
 					JSONObject json = new JSONObject();
 					flag1 =trainInputDao.editTrain(id, train_id, train_name, train_desc, image);
 					System.out.println(flag1);
-					json.put("flag", flag1+flag2+flag3);
+					json.put("flag", flag1);
 					try{
 						writeJson(json.toJSONString(),resp);
 					}catch(Exception e){

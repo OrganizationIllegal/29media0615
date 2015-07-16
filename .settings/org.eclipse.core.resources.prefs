@@ -1,10 +1,11 @@
-#Wed Jul 15 11:41:39 CST 2015
+#Thu Jul 16 11:56:00 CST 2015
 =\=\=\=\=\=\=
 <<<<<<<=HEAD
 >>>>>>>=efc214e9d4f42cfa1327d82d0863d102e41cb198
 eclipse.preferences.version=1
 encoding//src/main/java/com/kate/app/controller/IndexInputController.java=UTF-8
 encoding//src/main/java/com/kate/app/controller/NewsInputController.java=UTF-8
+encoding//src/main/java/com/kate/app/controller/TrainInputController.java=UTF-8
 encoding//src/main/java/com/kate/app/controller/UserInfoController.java=UTF-8
 encoding//src/main/java/com/kate/app/dao/BaseDao.java=UTF-8
 encoding//src/main/resources=GBK
