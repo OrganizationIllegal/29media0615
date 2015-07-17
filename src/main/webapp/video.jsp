@@ -64,14 +64,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  	<div style="padding-top:10px">
  	     <!--左侧视频播放start-->
  		<div style="width:860px;float:left;">
- 				<div id="youkuplayer" style="width:795px;height:761px">
- 				</div>
+ 				<div id="youkuplayer" style="width:800px;height:500px"></div>
  				<!--要播放视频列表start-->
- 				<div >
+ 				<%-- <div >
  					 <c:forEach var="item" items="${vedioList}" varStatus="stat">
  					 		<img alt="" src="/29images/${item.video_pic}"   height="170px" style="border:1px solid grey" class="yuanjiao" >
  					 </c:forEach>
- 				</div>
+ 				</div> --%>
+ 				<div style="font-size:16px;margin-top:20px;width:750px;margin-left:20px;margin-right:20px;">detaildetaildetaildetaildetaildetaildetaildetaildetaildetaildetaildetaildetaildetaildetaildetaildetaildetaildetaildetaildetaildetail</div>
  				<!--要播放视频列表end-->
  		</div>
  		<!--左侧视频播放end-->
