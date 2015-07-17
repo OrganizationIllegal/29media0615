@@ -303,19 +303,20 @@ public class ArtistInputController {
 					List<StarVedio> videolist=new ArrayList<StarVedio>();
 					int flag3=0;
 					
-					int flag = artistInputDao.deleteVideo();
+					//int flag = artistInputDao.deleteVideo();
 					
 					for (int i=0;i<videoimgArray.size();i++){
 						 JSONObject object = (JSONObject)videoimgArray.get(i); //å¯¹äºŽæ¯ä¸ªjsonå¯¹è±¡
 						 StarVedio e = (StarVedio) JSONToObj(object.toString(), StarVedio.class);
 						 videolist.add(e);
 						 int id3=0;
+						 int id=e.getId();
 						 String video_id=e.getVideo_id();
 						 String video_link=e.getVideo_link();
 						 String video_pic=e.getVideo_pic();
 						 String video_desc=e.getVideo_desc();
 						 String type=e.getType();
-						 flag3=artistInputDao.InsertVideo(video_id, video_pic, video_link, video_desc, type);
+						 flag3=artistInputDao.editVideo(id, video_id, video_pic, video_link, video_desc, type);
 						 System.out.println("add"+flag3);
 						 
 					}
@@ -391,9 +392,9 @@ public class ArtistInputController {
 	        theString = theString.replace(" ", "&nbsp;");  
 	        theString = theString.replace("\"", "&quot;");  
 	        theString = theString.replace("\'", "&#39;"); 
-	        theString = theString.replace("¡°", "&quot;"); 
-	        theString = theString.replace("¡±", "&quot;"); 
-	        theString = theString.replace("\\", "\\\\");      //¶ÔÐ±ÏßµÄ×ªÒå  
+	        theString = theString.replace("ï¿½ï¿½", "&quot;"); 
+	        theString = theString.replace("ï¿½ï¿½", "&quot;"); 
+	        theString = theString.replace("\\", "\\\\");      //ï¿½ï¿½Ð±ï¿½ßµï¿½×ªï¿½ï¿½  
 	        theString = theString.replace("\n", "\\n");  
 	        theString = theString.replace("\r", "\\r"); 
 	        //theString = theString.replace(":", "\:"); 

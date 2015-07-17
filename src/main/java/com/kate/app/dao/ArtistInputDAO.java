@@ -157,7 +157,25 @@ public class ArtistInputDAO extends BaseDao {
 					}
 					return exeResult;
 				} 		
-
+               
+				public int editVideo(int id,String  video_id, String video_pic, String  video_link, String video_desc,String type){
+					int exeResult=0;
+					try{
+						String sql = " update vedio set video_id=?, video_pic=?, video_link=?, video_desc=?,type=? where id=?";
+						PreparedStatement pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, video_id);
+						pstmt.setString(2, video_pic);
+						pstmt.setString(3, video_link);
+						pstmt.setString(4, video_desc);
+						pstmt.setString(5, type);
+						pstmt.setInt(6, id);			
+						exeResult = pstmt.executeUpdate();
+					}catch (Exception e) {
+			            e.printStackTrace();
+			        }
+					return exeResult;
+			        
+				}
 
 				//删除艺人
 				public int deleteArtist(int id){
