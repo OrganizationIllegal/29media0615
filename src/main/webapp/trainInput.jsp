@@ -123,9 +123,9 @@ function add(){
 function chongzhi(){
 	$("#train_id").val("").focus();
 	$("#train_name").val("");
-	$("#train_desc").val("");
+	//$("#train_desc").val("");
 	$("#title").val("");
-	$("#time").val("");
+	//$("#time").val("");
 	$("#detail").val("");
 	$("#typename").val("");
 }
@@ -150,7 +150,7 @@ $(function(){
 			/* trainimg=DataDeal.formToJson(data= decodeURIComponent($("#trainimg").serialize(),true)); 
 			trainimg=eval("("+trainimg+")"); */
 			trainimg.title = $("#title").val();
-			trainimg.time = $("#time").val();
+			//trainimg.time = $("#time").val();
 			trainimg.detail = $("#detail").val();
 			var traintime=trainimg.time;
 			if(!RQcheck(traintime)){
@@ -175,7 +175,7 @@ $(function(){
 				/* trainimgedititem=DataDeal.formToJson(data= decodeURIComponent($("#trainimg").serialize(),true));
 				trainimgedititem=eval("("+trainimgedititem+")"); */
 				trainimgedititem["title"]=$("#title").val();
-				trainimgedititem["time"]=$("#time").val();
+				//trainimgedititem["time"]=$("#time").val();
 				trainimgedititem["detail"]=$("#detail").val();
 				trainimgedititem["train_img"]=filename;
 				UploadFile("train_img");
@@ -205,7 +205,7 @@ $(function(){
 			//alert(index+"index");
 			istrainimgedit=index;
 			$("#title").val(trainimgedititem.title);
-			$("#time").val(trainimgedititem.time);
+			//$("#time").val(trainimgedititem.time);
 			$("#detail").val(trainimgedititem.detail);
 			}); 
 	
@@ -306,15 +306,7 @@ function UploadFile(imageid) {
     xhr.send(form);
 }
  
-function RQcheck(RQ) {
-    var date = RQ;
-    var result = date.match(/^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2})$/);
-    if (result == null)
-        return false;
-    var d = new Date(result[1], result[3] - 1, result[4]);
-    return (d.getFullYear() == result[1] && (d.getMonth() + 1) == result[3] && d.getDate() == result[4]);
 
-}
 </script>
 </body>
 </html>

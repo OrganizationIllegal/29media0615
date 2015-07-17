@@ -74,8 +74,8 @@ public class TrainInputController {
 			Train train = (Train) JSONToObj(traininfo, Train.class);
 			int train_id=train.getTrain_id();
 			String train_name=train.getTrain_name();
-			String train_desc=train.getTrain_desc();
-			train_desc = filter(train_desc);	
+			String train_desc="";
+			//train_desc = filter(train_desc);	
 			String trainimglist=req.getParameter("trainimglist");
 			JSONArray trainimgArray = JSONArray.parseArray(trainimglist);
 			List<TrainDetail> imagelist=new ArrayList<TrainDetail>();
@@ -160,9 +160,6 @@ public class TrainInputController {
 					int id=train.getId();
 					int train_id=train.getTrain_id();
 					String train_name=train.getTrain_name();
-					String train_desc=train.getTrain_desc();
-					
-					train_desc = filter(train_desc);
 					int result = 0;
 					result+=trainInputDao.deleteTrainDetail(train_id);
 					result+=trainInputDao.deleteLianXi(train_id);
@@ -235,6 +232,7 @@ public class TrainInputController {
 					
 					int flag1 = 0;
 					JSONObject json = new JSONObject();
+					String train_desc = "";
 					flag1 =trainInputDao.editTrain(id, train_id, train_name, train_desc, image);
 					System.out.println(flag1);
 					json.put("flag", flag1);

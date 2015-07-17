@@ -147,17 +147,17 @@ $(function(){
 			/* trainimg=DataDeal.formToJson(data= decodeURIComponent($("#trainimg").serialize(),true)); 
 			trainimg=eval("("+trainimg+")"); */
 			trainimg.title = $("#title").val();
-			trainimg.time = $("#time").val();
+			//trainimg.time = $("#time").val();
 			trainimg.detail = $("#detail").val();
 			var traintime=trainimg.time;
-			if(!RQcheck(traintime)){
+			/* if(!RQcheck(traintime)){
 				  alert("请输入正确的日期！(yyyy-mm-dd)");
 				  $("#time").focus();
 				  return false;
-				  }
+				  } */
 			trainimg.train_img=filename;
 			trainimglist.push(trainimg);
-			$("#trainimglist").append("<div style='float:left;padding-left:35px;width:817px;padding-top:10px;'><span style='padding-right:50px;'>"+(++trainimgecount)+"</span><span style='padding-right:50px;'>"+trainimglist[trainimgecount-1].train_img+"</span><span style='padding-right:50px;'>"+trainimglist[trainimgecount-1].title+"</span><span style='padding-right:50px;'>"+trainimglist[trainimgecount-1].time+"</span><span style='padding-left: 30px;padding-right: 40px;'></span><span><a href='#' style='padding-right:10px;' class='edittrainimg'>编辑</a><a href='#' class='deletetrainimg'>删除</a></span></div>");			
+			$("#trainimglist").append("<div style='float:left;padding-left:35px;width:817px;padding-top:10px;'><span style='padding-right:50px;'>"+(++trainimgecount)+"</span><span style='padding-right:50px;'>"+trainimglist[trainimgecount-1].train_img+"</span><span style='padding-right:50px;'>"+trainimglist[trainimgecount-1].title+"</span><span style='padding-left: 30px;padding-right: 40px;'></span><span><a href='#' style='padding-right:10px;' class='edittrainimg'>编辑</a><a href='#' class='deletetrainimg'>删除</a></span></div>");			
 			UploadFile("train_img");
 			$("#trainimg input").each(function(){
 				$(this).val("");
@@ -172,7 +172,7 @@ $(function(){
 				/* trainimgedititem=DataDeal.formToJson(data= decodeURIComponent($("#trainimg").serialize(),true));
 				trainimgedititem=eval("("+trainimgedititem+")"); */
 				trainimgedititem["title"]=$("#title").val();
-				trainimgedititem["time"]=$("#time").val();
+				//trainimgedititem["time"]=$("#time").val();
 				trainimgedititem["detail"]=$("#detail").val();
 				trainimgedititem["train_img"]=filename;
 				UploadFile("train_img");
@@ -204,7 +204,7 @@ $(function(){
 			$("#title").val(trainimgedititem.title);
 			var date=new Date(trainimgedititem.time)
 			//alert(trainimgedititem.time)
-			$("#time").val(date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate());
+			//$("#time").val(date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate());
 			trainimgedititem.detail = change(trainimgedititem.detail); 
 			$("#detail").val(trainimgedititem.detail);
 			}); 
@@ -321,15 +321,7 @@ function UploadFile(imageid) {
     };
     xhr.send(form);
 }
-function RQcheck(RQ) {
-    var date = RQ;
-    var result = date.match(/^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2})$/);
-    if (result == null)
-        return false;
-    var d = new Date(result[1], result[3] - 1, result[4]);
-    return (d.getFullYear() == result[1] && (d.getMonth() + 1) == result[3] && d.getDate() == result[4]);
 
-}
 </script>
 </body>
 </html>
