@@ -58,11 +58,8 @@ public class TrainController {
 			
 		}
 		else if(trainList.size()==2){
-			
 				xingqubanList = trainDetailDAO.findByTrainId(trainList.get(0).getTrain_id());
 				lianxishengList = trainDetailDAO.findByTrainId(trainList.get(1).getTrain_id());
-				
-			
 		}
 		else{
 			
@@ -70,17 +67,25 @@ public class TrainController {
 				
 			
 		}
+		if(xingqubanList.size() > 0){
+			for(TrainDetail item : xingqubanList){
+				String detailTemp = item.getDetail();
+				detailTemp = detailTemp.replace("\\n", "<br/>");
+				detailTemp = detailTemp.replace(" ", "&nbsp;");
+				item.setDetail(detailTemp);
+			}
+		}
+		if(guojibanList.size() > 0){
+			for(TrainDetail item : guojibanList){
+				String detailTemp = item.getDetail();
+				detailTemp = detailTemp.replace("\\n", "<br/>");
+				detailTemp = detailTemp.replace(" ", "&nbsp;");
+				item.setDetail(detailTemp);
+			}
+		}
 		
-		/*for(Train item : trainList){
-			int train_id = item.getTrain_id();
-			if(item.getTrain_id()==1)
-				xingqubanList = trainDetailDAO.findByTrainId(item.getTrain_id());
-			
-			else if(item.getTrain_id()==2)
-				lianxishengList = trainDetailDAO.findByTrainId(item.getTrain_id());
-			else if(item.getTrain_id()==3)
-				guojibanList = trainDetailDAO.findByTrainId(item.getTrain_id());
-		}*/
+		
+		
 		req.setAttribute("trainList", trainList);
 		req.setAttribute("xingqubanList", xingqubanList);
 		req.setAttribute("lianxishengList", lianxishengList);
@@ -89,7 +94,14 @@ public class TrainController {
 			result = 0;
 		}
 		else{
-			result = lianxishengList.get(0).getTrain_id();
+			result = guojibanList.get(0).getTrain_id();
+				for(TrainDetail item : lianxishengList){
+					String detailTemp = item.getDetail();
+					detailTemp = detailTemp.replace("\\n", "<br/>");
+					detailTemp = detailTemp.replace(" ", "&nbsp;");
+					item.setDetail(detailTemp);
+				}
+		
 		}
 		req.setAttribute("trainid_lianxi", result);
 		
@@ -129,7 +141,6 @@ public class TrainController {
 		String detail = "";
 		if(data!=null){
 			detail = data.getDetail();
-			
 		}
 		
 		

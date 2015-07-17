@@ -276,7 +276,7 @@ public class TrainInputController {
         theString = theString.replace("\'", "&#39;"); 
         theString = theString.replace("“", "&quot;"); 
         theString = theString.replace("”", "&quot;"); 
-        theString = theString.replace("\\", "\\\\");//对斜线的转义  
+        theString = theString.replace("\\", "\\\\");      //对斜线的转义  
         theString = theString.replace("\n", "\\n");  
         theString = theString.replace("\r", "\\r"); 
         //theString = theString.replace(":", "\:"); 

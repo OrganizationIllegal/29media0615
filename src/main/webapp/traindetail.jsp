@@ -82,23 +82,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div style="width:940px;float:left;">
 		<div style=" /*border-left:1px solid rgba(121, 200, 225, 1) */;padding-top:20px;">
 		<div id="train1">
-		<%-- <div style="text-align:center;"><img src="/images/${data.img}"   height=310px; width=621px></div>
-		<div style="overflow-y:auto; width:910px; height:380px;margin-top:32px;color: black;">
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${data.detail } --%>
-		
-			<div style="text-align:center;">
-			<c:if test="${!empty data}">
-			<%
+	<%
    		String detail = request.getAttribute("detail").toString();
-   		detail = detail.replace("\n", "<br/>");
+   		detail = detail.replace("\\n", "<br/>");
    		detail = detail.replace(" ", "&nbsp;");
     %>
-			<img src="/29images/${data.img}"   height=310px; width=621px></div>
+			<div style="text-align:center;">
+				<c:if test="${!empty data}">
+					<img src="/29images/${data.img}"   height=310px; width=621px>
+					</c:if>
+			</div>
 			<div style="overflow-y:auto; width:910px; height:380px;margin-top:32px;color: black;">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<%=detail %>
 			</div>
-			</c:if>
+			
 			</div>
 		
 		<%-- <div id="train2" style="display:none;">
