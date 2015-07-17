@@ -72,6 +72,8 @@ public class ArtistInputController {
 		@RequestMapping({ "/inputArtist" })
 		public void inputArtist(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 			String artistinfo=req.getParameter("artistinfo");
+			String star_detail=req.getParameter("star_detail1");
+			
 			StarInfo starinfo = (StarInfo) JSONToObj(artistinfo, StarInfo.class);
 			String star_num=starinfo.getStar_num();
 			String chinese_name=starinfo.getChinese_name();
@@ -95,7 +97,8 @@ public class ArtistInputController {
 			String sex=starinfo.getSex();
 			String specialty=starinfo.getSpecialty();
 			String musicalstyle=starinfo.getMusicalstyle();
-			String star_detail=starinfo.getStar_detail();
+			String star_detailTemp=star_detail;
+			//star_detailTemp = filter(star_detailTemp);
 			
 			String artistimglist=req.getParameter("artistimglist");
 			JSONArray artistimgArray = JSONArray.parseArray(artistimglist);
@@ -131,7 +134,7 @@ public class ArtistInputController {
 			
 			int flag1 = 0;
 			JSONObject json = new JSONObject();
-			flag1 =artistInputDao.InsertArtistInfo(star_num, chinese_name, english_name, bieming, nation, constellation, bloodtype, height, weight, birthplace, birthday, occupation, brokerfirm, animal, representativeworks, residence, gratuateunivercity, achivements, nationality, sex, specialty, musicalstyle, star_detail,image);
+			flag1 =artistInputDao.InsertArtistInfo(star_num, chinese_name, english_name, bieming, nation, constellation, bloodtype, height, weight, birthplace, birthday, occupation, brokerfirm, animal, representativeworks, residence, gratuateunivercity, achivements, nationality, sex, specialty, musicalstyle, star_detailTemp,image);
 			System.out.println(flag1);
 			json.put("flag", flag1+flag2+flag3);
 			try{
@@ -182,6 +185,10 @@ public class ArtistInputController {
 		public String findArtist(HttpServletRequest req,HttpServletResponse resp){
 			int id = Integer.parseInt(req.getParameter("id"));
 			StarInfo starinfo = artistInputDao.findById(id);
+			String detail = starinfo.getStar_detail();
+			detail = detail.replace("\n", "<p>");
+			detail = detail.replace("\\n", "<p>");
+			detail = detail.replace(" ", "&nbsp;");
 			List<StarVedio> videoList = new ArrayList<StarVedio>();
 			videoList=artistInputDao.findByStarNum(starinfo.getStar_num());
 			req.setAttribute("starinfo", starinfo);
@@ -207,7 +214,7 @@ public class ArtistInputController {
 				@RequestMapping({ "/editArtist" })
 				public void editArtist(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 					String artistinfo=req.getParameter("artistinfo");
-					//System.out.println(artistinfo);
+					//String star_detail=req.getParameter("star_detail1");
 					StarInfo starinfo = (StarInfo) JSONToObj(artistinfo, StarInfo.class);
 					int id=starinfo.getId();
 					String star_num=starinfo.getStar_num();
@@ -233,7 +240,7 @@ public class ArtistInputController {
 					String specialty=starinfo.getSpecialty();
 					String musicalstyle=starinfo.getMusicalstyle();
 					String star_detail=req.getParameter("detail");
-							
+					//star_detail = filter(star_detail);		
 					String artistimglist=req.getParameter("artistimglist");
 					JSONArray artistimgArray = JSONArray.parseArray(artistimglist);
 					List<StarImage> imagelist=new ArrayList<StarImage>();
@@ -278,7 +285,7 @@ public class ArtistInputController {
 					JSONObject json = new JSONObject();
 					flag1 =artistInputDao.EditArtistInfo(id, star_num, chinese_name, english_name, bieming, nation, constellation, bloodtype, height, weight, birthplace, birthday, occupation, brokerfirm, animal, representativeworks, residence, gratuateunivercity, achivements, nationality, sex, specialty, musicalstyle, star_detail,image);
 					System.out.println(flag1);
-					json.put("flag", flag1+flag2+flag3);
+					json.put("flag", flag1);
 					try{
 						writeJson(json.toJSONString(),resp);
 					}catch(Exception e){
@@ -308,7 +315,7 @@ public class ArtistInputController {
 						 String video_pic=e.getVideo_pic();
 						 String video_desc=e.getVideo_desc();
 						 String type=e.getType();
-						 flag3=artistInputDao.InsertVideo(video_id, video_pic, video_link, video_desc,type);
+						 flag3=artistInputDao.InsertVideo(video_id, video_pic, video_link, video_desc, type);
 						 System.out.println("add"+flag3);
 						 
 					}
@@ -377,5 +384,20 @@ public class ArtistInputController {
 	        }
 	        return t;
 	    }
+	 
+	 public String filter(String text){
+			String theString = text.replace(">", "&gt;");  
+	        theString = theString.replace("<", "&lt;");  
+	        theString = theString.replace(" ", "&nbsp;");  
+	        theString = theString.replace("\"", "&quot;");  
+	        theString = theString.replace("\'", "&#39;"); 
+	        theString = theString.replace("“", "&quot;"); 
+	        theString = theString.replace("”", "&quot;"); 
+	        theString = theString.replace("\\", "\\\\");      //对斜线的转义  
+	        theString = theString.replace("\n", "\\n");  
+	        theString = theString.replace("\r", "\\r"); 
+	        //theString = theString.replace(":", "\:"); 
+	        return theString;
+		}
 	
 }

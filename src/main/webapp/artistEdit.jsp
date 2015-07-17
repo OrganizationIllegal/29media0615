@@ -140,7 +140,7 @@ CKEDITOR.replace( 'star_detail' );
 function add(){
 	  var artistinfo=DataDeal.formToJson(data= decodeURIComponent($("#artistinfo").serialize(),true)); 
 	  artistinfo=eval("("+artistinfo+")");
-	  var detail=$("#star_detail").val(); 
+	  var detail = CKEDITOR.instances.star_detail.getData();
 	  //alert(detail);
 	  $.ajax({
 	 	    type: "POST",
@@ -148,7 +148,7 @@ function add(){
 	 		dataType: "json",
 	 		url: "/editArtist",
 	 		success:function(data){
-	 			if(data.flag == 3){
+	 			if(data.flag == 1){
 	 				alert("修改成功！");
 	 			}else if(data.flag ==0){
 	 				alert("修改失败！");

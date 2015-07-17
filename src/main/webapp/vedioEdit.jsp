@@ -42,6 +42,16 @@ body{
 </select>
 </span>
 </div>
+<div class="area_left">
+<span class="area_span">类型</span>
+<span>
+<select class="area_select" id="type" name="type">
+  <option value ="视频">视频</option>
+  <option value ="练习生视频">练习生视频</option>
+</select>
+</span>
+</div>
+
 <div class="area_left c-fix">
 <span class="area_span">影视描述</span>
 </div>
@@ -156,6 +166,7 @@ $(function(){
 			$("#video_id").val(videoimgedititem.video_id);
 			$("#video_link").val(videoimgedititem.video_link);
 			$("#video_desc").val(videoimgedititem.video_desc);
+			$("#type").val(videoimgedititem.type);
 			});
 });
 
