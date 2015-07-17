@@ -94,9 +94,11 @@ body{
 <div class="area_left c-fix">
 <span class="area_span">艺人详情</span>
 </div>
+</form>
+
 <div class="c-fix" style="margin-bottom:15px;">
 <textarea id="star_detail" placeholder="艺人详情" name="star_detail"></textarea></div>
-</form>
+
 <div class="area_bkg2 c-fix" id="brokerinfo">艺人图片</div>
 <form id="artistimg">
 <div class="c-fix" style="padding-left:35px;margin-top:20px;">
@@ -105,20 +107,7 @@ body{
 </div>
 </form>
 <div id="artistimglist" style="margin-top:20px;"></div>
-<!-- <div class="area_bkg2 c-fix" id="brokerinfo">艺人影视</div>
-<form id="videoimg">
-<div class="area_left">
-<span class="area_span">影视编号</span><span><input type="text" id="video_id" name="video_id" class="area_input"></span>
-</div>
-<div class="area_right">
-<span class="area_span">影视链接</span><span><input type="text" id="video_link" name="video_link" class="area_input"></span>
-</div>
-<div class="c-fix" style="padding-left:35px;margin-top:20px;">
-<span class="area_span">影视图片</span>
-<span style="float:right;"> <input type="file" name="video_pic" id="video_pic" style="width:677px;border:1px solid rgb(239,235,242);float:left;margin-right:20px;"/><a href="#" class="addvideoimg">添加</a></span>
-</div>
-</form>
-<div id="videoimglist" style="margin-top:20px;"></div> -->
+
 <div class="area_left4"><button type="button" class="btn" onclick="add()">提交</button></div>
 <div class="area_right4"><button type="button" class="btn" onclick="chongzhi()">重置</button></div>
 </div>
@@ -130,10 +119,11 @@ CKEDITOR.replace( 'star_detail' );
 function add(){
 	  var artistinfo=DataDeal.formToJson(data= decodeURIComponent($("#artistinfo").serialize(),true)); 
 	  artistinfo=eval("("+artistinfo+")");
-	  artistinfo.star_detail = CKEDITOR.instances.star_detail.getData();
+	  var star_detail = CKEDITOR.instances.star_detail.getData();
+	  //alert(star_detail)
 	  $.ajax({
 	 	    type: "POST",
-	 		data: {"artistinfo":JSON.stringify(artistinfo),"artistimglist":JSON.stringify(artistimglist),"videoimglist":JSON.stringify(videoimglist)},
+	 		data: {"star_detail1":star_detail, "artistinfo":JSON.stringify(artistinfo),"artistimglist":JSON.stringify(artistimglist),"videoimglist":JSON.stringify(videoimglist)},
 	 		dataType: "json",
 	 		url: "/inputArtist",
 	 		success:function(data){

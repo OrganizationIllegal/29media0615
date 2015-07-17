@@ -258,7 +258,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<c:forEach var="item" items="${list}" varStatus="stat">
 		
 		<div id="${stat.index }" style="margin-bottom:10px;">
-			<a href="/Artist?starNum=${item.star_num}"><img alt="" src="/29images/${item.star_img}" style="width:240px;height:170px;cursor:pointer;">
+			<a href="/Artist?id=${item.id}"><img alt="" src="/29images/${item.star_img}" style="width:240px;height:170px;cursor:pointer;">
 			</a>
 		</div>
 		<!-- <div id="id2" style="margin-bottom:10px;"><a href="/Artist?starNum=2"><img alt="" src="/images/artist/dyn1.png" style="width:240px;height:170px;cursor:pointer;"></a></div>

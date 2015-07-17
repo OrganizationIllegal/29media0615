@@ -32,6 +32,16 @@ body{
 <div class="area_right">
 <span class="area_span">影视链接</span><span><input type="text" id="video_link" name="video_link" class="area_input"></span>
 </div>
+<div class="area_left">
+<span class="area_span">类型</span>
+<span>
+<select class="area_select" id="type" name="type">
+  <option value ="视频">视频</option>
+  <option value ="练习生视频">练习生视频</option>
+</select>
+</span>
+</div>
+
 <div class="area_left c-fix">
 <span class="area_span">影视描述</span>
 </div>
@@ -43,19 +53,7 @@ body{
 </div>
 </form>
 <div id="videoimglist" style="margin-top:20px;">
-<<<<<<< HEAD
-<%-- <c:forEach var="item" items="${videoList}" varStatus="status">
-=======
 
->>>>>>> 118e13aac2d00471ac2c0cdae4da4130a80f6135
-<div style='float:left;padding-left:35px;width:900px;margin-top:5px;margin-bottom:5px;'>
-<span style='padding-right:100px;'>1</span><span style='padding-right:100px;'>${vedioInfo.video_id}</span><span style='padding-right:100px;'>${item.video_link}</span><span style='padding-right:100px;'>${vedioInfo.video_pic}</span><span style="display:none;">${item.id}</span><span><a href="#" class="editvideoimg" style='padding-right:10px;'>编辑</a><a href="#" class="deletevideoimg">删除</a></span>
-</div>
-<<<<<<< HEAD
-</c:forEach> --%>
-=======
-
->>>>>>> 118e13aac2d00471ac2c0cdae4da4130a80f6135
 </div>
 <div class="area_left4"><button type="button" class="btn" onclick="add()">提交</button></div>
 <div class="area_right4"><button type="reset" class="btn" onclick="fanhui()">返回</button></div>
@@ -109,7 +107,8 @@ $(function(){
 			videoimg.video_id=$("#video_id").val();
 			videoimg.video_link=$("#video_link").val();
 			videoimg.video_desc=$("#video_desc").val();
-			
+			videoimg.type=$("#type").val();
+			alert(videoimg.type)
 			videoimg.video_pic=filename;
 			videoimglist.push(videoimg);
 			$("#videoimglist").append("<div style='float:left;padding-left:35px;width:900px;margin-top:5px;margin-bottom:5px;'><span style='padding-right:50px;'>"+(++videoimgecount)+"</span><span style='padding-right:100px;'>"+videoimglist[videoimgecount-1].video_id+"</span><span style='padding-right:100px;'>"+videoimglist[videoimgecount-1].video_link+"</span><span style='padding-right:100px;'>"+videoimglist[videoimgecount-1].video_pic+"</span><span><a href='#' style='padding-right:10px;' class='editvideoimg'>编辑</a><a href='#' class='deletevideoimg'>删除</a></span></div>");			
@@ -130,6 +129,7 @@ $(function(){
 				videoimgedititem["video_id"]=$("#video_id").val();
 				videoimgedititem["video_link"]=$("#video_link").val();
 				videoimgedititem["video_desc"]=$("#video_desc").val();
+				videoimgedititem["type"]=$("#type").val();
 				videoimgedititem["video_pic"]=filename;
 				UploadFile("video_pic");
 				$("#videoimg input").each(function(){
@@ -159,6 +159,7 @@ $(function(){
 			$("#video_id").val(videoimgedititem.video_id);
 			$("#video_link").val(videoimgedititem.video_link);
 			$("#video_desc").val(videoimgedititem.video_desc);
+			$("#type").val(videoimgedititem.type);
 			});
 });
 
