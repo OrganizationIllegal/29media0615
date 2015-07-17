@@ -72,27 +72,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div style="margin-top:20px;margin-left:20px;cursor:pointer;margin-left:20px;font-weight:bold;"><a href="Contactus.jsp" style="color:#783f04;">加入我们</a></div>
 		<!-- </div>	 -->	
 		</div>
-		<div style="width:860px;float:left;">
-		<!-- <div style=" /*border-left:1px solid rgba(121, 200, 225, 1) */;padding-top:20px;"> -->
-		<div id="train1" style="border-left:1px solid;">
-		<div style="height:49px;border-bottom:1px solid white;"></div>
-		<%-- <div style="text-align:center;"><img src="/images/${data.img}"   height=310px; width=621px></div>
-		<div style="overflow-y:auto; width:910px; height:380px;margin-top:32px;color: black;">
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${data.detail } --%>
-		
-			<div style="text-align:center;">
-			<c:if test="${!empty data}">
-			<%
+
+		<div style="width:940px;float:left;">
+		<div style=" /*border-left:1px solid rgba(121, 200, 225, 1) */;padding-top:20px;">
+		<div id="train1">
+	<%
+
    		String detail = request.getAttribute("detail").toString();
-   		detail = detail.replace("\n", "<br/>");
+   		detail = detail.replace("\\n", "<br/>");
    		detail = detail.replace(" ", "&nbsp;");
     %>
-			<img src="/29images/${data.img}"   height=310px; width=621px style="margin-top:20px;"></div>
-			<div style="overflow-y:auto; width:910px; height:380px;margin-top:32px;color: black;">
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<%=detail %>
+
+			<div style="text-align:center;">
+				<c:if test="${!empty data}">
+					<img src="/29images/${data.img}"   height=310px; width=621px>
+					</c:if>
 			</div>
-			</c:if>
+			<div style="overflow-y:auto; width:910px; height:380px;margin-top:32px;color: black;">
+			
+			<%=detail%>
+			</div>
+			
 			</div>
 		
 		<%-- <div id="train2" style="display:none;">

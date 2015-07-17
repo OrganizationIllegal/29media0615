@@ -42,60 +42,34 @@ public class TrainController {
 	public String getTrain(HttpServletRequest req,HttpServletResponse resp){
 		//String newsId = req.getParameter("newsId");
 		List<Train> trainList=new ArrayList<Train>();
-		List<TrainDetail> xingqubanList = new ArrayList<TrainDetail>();
-		List<TrainDetail> lianxishengList = new ArrayList<TrainDetail>();
-		List<TrainDetail> guojibanList = new ArrayList<TrainDetail>();
 		
 		trainList=trainDao.findAll();
+		
 		if(trainList.size() > 3){
 			trainList = trainList.subList(0, 3);
 		}
-		if(trainList.size()==3){
-				xingqubanList = trainDetailDAO.findByTrainId(trainList.get(0).getTrain_id());
-				lianxishengList = trainDetailDAO.findByTrainId(trainList.get(1).getTrain_id());
-				guojibanList = trainDetailDAO.findByTrainId(trainList.get(2).getTrain_id());
-			
-			
-		}
-		else if(trainList.size()==2){
-			
-				xingqubanList = trainDetailDAO.findByTrainId(trainList.get(0).getTrain_id());
-				lianxishengList = trainDetailDAO.findByTrainId(trainList.get(1).getTrain_id());
-				
-			
-		}
-		else{
-			
-				xingqubanList = trainDetailDAO.findByTrainId(trainList.get(0).getTrain_id());
-				
-			
+		
+		for(Train item : trainList){
+			List<TrainDetail> trainDetailList=new ArrayList<TrainDetail>();
+			int tempId = item.getTrain_id();
+			if(tempId != 0){
+				trainDetailList = trainDetailDAO.findByTrainId(item.getTrain_id());
+				if(trainDetailList!=null && trainDetailList.size()>0){
+					for(TrainDetail item1 : trainDetailList){
+						String detailTemp = item1.getDetail();
+						detailTemp = detailTemp.replace("\\n", "<br/>");
+						detailTemp = detailTemp.replace(" ", "&nbsp;");
+						item1.setDetail(detailTemp);
+					}
+				}
+			}
+			item.setList(trainDetailList);
 		}
 		
-		/*for(Train item : trainList){
-			int train_id = item.getTrain_id();
-			if(item.getTrain_id()==1)
-				xingqubanList = trainDetailDAO.findByTrainId(item.getTrain_id());
-			
-			else if(item.getTrain_id()==2)
-				lianxishengList = trainDetailDAO.findByTrainId(item.getTrain_id());
-			else if(item.getTrain_id()==3)
-				guojibanList = trainDetailDAO.findByTrainId(item.getTrain_id());
-		}*/
 		req.setAttribute("trainList", trainList);
-		req.setAttribute("xingqubanList", xingqubanList);
-		req.setAttribute("lianxishengList", lianxishengList);
-		int result = 0;
-		if(lianxishengList.size()<=0){
-			result = 0;
-		}
-		else{
-			result = lianxishengList.get(0).getTrain_id();
-		}
-		req.setAttribute("trainid_lianxi", result);
-		
-		req.setAttribute("guojibanList", guojibanList);
 		
 		
+		//req.setAttribute("trainid_lianxi", result);
 		return "/train.jsp";
 	}
 	
@@ -129,7 +103,6 @@ public class TrainController {
 		String detail = "";
 		if(data!=null){
 			detail = data.getDetail();
-			
 		}
 		
 		

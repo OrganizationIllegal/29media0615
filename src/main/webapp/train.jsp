@@ -83,30 +83,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 		<jsp:include page="headnew.jsp" />
 		<div style="width:1140px;margin:0 auto;">
-		<!-- <div>
-			<div style="width:150px;height:170px;float:left;margin-left:60px;">
-			<canvas id="can1" width="150" height="150" ></canvas>
-			<div style="position:relative;z-index:1;top:-115px;color:white;text-align:center;"><p style="margin-bottom:0px;font-size:16px;">ABOUTUS</p><p style="margin-top:0px;margin-bottom:0px;font-size:30px;font-weight:bold;">JOB</p><p style="margin-top:0px;margin-bottom:0px;font-size:30px;font-weight:bold;font-family:黑体;">培训</p></div>
-			</div>
-			<div style="width:300px;float:right;margin-right:100px;">
-					<div  style="width:30px;float:left;padding-top:75px;color:#3c78d8;font-size:25px;"><span class="glyphicon glyphicon-chevron-left"></span></div>
-					<div  style="width:70px;float:left;padding-top:60px;"><div><canvas id="can2" width="50" height="50" ></div><div>企业动态</div></div>
-					<div  style="width:70px;float:left;padding-top:60px;"><div><canvas id="can3" width="50" height="50" ></div><div>培训介绍</div></div>
-					<div  style="width:70px;float:left;padding-top:60px;"><div><canvas id="can4" width="50" height="50" ></div><div>培训案例</div></div>
-					<div  style="width:30px;float:left;padding-top:75px;color:#3c78d8;font-size:25px;"><span class="glyphicon glyphicon-chevron-right"></span></div>
-			</div>
-			
-		</div> -->
 		<div style="clear:both;">
 		  <c:forEach items="${trainList}"  var="item" varStatus="status">
 		  <c:if test="${status.index<3 }">
 			<div style="width:380px;float:left;-text-align:center;"><a href="/TrainDetail?train_id=${item.train_id}"><img src="/29images/${item.train_image}" width="350px" height="280px"></a>
 			<div style="z-index:1;width:350px;height:100px;opacity:0.5;stop:-190px;left:15px;position:relative;"></div>
 			<div style="margin-top:-100px;width:350px;text-align:left;padding-left:15px;">${item.train_desc}</div>
-			<div style="font-size:30px;font-weight:bolder;font-family:黑体;">兴趣班</div>
+			<div style="font-size:30px;font-weight:bolder;font-family:黑体;">${item.train_name}</div>
 				<div style="font-size:25px;font-weight:bolder;color:#7f7979;">INTEREST&nbsp;CLASS</div>
 				<hr style="height:1px;border:none;border-top:3px solid #555555;width: 40%;margin-left: 0px;margin-top: 0px;margin-bottom:10px;" />
-				<c:forEach items="${xingqubanList}"  var="item">
+				<c:forEach items="${item.list}"  var="item">
 				<div style="background-color:#7f7979;color:white;width:25%;font-size；20px;">${item.time}</div>
 				<div style="font-size:20px;font-weight:bolder;font-family:黑体;">${item.title}</div>
 				<div>${item.detail}</div>
@@ -115,47 +101,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		   </c:if>
 		   </c:forEach>
 		</div>
-		<%-- <div>
-			<div style="border-right:2px solid #7f7979;padding-right:30px;width:380px;float:left;padding-left:15px;clear:both;">
-				<div style="font-size:30px;font-weight:bolder;font-family:黑体;">兴趣班</div>
-				<div style="font-size:25px;font-weight:bolder;color:#7f7979;">INTEREST&nbsp;CLASS</div>
-				<hr style="height:1px;border:none;border-top:3px solid #555555;width: 40%;margin-left: 0px;margin-top: 0px;margin-bottom:10px;" />
-				<c:forEach items="${xingqubanList}"  var="item">
-				<div style="background-color:#7f7979;color:white;width:25%;font-size；20px;">${item.time}</div>
-				<div style="font-size:20px;font-weight:bolder;font-family:黑体;">${item.title}</div>
-				<div>${item.detail}</div>
-				 </c:forEach>
-				 <!-- <div style="font-size:120px;font-weight:bolder;color:#7f7979;position:relative;z-index:1;left:98%;top:-420px;width:50px;">1</div> -->
-			</div>
-			<div style="border-right:2px solid #7f7979;padding-right:30px;width:380px;float:left;padding-left:15px;">
-				<div style="font-size:30px;font-weight:bolder;font-family:黑体;">练习生</div>
-				<div style="font-size:25px;font-weight:bolder;color:#7f7979;">TRAINEE</div>
-				<hr style="height:1px;border:none;border-top:3px solid #555555;width: 40%;margin-left: 0px;margin-top: 0px;margin-bottom:10px;" />
-
-				<c:forEach items="${lianxishengList}"  var="item">
-				<input type="hidden" value="${item.train_id}"/>
-				<div style="padding-top:20px;clear:both;">
-					<div  style="width:160px;float:left;"><a href="/TrainDetail?id=${trainid_lianxi}"><img src="/29images/${item.train_img}" width="140px;" height="100px;"></a></div>
-					<div  style="width:160px;float:left;"><div style="font-size:18px;font-weight:bolder;">${item.title}</div>
-					
-					<div>${item.detail}</div>
-				</div>
-			</div>
-			</c:forEach>
-			<!--  <div style="font-size:120px;font-weight:bolder;color:#7f7979;position:relative;z-index:1;left:50%;top:-462px;">2</div> -->
-			</div>
-			<div style="border-right:2px solid #7f7979;padding-right:30px;width:380px;float:left;padding-left:15px;">
-				<div style="font-size:30px;font-weight:bolder;font-family:黑体;">国际班</div>
-				<div style="font-size:25px;font-weight:bolder;color:#7f7979;">INTERNATIONAL&nbsp;CLASS</div>
-				<hr style="height:1px;border:none;border-top:3px solid #555555;width: 40%;margin-left: 0px;margin-top: 0px;margin-bottom:10px;" />
-				<c:forEach items="${guojibanList}"  var="item">
-				<div><a href="/TrainDetail?id=${trainid_lianxi}"><img src="/29images/${item.train_img}" width="320px" height="200px"></a></div>
-				<div>${item.detail}</div>
-				</c:forEach>
-			<!-- <div style="font-size:120px;font-weight:bolder;color:#7f7979;position:relative;z-index:1;left:98%;top:-462px;">3</div> -->
-			</div>
-
-		</div> --%>
+		
 		<div style="clear:both;">
 		<jsp:include page="foot.jsp" />
 		</div>
