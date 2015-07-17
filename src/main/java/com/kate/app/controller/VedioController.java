@@ -49,7 +49,8 @@ public class VedioController {
 				}
 			}
 		}
-		
+		List<String> typeList = vedioDao.findType();
+		req.setAttribute("typeList", typeList);
 		req.setAttribute("resultList", resultList);
 	
 		return "/video.jsp";

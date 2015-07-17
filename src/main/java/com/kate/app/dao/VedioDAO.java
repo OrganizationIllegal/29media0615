@@ -52,6 +52,9 @@ public class VedioDAO extends BaseDao {
 					starVedio.setVideo_pic(rs.getString("video_pic"));
 					starVedio.setVideo_id(rs.getString("video_id"));
 					starVedio.setVideo_link(rs.getString("video_link"));
+					starVedio.setVideo_desc(rs.getString("video_desc"));
+					starVedio.setType(rs.getString("type"));
+					
 					list.add(starVedio);
 				}
 				
@@ -76,10 +79,29 @@ public class VedioDAO extends BaseDao {
 					data.setVideo_link(rs.getString("video_link"));
 					data.setVideo_pic(rs.getString("video_pic"));
 					data.setVideo_desc(rs.getString("video_desc"));
+					data.setType(rs.getString("type"));
 				}
 			}catch (Exception e) {
 		        
 		    }
 				return data;
 			}
+		
+		public List<String> findType(){
+			List<String> list = new ArrayList<String>();
+			try{
+				
+				String sql = " select distinct type from vedio";
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				ResultSet rs = pstmt.executeQuery();
+				while(rs.next()){
+					String data = rs.getString("type");
+					list.add(data);
+				}
+			}catch (Exception e) {
+		        
+		    }
+				return list;
+			}
+		
 }

@@ -33,24 +33,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div style="width:280px;float:left;">
 		<div style="text-align:center;font-size:20px;font-weight:bolder;padding-bottom:20px;border-bottom:1px solid;color:white;">影视</div>
 		<!-- 影视目录 -->
+		<c:forEach items="${typeList}" var="item" varStatus="status">
+		<div style="cursor:pointer;margin-left:20px;font-weight:bold;">
 		
-		<div style="cursor:pointer;margin-left:20px;font-weight:bold;"><a href="#" style="color:#783f04;">练习生影视</a></div>			
 		
+		<a href="VideoList?vedioParam=${item}" style="color:#783f04;">${item}</a>
+		
+		</div>			
+		</c:forEach>
 		</div>
+		
 		<div style="width:860px;float:left;border-left:1px solid;">
-		<a href="#">
-		<div style="width:180px;background-color:rgba(218, 220, 219, 1);text-align:center;margin-left:50px;padding:5px;">
-		<div><img  src="images/img01.jpg" style="width:160px;height:100px;"></div>
-		<div style="padding:5px;font-size:14px;color:rgba(31, 154, 228, 1);text-align:left;">啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</div>
-		</div>
-        </a>
+		<c:forEach items="${resultList}" var="item" varStatus="status">
+			<a href="${item.video_link}" target="_blank">
+			<div style="width:180px;float:left;background-color:rgba(218, 220, 219, 1);text-align:center;margin-left:50px;padding:5px;">
+			<div><img src="/29images/${item.video_pic}" style="width:160px;height:100px;"></div>
+			<div style="padding:5px;font-size:14px;color:rgba(31, 154, 228, 1);text-align:left;">
+			${item.video_desc}</div>
+			</div>
+	        </a>
+        </c:forEach>
    </div>
+   
    </div>
 
 		</div> 
 
- 	<div style="clear:both;">
+ 	<!-- <div style="clear:both;"> -->
 		<jsp:include page="foot.jsp" />
-		</div>
+		<!-- </div> -->
 </body>
 </html>
