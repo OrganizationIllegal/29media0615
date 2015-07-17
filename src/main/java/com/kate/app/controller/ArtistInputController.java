@@ -194,8 +194,10 @@ public class ArtistInputController {
 				@RequestMapping({ "/findVedio" })
 				public String findVedio(HttpServletRequest req,HttpServletResponse resp){
 					int id = Integer.parseInt(req.getParameter("id"));
+					StarVedio vedioInfo = artistInputDao.findByVedioId(id);
 					List<StarVedio> videoList = new ArrayList<StarVedio>();
 					videoList=artistInputDao.findVedio();
+					req.setAttribute("vedioInfo", vedioInfo);
 					req.setAttribute("videoList", videoList);
 					req.setAttribute("videoListJson", ConvertJson.list2json(videoList));
 					return "/vedioEdit.jsp";

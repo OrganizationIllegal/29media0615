@@ -312,6 +312,29 @@ public class ArtistInputDAO extends BaseDao {
 						return data;
 					}
 
+				
+				//查找艺人
+				public StarVedio findByVedioId(int id){
+					StarVedio data = new StarVedio();
+					try{
+						
+						String sql = " select * from vedio where id=?";
+						PreparedStatement pstmt = con.prepareStatement(sql);
+						pstmt.setInt(1, id);
+						ResultSet rs = pstmt.executeQuery();
+						while(rs.next()){
+							data.setId(rs.getInt("id"));
+							data.setVideo_id(rs.getString("video_id"));
+							data.setVideo_link(rs.getString("video_link"));
+							data.setVideo_pic(rs.getString("video_pic"));
+							data.setVideo_desc(rs.getString("video_desc"));
+						}
+					}catch (Exception e) {
+				        
+				    }
+						return data;
+					}
+				
 				//查找艺人影视
 				public List<StarVedio> findByStarNum(String starnum){
 					List<StarVedio> list = new ArrayList<StarVedio>();
@@ -353,7 +376,8 @@ public class ArtistInputDAO extends BaseDao {
 							data.setId(rs.getInt("id"));
 							data.setVideo_link(rs.getString("video_id"));
 							data.setVideo_link(rs.getString("video_link"));
-							data.setVideo_pic(rs.getString("video_pic"));							
+							data.setVideo_pic(rs.getString("video_pic"));
+							data.setVideo_desc(rs.getString("video_desc"));
 							list.add(data);
 						}
 						

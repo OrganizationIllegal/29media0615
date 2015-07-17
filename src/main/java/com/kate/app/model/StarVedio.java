@@ -10,6 +10,13 @@ public class StarVedio{
 	private String video_pic;
 	private String video_id;
 	private String video_desc;
+	private String type;
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
 	public int getId() {
 		return id;
 	}

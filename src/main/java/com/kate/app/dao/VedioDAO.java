@@ -1,5 +1,6 @@
 package com.kate.app.dao;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -60,5 +61,25 @@ public class VedioDAO extends BaseDao {
 				return list;
 			}
 
-	
+		public StarVedio findVedioById(int id){
+			StarVedio data = new StarVedio();
+			
+			try{
+				
+				String sql = " select * from vedio where id=?";
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, id);
+				ResultSet rs = pstmt.executeQuery();
+				while(rs.next()){
+					data.setId(rs.getInt("id"));
+					data.setVideo_link(rs.getString("video_id"));
+					data.setVideo_link(rs.getString("video_link"));
+					data.setVideo_pic(rs.getString("video_pic"));
+					data.setVideo_desc(rs.getString("video_desc"));
+				}
+			}catch (Exception e) {
+		        
+		    }
+				return data;
+			}
 }

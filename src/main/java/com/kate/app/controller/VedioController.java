@@ -24,14 +24,34 @@ public class VedioController {
 	private VedioDAO vedioDao;
 	@RequestMapping({"/VideoList" })
 	public String getVedio(HttpServletRequest req,HttpServletResponse resp){
-		/*String star_num=req.getParameter("starNum");*/
-		//鎵惧嚭澶氭湁鑹轰汉鍥剧墖
-		List<StarInfo> starlist=new ArrayList<StarInfo>();
-		starlist=starInfoDAO.findAll();
-		req.setAttribute("starlist", starlist);
-		//鎵惧嚭鑹轰汉star_num鎵惧嚭鑹轰汉鐩稿叧鐨勮棰戜俊鎭�
-		List<StarVedio> vedioList=vedioDao.findVedio();
-		req.setAttribute("starVedioList", vedioList);
+		String vedioParam = req.getParameter("vedioParam");
+		StarVedio vedio = new StarVedio();
+		List<StarVedio> vedioList = vedioDao.findVedio();
+		List<StarVedio> linxishengList = new ArrayList<StarVedio>();
+		List<StarVedio> originvedioList = new ArrayList<StarVedio>();
+		List<StarVedio> resultList = new ArrayList<StarVedio>();
+		
+		if(vedioParam!=null && !"".equals(vedioParam)){
+			if(vedioList!=null && vedioList.size() > 0){
+				for(StarVedio item : vedioList){
+					if(item.getType().equals(vedioParam)){
+						resultList.add(item);
+					}
+				}
+			}
+		}
+		else{
+			if(vedioList!=null && vedioList.size() > 0){
+				for(StarVedio item : vedioList){
+					if(item.getType().equals("练习生视频")){
+						resultList.add(item);
+					}
+				}
+			}
+		}
+		
+		req.setAttribute("resultList", resultList);
+	
 		return "/video.jsp";
 	}
 
