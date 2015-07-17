@@ -43,11 +43,11 @@ body{
 </div>
 </form>
 <div id="videoimglist" style="margin-top:20px;">
-<c:forEach var="item" items="${videoList}" varStatus="status">
+<%-- <c:forEach var="item" items="${videoList}" varStatus="status">
 <div style='float:left;padding-left:35px;width:900px;margin-top:5px;margin-bottom:5px;'>
 <span style='padding-right:100px;'>${status.index + 1}</span><span style='padding-right:100px;'>${item.video_id}</span><span style='padding-right:100px;'>${item.video_link}</span><span style='padding-right:100px;'>${item.video_pic}</span><span style="display:none;">${item.id}</span><span><a href="#" class="editvideoimg" style='padding-right:10px;'>编辑</a><a href="#" class="deletevideoimg">删除</a></span>
 </div>
-</c:forEach>
+</c:forEach> --%>
 </div>
 <div class="area_left4"><button type="button" class="btn" onclick="add()">提交</button></div>
 <div class="area_right4"><button type="reset" class="btn" onclick="fanhui()">返回</button></div>

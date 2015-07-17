@@ -15,39 +15,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <link href="/css/news.css" rel="stylesheet">
    <script src="/js/jquery.min.js"></script>
    <script src="/bootstrap/js/bootstrap.min.js"></script>
-   <script type="text/javascript" src="http://player.youku.com/jsapi">  
-	</script>
-	<script type="text/javascript">
-	$(function(){
-		player = new YKU.Player('youkuplayer',{
-			styleid: '0',
-			client_id: '6e97509b4cd3378b',
-			vid: 'XOTUxNDk2NDQ0',
-			events:{
-			onPlayStart: function(){ alert("kaishi") },
-			onPlayEnd: function(){ alert("jieshu") }
-			}
-			});
-			function playVideo(){
-			player.playVideo();
-				alert("kaishi");
-			}
-			function pauseVideo(){
-			player.pauseVideo();
-				alert("zanting")
-			}
-	});
-	</script>
-	<style type="text/css">
-		 .yuanjiao{
-            width: 205px;
-            color: white;
-            margin: 20px;
-            -webkit-border-radius: 15px;
-            -moz-border-radius: 15px;
-
-        }
-	</style>
 	 <style type="text/css">  
    img 
    {
@@ -61,32 +28,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
  <jsp:include page="headnew.jsp" />
  <div style="width:1140px;margin:0 auto;">
- 	<div style="padding-top:10px">
- 	     <!--左侧视频播放start-->
- 		<div style="width:860px;float:left;">
- 				<div id="youkuplayer" style="width:800px;height:500px"></div>
- 				<!--要播放视频列表start-->
- 				<%-- <div >
- 					 <c:forEach var="item" items="${vedioList}" varStatus="stat">
- 					 		<img alt="" src="/29images/${item.video_pic}"   height="170px" style="border:1px solid grey" class="yuanjiao" >
- 					 </c:forEach>
- 				</div> --%>
- 				<div style="font-size:16px;margin-top:20px;width:750px;margin-left:20px;margin-right:20px;">detaildetaildetaildetaildetaildetaildetaildetaildetaildetaildetaildetaildetaildetaildetaildetaildetaildetaildetaildetaildetaildetail</div>
- 				<!--要播放视频列表end-->
- 		</div>
- 		<!--左侧视频播放end-->
- 		<!--右侧图片列表start-->
- 		<div style="float:left;width:280px;">
- 			 <c:forEach var="item" items="${starVedioList}" varStatus="stat">
- 			   <a href="#"><img alt="" src="/29images/${item.video_pic}" style="width:240px;height:170px;cursor:pointer;"/>
- 			   </a>
- 			</c:forEach> 
- 		</div>
- 		<!--右侧图片列表end-->
- 	</div>
+ 	<div style="margin-top:50px;">
+		<div style="width:280px;float:left;">
+		<div style="text-align:center;font-size:20px;font-weight:bolder;padding-bottom:20px;border-bottom:1px solid;color:white;">影视</div>
+		<!-- 影视目录 -->
+		<%-- <c:forEach var="item" items="${trendList }" varStatus="stat">
+			<div style="margin-top:20px;margin-left:20px;font-weight:bold;-filter:alpha(opacity=60);-opacity:0.6;">${item.time}</div>
+		<div id="id${stat.index+1}" style="cursor:pointer;margin-left:20px;font-weight:bold;"><a href="/News?newsId=${item.news_id}" style="color:#783f04;">${item.title}</a></div>		
+		</c:forEach> --%>
+		<div style="cursor:pointer;margin-left:20px;font-weight:bold;"><a href="#" style="color:#783f04;">练习生影视</a></div>			
+		
+		</div>
+		<div style="width:860px;float:left;border-left:1px solid;">
+		<a href="#">
+		<div style="width:180px;background-color:rgba(218, 220, 219, 1);text-align:center;margin-left:50px;padding:5px;">
+		<div><img  src="images/img01.jpg" style="width:160px;height:100px;"></div>
+		<div style="padding:5px;font-size:14px;color:rgba(31, 154, 228, 1);text-align:left;">啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</div>
+		</div>
+        </a>
+   </div>
+   </div>
+
+		</div> 
  	<div style="clear:both;">
 		<jsp:include page="foot.jsp" />
 		</div>
- </div>
 </body>
 </html>
