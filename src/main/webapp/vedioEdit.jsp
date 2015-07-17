@@ -27,10 +27,20 @@ body{
 
 <form id="videoimg">
 <div class="area_left">
-<span class="area_span">影视编号</span><span><input type="text" id="video_id" name="video_id" class="area_input"></span>
+<span class="area_span">影视编号</span><span><input type="text" id="video_id" name="video_id" class="area_input" value=${vedioInfo.video_id}></span>
 </div>
 <div class="area_right">
-<span class="area_span">影视链接</span><span><input type="text" id="video_link" name="video_link" class="area_input"></span>
+<span class="area_span">影视链接</span><span><input type="text" id="video_link" name="video_link" class="area_input" value=${vedioInfo.video_link}></span>
+</div>
+<div class="area_left">
+<span class="area_span">类型</span>
+<span>
+<select class="area_select" id="type" name="type">
+  <option value ="${vedioInfo.type}">${vedioInfo.type}</option>
+   <option value ="视频">视频</option>
+  <option value ="练习生视频">练习生视频</option>
+</select>
+</span>
 </div>
 <div class="area_left">
 <span class="area_span">类型</span>
@@ -45,15 +55,16 @@ body{
 <div class="area_left c-fix">
 <span class="area_span">影视描述</span>
 </div>
-<div class="c-fix" style="margin-bottom:15px;margin-left:35px;"><textarea id="video_desc" name="video_desc" rows="3" cols="112" style="background-color:rgb(237,238,243);border:0px;"></textarea></div>
-
+<div class="c-fix" style="margin-bottom:15px;margin-left:35px;"><textarea id="video_desc" name="video_desc" rows="3" cols="112" style="background-color:rgb(237,238,243);border:0px;">${vedioInfo.video_desc}</textarea></div>
+<div class="area_right" style="display:none;">
+<span class="area_span">id</span><span><input type="text" id="id" name="id" class="area_input" value=${vedioInfo.id}></span>
+</div>
 <div class="c-fix" style="padding-left:35px;margin-top:20px;">
 <span class="area_span">影视图片</span>
 <span style="float:right;"> <input type="file" name="video_pic" id="video_pic" style="width:677px;border:1px solid rgb(239,235,242);float:left;margin-right:20px;"/><a href="#" class="addvideoimg">添加</a></span>
 </div>
 </form>
 <div id="videoimglist" style="margin-top:20px;">
-
 </div>
 <div class="area_left4"><button type="button" class="btn" onclick="add()">提交</button></div>
 <div class="area_right4"><button type="reset" class="btn" onclick="fanhui()">返回</button></div>
@@ -85,13 +96,10 @@ function fanhui(){
 }
 </script>
 <script type="text/javascript">
-
-
-var videoimglist='${videoListJson}';
-videoimglist=eval("("+videoimglist+")"); 
+var videoimglist=[];
 var isvideoimgedit=100;
 var videoimgedititem;
-var videoimgecount=videoimglist.length;
+var videoimgecount=0;
 $(function(){
 	$.ajaxSetup({  
 	    contentType: "application/x-www-form-urlencoded; charset=utf-8"  
@@ -108,7 +116,6 @@ $(function(){
 			videoimg.video_link=$("#video_link").val();
 			videoimg.video_desc=$("#video_desc").val();
 			videoimg.type=$("#type").val();
-			alert(videoimg.type)
 			videoimg.video_pic=filename;
 			videoimglist.push(videoimg);
 			$("#videoimglist").append("<div style='float:left;padding-left:35px;width:900px;margin-top:5px;margin-bottom:5px;'><span style='padding-right:50px;'>"+(++videoimgecount)+"</span><span style='padding-right:100px;'>"+videoimglist[videoimgecount-1].video_id+"</span><span style='padding-right:100px;'>"+videoimglist[videoimgecount-1].video_link+"</span><span style='padding-right:100px;'>"+videoimglist[videoimgecount-1].video_pic+"</span><span><a href='#' style='padding-right:10px;' class='editvideoimg'>编辑</a><a href='#' class='deletevideoimg'>删除</a></span></div>");			

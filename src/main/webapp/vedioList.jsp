@@ -50,6 +50,7 @@ body{
             <th data-field="video_pic" data-sortable="true" data-editable="true">图片</th>
             <th data-field="video_desc" data-sortable="true" data-editable="true">描述</th>
             <th data-field="video_link" data-sortable="true" data-editable="true">链接</th>
+            <th data-field="type" data-sortable="true" data-editable="true">类型</th>
             <th data-field="operate"
                 data-formatter="operateFormatter"
                 data-events="operateEvents">Item Operate</th>

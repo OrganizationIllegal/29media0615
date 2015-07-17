@@ -106,7 +106,7 @@ $(function(){
 			videoimg.video_id=$("#video_id").val();
 			videoimg.video_link=$("#video_link").val();
 			videoimg.video_desc=$("#video_desc").val();
-			
+			videoimg.type=$("#type").val();
 			//videoimg=eval("("+videoimg+")"); 
 			videoimg.video_pic=filename;
 			videoimglist.push(videoimg);

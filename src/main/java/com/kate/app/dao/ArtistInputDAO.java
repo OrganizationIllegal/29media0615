@@ -58,7 +58,7 @@ public class ArtistInputDAO extends BaseDao {
 					obj.put("video_pic", rs.getString("video_pic"));
 					obj.put("video_link", rs.getString("video_link"));
 					obj.put("video_desc", rs.getString("video_desc"));
-					
+					obj.put("type", rs.getString("type"));
 					jsonArray.add(obj);
 				}
 			} catch (Exception e) {
@@ -329,6 +329,7 @@ public class ArtistInputDAO extends BaseDao {
 							data.setVideo_link(rs.getString("video_link"));
 							data.setVideo_pic(rs.getString("video_pic"));
 							data.setVideo_desc(rs.getString("video_desc"));
+							data.setType(rs.getString("type"));
 						}
 					}catch (Exception e) {
 				        
