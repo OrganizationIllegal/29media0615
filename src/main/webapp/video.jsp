@@ -16,6 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <script src="/js/jquery.min.js"></script>
    <script src="/bootstrap/js/bootstrap.min.js"></script>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
    <script type="text/javascript" src="http://player.youku.com/jsapi">  
 	</script>
@@ -58,6 +59,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</style>
 >>>>>>> 118e13aac2d00471ac2c0cdae4da4130a80f6135
 	 <style type="text/css">  
+=======
+   <style type="text/css">  
+>>>>>>> 577e913d717da0ac29330d65e1dbfe7ffea71a97
    img 
    {
    filter:progid:DXImageTransform.Microsoft.Shadow(color=#909090,direction=120,strength=3);/*ie*/
@@ -71,14 +75,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <jsp:include page="headnew.jsp" />
  <div style="width:1140px;margin:0 auto;">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 577e913d717da0ac29330d65e1dbfe7ffea71a97
  	<div style="margin-top:50px;">
 		<div style="width:280px;float:left;">
 		<div style="text-align:center;font-size:20px;font-weight:bolder;padding-bottom:20px;border-bottom:1px solid;color:white;">影视</div>
 		<!-- 影视目录 -->
+<<<<<<< HEAD
 		<%-- <c:forEach var="item" items="${trendList }" varStatus="stat">
 			<div style="margin-top:20px;margin-left:20px;font-weight:bold;-filter:alpha(opacity=60);-opacity:0.6;">${item.time}</div>
 		<div id="id${stat.index+1}" style="cursor:pointer;margin-left:20px;font-weight:bold;"><a href="/News?newsId=${item.news_id}" style="color:#783f04;">${item.title}</a></div>		
 		</c:forEach> --%>
+=======
+		
+>>>>>>> 577e913d717da0ac29330d65e1dbfe7ffea71a97
 		<div style="cursor:pointer;margin-left:20px;font-weight:bold;"><a href="#" style="color:#783f04;">练习生影视</a></div>			
 		
 		</div>
@@ -93,6 +105,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    </div>
 
 		</div> 
+<<<<<<< HEAD
 =======
  	<div style="padding-top:10px">
  	     <!--左侧视频播放start-->
@@ -117,6 +130,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  		<!--右侧图片列表end-->
  	</div>
 >>>>>>> 118e13aac2d00471ac2c0cdae4da4130a80f6135
+=======
+
+>>>>>>> 577e913d717da0ac29330d65e1dbfe7ffea71a97
  	<div style="clear:both;">
 		<jsp:include page="foot.jsp" />
 		</div>
