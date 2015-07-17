@@ -57,7 +57,8 @@ body{
 </div>
 <div class="c-fix" style="margin-bottom:15px;margin-left:35px;"><textarea id="video_desc" name="video_desc" rows="3" cols="112" style="background-color:rgb(237,238,243);border:0px;">${vedioInfo.video_desc}</textarea></div>
 <div class="area_right" style="display:none;">
-<span class="area_span">id</span><span><input type="text" id="id" name="id" class="area_input" value=${vedioInfo.id}></span>
+<span class="area_span">id</span><span>
+<input type="text" id="id" name="id" class="area_input" value=${vedioInfo.id}></span>
 </div>
 <div class="c-fix" style="padding-left:35px;margin-top:20px;">
 <span class="area_span">影视图片</span>
@@ -112,6 +113,7 @@ $(function(){
 			var videoimg={};
 			var filenames=$('#video_pic').val().split("\\");
 			var filename=filenames[filenames.length-1];
+			videoimg.id=$("#id").val();
 			videoimg.video_id=$("#video_id").val();
 			videoimg.video_link=$("#video_link").val();
 			videoimg.video_desc=$("#video_desc").val();
@@ -132,7 +134,7 @@ $(function(){
 				var filename=filenames[filenames.length-1];
 				/* videoimgedititem=DataDeal.formToJson(data= decodeURIComponent($("#videoimg").serialize(),true));
 				videoimgedititem=eval("("+videoimgedititem+")"); */
-				
+				videoimgedititem["id"]=$("#id").val();
 				videoimgedititem["video_id"]=$("#video_id").val();
 				videoimgedititem["video_link"]=$("#video_link").val();
 				videoimgedititem["video_desc"]=$("#video_desc").val();
@@ -163,6 +165,7 @@ $(function(){
 			$(this).parent().parent().hide();
 			//alert(index+"index");
 			isvideoimgedit=index;
+			$("#id").val(videoimgedititem.id);
 			$("#video_id").val(videoimgedititem.video_id);
 			$("#video_link").val(videoimgedititem.video_link);
 			$("#video_desc").val(videoimgedititem.video_desc);
