@@ -23,12 +23,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	var start = link.indexOf("id");
 	var end = link.indexOf("=");
 	var ID = link.substring(start+3, end);
-	//alert(ID)
+	alert(ID)
 	$(function(){
 		player = new YKU.Player('youkuplayer',{
 			styleid: '0',
 			client_id: '6e97509b4cd3378b',
-			vid: ID,
+			vid: 'XMTI4MjA5Njg4OA',
 			events:{
 			onPlayStart: function(){ alert("kaishi") },
 			onPlayEnd: function(){ alert("jieshu") }

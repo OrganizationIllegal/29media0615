@@ -21,42 +21,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    box-shadow:2px 2px 10px #909090;/*opera或ie9*/
    }
    </style>
-   <script type="text/javascript">
-   $(function(){
-	   $("#id1").mouseover(function(){
-		   $("#id1").css("opacity","1");
-		   });
-	   $("#id1").mouseleave(function(){
-		   $("#id1").css("opacity","0.6");
-		   });
-	   $("#id2").mouseover(function(){
-		   $("#id2").css("opacity","1");
-		   });
-	   $("#id2").mouseleave(function(){
-		   $("#id2").css("opacity","0.6");
-		   });
-	   $("#id3").mouseover(function(){
-		   $("#id3").css("opacity","1");
-		   });
-	   $("#id3").mouseleave(function(){
-		   $("#id3").css("opacity","0.6");
-		   });
-	   $("#id4").mouseover(function(){
-		   $("#id4").css("opacity","1");
-		   });
-	   $("#id4").mouseleave(function(){
-		   $("#id4").css("opacity","0.6");
-		   });
-	   $("#id1").click(function(){
-		   $("#train1").css("display","block");
-		   $("#train2").css("display","none");
-		   });
-	   $("#id1").click(function(){
-		   $("#train2").css("display","block");
-		   $("#train1").css("display","none");
-		   });
-	   });
-   </script>
 </head>
 <body>
 		<jsp:include page="headnew.jsp" />
@@ -69,13 +33,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div id="id1" style="margin-top:20px;margin-left:20px;cursor:pointer;margin-left:20px;font-weight:bold;">
 			<a href="/TrainDetail?id=${item.id}&train_id=${item.train_id}" style="color:#783f04;">${item.typename}</a></div>
 		</c:forEach> 
-		<div style="margin-top:20px;margin-left:20px;cursor:pointer;margin-left:20px;font-weight:bold;"><a href="Contactus.jsp" style="color:#783f04;">加入我们</a></div>
+		<div style="margin-top:20px;margin-left:20px;cursor:pointer;margin-left:20px;font-weight:bold;"><a href="Contactus.jsp" style="color:#783f04;">在线报名</a></div>
 		<!-- </div>	 -->	
 		</div>
 
-		<div style="width:940px;float:left;">
-		<div style=" /*border-left:1px solid rgba(121, 200, 225, 1) */;padding-top:20px;">
-		<div id="train1">
+		<div style="width:860px;float:left;">
+		<div id="train1" style="border-left:1px solid;">
+		<div style="height:49px;border-bottom:1px solid white;"></div>
 	<%
 
    		String detail = request.getAttribute("detail").toString();
@@ -85,24 +49,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 			<div style="text-align:center;">
 				<c:if test="${!empty data}">
-					<img src="/29images/${data.img}"   height=310px; width=621px>
+					<img src="/29images/${data.img}"   height=310px; width=621px style="margin-top:20px;">
 					</c:if>
 			</div>
-			<div style="overflow-y:auto; width:910px; height:380px;margin-top:32px;color: black;">
+			<div style="overflow-y:auto; width:910px; height:380px;margin-top:32px;color: black;padding-left:15px;">
 			
 			<%=detail%>
 			</div>
 			
 			</div>
-		
-		<%-- <div id="train2" style="display:none;">
-		<div style="text-align:center;"><img src="/images/traindetail/t1.PNG"></div>
-		<div style="overflow-y:auto; width:910px; height:380px;margin-top:10px;">
-		${data.detail }
-		</div>
-		</div> --%>
-		<!-- </div> -->
-		</div>
 		</div>
 		<div style="clear:both;">
 		<jsp:include page="foot.jsp" />

@@ -21,30 +21,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    box-shadow:2px 2px 10px #909090;/*opera或ie9*/
    }
    </style>
-  <!--  <script type="text/javascript">
-   $(function(){
-	   $("#id1").mouseover(function(){
-		   $("#id1").css("opacity","1");
-		   });
-	   $("#id1").mouseleave(function(){
-		   $("#id1").css("opacity","0.6");
-		   });
-	   $("#id2").mouseover(function(){
-		   $("#id2").css("opacity","1");
-		   });
-	   $("#id2").mouseleave(function(){
-		   $("#id2").css("opacity","0.6");
-		   });
-	   $("#id1").click(function(){
-		   $("#news1").css("display","block");
-		   $("#news2").css("display","none");
-		   });
-	   $("#id2").click(function(){
-		   $("#news2").css("display","block");
-		   $("#news1").css("display","none");
-		   });
-	   });
-   </script> -->
 </head>
 <body>
 <jsp:include page="headnew.jsp" />

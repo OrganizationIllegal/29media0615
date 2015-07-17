@@ -228,7 +228,7 @@ var yinenglist='${lianxiListJson}';
 yinenglist=eval("("+yinenglist+")"); 
 var isyinengedit=100;
 var yinengedititem;
-var yinengecount=trainimglist.length;
+var yinengecount=yinenglist.length;
 $(function(){
 	$.ajaxSetup({  
 	    contentType: "application/x-www-form-urlencoded; charset=utf-8"  
@@ -244,10 +244,11 @@ $(function(){
 			/* yineng=DataDeal.formToJson(data= decodeURIComponent($("#yineng").serialize(),true)); 
 			yineng=eval("("+yineng+")");  */
 			yineng.typename=$("#typename").val();
-			yineng.detail=$("#detail").val();
+			yineng.detail=$("#detail1").val();
 			yineng.img=filename;
 			yinenglist.push(yineng);
-			$("#yinenglist").append("<div style='float:left;padding-left:35px;width:817px;padding-top:10px;'><span style='padding-right:50px;'>"+(++yinengecount)+"</span><span style='padding-right:50px;'>"+yinenglist[yinengecount-1].img+"</span><span style='padding-right:50px;'>"+yinenglist[yinengecount-1].typename+"</span><span style='padding-left: 30px;padding-right: 40px;'></span><span><a href='#' style='padding-right:10px;' class='edityineng'>编辑</a><a href='#' class='deleteyineng'>删除</a></span></div>");			
+			
+			$("#yinenglist").append("<div style='float:left;padding-left:35px;width:817px;padding-top:10px;'><span style='padding-right:50px;'>"+(++yinengecount)+"</span><span style='padding-right:50px;'>"+ yinenglist[yinengecount-1].img +"</span><span style='padding-right:50px;'>"+yinenglist[yinengecount-1].typename+"</span><span style='padding-left: 30px;padding-right: 40px;'></span><span><a href='#' style='padding-right:10px;' class='edityineng'>编辑</a><a href='#' class='deleteyineng'>删除</a></span></div>");			
 			UploadFile("img");
 			$("#yineng input").each(function(){
 				$(this).val("");
