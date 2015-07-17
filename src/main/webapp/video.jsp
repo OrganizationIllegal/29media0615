@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -68,7 +69,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div style="width:180px;float:left;background-color:rgba(218, 220, 219, 1);text-align:center;margin-left:80px;padding:5px;margin-top:20px;">
 			<div><img src="/29images/${item.video_pic}" style="width:160px;height:100px;"></div>
 			<div style="padding:5px;font-size:14px;color:rgba(31, 154, 228, 1);text-align:left;">
-			${item.video_desc}</div>
+			${fn:substring(item.video_desc, 0, 10)}...	
+           </div>
 			</div>
 	        </a>
         </c:forEach>
