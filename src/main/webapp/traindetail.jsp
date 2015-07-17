@@ -52,7 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<img src="/29images/${data.img}"   height=310px; width=621px style="margin-top:20px;">
 					</c:if>
 			</div>
-			<div style="overflow-y:auto; width:910px; height:380px;margin-top:32px;color: black;padding-left:15px;">
+			<div style="-overflow-y:auto; width:910px; -height:380px;margin-top:32px;color: black;padding-left:15px;">
 			
 			<%=detail%>
 			</div>
