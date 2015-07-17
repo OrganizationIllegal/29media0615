@@ -42,8 +42,8 @@ public class NewsTrendsDAO extends BaseDao {
 		return list;
 	}
 	
-	public List<NewsTrends> findByNewsTrendId(int newsId){
-		List<NewsTrends> list = new ArrayList<NewsTrends>();
+	public NewsTrends findByNewsTrendId(int newsId){
+		NewsTrends data = new NewsTrends();
 		try{
 			
 			String sql = " select * from news_trends where news_id=? order by time desc";
@@ -51,19 +51,19 @@ public class NewsTrendsDAO extends BaseDao {
 			pstmt.setInt(1, newsId);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()){					
-				NewsTrends data = new NewsTrends();
+				
 				data.setId(rs.getInt("id"));
 				data.setDetail(rs.getString("detail"));
 				data.setImage(rs.getString("image"));
 				data.setTime(rs.getDate("time"));
 				data.setTitle(rs.getString("title"));
-				list.add(data);
+				
 			}
 			
 		}catch (Exception e) {
 	        
 	    }
-			return list;
+			return data;
 		}
 	
 	

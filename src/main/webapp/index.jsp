@@ -239,7 +239,7 @@ function pop4(){
 			</div>
 		</div>
 		<!-- <div style="width:460px;float:left;clear:both;padding-top:45px;"><hr style="border-top:2px solid #4ed6b8;"/></div> -->
-		<div style="text-align:center;font-size:50px;font-weight:bold;color:#4ed6b8;margin:0 auto;width:1140px;padding-top:50px;float:left;">明星打造</div>
+		<!-- <div style="text-align:center;font-size:50px;font-weight:bold;color:#4ed6b8;margin:0 auto;width:1140px;padding-top:50px;float:left;">明星打造</div> -->
 		<!-- <div style="width:460px;float:right;padding-top:45px;"><hr style="border-top:2px solid #4ed6b8;"/></div> -->
 		<!-- <div style="margin-top:20px;">
 			<div style="width:200px;float:left;">

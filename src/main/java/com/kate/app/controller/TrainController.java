@@ -101,7 +101,6 @@ public class TrainController {
 					detailTemp = detailTemp.replace(" ", "&nbsp;");
 					item.setDetail(detailTemp);
 				}
-		
 		}
 		req.setAttribute("trainid_lianxi", result);
 		
