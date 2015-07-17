@@ -23,48 +23,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    box-shadow:2px 2px 10px #909090;/*opera或ie9*/
    }
    </style>
-   <script type="text/javascript">
-   $(function(){
-	   $("#erjiu1").mouseover(function(){
-		   $("#erjiu1").css("opacity","1");
-		   });
-	   $("#erjiu1").mouseleave(function(){
-		   $("#erjiu1").css("opacity","0.6");
-		   });
-	   $("#zhaopin1").mouseover(function(){
-		   $("#zhaopin1").css("opacity","1");
-		   });
-	   $("#zhaopin1").mouseleave(function(){
-		   $("#zhaopin1").css("opacity","0.6");
-		   });
-	   $("#lianxi1").mouseover(function(){
-		   $("#lianxi1").css("opacity","1");
-		   });
-	   $("#lianxi1").mouseleave(function(){
-		   $("#lianxi1").css("opacity","0.6");
-		   });
-	   $("#erjiu1").click(function(){
-		   $("#erjiu2").css("display","block");
-		   $("#zhaopin2").css("display","none");
-		   $("#lianxi2").css("display","none");
-		   });
-	   $("#zhaopin1").click(function(){
-		   $("#zhaopin2").css("display","block");
-		   $("#erjiu2").css("display","none");
-		   $("#lianxi2").css("display","none");
-		   });
-	   $("#lianxi1").click(function(){
-		   $("#lianxi2").css("display","block");
-		   $("#erjiu2").css("display","none");
-		   $("#zhaopin2").css("display","none");
-		   });
-	   });
-   </script>
 </head>
 <body>
 		<jsp:include page="headnew.jsp" />
 		<div style="width:1140px;margin:0 auto;">
-		<div style="text-align:center;margin-top:20px;"><img alt="联系我们" src="images/lianxi.jpg"></div>
+		<div style="margin-top:20px;margin-left:210px;"><img alt="联系我们" src="images/lianxi.gif"></div>
 		<div style="clear:both;">
 		<jsp:include page="foot.jsp" />
 		</div>

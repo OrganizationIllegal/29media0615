@@ -63,7 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <div style="width:1140px;margin:0 auto;">
  	<div style="padding-top:10px">
  	     <!--左侧视频播放start-->
- 		<div style="width:760px;float:left;">
+ 		<div style="width:860px;float:left;">
  				<div id="youkuplayer" style="width:795px;height:761px">
  				</div>
  				<!--要播放视频列表start-->
@@ -76,9 +76,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  		</div>
  		<!--左侧视频播放end-->
  		<!--右侧图片列表start-->
- 		<div align="right" style="margin-left: -18px;padding-right:80px;width:380px;float:left;">
+ 		<div style="float:left;width:280px;">
  			 <c:forEach var="item" items="${starVedioList}" varStatus="stat">
- 			   <a href="#"><img alt="" src="/29images/${item.video_pic}" style="border:1px solid grey; width:240px;height:170px;"/>
+ 			   <a href="#"><img alt="" src="/29images/${item.video_pic}" style="width:240px;height:170px;cursor:pointer;"/>
  			   </a>
  			</c:forEach> 
  		</div>
