@@ -7,6 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
+   <meta name="keywords" content="北京贰玖文化传媒有限公司">
    <link rel="icon" sizes="any" type="image/x-icon"  href="images/Logo2.png">
    <title>贰玖传媒</title>
    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
