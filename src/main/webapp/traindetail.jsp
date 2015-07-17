@@ -90,7 +90,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div style="overflow-y:auto; width:910px; height:380px;margin-top:32px;color: black;">
 			
-			<%=detail %>
+			<%=detail%>
 			</div>
 			
 			</div>

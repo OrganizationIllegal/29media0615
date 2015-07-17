@@ -86,15 +86,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div style="clear:both;">
 		  <c:forEach items="${trainList}"  var="item" varStatus="status">
 		  <c:if test="${status.index<3 }">
-			<div style="width:380px;float:left;text-align:center;"><a href="/TrainDetail?train_id=${item.train_id}"><img src="/29images/${item.train_image}" width="350px" height="280px"></a>
-			<div style="z-index:1;width:350px;height:100px;opacity:0.5;stop:-190px;left:15px;position:relative;">
-					
-			</div>
+			<div style="width:380px;float:left;-text-align:center;"><a href="/TrainDetail?train_id=${item.train_id}"><img src="/29images/${item.train_image}" width="350px" height="280px"></a>
+			<div style="z-index:1;width:350px;height:100px;opacity:0.5;stop:-190px;left:15px;position:relative;"></div>
 			<div style="margin-top:-100px;width:350px;text-align:left;padding-left:15px;">${item.train_desc}</div>
+			<div style="font-size:30px;font-weight:bolder;font-family:黑体;">${item.train_name}</div>
+				<div style="font-size:25px;font-weight:bolder;color:#7f7979;">INTEREST&nbsp;CLASS</div>
+				<hr style="height:1px;border:none;border-top:3px solid #555555;width: 40%;margin-left: 0px;margin-top: 0px;margin-bottom:10px;" />
+				<c:forEach items="${item.list}"  var="item">
+				<div style="background-color:#7f7979;color:white;width:25%;font-size；20px;">${item.time}</div>
+				<div style="font-size:20px;font-weight:bolder;font-family:黑体;">${item.title}</div>
+				<div>${item.detail}</div>
+				 </c:forEach>
 		   </div>
-		   <div style="border-right:2px solid #7f7979;padding-right:30px;width:380px;float:left;padding-left:15px;clear:both;">
-			1111111
-			</div>
 		   </c:if>
 		   </c:forEach>
 		</div>

@@ -1,6 +1,6 @@
 package com.kate.app.model;
 
-import java.util.Set;
+import java.util.List;
 
 /**
  * Train entity. @author MyEclipse Persistence Tools
@@ -11,6 +11,14 @@ public class Train{
 	private String train_desc;
 	private String train_image;
 	private int train_id;
+	private List<TrainDetail> list;
+	
+	public List<TrainDetail> getList() {
+		return list;
+	}
+	public void setList(List<TrainDetail> list) {
+		this.list = list;
+	}
 	public int getId() {
 		return id;
 	}

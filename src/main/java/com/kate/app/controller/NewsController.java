@@ -54,8 +54,8 @@ public class NewsController {
 			if(trendList!=null && trendList.size()>0){
 				newsInfo = trendList.get(0);
 				int newsIdTemp = newsInfo.getNews_id();
-				if(newsIdTemp!=0){
-					imageList = newsImageDAO.findByNewsImgId(news_id);
+				if(newsIdTemp != 0){
+					imageList = newsImageDAO.findByNewsImgId(newsIdTemp);
 				}	
 			}
 		}
