@@ -85,11 +85,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<%-- <div style="text-align:center;"><img src="/images/${data.img}"   height=310px; width=621px></div>
 		<div style="overflow-y:auto; width:910px; height:380px;margin-top:32px;color: black;">
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${data.detail } --%>
-		<div style="text-align:center;"><img src="/29images/${data.img}"   height=310px; width=621px></div>
-		<div style="overflow-y:auto; width:910px; height:380px;margin-top:32px;color: black;">
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${data.detail }
-		</div>
-		</div>
+		
+			<div style="text-align:center;">
+			<c:if test="${!empty data}">
+			<%
+   		String detail = request.getAttribute("detail").toString();
+   		detail = detail.replace("\n", "<br/>");
+   		detail = detail.replace(" ", "&nbsp;");
+    %>
+			<img src="/29images/${data.img}"   height=310px; width=621px></div>
+			<div style="overflow-y:auto; width:910px; height:380px;margin-top:32px;color: black;">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<%=detail %>
+			</div>
+			</c:if>
+			</div>
+		
 		<%-- <div id="train2" style="display:none;">
 		<div style="text-align:center;"><img src="/images/traindetail/t1.PNG"></div>
 		<div style="overflow-y:auto; width:910px; height:380px;margin-top:10px;">

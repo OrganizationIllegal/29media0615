@@ -51,25 +51,24 @@ public class TrainController {
 			trainList = trainList.subList(0, 3);
 		}
 		if(trainList.size()==3){
-			for(int i =0; i<trainList.size(); i++){
 				xingqubanList = trainDetailDAO.findByTrainId(trainList.get(0).getTrain_id());
 				lianxishengList = trainDetailDAO.findByTrainId(trainList.get(1).getTrain_id());
 				guojibanList = trainDetailDAO.findByTrainId(trainList.get(2).getTrain_id());
-			}
+			
 			
 		}
 		else if(trainList.size()==2){
-			for(int i =0; i<trainList.size(); i++){
+			
 				xingqubanList = trainDetailDAO.findByTrainId(trainList.get(0).getTrain_id());
 				lianxishengList = trainDetailDAO.findByTrainId(trainList.get(1).getTrain_id());
 				
-			}
+			
 		}
 		else{
-			for(int i =0; i<trainList.size(); i++){
+			
 				xingqubanList = trainDetailDAO.findByTrainId(trainList.get(0).getTrain_id());
 				
-			}
+			
 		}
 		
 		/*for(Train item : trainList){
@@ -105,20 +104,35 @@ public class TrainController {
 	@RequestMapping({ "/TrainDetail" })
 	public String TrainDetail(HttpServletRequest req,HttpServletResponse resp){
 		String id_str = req.getParameter("id");
+		String train_id_str = req.getParameter("train_id");
 		int id = 0;
 		int train_id=0;	
 		List<LianXi> lianxiList=new ArrayList<LianXi>();
+		
+		if(train_id_str!=null  && !"".equals(train_id_str)){
+			train_id = Integer.parseInt(train_id_str);
+			lianxiList=trainDao.findAllLianXiByTrainId(train_id);
+		}
+		
 		LianXi data = new LianXi();
 		if(null!=id_str && !"".equals(id_str)){
 			id = Integer.parseInt(id_str);
 			data = trainDao.findnewsById(id);
 		}
-		
-		String train_id_str = req.getParameter("train_id");
-		if(train_id_str!=null  && !"".equals(train_id_str)){
-			train_id = Integer.parseInt(train_id_str);
-			lianxiList=trainDao.findAllLianXiByTrainId(train_id);
+		else{
+			if(lianxiList.size()>0){
+				data = lianxiList.get(0);
+			}
+			else
+				data = null;
 		}
+		String detail = "";
+		if(data!=null){
+			detail = data.getDetail();
+			
+		}
+		
+		
 		
 		//鏍规嵁train_id浠巐ianxi琛ㄤ腑寰楀埌淇℃伅
 		
@@ -127,6 +141,8 @@ public class TrainController {
 		//鏍规嵁id鍦╨ianxi琛ㄤ腑鎵剧浉搴旇褰�
 		
 		req.setAttribute("data", data);
+		req.setAttribute("detail", detail);
+		
 		return "/traindetail.jsp";
 	}
 	
