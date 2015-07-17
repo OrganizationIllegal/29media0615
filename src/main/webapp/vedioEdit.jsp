@@ -43,11 +43,19 @@ body{
 </div>
 </form>
 <div id="videoimglist" style="margin-top:20px;">
+<<<<<<< HEAD
+<%-- <c:forEach var="item" items="${videoList}" varStatus="status">
+=======
 
+>>>>>>> 118e13aac2d00471ac2c0cdae4da4130a80f6135
 <div style='float:left;padding-left:35px;width:900px;margin-top:5px;margin-bottom:5px;'>
 <span style='padding-right:100px;'>1</span><span style='padding-right:100px;'>${vedioInfo.video_id}</span><span style='padding-right:100px;'>${item.video_link}</span><span style='padding-right:100px;'>${vedioInfo.video_pic}</span><span style="display:none;">${item.id}</span><span><a href="#" class="editvideoimg" style='padding-right:10px;'>编辑</a><a href="#" class="deletevideoimg">删除</a></span>
 </div>
+<<<<<<< HEAD
+</c:forEach> --%>
+=======
 
+>>>>>>> 118e13aac2d00471ac2c0cdae4da4130a80f6135
 </div>
 <div class="area_left4"><button type="button" class="btn" onclick="add()">提交</button></div>
 <div class="area_right4"><button type="reset" class="btn" onclick="fanhui()">返回</button></div>

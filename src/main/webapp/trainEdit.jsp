@@ -31,10 +31,10 @@ body{
 <div class="area_right">
 <span class="area_span">培训名称</span><span><input type="text" id="train_name" name="train_name" class="area_input" value=${train.train_name}></span>
 </div>
-<div class="area_left c-fix">
+<%-- <div class="area_left c-fix">
 <span class="area_span">培训描述</span>
 </div>
-<div class="c-fix" style="margin-bottom:15px;margin-left:35px;"><textarea id="train_desc" name="train_desc" rows="3" cols="112" style="background-color:rgb(237,238,243);border:0px;">${train.train_desc}</textarea></div>
+<div class="c-fix" style="margin-bottom:15px;margin-left:35px;"><textarea id="train_desc" name="train_desc" rows="3" cols="112" style="background-color:rgb(237,238,243);border:0px;">${train.train_desc}</textarea></div> --%>
 <div class="area_right" style="display:none;">
 <span class="area_span">id</span><span><input type="text" id="id" name="id" class="area_input" value=${train.id}></span>
 </div>
@@ -44,9 +44,9 @@ body{
 <div class="area_left">
 <span class="area_span">标题</span><span><input type="text" id="title" name="title" class="area_input"></span>
 </div>
-<div class="area_right">
+<!-- <div class="area_right">
 <span class="area_span">时间</span><span><input type="text" id="time" name="time" class="area_input" placeholder="请输入日期：yyyy-mm-dd"></span>
-</div>
+</div> -->
 <div class="area_left c-fix">
 <span class="area_span">详情</span>
 </div>
