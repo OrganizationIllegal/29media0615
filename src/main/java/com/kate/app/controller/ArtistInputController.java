@@ -79,6 +79,7 @@ public class ArtistInputController {
 			String chinese_name=starinfo.getChinese_name();
 			String english_name=starinfo.getEnglish_name();
 			String bieming=starinfo.getBieming();
+			bieming = bieming.replace("+", "&nbsp;");
 			String nation=starinfo.getNation();
 			String constellation=starinfo.getConstellation();
 			String bloodtype=starinfo.getBloodtype();
@@ -88,6 +89,7 @@ public class ArtistInputController {
 			String birthday=starinfo.getBirthday();
 			String occupation=starinfo.getOccupation();
 			String brokerfirm=starinfo.getBrokerfirm();
+			brokerfirm = brokerfirm.replace("+", "&nbsp;");
 			String animal=starinfo.getAnimal();
 			String representativeworks=starinfo.getRepresentativeworks();
 			String residence=starinfo.getResidence();
@@ -221,6 +223,7 @@ public class ArtistInputController {
 					String chinese_name=starinfo.getChinese_name();
 					String english_name=starinfo.getEnglish_name();
 					String bieming=starinfo.getBieming();
+					bieming = bieming.replace("+", "&nbsp;");
 					String nation=starinfo.getNation();
 					String constellation=starinfo.getConstellation();
 					String bloodtype=starinfo.getBloodtype();
@@ -230,6 +233,7 @@ public class ArtistInputController {
 					String birthday=starinfo.getBirthday();
 					String occupation=starinfo.getOccupation();
 					String brokerfirm=starinfo.getBrokerfirm();
+					brokerfirm = brokerfirm.replace("+", "&nbsp;");
 					String animal=starinfo.getAnimal();
 					String representativeworks=starinfo.getRepresentativeworks();
 					String residence=starinfo.getResidence();
