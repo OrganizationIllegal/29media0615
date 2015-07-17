@@ -140,15 +140,16 @@ public class ArtistInputDAO extends BaseDao {
 					return exeResult;
 				} 	
 				
-				public int InsertVideo(String  video_id, String video_pic, String  video_link, String video_desc){
+				public int InsertVideo(String  video_id, String video_pic, String  video_link, String video_desc,String type){
 					int exeResult=0;
 					try {
-						String sql = "insert into vedio(video_id,video_pic,video_link,video_desc) values(?,?,?,?)";
+						String sql = "insert into vedio(video_id,video_pic,video_link,video_desc,type) values(?,?,?,?,?)";
 						PreparedStatement pstmt = con.prepareStatement(sql);
 						pstmt.setString(1, video_id);
 						pstmt.setString(2, video_pic);
 						pstmt.setString(3, video_link);
 						pstmt.setString(4, video_desc);
+						pstmt.setString(5, type);
 						exeResult = pstmt.executeUpdate();
 					} catch (Exception e) {
 						// TODO Auto-generated catch block

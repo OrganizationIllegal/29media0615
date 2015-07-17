@@ -31,7 +31,15 @@ body{
 <div class="area_right">
 <span class="area_span">影视链接</span><span><input type="text" id="video_link" name="video_link" class="area_input"></span>
 </div>
-
+<div class="area_left">
+<span class="area_span">类型</span>
+<span>
+<select class="area_select" id="type" name="type">
+  <option value ="视频">视频</option>
+  <option value ="练习生视频">练习生视频</option>
+</select>
+</span>
+</div>
 <div class="area_left c-fix">
 <span class="area_span">影视描述</span>
 </div>
