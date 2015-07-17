@@ -110,7 +110,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		   </c:forEach>
 		</div>
 		<div>
-			<div style="border-right:2px solid #7f7979;padding-right:30px;width:380px;float:left;padding-left:15px;">
+			<div style="border-right:2px solid #7f7979;padding-right:30px;width:380px;float:left;padding-left:15px;clear:both;">
 				<div style="font-size:30px;font-weight:bolder;font-family:黑体;">兴趣班</div>
 				<div style="font-size:25px;font-weight:bolder;color:#7f7979;">INTEREST&nbsp;CLASS</div>
 				<hr style="height:1px;border:none;border-top:3px solid #555555;width: 40%;margin-left: 0px;margin-top: 0px;margin-bottom:10px;" />

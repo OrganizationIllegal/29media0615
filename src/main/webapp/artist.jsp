@@ -39,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<jsp:include page="headnew.jsp" />
 		<div style="width:1140px;margin:0 auto;">
 		<div style="margin-top:20px;">
-		<div style="width:860px;height:900px;padding-left:30px;float:left;">
+		<div style="width:860px;-height:900px;padding-left:30px;float:left;">
 		<div id="artist1">
 		<div style="text-align:center;"><img alt="" src="/29images/${star1.star_img}" style="width:600px;height:400px;"></div>
 		<div style="margin-top:30px;width:600px;margin-left:50px;">
