@@ -24,14 +24,26 @@ public class VedioController {
 	private VedioDAO vedioDao;
 	@RequestMapping({"/VideoList" })
 	public String getVedio(HttpServletRequest req,HttpServletResponse resp){
-		/*String star_num=req.getParameter("starNum");*/
-		//鎵惧嚭澶氭湁鑹轰汉鍥剧墖
+		String id=req.getParameter("id");
+		int idInt = 0;
+		StarVedio vedio = new StarVedio();
 		List<StarInfo> starlist=new ArrayList<StarInfo>();
-		starlist=starInfoDAO.findAll();
-		req.setAttribute("starlist", starlist);
-		//鎵惧嚭鑹轰汉star_num鎵惧嚭鑹轰汉鐩稿叧鐨勮棰戜俊鎭�
 		List<StarVedio> vedioList=vedioDao.findVedio();
-		req.setAttribute("starVedioList", vedioList);
+		if(id!=null && !"".equals(id)){
+			idInt = Integer.parseInt(id);
+			vedio = vedioDao.findVedioById(idInt);
+		}
+		else{
+			if(vedioList!=null && vedioList.size()>0){
+				vedio = vedioList.get(0);
+			}
+			
+		}
+		starlist=starInfoDAO.findAll();
+		
+		req.setAttribute("vedio", vedio);
+		req.setAttribute("starlist", starlist);
+		req.setAttribute("vedioList", vedioList);
 		return "/video.jsp";
 	}
 

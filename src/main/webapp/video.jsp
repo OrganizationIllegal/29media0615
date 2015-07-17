@@ -18,11 +18,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <script type="text/javascript" src="http://player.youku.com/jsapi">  
 	</script>
 	<script type="text/javascript">
+	var link = "${vedio.video_link}"
+	//alert(link)
+	var start = link.indexOf("id");
+	var end = link.indexOf("=");
+	var ID = link.substring(start+3, end);
+	//alert(ID)
 	$(function(){
 		player = new YKU.Player('youkuplayer',{
 			styleid: '0',
 			client_id: '6e97509b4cd3378b',
-			vid: 'XOTUxNDk2NDQ0',
+			vid: ID,
 			events:{
 			onPlayStart: function(){ alert("kaishi") },
 			onPlayEnd: function(){ alert("jieshu") }
@@ -64,21 +70,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  	<div style="padding-top:10px">
  	     <!--左侧视频播放start-->
  		<div style="width:860px;float:left;">
- 				<div id="youkuplayer" style="width:795px;height:761px">
- 				</div>
+ 				<div id="youkuplayer" style="width:800px;height:500px"></div>
  				<!--要播放视频列表start-->
- 				<div >
- 					 <c:forEach var="item" items="${vedioList}" varStatus="stat">
- 					 		<img alt="" src="/29images/${item.video_pic}"   height="170px" style="border:1px solid grey" class="yuanjiao" >
- 					 </c:forEach>
+ 				
+ 				<div style="font-size:16px;margin-top:20px;width:750px;margin-left:20px;margin-right:20px;">
+ 				
+ 				${vedio.video_desc}
  				</div>
  				<!--要播放视频列表end-->
  		</div>
  		<!--左侧视频播放end-->
  		<!--右侧图片列表start-->
  		<div style="float:left;width:280px;">
- 			 <c:forEach var="item" items="${starVedioList}" varStatus="stat">
- 			   <a href="#"><img alt="" src="/29images/${item.video_pic}" style="width:240px;height:170px;cursor:pointer;"/>
+ 			 <c:forEach var="item" items="${vedioList}" varStatus="stat">
+ 			   <a href="VideoList?id=${item.id}"><img alt="" src="/29images/${item.video_pic}" style="width:240px;height:170px;cursor:pointer;"/>
  			   </a>
  			</c:forEach> 
  		</div>
