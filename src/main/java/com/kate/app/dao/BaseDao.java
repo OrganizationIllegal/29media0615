@@ -12,7 +12,7 @@ public class BaseDao {
 	protected static String url = null;
 	protected static String username = null;
 	protected static String password = null;
-	protected static Connection con = null;
+	protected  Connection con = null;
 	
 	public BaseDao()
 	{
@@ -31,7 +31,7 @@ public class BaseDao {
 		}
 		
 	}
-	static {
+	/*static {
 		try{   
 		    //锟斤拷锟斤拷MySql锟斤拷锟斤拷锟斤拷   
 		    Class.forName("com.mysql.jdbc.Driver") ;   
@@ -50,7 +50,7 @@ public class BaseDao {
            System.out.println(e.toString());
         }
 		
-	}
+	}*/
 	
 	
 }

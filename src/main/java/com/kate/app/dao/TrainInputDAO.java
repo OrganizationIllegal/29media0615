@@ -1,8 +1,10 @@
 package com.kate.app.dao;
 
 
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,12 +15,17 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.kate.app.model.LianXi;
 import com.kate.app.model.Train;
-import com.kate.app.model.TrainDetail;
 
 @Repository 
 public class TrainInputDAO extends BaseDao {
 	//培训列表
 	public JSONArray selectTrainList(){
+		try{
+			con = DriverManager.getConnection(url, username, password);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		PreparedStatement pstmt = null;
 		JSONArray jsonArray=new JSONArray();
 		try {
 			String sql = " select * from train";
@@ -36,16 +43,37 @@ public class TrainInputDAO extends BaseDao {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}finally{  
+            if(pstmt != null){  
+                try {  
+                	pstmt.close();  
+                } catch (SQLException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
+            if(con != null){  
+                try {  
+                    con.close();  
+                } catch (SQLException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
+        }
 		return jsonArray;
 	} 
 	
 	//培训录入
 	public int InsertTrain(int train_id, String  train_name, String train_desc,String train_image){
+		try{
+			con = DriverManager.getConnection(url, username, password);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		PreparedStatement pstmt = null;
 		int exeResult=0;
 		try {
 			String sql = "insert into train(train_id,train_name,train_desc,train_image) values(?,?,?,?)";
-			PreparedStatement pstmt = con.prepareStatement(sql);
+			  pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, train_id);
 			pstmt.setString(2, train_name);
 			pstmt.setString(3, train_desc);
@@ -54,16 +82,37 @@ public class TrainInputDAO extends BaseDao {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}finally{  
+            if(pstmt != null){  
+                try {  
+                	pstmt.close();  
+                } catch (SQLException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
+            if(con != null){  
+                try {  
+                    con.close();  
+                } catch (SQLException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
+        }
 		return exeResult;
 	} 	
 	
 	//培训详情录入
 		public int InsertTrainDetail(int train_id, String  title, String time,String detail, String train_img){
+			try{
+				con = DriverManager.getConnection(url, username, password);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			PreparedStatement pstmt = null;
 			int exeResult=0;
 			try {
 				String sql = "insert into train_detail(train_id,title,time,detail,train_img) values(?,?,?,?,?)";
-				PreparedStatement pstmt = con.prepareStatement(sql);
+				  pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, train_id);
 				pstmt.setString(2, title);
 				pstmt.setString(3, time);
@@ -73,16 +122,37 @@ public class TrainInputDAO extends BaseDao {
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}finally{  
+	            if(pstmt != null){  
+	                try {  
+	                	pstmt.close();  
+	                } catch (SQLException e) {  
+	                    e.printStackTrace();  
+	                }  
+	            }  
+	            if(con != null){  
+	                try {  
+	                    con.close();  
+	                } catch (SQLException e) {  
+	                    e.printStackTrace();  
+	                }  
+	            }  
+	        }
 			return exeResult;
 		} 	
 		
 		//艺能培训录入
 				public int InsertLianxi(int train_id, String  typename, String detail,String img){
+					try{
+						con = DriverManager.getConnection(url, username, password);
+					}catch(Exception e){
+						e.printStackTrace();
+					}
+					PreparedStatement pstmt = null;
 					int exeResult=0;
 					try {
 						String sql = "insert into lianxi(train_id,typename,detail,img) values(?,?,?,?)";
-						PreparedStatement pstmt = con.prepareStatement(sql);
+						  pstmt = con.prepareStatement(sql);
 						pstmt.setInt(1, train_id);
 						pstmt.setString(2, typename);
 						pstmt.setString(3, detail);
@@ -91,29 +161,72 @@ public class TrainInputDAO extends BaseDao {
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
-					}
+					}finally{  
+			            if(pstmt != null){  
+			                try {  
+			                	pstmt.close();  
+			                } catch (SQLException e) {  
+			                    e.printStackTrace();  
+			                }  
+			            }  
+			            if(con != null){  
+			                try {  
+			                    con.close();  
+			                } catch (SQLException e) {  
+			                    e.printStackTrace();  
+			                }  
+			            }  
+			        }
 					return exeResult;
 				} 
 				//删除培训
 				public int deleteTrain(int id){
+					try{
+						con = DriverManager.getConnection(url, username, password);
+					}catch(Exception e){
+						e.printStackTrace();
+					}
+					PreparedStatement pstmt = null;
+
 					int exeResult=0;
 					try{
 							String sql = " delete from train where id= ?";
-							PreparedStatement pstmt = con.prepareStatement(sql);
+							  pstmt = con.prepareStatement(sql);
 							pstmt.setInt(1, id);
 							exeResult = pstmt.executeUpdate();
 						}catch (Exception e) {
 				            e.printStackTrace();
+				        }finally{  
+				            if(pstmt != null){  
+				                try {  
+				                	pstmt.close();  
+				                } catch (SQLException e) {  
+				                    e.printStackTrace();  
+				                }  
+				            }  
+				            if(con != null){  
+				                try {  
+				                    con.close();  
+				                } catch (SQLException e) {  
+				                    e.printStackTrace();  
+				                }  
+				            }  
 				        }
 					    return exeResult;
 				}
 				
 				//删除培训详情
 				public int deleteTrainDetail(int train_id){
+					try{
+						con = DriverManager.getConnection(url, username, password);
+					}catch(Exception e){
+						e.printStackTrace();
+					}
+					PreparedStatement pstmt = null;
 					int exeResult=0;
 					try{
 							String sql = " delete from train_detail where train_id= ?";
-							PreparedStatement pstmt = con.prepareStatement(sql);
+							  pstmt = con.prepareStatement(sql);
 							pstmt.setInt(1, train_id);
 							exeResult = pstmt.executeUpdate();
 						}catch (Exception e) {
@@ -124,24 +237,52 @@ public class TrainInputDAO extends BaseDao {
 				
 				//删除培训详情
 				public int deleteLianXi(int train_id){
+					try{
+						con = DriverManager.getConnection(url, username, password);
+					}catch(Exception e){
+						e.printStackTrace();
+					}
+					PreparedStatement pstmt = null;
 					int exeResult=0;
 					try{
 							String sql = " delete from lianxi where train_id= ?";
-							PreparedStatement pstmt = con.prepareStatement(sql);
+							  pstmt = con.prepareStatement(sql);
 							pstmt.setInt(1, train_id);
 							exeResult = pstmt.executeUpdate();
 						}catch (Exception e) {
 				            e.printStackTrace();
+				        }finally{  
+				            if(pstmt != null){  
+				                try {  
+				                	pstmt.close();  
+				                } catch (SQLException e) {  
+				                    e.printStackTrace();  
+				                }  
+				            }  
+				            if(con != null){  
+				                try {  
+				                    con.close();  
+				                } catch (SQLException e) {  
+				                    e.printStackTrace();  
+				                }  
+				            }  
 				        }
 					    return exeResult;
 				}
 								
 				//编辑培训
 				public int editTrain(int id, int train_id, String  train_name, String train_desc,String train_image){
+					try{
+						con = DriverManager.getConnection(url, username, password);
+					}catch(Exception e){
+						e.printStackTrace();
+					}
+					PreparedStatement pstmt = null;
+
 					int exeResult=0;
 					try{
 						String sql = " update train set train_id=?, train_name=?, train_desc=?,train_image=?  where id=?";
-						PreparedStatement pstmt = con.prepareStatement(sql);
+						  pstmt = con.prepareStatement(sql);
 						pstmt.setInt(1, train_id);
 						pstmt.setString(2, train_name);
 						pstmt.setString(3, train_desc);
@@ -150,6 +291,21 @@ public class TrainInputDAO extends BaseDao {
 						exeResult = pstmt.executeUpdate();
 					}catch (Exception e) {
 			            e.printStackTrace();
+			        }finally{  
+			            if(pstmt != null){  
+			                try {  
+			                	pstmt.close();  
+			                } catch (SQLException e) {  
+			                    e.printStackTrace();  
+			                }  
+			            }  
+			            if(con != null){  
+			                try {  
+			                    con.close();  
+			                } catch (SQLException e) {  
+			                    e.printStackTrace();  
+			                }  
+			            }  
 			        }
 					return exeResult;
 			        
@@ -157,10 +313,16 @@ public class TrainInputDAO extends BaseDao {
 				
 				//编辑培训详情
 				public int editTrainDetail(int id, int train_id, String  title, String time,String detail, String train_img){
+					try{
+						con = DriverManager.getConnection(url, username, password);
+					}catch(Exception e){
+						e.printStackTrace();
+					}
+					PreparedStatement pstmt = null;
 					int exeResult=0;
 					try{
 						String sql = " update train_detail set train_id=?, title=?, time=?,detail=?,train_img=?  where id=?";
-						PreparedStatement pstmt = con.prepareStatement(sql);
+						  pstmt = con.prepareStatement(sql);
 						pstmt.setInt(1, train_id);
 						pstmt.setString(2, title);
 						pstmt.setString(3, time);
@@ -170,6 +332,21 @@ public class TrainInputDAO extends BaseDao {
 						exeResult = pstmt.executeUpdate();
 					}catch (Exception e) {
 			            e.printStackTrace();
+			        }finally{  
+			            if(pstmt != null){  
+			                try {  
+			                	pstmt.close();  
+			                } catch (SQLException e) {  
+			                    e.printStackTrace();  
+			                }  
+			            }  
+			            if(con != null){  
+			                try {  
+			                    con.close();  
+			                } catch (SQLException e) {  
+			                    e.printStackTrace();  
+			                }  
+			            }  
 			        }
 					return exeResult;
 			        
@@ -177,10 +354,16 @@ public class TrainInputDAO extends BaseDao {
 				
 				//编辑艺能培训
 				public int editLianxi(int id, int train_id, String  typename, String detail,String img){
+					try{
+						con = DriverManager.getConnection(url, username, password);
+					}catch(Exception e){
+						e.printStackTrace();
+					}
+					PreparedStatement pstmt = null;
 					int exeResult=0;
 					try{
 						String sql = " update lianxi set train_id=?, typename=?, detail=?,img=?  where id=?";
-						PreparedStatement pstmt = con.prepareStatement(sql);
+						  pstmt = con.prepareStatement(sql);
 						pstmt.setInt(1, train_id);
 						pstmt.setString(2, typename);
 						pstmt.setString(3, detail);
@@ -189,6 +372,21 @@ public class TrainInputDAO extends BaseDao {
 						exeResult = pstmt.executeUpdate();
 					}catch (Exception e) {
 			            e.printStackTrace();
+			        }finally{  
+			            if(pstmt != null){  
+			                try {  
+			                	pstmt.close();  
+			                } catch (SQLException e) {  
+			                    e.printStackTrace();  
+			                }  
+			            }  
+			            if(con != null){  
+			                try {  
+			                    con.close();  
+			                } catch (SQLException e) {  
+			                    e.printStackTrace();  
+			                }  
+			            }  
 			        }
 					return exeResult;
 			        
@@ -196,11 +394,17 @@ public class TrainInputDAO extends BaseDao {
 				
 				//查找培训
 				public Train findById(int id){
+					try{
+						con = DriverManager.getConnection(url, username, password);
+					}catch(Exception e){
+						e.printStackTrace();
+					}
+					PreparedStatement pstmt = null;
 					Train data = new Train();
 					try{
 						
 						String sql = " select * from train where id=?";
-						PreparedStatement pstmt = con.prepareStatement(sql);
+						  pstmt = con.prepareStatement(sql);
 						pstmt.setInt(1, id);
 						ResultSet rs = pstmt.executeQuery();
 						while(rs.next()){
@@ -211,17 +415,38 @@ public class TrainInputDAO extends BaseDao {
 						}
 					}catch (Exception e) {
 				        
-				    }
+				    }finally{  
+			            if(pstmt != null){  
+			                try {  
+			                	pstmt.close();  
+			                } catch (SQLException e) {  
+			                    e.printStackTrace();  
+			                }  
+			            }  
+			            if(con != null){  
+			                try {  
+			                    con.close();  
+			                } catch (SQLException e) {  
+			                    e.printStackTrace();  
+			                }  
+			            }  
+			        }
 						return data;
 					}
 				
 				//查找艺能培训
 				public List<LianXi> findByTrainId(int trainId){
+					try{
+						con = DriverManager.getConnection(url, username, password);
+					}catch(Exception e){
+						e.printStackTrace();
+					}
+					PreparedStatement pstmt = null;
 					List<LianXi> list = new ArrayList<LianXi>();
 					try{
 						
 						String sql = " select * from lianxi where train_id=?";
-						PreparedStatement pstmt = con.prepareStatement(sql);
+						  pstmt = con.prepareStatement(sql);
 						pstmt.setInt(1, trainId);
 						ResultSet rs = pstmt.executeQuery();
 						
@@ -236,7 +461,22 @@ public class TrainInputDAO extends BaseDao {
 						
 					}catch (Exception e) {
 				        
-				    }
+				    }finally{  
+			            if(pstmt != null){  
+			                try {  
+			                	pstmt.close();  
+			                } catch (SQLException e) {  
+			                    e.printStackTrace();  
+			                }  
+			            }  
+			            if(con != null){  
+			                try {  
+			                    con.close();  
+			                } catch (SQLException e) {  
+			                    e.printStackTrace();  
+			                }  
+			            }  
+			        }
 						return list;
 					}
 				

@@ -1,24 +1,27 @@
 package com.kate.app.dao;
 
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.LockMode;
-import org.hibernate.Query;
-import org.hibernate.criterion.Example;
-
 import org.springframework.stereotype.Repository;
 
-import com.kate.app.model.News;
 import com.kate.app.model.NewsTrends;
 
 @Repository 
 
 public class NewsTrendsDAO extends BaseDao {
 	public List<NewsTrends> findAll(){
+		try{
+			con = DriverManager.getConnection(url, username, password);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		PreparedStatement pstmt = null;	
 	List<NewsTrends> list = new ArrayList<NewsTrends>();
 	try{
 		
@@ -38,16 +41,37 @@ public class NewsTrendsDAO extends BaseDao {
 		
 	}catch (Exception e) {
         
+    }finally{  
+        if(pstmt != null){  
+            try {  
+            	pstmt.close();  
+            } catch (SQLException e) {  
+                e.printStackTrace();  
+            }  
+        }  
+        if(con != null){  
+            try {  
+                con.close();  
+            } catch (SQLException e) {  
+                e.printStackTrace();  
+            }  
+        }  
     }
 		return list;
 	}
 	
 	public NewsTrends findByNewsTrendId(int newsId){
+		try{
+			con = DriverManager.getConnection(url, username, password);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		PreparedStatement pstmt = null;
 		NewsTrends data = new NewsTrends();
 		try{
 			
 			String sql = " select * from news_trends where news_id=? order by time desc";
-			PreparedStatement pstmt = con.prepareStatement(sql);
+			  pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, newsId);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()){					
@@ -62,7 +86,22 @@ public class NewsTrendsDAO extends BaseDao {
 			
 		}catch (Exception e) {
 	        
-	    }
+	    }finally{  
+            if(pstmt != null){  
+                try {  
+                	pstmt.close();  
+                } catch (SQLException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
+            if(con != null){  
+                try {  
+                    con.close();  
+                } catch (SQLException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
+        }
 			return data;
 		}
 	

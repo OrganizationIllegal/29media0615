@@ -1,14 +1,15 @@
 package com.kate.app.dao;
 
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.kate.app.model.StarInfo;
 import com.kate.app.model.StarVedio;
 
 @Repository 
@@ -39,6 +40,13 @@ public class VedioDAO extends BaseDao {
 	
 	//鏍规嵁star_num浠巗tar_video涓壘鍒颁俊鎭�
 		public List<StarVedio> findVedio(){
+			try{
+				con = DriverManager.getConnection(url, username, password);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			PreparedStatement pstmt = null;
+
 			List<StarVedio> list = new ArrayList<StarVedio>();
 			try{
 				
@@ -60,17 +68,38 @@ public class VedioDAO extends BaseDao {
 				
 			}catch (Exception e) {
 		        
-		    }
+		    }finally{  
+	            if(pstmt != null){  
+	                try {  
+	                	pstmt.close();  
+	                } catch (SQLException e) {  
+	                    e.printStackTrace();  
+	                }  
+	            }  
+	            if(con != null){  
+	                try {  
+	                    con.close();  
+	                } catch (SQLException e) {  
+	                    e.printStackTrace();  
+	                }  
+	            }  
+	        }
 				return list;
 			}
 
 		public StarVedio findVedioById(int id){
+			try{
+				con = DriverManager.getConnection(url, username, password);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			PreparedStatement pstmt = null;
 			StarVedio data = new StarVedio();
 			
 			try{
 				
 				String sql = " select * from vedio where id=?";
-				PreparedStatement pstmt = con.prepareStatement(sql);
+				  pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, id);
 				ResultSet rs = pstmt.executeQuery();
 				while(rs.next()){
@@ -83,16 +112,38 @@ public class VedioDAO extends BaseDao {
 				}
 			}catch (Exception e) {
 		        
-		    }
+		    }finally{  
+	            if(pstmt != null){  
+	                try {  
+	                	pstmt.close();  
+	                } catch (SQLException e) {  
+	                    e.printStackTrace();  
+	                }  
+	            }  
+	            if(con != null){  
+	                try {  
+	                    con.close();  
+	                } catch (SQLException e) {  
+	                    e.printStackTrace();  
+	                }  
+	            }  
+	        }
 				return data;
 			}
 		
 		public List<String> findType(){
+			try{
+				con = DriverManager.getConnection(url, username, password);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			PreparedStatement pstmt = null;
+
 			List<String> list = new ArrayList<String>();
 			try{
 				
 				String sql = " select distinct type from vedio";
-				PreparedStatement pstmt = con.prepareStatement(sql);
+				  pstmt = con.prepareStatement(sql);
 				ResultSet rs = pstmt.executeQuery();
 				while(rs.next()){
 					String data = rs.getString("type");
@@ -100,7 +151,22 @@ public class VedioDAO extends BaseDao {
 				}
 			}catch (Exception e) {
 		        
-		    }
+		    }finally{  
+	            if(pstmt != null){  
+	                try {  
+	                	pstmt.close();  
+	                } catch (SQLException e) {  
+	                    e.printStackTrace();  
+	                }  
+	            }  
+	            if(con != null){  
+	                try {  
+	                    con.close();  
+	                } catch (SQLException e) {  
+	                    e.printStackTrace();  
+	                }  
+	            }  
+	        }
 				return list;
 			}
 		

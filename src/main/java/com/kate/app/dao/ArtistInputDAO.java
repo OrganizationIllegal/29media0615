@@ -1,8 +1,10 @@
 package com.kate.app.dao;
 
 
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +13,6 @@ import org.springframework.stereotype.Repository;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.kate.app.model.LianXi;
 import com.kate.app.model.StarInfo;
 import com.kate.app.model.StarVedio;
 
@@ -19,6 +20,12 @@ import com.kate.app.model.StarVedio;
 public class ArtistInputDAO extends BaseDao {
 	//艺人列表
 	public JSONArray selectArtistList(){
+		try{
+			con = DriverManager.getConnection(url, username, password);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		PreparedStatement pstmt = null;
 		JSONArray jsonArray=new JSONArray();
 		try {
 			String sql = " select * from star_info";
@@ -39,6 +46,22 @@ public class ArtistInputDAO extends BaseDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		finally{  
+            if(pstmt != null){  
+                try {  
+                	pstmt.close();  
+                } catch (SQLException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
+            if(con != null){  
+                try {  
+                    con.close();  
+                } catch (SQLException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
+        }
 		return jsonArray;
 	} 
 	
@@ -46,6 +69,12 @@ public class ArtistInputDAO extends BaseDao {
 	
 	//艺人列表
 		public JSONArray selectVedioList(){
+			try{
+				con = DriverManager.getConnection(url, username, password);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			PreparedStatement pstmt = null;
 			JSONArray jsonArray=new JSONArray();
 			try {
 				String sql = " select * from vedio";
@@ -64,17 +93,38 @@ public class ArtistInputDAO extends BaseDao {
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}finally{  
+	            if(pstmt != null){  
+	                try {  
+	                	pstmt.close();  
+	                } catch (SQLException e) {  
+	                    e.printStackTrace();  
+	                }  
+	            }  
+	            if(con != null){  
+	                try {  
+	                    con.close();  
+	                } catch (SQLException e) {  
+	                    e.printStackTrace();  
+	                }  
+	            }  
+	        }
 			return jsonArray;
 		} 
 		
 		
 	//艺人录入
 		public int InsertArtistInfo(String star_num, String  chinese_name,String english_name,String bieming,String nation, String  constellation,String bloodtype,String height,String weight, String  birthplace,String birthday,String occupation,String brokerfirm,String animal, String  representativeworks,String residence,String gratuateunivercity,String achivements,String nationality, String  sex,String specialty,String musicalstyle,String star_detail,String star_img){
+			try{
+				con = DriverManager.getConnection(url, username, password);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			PreparedStatement pstmt = null;
 			int exeResult=0;
 			try {
 				String sql = "insert into star_info(star_num,chinese_name,english_name,bieming,nation,constellation,bloodtype,height,weight,birthplace,birthday,occupation,brokerfirm,animal,representativeworks,residence,gratuateunivercity,achivements,nationality,sex,specialty,musicalstyle,star_detail,star_img) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-				PreparedStatement pstmt = con.prepareStatement(sql);
+				 pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, star_num);
 				pstmt.setString(2, chinese_name);
 				pstmt.setString(3, english_name);
@@ -103,31 +153,74 @@ public class ArtistInputDAO extends BaseDao {
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}finally{  
+	            if(pstmt != null){  
+	                try {  
+	                	pstmt.close();  
+	                } catch (SQLException e) {  
+	                    e.printStackTrace();  
+	                }  
+	            }  
+	            if(con != null){  
+	                try {  
+	                    con.close();  
+	                } catch (SQLException e) {  
+	                    e.printStackTrace();  
+	                }  
+	            }  
+	        }
 			return exeResult;
 		} 
 		
 		//艺人图片录入
 				public int InsertArtistImage(String star_num, String  img){
+					try{
+						con = DriverManager.getConnection(url, username, password);
+					}catch(Exception e){
+						e.printStackTrace();
+					}
+					PreparedStatement pstmt = null;
 					int exeResult=0;
 					try {
 						String sql = "insert into star_image(star_num,img) values(?,?)";
-						PreparedStatement pstmt = con.prepareStatement(sql);
+						  pstmt = con.prepareStatement(sql);
 						pstmt.setString(1, star_num);
 						pstmt.setString(2, img);
 						exeResult = pstmt.executeUpdate();
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
-					}
+					}finally{  
+			            if(pstmt != null){  
+			                try {  
+			                	pstmt.close();  
+			                } catch (SQLException e) {  
+			                    e.printStackTrace();  
+			                }  
+			            }  
+			            if(con != null){  
+			                try {  
+			                    con.close();  
+			                } catch (SQLException e) {  
+			                    e.printStackTrace();  
+			                }  
+			            }  
+			        }
+
 					return exeResult;
 				} 
 				//艺人影视录入
 				public int InsertArtistVideo(String star_num, String  video_id, String video_pic, String  video_link){
+					try{
+						con = DriverManager.getConnection(url, username, password);
+					}catch(Exception e){
+						e.printStackTrace();
+					}
+					PreparedStatement pstmt = null;
 					int exeResult=0;
 					try {
 						String sql = "insert into star_vedio(star_num,video_id,video_pic,video_link) values(?,?,?,?)";
-						PreparedStatement pstmt = con.prepareStatement(sql);
+						  pstmt = con.prepareStatement(sql);
 						pstmt.setString(1, star_num);
 						pstmt.setString(2, video_id);
 						pstmt.setString(3, video_pic);
@@ -136,15 +229,36 @@ public class ArtistInputDAO extends BaseDao {
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
-					}
+					}finally{  
+			            if(pstmt != null){  
+			                try {  
+			                	pstmt.close();  
+			                } catch (SQLException e) {  
+			                    e.printStackTrace();  
+			                }  
+			            }  
+			            if(con != null){  
+			                try {  
+			                    con.close();  
+			                } catch (SQLException e) {  
+			                    e.printStackTrace();  
+			                }  
+			            }  
+			        }
 					return exeResult;
 				} 	
 				
 				public int InsertVideo(String  video_id, String video_pic, String  video_link, String video_desc,String type){
+					try{
+						con = DriverManager.getConnection(url, username, password);
+					}catch(Exception e){
+						e.printStackTrace();
+					}
+					PreparedStatement pstmt = null;
 					int exeResult=0;
 					try {
 						String sql = "insert into vedio(video_id,video_pic,video_link,video_desc,type) values(?,?,?,?,?)";
-						PreparedStatement pstmt = con.prepareStatement(sql);
+						  pstmt = con.prepareStatement(sql);
 						pstmt.setString(1, video_id);
 						pstmt.setString(2, video_pic);
 						pstmt.setString(3, video_link);
@@ -155,14 +269,36 @@ public class ArtistInputDAO extends BaseDao {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+					finally{  
+			            if(pstmt != null){  
+			                try {  
+			                	pstmt.close();  
+			                } catch (SQLException e) {  
+			                    e.printStackTrace();  
+			                }  
+			            }  
+			            if(con != null){  
+			                try {  
+			                    con.close();  
+			                } catch (SQLException e) {  
+			                    e.printStackTrace();  
+			                }  
+			            }  
+			        }
 					return exeResult;
 				} 		
                
 				public int editVideo(int id,String  video_id, String video_pic, String  video_link, String video_desc,String type){
+					try{
+						con = DriverManager.getConnection(url, username, password);
+					}catch(Exception e){
+						e.printStackTrace();
+					}
+					PreparedStatement pstmt = null;
 					int exeResult=0;
 					try{
 						String sql = " update vedio set video_id=?, video_pic=?, video_link=?, video_desc=?,type=? where id=?";
-						PreparedStatement pstmt = con.prepareStatement(sql);
+						  pstmt = con.prepareStatement(sql);
 						pstmt.setString(1, video_id);
 						pstmt.setString(2, video_pic);
 						pstmt.setString(3, video_link);
@@ -172,6 +308,21 @@ public class ArtistInputDAO extends BaseDao {
 						exeResult = pstmt.executeUpdate();
 					}catch (Exception e) {
 			            e.printStackTrace();
+			        }finally{  
+			            if(pstmt != null){  
+			                try {  
+			                	pstmt.close();  
+			                } catch (SQLException e) {  
+			                    e.printStackTrace();  
+			                }  
+			            }  
+			            if(con != null){  
+			                try {  
+			                    con.close();  
+			                } catch (SQLException e) {  
+			                    e.printStackTrace();  
+			                }  
+			            }  
 			        }
 					return exeResult;
 			        
@@ -179,28 +330,70 @@ public class ArtistInputDAO extends BaseDao {
 
 				//删除艺人
 				public int deleteArtist(int id){
+					try{
+						con = DriverManager.getConnection(url, username, password);
+					}catch(Exception e){
+						e.printStackTrace();
+					}
+					PreparedStatement pstmt = null;
 					int exeResult=0;
 					try{
 							String sql = " delete from star_info where id= ?";
-							PreparedStatement pstmt = con.prepareStatement(sql);
+							  pstmt = con.prepareStatement(sql);
 							pstmt.setInt(1, id);
 							exeResult = pstmt.executeUpdate();
 						}catch (Exception e) {
 				            e.printStackTrace();
+				        }finally{  
+				            if(pstmt != null){  
+				                try {  
+				                	pstmt.close();  
+				                } catch (SQLException e) {  
+				                    e.printStackTrace();  
+				                }  
+				            }  
+				            if(con != null){  
+				                try {  
+				                    con.close();  
+				                } catch (SQLException e) {  
+				                    e.printStackTrace();  
+				                }  
+				            }  
 				        }
 					    return exeResult;
 				}
 				
 				//删除艺人
 				public int deleteVedio(int id){
+					try{
+						con = DriverManager.getConnection(url, username, password);
+					}catch(Exception e){
+						e.printStackTrace();
+					}
+					PreparedStatement pstmt = null;
 					int exeResult=0;
 					try{
 							String sql = " delete from vedio where id= ?";
-							PreparedStatement pstmt = con.prepareStatement(sql);
+							  pstmt = con.prepareStatement(sql);
 							pstmt.setInt(1, id);
 							exeResult = pstmt.executeUpdate();
 						}catch (Exception e) {
 				            e.printStackTrace();
+				        }finally{  
+				            if(pstmt != null){  
+				                try {  
+				                	pstmt.close();  
+				                } catch (SQLException e) {  
+				                    e.printStackTrace();  
+				                }  
+				            }  
+				            if(con != null){  
+				                try {  
+				                    con.close();  
+				                } catch (SQLException e) {  
+				                    e.printStackTrace();  
+				                }  
+				            }  
 				        }
 					    return exeResult;
 				}
@@ -209,28 +402,70 @@ public class ArtistInputDAO extends BaseDao {
 				
 				//删除艺人图片
 				public int deleteArtistImg(String star_num){
+					try{
+						con = DriverManager.getConnection(url, username, password);
+					}catch(Exception e){
+						e.printStackTrace();
+					}
+					PreparedStatement pstmt = null;
 					int exeResult=0;
 					try{
 							String sql = " delete from star_image where star_num= ?";
-							PreparedStatement pstmt = con.prepareStatement(sql);
+							  pstmt = con.prepareStatement(sql);
 							pstmt.setString(1, star_num);
 							exeResult = pstmt.executeUpdate();
 						}catch (Exception e) {
 				            e.printStackTrace();
+				        }finally{  
+				            if(pstmt != null){  
+				                try {  
+				                	pstmt.close();  
+				                } catch (SQLException e) {  
+				                    e.printStackTrace();  
+				                }  
+				            }  
+				            if(con != null){  
+				                try {  
+				                    con.close();  
+				                } catch (SQLException e) {  
+				                    e.printStackTrace();  
+				                }  
+				            }  
 				        }
 					    return exeResult;
 				}
 				
 				//删除艺人影视
 				public int deleteArtistVideo(String star_num){
+					try{
+						con = DriverManager.getConnection(url, username, password);
+					}catch(Exception e){
+						e.printStackTrace();
+					}
+					PreparedStatement pstmt = null;
 					int exeResult=0;
 					try{
 							String sql = " delete from star_vedio where star_num= ?";
-							PreparedStatement pstmt = con.prepareStatement(sql);
+							  pstmt = con.prepareStatement(sql);
 							pstmt.setString(1, star_num);
 							exeResult = pstmt.executeUpdate();
 						}catch (Exception e) {
 				            e.printStackTrace();
+				        }finally{  
+				            if(pstmt != null){  
+				                try {  
+				                	pstmt.close();  
+				                } catch (SQLException e) {  
+				                    e.printStackTrace();  
+				                }  
+				            }  
+				            if(con != null){  
+				                try {  
+				                    con.close();  
+				                } catch (SQLException e) {  
+				                    e.printStackTrace();  
+				                }  
+				            }  
 				        }
 					    return exeResult;
 				}
@@ -238,25 +473,53 @@ public class ArtistInputDAO extends BaseDao {
 				
 				//删除艺人影视
 				public int deleteVideo(){
+					try{
+						con = DriverManager.getConnection(url, username, password);
+					}catch(Exception e){
+						e.printStackTrace();
+					}
+					PreparedStatement pstmt = null;
 					int exeResult=0;
 					try{
 							String sql = " delete from vedio";
-							PreparedStatement pstmt = con.prepareStatement(sql);
+							  pstmt = con.prepareStatement(sql);
 							
 							exeResult = pstmt.executeUpdate();
 						}catch (Exception e) {
 				            e.printStackTrace();
+				        }finally{  
+				            if(pstmt != null){  
+				                try {  
+				                	pstmt.close();  
+				                } catch (SQLException e) {  
+				                    e.printStackTrace();  
+				                }  
+				            }  
+				            if(con != null){  
+				                try {  
+				                    con.close();  
+				                } catch (SQLException e) {  
+				                    e.printStackTrace();  
+				                }  
+				            }  
 				        }
+
 					    return exeResult;
 				}
 				
 				
 				//艺人编辑
 				public int EditArtistInfo(int id, String star_num, String  chinese_name,String english_name,String bieming,String nation, String  constellation,String bloodtype,String height,String weight, String  birthplace,String birthday,String occupation,String brokerfirm,String animal, String  representativeworks,String residence,String gratuateunivercity,String achivements,String nationality, String  sex,String specialty,String musicalstyle,String star_detail,String star_img){
+					try{
+						con = DriverManager.getConnection(url, username, password);
+					}catch(Exception e){
+						e.printStackTrace();
+					}
+					PreparedStatement pstmt = null;
 					int exeResult=0;
 					try {
 						String sql = "update star_info set star_num=?,chinese_name=?,english_name=?,bieming=?,nation=?,constellation=?,bloodtype=?,height=?,weight=?,birthplace=?,birthday=?,occupation=?,brokerfirm=?,animal=?,representativeworks=?,residence=?,gratuateunivercity=?,achivements=?,nationality=?,sex=?,specialty=?,musicalstyle=?,star_detail=?,star_img=? where id=?";
-						PreparedStatement pstmt = con.prepareStatement(sql);
+						  pstmt = con.prepareStatement(sql);
 						pstmt.setString(1, star_num);
 						pstmt.setString(2, chinese_name);
 						pstmt.setString(3, english_name);
@@ -286,17 +549,38 @@ public class ArtistInputDAO extends BaseDao {
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
-					}
+					}finally{  
+			            if(pstmt != null){  
+			                try {  
+			                	pstmt.close();  
+			                } catch (SQLException e) {  
+			                    e.printStackTrace();  
+			                }  
+			            }  
+			            if(con != null){  
+			                try {  
+			                    con.close();  
+			                } catch (SQLException e) {  
+			                    e.printStackTrace();  
+			                }  
+			            }  
+			        }
 					return exeResult;
 				} 
 				
 				//查找艺人
 				public StarInfo findById(int id){
+					try{
+						con = DriverManager.getConnection(url, username, password);
+					}catch(Exception e){
+						e.printStackTrace();
+					}
+					PreparedStatement pstmt = null;
 					StarInfo data = new StarInfo();
 					try{
 						
 						String sql = " select * from star_info where id=?";
-						PreparedStatement pstmt = con.prepareStatement(sql);
+						  pstmt = con.prepareStatement(sql);
 						pstmt.setInt(1, id);
 						ResultSet rs = pstmt.executeQuery();
 						while(rs.next()){
@@ -327,18 +611,39 @@ public class ArtistInputDAO extends BaseDao {
 						}
 					}catch (Exception e) {
 				        
-				    }
+				    }finally{  
+			            if(pstmt != null){  
+			                try {  
+			                	pstmt.close();  
+			                } catch (SQLException e) {  
+			                    e.printStackTrace();  
+			                }  
+			            }  
+			            if(con != null){  
+			                try {  
+			                    con.close();  
+			                } catch (SQLException e) {  
+			                    e.printStackTrace();  
+			                }  
+			            }  
+			        }
 						return data;
 					}
 
 				
 				//查找艺人
 				public StarVedio findByVedioId(int id){
+					try{
+						con = DriverManager.getConnection(url, username, password);
+					}catch(Exception e){
+						e.printStackTrace();
+					}
+					PreparedStatement pstmt = null;
 					StarVedio data = new StarVedio();
 					try{
 						
 						String sql = " select * from vedio where id=?";
-						PreparedStatement pstmt = con.prepareStatement(sql);
+						  pstmt = con.prepareStatement(sql);
 						pstmt.setInt(1, id);
 						ResultSet rs = pstmt.executeQuery();
 						while(rs.next()){
@@ -351,17 +656,38 @@ public class ArtistInputDAO extends BaseDao {
 						}
 					}catch (Exception e) {
 				        
-				    }
+				    }finally{  
+			            if(pstmt != null){  
+			                try {  
+			                	pstmt.close();  
+			                } catch (SQLException e) {  
+			                    e.printStackTrace();  
+			                }  
+			            }  
+			            if(con != null){  
+			                try {  
+			                    con.close();  
+			                } catch (SQLException e) {  
+			                    e.printStackTrace();  
+			                }  
+			            }  
+			        }
 						return data;
 					}
 				
 				//查找艺人影视
 				public List<StarVedio> findByStarNum(String starnum){
+					try{
+						con = DriverManager.getConnection(url, username, password);
+					}catch(Exception e){
+						e.printStackTrace();
+					}
+					PreparedStatement pstmt = null;
 					List<StarVedio> list = new ArrayList<StarVedio>();
 					try{
 						
 						String sql = " select * from star_vedio where star_num=?";
-						PreparedStatement pstmt = con.prepareStatement(sql);
+						  pstmt = con.prepareStatement(sql);
 						pstmt.setString(1,starnum);
 						ResultSet rs = pstmt.executeQuery();
 						
@@ -378,7 +704,22 @@ public class ArtistInputDAO extends BaseDao {
 						
 					}catch (Exception e) {
 				        
-				    }
+				    }finally{  
+			            if(pstmt != null){  
+			                try {  
+			                	pstmt.close();  
+			                } catch (SQLException e) {  
+			                    e.printStackTrace();  
+			                }  
+			            }  
+			            if(con != null){  
+			                try {  
+			                    con.close();  
+			                } catch (SQLException e) {  
+			                    e.printStackTrace();  
+			                }  
+			            }  
+			        }
 						return list;
 					}
 				
@@ -386,11 +727,17 @@ public class ArtistInputDAO extends BaseDao {
 				
 				//查找艺人影视
 				public List<StarVedio> findVedio(){
+					try{
+						con = DriverManager.getConnection(url, username, password);
+					}catch(Exception e){
+						e.printStackTrace();
+					}
+					PreparedStatement pstmt = null;
 					List<StarVedio> list = new ArrayList<StarVedio>();
 					try{
 						
 						String sql = " select * from vedio";
-						PreparedStatement pstmt = con.prepareStatement(sql);
+						  pstmt = con.prepareStatement(sql);
 						ResultSet rs = pstmt.executeQuery();
 						
 						while(rs.next()){					
@@ -406,7 +753,23 @@ public class ArtistInputDAO extends BaseDao {
 						
 					}catch (Exception e) {
 				        
-				    }
+				    }finally{  
+			            if(pstmt != null){  
+			                try {  
+			                	pstmt.close();  
+			                } catch (SQLException e) {  
+			                    e.printStackTrace();  
+			                }  
+			            }  
+			            if(con != null){  
+			                try {  
+			                    con.close();  
+			                } catch (SQLException e) {  
+			                    e.printStackTrace();  
+			                }  
+			            }  
+			        }
+
 						return list;
 					}
 				
@@ -414,10 +777,16 @@ public class ArtistInputDAO extends BaseDao {
 				
 				//编辑艺人影视
 				public int editStarVideo(int id, String star_num, String  video_id, String video_pic, String  video_link){
+					try{
+						con = DriverManager.getConnection(url, username, password);
+					}catch(Exception e){
+						e.printStackTrace();
+					}
+					PreparedStatement pstmt = null;
 					int exeResult=0;
 					try{
 						String sql = " update star_vedio set star_num=?, video_id=?, video_pic=?,video_link=?  where id=?";
-						PreparedStatement pstmt = con.prepareStatement(sql);
+						  pstmt = con.prepareStatement(sql);
 						pstmt.setString(1, star_num);
 						pstmt.setString(2, video_id);
 						pstmt.setString(3, video_pic);
@@ -426,6 +795,21 @@ public class ArtistInputDAO extends BaseDao {
 						exeResult = pstmt.executeUpdate();
 					}catch (Exception e) {
 			            e.printStackTrace();
+			        }finally{  
+			            if(pstmt != null){  
+			                try {  
+			                	pstmt.close();  
+			                } catch (SQLException e) {  
+			                    e.printStackTrace();  
+			                }  
+			            }  
+			            if(con != null){  
+			                try {  
+			                    con.close();  
+			                } catch (SQLException e) {  
+			                    e.printStackTrace();  
+			                }  
+			            }  
 			        }
 					return exeResult;
 			        

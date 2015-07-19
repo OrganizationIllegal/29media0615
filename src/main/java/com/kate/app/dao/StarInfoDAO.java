@@ -1,19 +1,26 @@
 package com.kate.app.dao;
 
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.kate.app.model.News;
 import com.kate.app.model.StarInfo;
 
 @Repository 
 public class StarInfoDAO extends BaseDao {
 	public List<StarInfo> findAll(){
+		try{
+			con = DriverManager.getConnection(url, username, password);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		PreparedStatement pstmt = null;
 	List<StarInfo> list = new ArrayList<StarInfo>();
 	try{
 		
@@ -53,16 +60,38 @@ public class StarInfoDAO extends BaseDao {
 		
 	}catch (Exception e) {
         
+    }finally{  
+        if(pstmt != null){  
+            try {  
+            	pstmt.close();  
+            } catch (SQLException e) {  
+                e.printStackTrace();  
+            }  
+        }  
+        if(con != null){  
+            try {  
+                con.close();  
+            } catch (SQLException e) {  
+                e.printStackTrace();  
+            }  
+        }  
     }
+
 		return list;
 	}
 	
 	public  StarInfo findByStarNum(String starNum){
+		try{
+			con = DriverManager.getConnection(url, username, password);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		PreparedStatement pstmt = null;
 		StarInfo data = new StarInfo();
 		try{
 			
 			String sql = " select * from star_info where star_num=?";
-			PreparedStatement pstmt = con.prepareStatement(sql);
+			  pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, starNum);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()){					
@@ -97,15 +126,36 @@ public class StarInfoDAO extends BaseDao {
 			
 		}catch (Exception e) {
 	        
-	    }
+	    }finally{  
+            if(pstmt != null){  
+                try {  
+                	pstmt.close();  
+                } catch (SQLException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
+            if(con != null){  
+                try {  
+                    con.close();  
+                } catch (SQLException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
+        }
 			return data;
 		}
 	public  StarInfo findByStarId(int id){
+		try{
+			con = DriverManager.getConnection(url, username, password);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		PreparedStatement pstmt = null;
 		StarInfo data = new StarInfo();
 		try{
 			
 			String sql = " select * from star_info where id=?";
-			PreparedStatement pstmt = con.prepareStatement(sql);
+			  pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, id);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()){					
@@ -140,7 +190,22 @@ public class StarInfoDAO extends BaseDao {
 			
 		}catch (Exception e) {
 	        
-	    }
+	    }finally{  
+            if(pstmt != null){  
+                try {  
+                	pstmt.close();  
+                } catch (SQLException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
+            if(con != null){  
+                try {  
+                    con.close();  
+                } catch (SQLException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
+        }
 			return data;
 		}
 }

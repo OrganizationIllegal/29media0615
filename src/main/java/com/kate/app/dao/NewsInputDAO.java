@@ -1,9 +1,12 @@
 package com.kate.app.dao;
 
 
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+
 import org.springframework.stereotype.Repository;
 
 import com.alibaba.fastjson.JSONArray;
@@ -14,6 +17,12 @@ import com.kate.app.model.NewsTrends;
 public class NewsInputDAO extends BaseDao {
 	//新闻列表
 	public JSONArray selectNewsList(){
+		try{
+			con = DriverManager.getConnection(url, username, password);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		PreparedStatement pstmt = null;
 		JSONArray jsonArray=new JSONArray();
 		try {
 			String sql = " select * from news_trends";
@@ -32,16 +41,37 @@ public class NewsInputDAO extends BaseDao {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}finally{  
+            if(pstmt != null){  
+                try {  
+                	pstmt.close();  
+                } catch (SQLException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
+            if(con != null){  
+                try {  
+                    con.close();  
+                } catch (SQLException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
+        }
 		return jsonArray;
 	} 
 	
 	//新闻录入
 	public int InsertNewsTrends(int news_id, String  title,String time,String detail,String image){
+		try{
+			con = DriverManager.getConnection(url, username, password);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		PreparedStatement pstmt = null;
 		int exeResult=0;
 		try {
 			String sql = "insert into news_trends(news_id,title,time,detail,image) values(?,?,?,?,?)";
-			PreparedStatement pstmt = con.prepareStatement(sql);
+			  pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, news_id);
 			pstmt.setString(2, title);
 			pstmt.setString(3, time);
@@ -51,40 +81,97 @@ public class NewsInputDAO extends BaseDao {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}finally{  
+            if(pstmt != null){  
+                try {  
+                	pstmt.close();  
+                } catch (SQLException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
+            if(con != null){  
+                try {  
+                    con.close();  
+                } catch (SQLException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
+        }
 		return exeResult;
 	} 
 	
 	//新闻图片录入
 		public int InsertNewsImage(int news_id, String  news_image){
+			try{
+				con = DriverManager.getConnection(url, username, password);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			PreparedStatement pstmt = null;
 			int exeResult=0;
 			try {
 				String sql = "insert into news_image(news_id,news_image) values(?,?)";
-				PreparedStatement pstmt = con.prepareStatement(sql);
+				  pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, news_id);
 				pstmt.setString(2, news_image);
 				exeResult = pstmt.executeUpdate();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}finally{  
+	            if(pstmt != null){  
+	                try {  
+	                	pstmt.close();  
+	                } catch (SQLException e) {  
+	                    e.printStackTrace();  
+	                }  
+	            }  
+	            if(con != null){  
+	                try {  
+	                    con.close();  
+	                } catch (SQLException e) {  
+	                    e.printStackTrace();  
+	                }  
+	            }  
+	        }
 			return exeResult;
 		} 
 		
 		
 		//新闻图片录入
 				public int InsertJoinImage(int join_id, String image){
+					try{
+						con = DriverManager.getConnection(url, username, password);
+					}catch(Exception e){
+						e.printStackTrace();
+					}
+					PreparedStatement pstmt = null;
 					int exeResult=0;
 					try {
 						String sql = "insert into join_image(join_id,image) values(?,?)";
-						PreparedStatement pstmt = con.prepareStatement(sql);
+						  pstmt = con.prepareStatement(sql);
 						pstmt.setInt(1, join_id);
 						pstmt.setString(2, image);
 						exeResult = pstmt.executeUpdate();
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
-					}
+					}finally{  
+			            if(pstmt != null){  
+			                try {  
+			                	pstmt.close();  
+			                } catch (SQLException e) {  
+			                    e.printStackTrace();  
+			                }  
+			            }  
+			            if(con != null){  
+			                try {  
+			                    con.close();  
+			                } catch (SQLException e) {  
+			                    e.printStackTrace();  
+			                }  
+			            }  
+			        }
 					return exeResult;
 				} 
 				
@@ -92,28 +179,70 @@ public class NewsInputDAO extends BaseDao {
 		
 	//删除新闻
 	public int deleteNewsTrends(int id){
+		try{
+			con = DriverManager.getConnection(url, username, password);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		PreparedStatement pstmt = null;
 		int exeResult=0;
 		try{
 				String sql = " delete from news_trends where id= ?";
-				PreparedStatement pstmt = con.prepareStatement(sql);
+				  pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, id);
 				exeResult = pstmt.executeUpdate();
 			}catch (Exception e) {
 	            e.printStackTrace();
+	        }finally{  
+	            if(pstmt != null){  
+	                try {  
+	                	pstmt.close();  
+	                } catch (SQLException e) {  
+	                    e.printStackTrace();  
+	                }  
+	            }  
+	            if(con != null){  
+	                try {  
+	                    con.close();  
+	                } catch (SQLException e) {  
+	                    e.printStackTrace();  
+	                }  
+	            }  
 	        }
 		    return exeResult;
 	}
 	
 	
 	public int deleteNewsImage(int news_id){
+		try{
+			con = DriverManager.getConnection(url, username, password);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		PreparedStatement pstmt = null;
 		int exeResult=0;
 		try{
 				String sql = " delete from news_image where news_id= ?";
-				PreparedStatement pstmt = con.prepareStatement(sql);
+				  pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, news_id);
 				exeResult = pstmt.executeUpdate();
 			}catch (Exception e) {
 	            e.printStackTrace();
+	        }finally{  
+	            if(pstmt != null){  
+	                try {  
+	                	pstmt.close();  
+	                } catch (SQLException e) {  
+	                    e.printStackTrace();  
+	                }  
+	            }  
+	            if(con != null){  
+	                try {  
+	                    con.close();  
+	                } catch (SQLException e) {  
+	                    e.printStackTrace();  
+	                }  
+	            }  
 	        }
 		    return exeResult;
 	}
@@ -121,10 +250,16 @@ public class NewsInputDAO extends BaseDao {
 	
 	//编辑新闻
 	public int editNewsTrends(int id, int news_id, String  title,String time,String detail,String image){
+		try{
+			con = DriverManager.getConnection(url, username, password);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		PreparedStatement pstmt = null;
 		int exeResult=0;
 		try{
 			String sql = " update news_trends set news_id=?, title=?, time=?, detail=?,image=? where id=?";
-			PreparedStatement pstmt = con.prepareStatement(sql);
+			  pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, news_id);
 			pstmt.setString(2, title);
 			pstmt.setString(3, time);
@@ -134,6 +269,21 @@ public class NewsInputDAO extends BaseDao {
 			exeResult = pstmt.executeUpdate();
 		}catch (Exception e) {
             e.printStackTrace();
+        }finally{  
+            if(pstmt != null){  
+                try {  
+                	pstmt.close();  
+                } catch (SQLException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
+            if(con != null){  
+                try {  
+                    con.close();  
+                } catch (SQLException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
         }
 		return exeResult;
         
@@ -141,10 +291,17 @@ public class NewsInputDAO extends BaseDao {
 	
 	//编辑新闻
 		public int addJoinUs(String name, String  email,String content){
+			try{
+				con = DriverManager.getConnection(url, username, password);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			PreparedStatement pstmt = null;
+
 			int exeResult=0;
 			try {
 				String sql = "insert into join_us(name, email,content) values(?,?,?)";
-				PreparedStatement pstmt = con.prepareStatement(sql);
+				  pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, name);
 				pstmt.setString(2, email);
 				pstmt.setString(3, content);
@@ -152,17 +309,38 @@ public class NewsInputDAO extends BaseDao {
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}finally{  
+	            if(pstmt != null){  
+	                try {  
+	                	pstmt.close();  
+	                } catch (SQLException e) {  
+	                    e.printStackTrace();  
+	                }  
+	            }  
+	            if(con != null){  
+	                try {  
+	                    con.close();  
+	                } catch (SQLException e) {  
+	                    e.printStackTrace();  
+	                }  
+	            }  
+	        }
 			return exeResult;
 	        
 		}
 		
 		//编辑新闻
 				public int selectJoinUs(String  email){
+					try{
+						con = DriverManager.getConnection(url, username, password);
+					}catch(Exception e){
+						e.printStackTrace();
+					}
+					PreparedStatement pstmt = null;
 					int exeResult=0;
 					try {
 						String sql = "select id from  join_us where email=?";
-						PreparedStatement pstmt = con.prepareStatement(sql);
+						  pstmt = con.prepareStatement(sql);
 						pstmt.setString(1, email);
 						ResultSet rs = pstmt.executeQuery();
 						while(rs.next()){
@@ -172,7 +350,22 @@ public class NewsInputDAO extends BaseDao {
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
-					}
+					}finally{  
+			            if(pstmt != null){  
+			                try {  
+			                	pstmt.close();  
+			                } catch (SQLException e) {  
+			                    e.printStackTrace();  
+			                }  
+			            }  
+			            if(con != null){  
+			                try {  
+			                    con.close();  
+			                } catch (SQLException e) {  
+			                    e.printStackTrace();  
+			                }  
+			            }  
+			        }
 					return exeResult;
 			        
 				}
@@ -182,11 +375,17 @@ public class NewsInputDAO extends BaseDao {
 		
 	//查找新闻
 	public NewsTrends findById(int id){
+		try{
+			con = DriverManager.getConnection(url, username, password);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		PreparedStatement pstmt = null;
 		NewsTrends data = new NewsTrends();
 		try{
 			
 			String sql = " select * from news_trends where id=?";
-			PreparedStatement pstmt = con.prepareStatement(sql);
+			  pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, id);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()){
@@ -199,12 +398,33 @@ public class NewsInputDAO extends BaseDao {
 			}
 		}catch (Exception e) {
 	        
-	    }
+	    }finally{  
+            if(pstmt != null){  
+                try {  
+                	pstmt.close();  
+                } catch (SQLException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
+            if(con != null){  
+                try {  
+                    con.close();  
+                } catch (SQLException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
+        }
 			return data;
 		}
 	
 	//新闻图片列表
 		public JSONArray selectNewsimgList(){
+			try{
+				con = DriverManager.getConnection(url, username, password);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			PreparedStatement pstmt = null;
 			JSONArray jsonArray=new JSONArray();
 			try {
 				String sql = " select * from news_image";
@@ -220,20 +440,57 @@ public class NewsInputDAO extends BaseDao {
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}finally{  
+	            if(pstmt != null){  
+	                try {  
+	                	pstmt.close();  
+	                } catch (SQLException e) {  
+	                    e.printStackTrace();  
+	                }  
+	            }  
+	            if(con != null){  
+	                try {  
+	                    con.close();  
+	                } catch (SQLException e) {  
+	                    e.printStackTrace();  
+	                }  
+	            }  
+	        }
 			return jsonArray;
 		} 
 	
 		//删除新闻图片
 		public int deleteNewsImg(int news_id){
+			try{
+				con = DriverManager.getConnection(url, username, password);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			PreparedStatement pstmt = null;
+
 			int exeResult=0;
 			try{
 					String sql = " delete from news_image where news_id= ?";
-					PreparedStatement pstmt = con.prepareStatement(sql);
+					  pstmt = con.prepareStatement(sql);
 					pstmt.setInt(1, news_id);
 					exeResult = pstmt.executeUpdate();
 				}catch (Exception e) {
 		            e.printStackTrace();
+		        }finally{  
+		            if(pstmt != null){  
+		                try {  
+		                	pstmt.close();  
+		                } catch (SQLException e) {  
+		                    e.printStackTrace();  
+		                }  
+		            }  
+		            if(con != null){  
+		                try {  
+		                    con.close();  
+		                } catch (SQLException e) {  
+		                    e.printStackTrace();  
+		                }  
+		            }  
 		        }
 			    return exeResult;
 		}		

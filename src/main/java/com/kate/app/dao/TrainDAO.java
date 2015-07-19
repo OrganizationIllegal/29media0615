@@ -1,7 +1,9 @@
 package com.kate.app.dao;
 
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +16,13 @@ import com.kate.app.model.Train;
 @Repository 
 public class TrainDAO extends BaseDao{
 	public List<Train> findAll(){
+		try{
+			con = DriverManager.getConnection(url, username, password);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		PreparedStatement pstmt = null;
+
 		List<Train> list = new ArrayList<Train>();
 		try{
 			
@@ -33,6 +42,21 @@ public class TrainDAO extends BaseDao{
 			
 		}catch (Exception e) {
             
+        }finally{  
+            if(pstmt != null){  
+                try {  
+                	pstmt.close();  
+                } catch (SQLException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
+            if(con != null){  
+                try {  
+                    con.close();  
+                } catch (SQLException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
         }
 		
 		return list;
@@ -41,6 +65,12 @@ public class TrainDAO extends BaseDao{
 	
 	
 	public List<LianXi> findAllLianXi(){
+		try{
+			con = DriverManager.getConnection(url, username, password);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		PreparedStatement pstmt = null;
 		List<LianXi> list = new ArrayList<LianXi>();
 		try{
 			
@@ -60,12 +90,34 @@ public class TrainDAO extends BaseDao{
 			
 		}catch (Exception e) {
             
+        }finally{  
+            if(pstmt != null){  
+                try {  
+                	pstmt.close();  
+                } catch (SQLException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
+            if(con != null){  
+                try {  
+                    con.close();  
+                } catch (SQLException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
         }
 		
 		return list;
         
 	}
 	public List<LianXi> findAllLianXiByTrainId(int train_id){
+		try{
+			con = DriverManager.getConnection(url, username, password);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		PreparedStatement pstmt = null;
+
 		List<LianXi> list = new ArrayList<LianXi>();
 		try{
 			
@@ -85,12 +137,33 @@ public class TrainDAO extends BaseDao{
 			
 		}catch (Exception e) {
             
+        }finally{  
+            if(pstmt != null){  
+                try {  
+                	pstmt.close();  
+                } catch (SQLException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
+            if(con != null){  
+                try {  
+                    con.close();  
+                } catch (SQLException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
         }
 		
 		return list;
         
 	}
 	public List<LianXi> findAllLianXiById(int id){
+		try{
+			con = DriverManager.getConnection(url, username, password);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		PreparedStatement pstmt = null;
 		List<LianXi> list = new ArrayList<LianXi>();
 		try{
 			
@@ -111,17 +184,39 @@ public class TrainDAO extends BaseDao{
 		}catch (Exception e) {
             
         }
-		
+		finally{  
+            if(pstmt != null){  
+                try {  
+                	pstmt.close();  
+                } catch (SQLException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
+            if(con != null){  
+                try {  
+                    con.close();  
+                } catch (SQLException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
+        }
+
 		return list;
         
 	}
 	
 	public LianXi findLianXiById(int train_id){
+		try{
+			con = DriverManager.getConnection(url, username, password);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		PreparedStatement pstmt = null;
 		LianXi data = new LianXi();
 		try{
 			
 			String sql = " select * from lianxi where train_id=?";
-			PreparedStatement pstmt = con.prepareStatement(sql);
+			  pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, train_id);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()){					
@@ -135,16 +230,37 @@ public class TrainDAO extends BaseDao{
 		}catch (Exception e) {
             
         }
-		
+		finally{  
+            if(pstmt != null){  
+                try {  
+                	pstmt.close();  
+                } catch (SQLException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
+            if(con != null){  
+                try {  
+                    con.close();  
+                } catch (SQLException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
+        }
 		return data;
         
 	}
 	public LianXi findnewsById(int id){
+		try{
+			con = DriverManager.getConnection(url, username, password);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		PreparedStatement pstmt = null;
 		LianXi data = new LianXi();
 		try{
 			
 			String sql = " select * from lianxi where id=?";
-			PreparedStatement pstmt = con.prepareStatement(sql);
+			  pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, id);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()){					
@@ -157,6 +273,21 @@ public class TrainDAO extends BaseDao{
 			
 		}catch (Exception e) {
             
+        }finally{  
+            if(pstmt != null){  
+                try {  
+                	pstmt.close();  
+                } catch (SQLException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
+            if(con != null){  
+                try {  
+                    con.close();  
+                } catch (SQLException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
         }
 		
 		return data;

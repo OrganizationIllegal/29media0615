@@ -1,22 +1,26 @@
 package com.kate.app.dao;
 
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.LockMode;
-import org.hibernate.Query;
-import org.hibernate.criterion.Example;
-
 import org.springframework.stereotype.Repository;
 
 import com.kate.app.model.News;
-import com.kate.app.model.RecommendVideo;
 
 @Repository 
 public class RecommendVideoDAO extends BaseDao {
 	public List<News> findAll(){
+		try{
+			con = DriverManager.getConnection(url, username, password);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		PreparedStatement pstmt = null;
 	List<News> list = new ArrayList<News>();
 	try{
 		
@@ -35,6 +39,21 @@ public class RecommendVideoDAO extends BaseDao {
 		
 	}catch (Exception e) {
         
+    }finally{  
+        if(pstmt != null){  
+            try {  
+            	pstmt.close();  
+            } catch (SQLException e) {  
+                e.printStackTrace();  
+            }  
+        }  
+        if(con != null){  
+            try {  
+                con.close();  
+            } catch (SQLException e) {  
+                e.printStackTrace();  
+            }  
+        }  
     }
 		return list;
 	}

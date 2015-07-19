@@ -1,29 +1,32 @@
 package com.kate.app.dao;
 
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.LockMode;
-import org.hibernate.Query;
-import org.hibernate.criterion.Example;
-
 import org.springframework.stereotype.Repository;
 
-import com.kate.app.model.News;
 import com.kate.app.model.TrainDetail;
 
 
 @Repository 
 public class TrainDetailDAO extends BaseDao {
 	public List<TrainDetail> findByTrainId(int trainId){
+		try{
+			con = DriverManager.getConnection(url, username, password);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		PreparedStatement pstmt = null;
+
 	List<TrainDetail> list = new ArrayList<TrainDetail>();
 	try{
 		
 		String sql = " select * from train_detail where train_id=?";
-		PreparedStatement pstmt = con.prepareStatement(sql);
+		  pstmt = con.prepareStatement(sql);
 		pstmt.setInt(1, trainId);
 		ResultSet rs = pstmt.executeQuery();
 		
@@ -41,6 +44,21 @@ public class TrainDetailDAO extends BaseDao {
 		
 	}catch (Exception e) {
         
+    }finally{  
+        if(pstmt != null){  
+            try {  
+            	pstmt.close();  
+            } catch (SQLException e) {  
+                e.printStackTrace();  
+            }  
+        }  
+        if(con != null){  
+            try {  
+                con.close();  
+            } catch (SQLException e) {  
+                e.printStackTrace();  
+            }  
+        }  
     }
 		return list;
 	}
