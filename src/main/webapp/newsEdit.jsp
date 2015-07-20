@@ -62,7 +62,8 @@ CKEDITOR.replace( 'detail' );
 function add(){
 	  var newsinfo=DataDeal.formToJson(data= decodeURIComponent($("#newsinfo").serialize(),true));
 	  newsinfo=eval("("+newsinfo+")");
-	  var result = $("#detail").val();
+	  //var result = $("#detail").val();
+	  var result = CKEDITOR.instances.detail.getData();
 	  //alert(result)
 	  newsinfo.detail = result;
 	  $.ajax({
@@ -71,7 +72,7 @@ function add(){
 	 		dataType: "json",
 	 		url: "/editNewsTrends",
 	 		success:function(data){
-	 			if(data.flag == 1){
+	 			if(data.flag == 2){
 	 				alert("修改成功！");
 	 			}else if(data.flag ==0){
 	 				alert("修改失败！");
