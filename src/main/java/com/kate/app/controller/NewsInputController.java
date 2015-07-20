@@ -70,7 +70,7 @@ public class NewsInputController {
 			Date date=newstrends.getTime();
 			DateFormat df= DateFormat.getDateInstance();//鏃ユ湡鏍煎紡锛岀簿纭埌鏃�
 			time=df.format(date);
-			System.out.println(time);			
+			//System.out.println(time);			
 		}
 				
 		String newsimglist=req.getParameter("newsimglist");

@@ -37,12 +37,11 @@ public class ArtistController {
 			id = Integer.parseInt(starNum);
 			star1=starInfoDAO.findByStarId(id);
 			String detail = star1.getStar_detail();
-			detail = detail.replace("\n", "<p>");
+			/*detail = detail.replace("\n", "<p>");
 			detail = detail.replace("\\n", "<p>");
 			detail = detail.replace(" ", "&nbsp;");
 			detail = detail.replace("&gt;", ">");
-			detail = detail.replace("&lt;", "<");
-		
+			detail = detail.replace("&lt;", "<");*/
 			star1.setStar_detail(detail);
 		}
 		req.setAttribute("star1", star1);

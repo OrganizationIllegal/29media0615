@@ -81,8 +81,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <!--  轮播图 -->
     <%
    		String detail = request.getAttribute("detail").toString();
-   		detail = detail.replace("\n", "<br/>");
-   		detail = detail.replace(" ", "&nbsp;");
+   		/* detail = detail.replace("\n", "<br/>");
+   		detail = detail.replace(" ", "&nbsp;"); */
     %>
   <div style="-overflow-y:auto; width:850px; -height:300px;text-align:left;padding:30px;margin-bottom:50px;"><%=detail %></div>
 		</div>

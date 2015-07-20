@@ -42,8 +42,8 @@ body{
 <div class="area_left c-fix">
 <span class="area_span">新闻详情</span>
 </div>
-<div class="c-fix" style="margin-bottom:15px;margin-left:35px;"><textarea id="detail" name="detail" rows="3" cols="112" style="background-color:rgb(237,238,243);border:0px;" >${newstrends.detail}</textarea></div>
-
+<%-- <div class="c-fix" style="margin-bottom:15px;margin-left:35px;"><textarea id="detail" name="detail" rows="3" cols="112" style="background-color:rgb(237,238,243);border:0px;" >${newstrends.detail}</textarea></div> --%>
+<div class="c-fix" style="margin-bottom:15px;"><textarea id="detail" placeholder="新闻详情" name="detail">${newstrends.detail}</textarea></div>
 <div class="area_bkg2 c-fix" id="newsimg">新闻图片</div>
 <form id="newsimg">
 <div class="c-fix" style="padding-left:35px;margin-top:20px;">
@@ -55,6 +55,9 @@ body{
 <div class="area_left4"><button type="button" class="btn" onclick="add()">提交</button></div>
 <div class="area_right4"><button type="reset" class="btn" onclick="fanhui()">返回</button></div>
 </div>
+<script type="text/javascript">
+CKEDITOR.replace( 'detail' );
+</script>
 <script type="text/javascript">
 function add(){
 	  var newsinfo=DataDeal.formToJson(data= decodeURIComponent($("#newsinfo").serialize(),true));
