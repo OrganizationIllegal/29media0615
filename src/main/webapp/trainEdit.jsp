@@ -106,7 +106,7 @@ function add(){
 	 		dataType: "json",
 	 		url: "/editTrain",
 	 		success:function(data){
-	 			if(data.flag == 1){
+	 			if(data.flag == 3){
 	 				alert("修改成功！");
 	 			}else if(data.flag ==0){
 	 				alert("修改失败！");

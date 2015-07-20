@@ -235,7 +235,7 @@ public class TrainInputController {
 					String train_desc = "";
 					flag1 =trainInputDao.editTrain(id, train_id, train_name, train_desc, image);
 					System.out.println(flag1);
-					json.put("flag", flag1);
+					json.put("flag", flag1+flag2+flag3);
 					try{
 						writeJson(json.toJSONString(),resp);
 					}catch(Exception e){
