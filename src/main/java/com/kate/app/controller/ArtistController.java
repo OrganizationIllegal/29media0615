@@ -31,7 +31,9 @@ public class ArtistController {
 		String starNum = req.getParameter("id");
 		
 		if(starNum == null || "".equals(starNum)){
-			star1 = list.get(0);
+			if(list!=null&&!list.isEmpty()){
+				star1 = list.get(0);
+			}
 		}
 		else{
 			id = Integer.parseInt(starNum);
