@@ -244,7 +244,7 @@ $(function(){
 					<div  style="margin-top:120px;float:left;"><canvas id="can2" width="80" height="80" onclick="pop2()"></canvas></div>
 					<div  style="margin-top:20px;float:left;"><canvas id="can3" width="80" height="80" onclick="pop3()"></canvas></div>
 					<div  style="margin-top:50px;float:left;"><canvas id="can4" width="150" height="150" onclick="pop4()"></canvas></div> --%>
-					<div id="vediotitle" style="width:200px;height:25px;background-color:rgb(44,44,44);text-align:center;font-size:16px;font-weight:bold;margin-left:175px;color:white;font-family:DFKai-SB;border-radius:10px 20px;">影视 </div>
+					<div id="vediotitle" style="width:200px;height:25px;background-color:rgb(44,44,44);text-align:center;font-size:20px;font-weight:300;margin-left:175px;color:white;font-family:shishang;border-radius:10px 20px;">影视 </div>
 					<div  style="margin-top:15px;float:left;"><a href="${videohref1}">
 					<img src="/29images/${videoimg1}" alt="First slide" style="width: 570px;height:193px;margin-top: -13px;">
 					<!-- <canvas id="can1" width="150" height="150"></canvas> --></a></div>
