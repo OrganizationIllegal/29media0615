@@ -126,7 +126,7 @@ $(function(){
 <body>
 <jsp:include page="headnew.jsp" />
 <div style="width:1140px;margin:0 auto;">
-		<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="5000">
+		<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="5000" style="padding-bottom:10px;">
    <!-- 轮播（Carousel）指标 -->
    <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -167,7 +167,7 @@ $(function(){
 		<div style="width:570px;float:left;">
 			<div class="topnewsbox">
 
-				<div class="topnews" style="width:568px;border:0px;">
+				<div class="topnews" style="width:570px;border:0px;">
 					<div class="topnewspic" id="hotsearchlist" style="filter:progid:DXImageTransform.Microsoft.GradientWipe(GradientSize=0.25,wipestyle=0,motion=forward)">
 					<c:forEach var="item" items="${NewsList}" varStatus="stat">
 						<div id="switch_${stat.index }"><a href="/News?newsId=${item.news_id}" target="_blank"><img width="314" height="143" alt="${item.title }" src="/29images/${item.image }" /></a></div>
@@ -197,10 +197,11 @@ $(function(){
 				</div>
 		</div>
 	</div>
-	<div style="width:570px;float:right;">
-			<div style="height:262px;">
-				<!-- <img src="/images/star.jpg" width="98%" height="98%"> -->
-				<div id="myCarousel2" class="carousel slide" data-ride="carousel" data-interval="5000">
+	<div style="width:565px;float:right;height:262px;">
+				 <a href="/Train"><img src="/29images/${trainlunbo1}" style="width:182px;height:257px;margin-right: 5px;"></a>
+				 <a href="/Train"><img src="/29images/${trainlunbo2}" style="width:182px;height:257px;margin-right: 5px;"></a>
+				 <a href="/Train"><img src="/29images/${trainlunbo3}" style="width:183px;height:257px;-margin-right: 6px;"></a>
+				<%-- <div id="myCarousel2" class="carousel slide" data-ride="carousel" data-interval="5000">
    <!-- 轮播（Carousel）指标 -->
    <ol class="carousel-indicators">
       <li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
@@ -222,31 +223,30 @@ $(function(){
          <div class="carousel-caption"></div>
       </div> 
      </div>
-     </div> 
-				<!-- <div style="z-index:1;width:570px;height:90px;opacity:0.5;background:#FFE1FF;top:-180px;position:relative;filter:alpha(opacity=50);">
+     </div>  --%>
+				<div style="z-index:1;width:558px;height:90px;opacity:0.8;background:rgb(44,44,44);top:-180px;position:relative;filter:alpha(opacity=50);border-radius:50%;">
 					<div style="height:100%;line-height:100%;overflow:hidden;align:center;">
-						<h1 style="text-align:center"><a href="/Train">PeiXun 培训</a></h1>
+						<h1 style="text-align:center;"><a href="/Train">PeiXun 培训</a></h1>
 					</div>
-				</div> -->
-			</div>
+				</div>
 	</div>
 </div>
 		<!-- lize end -->
 		<div>
-			<div style="widht:570px;float:left;background-color: rgb(44, 44, 44);" id="starleft">
+			<div style="width:570px;float:left;background-color: rgb(44, 44, 44);margin-top:8px;" id="starleft">
 					<div style="float:left;width:110px;height:220px;"><a href="${starhref1}"><img src="/29images/${starimg1}" style="width:110px;height:110px;padding:5px 0px 5px 5px;" title="新星新星"></a><a href="${starhref2}"><img src="/29images/${starimg2}" style="width:110px;height:110px;padding:0px 0px 5px 5px;" title="新星新星"></a></div>
 					<div style="float:left;width:240px;height:220px;"><a href="${starhref3}"><img src="/29images/${starimg3}" style="width:240px;height:220px;padding:10px;" title="新星新星"></a></div>
 					<div style="float:left;width:110px;height:220px;"><a href="${starhref4}"><img src="/29images/${starimg4}" style="width:110px;height:110px;padding:5px 5px 5px 0px;" title="新星新星"></a><a href="${starhref5}"><img src="/29images/${starimg5}" style="width:110px;height:110px;padding:0px 5px 5px 0px;" title="新星新星"></a></div>
 					<div style="float:left;width:110px;height:220px;"><a href="${starhref6}"><img src="/29images/${starimg6}" style="width:110px;height:110px;padding:5px 5px 5px 0px;" title="新星新星"></a><a href="${starhref7}"><img src="/29images/${starimg7}" style="width:110px;height:110px;padding:0px 5px 5px 0px;" title="新星新星"></a></div>
 			</div>
-			<div style="widht:570px;float:right;margin-right:-1px;" id="starright">
+			<div style="width:570px;float:left;margin-right:-1px;margin-top:8px;" id="starright">
 					<%-- <div  style="margin-top:15px;float:left;"><canvas id="can1" width="150" height="150" onclick="pop1()"></canvas></div>
 					<div  style="margin-top:120px;float:left;"><canvas id="can2" width="80" height="80" onclick="pop2()"></canvas></div>
 					<div  style="margin-top:20px;float:left;"><canvas id="can3" width="80" height="80" onclick="pop3()"></canvas></div>
 					<div  style="margin-top:50px;float:left;"><canvas id="can4" width="150" height="150" onclick="pop4()"></canvas></div> --%>
 					<div id="vediotitle" style="width:200px;height:25px;background-color:rgb(44,44,44);text-align:center;font-size:20px;font-weight:300;margin-left:175px;color:white;font-family:shishang;border-radius:10px 20px;">影视 </div>
-					<div  style="margin-top:15px;float:left;"><a href="${videohref1}">
-					<img src="/29images/${videoimg1}" alt="First slide" style="width: 570px;height:193px;margin-top: -13px;">
+					<div  style="margin-top:15px;float:left;margin-left:5px;"><a href="${videohref1}">
+					<img src="/29images/${videoimg1}" alt="First slide" style="width: 565px;height:193px;margin-top: -13px;">
 					<!-- <canvas id="can1" width="150" height="150"></canvas> --></a></div>
 					<%-- <div  style="margin-top:120px;float:left;"><a href="${videohref2}"><canvas id="can2" width="80" height="80"></canvas></a></div>
 					<div  style="margin-top:20px;float:left;"><a href="${videohref3}"><canvas id="can3" width="80" height="80"></canvas></a></div>
